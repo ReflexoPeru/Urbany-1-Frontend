@@ -147,10 +147,10 @@ const Sidebar = () => {
           isActive={activeItem === 'configuracion'}
         />
         
-        <DarkModeToggle 
+        {/* <DarkModeToggle 
           darkMode={darkMode}
           onToggle={handleToggleDarkMode}
-        />
+        /> */}
       </div>
     </aside>
   );

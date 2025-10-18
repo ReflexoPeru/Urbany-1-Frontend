@@ -103,7 +103,7 @@ export const UserProfile = () => {
           className={styles['user-avatar']}
         />
         <div className={styles['user-info']}>
-          <span className={styles['user-name']}>Angela L.</span>
+          <span className={styles['user-name']}>Sanito L.</span>
           <span className={styles['user-role']}>Administrador</span>
         </div>
         <CaretDown 

@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import Sidebar from '../components/layout/Sidebar';
 import Header from '../components/layout/Header';
+import ToastContainer from '../components/ui/Toast/ToastContainer';
 import styles from './MainLayout.module.css';
 
 const MainLayout = () => {
@@ -19,6 +20,8 @@ const MainLayout = () => {
           <Outlet />
         </main>
       </div>
+
+      <ToastContainer />
     </div>
   );
 };

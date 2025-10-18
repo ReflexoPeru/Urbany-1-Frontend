@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
 import Dashboard from '../features/dashboard/pages/dashboard';
+import ToastDemo from '../pages/ToastDemo';
 
 
 
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: 'configuracion',
         element: <div><h2>Configuración</h2></div>,
+      },
+      {
+        path: 'toast-demo',
+        element: <ToastDemo />,
       },
     ],
   },
