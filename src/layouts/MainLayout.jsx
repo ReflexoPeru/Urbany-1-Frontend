@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import Sidebar from '../components/layout/Sidebar';
 import Header from '../components/layout/Header';
 import ToastContainer from '../components/ui/Toast/ToastContainer';
+import ConfirmModalContainer from '../components/ui/Modal/ConfirmModal/ConfirmModalContainer';
 import styles from './MainLayout.module.css';
 
 const MainLayout = () => {
@@ -22,6 +23,7 @@ const MainLayout = () => {
       </div>
 
       <ToastContainer />
+      <ConfirmModalContainer />
     </div>
   );
 };
