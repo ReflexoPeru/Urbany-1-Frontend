@@ -1,11 +1,13 @@
 import React from 'react'
-import Login from './features/auth/pages/login'
+import Sidebar from './components/layout/Sidebar'
+import Header from './components/layout/Header'
 import './App.css'
 
 function App() {
   return (
     <div className="App">
-      <Login />
+      <Sidebar />
+      <Header />
     </div>
   )
 }
