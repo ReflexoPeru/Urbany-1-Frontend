@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { 
   SquaresFour,
   CheckSquare,
@@ -22,7 +23,8 @@ import styles from './Sidebar.module.css';
 
 const Sidebar = () => {
   const [darkMode, setDarkMode] = useState(false);
-  const [activeItem, setActiveItem] = useState('negocios');
+  const [activeItem, setActiveItem] = useState('');
+  const location = useLocation();
 
   const menuItems = [
     { 
@@ -53,7 +55,7 @@ const Sidebar = () => {
       id: 'negocios', 
       label: 'Negocios', 
       icon: CurrencyDollar, 
-      path: '/negocios'
+      path: '/negocios',
     },
     { 
       id: 'mensajes', 
@@ -99,13 +101,21 @@ const Sidebar = () => {
     }
   ];
 
+  // Detectar ruta activa
+  useEffect(() => {
+    const currentPath = location.pathname;
+    const activeMenuItem = menuItems.find(item => item.path === currentPath);
+    if (activeMenuItem) {
+      setActiveItem(activeMenuItem.id);
+    } else if (currentPath === '/configuracion') {
+      setActiveItem('configuracion');
+    } else if (currentPath === '/' || currentPath === '/dashboard') {
+      setActiveItem('dashboard');
+    }
+  }, [location.pathname]);
+
   const handleToggleDarkMode = () => {
     setDarkMode(!darkMode);
-  };
-
-  const handleMenuItemClick = (e, itemId) => {
-    e.preventDefault();
-    setActiveItem(itemId);
   };
 
   return (
@@ -123,7 +133,6 @@ const Sidebar = () => {
                 path={item.path}
                 badge={item.badge}
                 isActive={activeItem === item.id}
-                onClick={(e) => handleMenuItemClick(e, item.id)}
               />
             </li>
           ))}
@@ -135,8 +144,7 @@ const Sidebar = () => {
           icon={Gear}
           label="Configuración"
           path="/configuracion"
-          isActive={false}
-          onClick={(e) => e.preventDefault()}
+          isActive={activeItem === 'configuracion'}
         />
         
         <DarkModeToggle 

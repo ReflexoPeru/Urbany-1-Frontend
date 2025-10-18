@@ -5,32 +5,99 @@
    ============================================ */
 
 .header {
-  position: fixed;
-  top: 0;
-  left: 260px;
-  right: 0;
+  width: 100%;
   height: 72px;
   background-color: #fff;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(200px, 300px) 1fr minmax(400px, auto);
   align-items: center;
-  justify-content: space-between;
   padding: 0 32px;
   border-bottom: 1px solid #e5e7eb;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 3%);
-  z-index: 100;
-  gap: 32px;
+  gap: 24px;
 }
 
 /* ============================================
-   TITLE
+   SECTION TITLE
    ============================================ */
-.title h1 {
+.title-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+/* ============================================
+   BACK BUTTON
+   ============================================ */
+.back-button {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: 1.5px solid rgb(56 228 122 / 20%);
+  border-radius: 10px;
+  color: #38e47a;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.back-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgb(56 228 122 / 10%), rgb(56 228 122 / 4%));
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.back-button svg {
+  position: relative;
+  z-index: 1;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 1px 2px rgb(56 228 122 / 25%));
+}
+
+.back-button:hover {
+  background-color: rgb(56 228 122 / 8%);
+  border-color: rgb(56 228 122 / 50%);
+  box-shadow: 0 6px 20px rgb(56 228 122 / 25%), 0 0 0 4px rgb(56 228 122 / 8%);
+  transform: translateX(-3px) translateY(-2px) rotate(-2deg);
+}
+
+.back-button:hover::before {
+  opacity: 1;
+}
+
+.back-button:hover svg {
+  transform: scale(1.05);
+}
+
+.back-button:active {
+  transform: translateX(-1px) translateY(0) scale(0.95);
+  box-shadow: 0 2px 10px rgb(56 228 122 / 18%);
+  transition-duration: 0.1s;
+}
+
+.back-button:active svg {
+  transform: scale(1);
+}
+
+.title {
   font-family: Poppins, sans-serif;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 600;
-  color: #3b3b3b;
+  color: #1a1a1a;
   margin: 0;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.02em;
 }
 
 /* ============================================
@@ -38,9 +105,9 @@
    ============================================ */
 .search-container {
   position: relative;
-  flex: 1;
-  max-width: 330px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 300px;
+  justify-self: center;
 }
 
 .search-icon {
@@ -78,6 +145,7 @@
 .right-section {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 24px;
 }
 

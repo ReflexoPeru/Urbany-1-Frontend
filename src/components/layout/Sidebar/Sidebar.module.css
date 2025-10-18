@@ -4,31 +4,26 @@
    SIDEBAR BASE
    ============================================ */
 .sidebar {
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  left: 0;
-
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  width: 260px;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   border-right: 1px solid #e5e7eb;
-
   background-color: #fff;
   font-family: Poppins, sans-serif;
+  overflow: hidden;
 }
 
 /* ============================================
    NAVIGATION
    ============================================ */
 .nav {
-  overflow-y: auto;
   display: flex;
   flex: 1;
   flex-direction: column;
   padding: 16px 0;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .menu-list {
@@ -64,30 +59,28 @@
 /* ============================================
    SCROLLBAR STYLING
    ============================================ */
-.sidebar::-webkit-scrollbar {
+.nav::-webkit-scrollbar {
   width: 6px;
 }
 
-.sidebar::-webkit-scrollbar-track {
+.nav::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.sidebar::-webkit-scrollbar-thumb {
+.nav::-webkit-scrollbar-thumb {
   background: #e5e7eb;
-
   border-radius: 3px;
-
   transition: background 0.2s ease;
 }
 
-.sidebar::-webkit-scrollbar-thumb:hover {
+.nav::-webkit-scrollbar-thumb:hover {
   background: #d1d5db;
 }
 
 /* ============================================
    RESPONSIVE
    ============================================ */
-@media (width <= 768px) {
+@media (width <=768px) {
   .sidebar {
     width: 220px;
   }
@@ -98,7 +91,7 @@
   }
 }
 
-@media (width <= 640px) {
+@media (width <=640px) {
   .sidebar {
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateX(-100%);

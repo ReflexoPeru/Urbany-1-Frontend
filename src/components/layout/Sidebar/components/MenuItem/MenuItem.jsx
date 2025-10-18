@@ -1,10 +1,10 @@
+import { Link } from 'react-router-dom';
 import styles from './MenuItem.module.css';
 
-const MenuItem = ({ icon: Icon, label, path, badge, isActive, onClick }) => {
+const MenuItem = ({ icon: Icon, label, path, badge, isActive }) => {
   return (
-    <a 
-      href={path}
-      onClick={onClick}
+    <Link 
+      to={path}
       className={`${styles['menu-item']} ${isActive ? styles.active : ''}`}
     >
       <span className={styles['icon-wrapper']}>
@@ -18,7 +18,7 @@ const MenuItem = ({ icon: Icon, label, path, badge, isActive, onClick }) => {
       {badge && (
         <span className={styles.badge}>{badge}</span>
       )}
-    </a>
+    </Link>
   );
 };
 

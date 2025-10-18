@@ -1,15 +1,8 @@
-import React from 'react'
-import Sidebar from './components/layout/Sidebar'
-import Header from './components/layout/Header'
+import Router from './routes/Router'
 import './App.css'
 
 function App() {
-  return (
-    <div className="App">
-      <Sidebar />
-      <Header />
-    </div>
-  )
+  return <Router />
 }
 
 export default App
