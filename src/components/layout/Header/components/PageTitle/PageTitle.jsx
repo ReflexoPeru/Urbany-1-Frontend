@@ -23,7 +23,20 @@ export const PageTitle = () => {
     '/mapa': 'Mapa',
     '/mensajes': 'Mensajes',
     '/emprendimientos': 'Emprendimientos',
-    '/comentarios': 'Enviar Comentarios'
+    '/comentarios': 'Enviar Comentarios',
+    // UserProfile routes
+    '/perfil': 'Mi Perfil',
+    '/company': 'Perfil de la Inmobiliaria',
+    '/integrations': 'Integraciones',
+    '/usuarios': 'Gestión de Usuarios',
+    '/branches': 'Gestión de Sucursales',
+    '/automation': 'Automatización',
+    '/optimizations': 'Optimizaciones',
+    '/website': 'Sitio Web',
+    '/blog': 'Blog',
+    '/subscription': 'Actualizar mi suscripción',
+    '/invite': 'Invita y gana',
+    '/help': 'Ayuda'
   };
 
   useEffect(() => {

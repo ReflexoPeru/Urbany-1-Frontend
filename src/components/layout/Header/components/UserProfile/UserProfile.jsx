@@ -64,8 +64,28 @@ export const UserProfile = () => {
         navigate('/login');
       } else if (action === 'profile') {
         navigate('/perfil');
+      } else if (action === 'company') {
+        navigate('/company');
+      } else if (action === 'integrations') {
+        navigate('/integrations');
       } else if (action === 'users') {
         navigate('/usuarios');
+      } else if (action === 'branches') {
+        navigate('/branches');
+      } else if (action === 'automation') {
+        navigate('/automation');
+      } else if (action === 'optimizations') {
+        navigate('/optimizations');
+      } else if (action === 'website') {
+        navigate('/website');
+      } else if (action === 'blog') {
+        navigate('/blog');
+      } else if (action === 'subscription') {
+        navigate('/subscription');
+      } else if (action === 'invite') {
+        navigate('/invite');
+      } else if (action === 'help') {
+        navigate('/help');
       }
     }, 250);
   };

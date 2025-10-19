@@ -70,6 +70,59 @@ const router = createBrowserRouter([
         path: 'configuracion',
         element: <div><h2>Configuración</h2></div>,
       },
+      
+      ///////////////////////
+      // UserProfile routes
+      //////////////////////
+
+      {
+        path: 'perfil',
+        element: <div><h2>Mi Perfil</h2></div>,
+      },
+      {
+        path: 'company',
+        element: <div><h2>Perfil de la Inmobiliaria</h2></div>,
+      },
+      {
+        path: 'integrations',
+        element: <div><h2>Integraciones</h2></div>,
+      },
+      {
+        path: 'usuarios',
+        element: <div><h2>Gestión de Usuarios</h2></div>,
+      },
+      {
+        path: 'branches',
+        element: <div><h2>Gestión de Sucursales</h2></div>,
+      },
+      {
+        path: 'automation',
+        element: <div><h2>Automatización</h2></div>,
+      },
+      {
+        path: 'optimizations',
+        element: <div><h2>Optimizaciones</h2></div>,
+      },
+      {
+        path: 'website',
+        element: <div><h2>Sitio Web</h2></div>,
+      },
+      {
+        path: 'blog',
+        element: <div><h2>Blog</h2></div>,
+      },
+      {
+        path: 'subscription',
+        element: <div><h2>Actualizar mi suscripción</h2></div>,
+      },
+      {
+        path: 'invite',
+        element: <div><h2>Invita y gana</h2></div>,
+      },
+      {
+        path: 'help',
+        element: <div><h2>Ayuda</h2></div>,
+      },
       {
         path: 'toast-demo',
         element: <ToastDemo />,
