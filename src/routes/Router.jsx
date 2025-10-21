@@ -2,8 +2,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
 import Dashboard from '../features/dashboard/pages/dashboard';
 import Optimizations from '../features/optimizations/pages/OptimizationsPage';
+import Properties from '../features/properties/pages/propiedades';
+import Map from '../features/map/pages/MapPage';
 import ToastDemo from '../pages/ToastDemo';
-
+import Contacts from '../features/contacts/pages/ContactsPage';
 
 
 const router = createBrowserRouter([
@@ -21,7 +23,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'propiedades',
-        element: <div><h2>Propiedades</h2></div>,
+        element: <Properties/>,
       },
       {
         path: 'negocios',
@@ -29,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'contactos',
-        element: <div><h2>Contactos</h2></div>,
+        element: <Contacts/>,
       },
       {
         path: 'valoraciones',
@@ -53,7 +55,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'mapa',
-        element: <div><h2>Mapa</h2></div>,
+        element: <Map/>,
       },
       {
         path: 'mensajes',

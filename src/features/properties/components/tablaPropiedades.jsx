@@ -1,7 +1,7 @@
 // src/components/Propiedades/TablaPropiedades.jsx
 import React from "react";
 import { MagnifyingGlass, MapPin, Funnel, SlidersHorizontal, CaretLeft, CaretRight } from "@phosphor-icons/react";
-import styles from "/src/features/properties/propiedades.module.css";
+import styles from "../pages/propiedades.module.css";
 
 const TablaPropiedades = () => {
   return (

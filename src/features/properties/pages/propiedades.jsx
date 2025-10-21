@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./propiedades.module.css";
-import TablaPropiedades from "./components/tablaPropiedades";
+import TablaPropiedades from "../components/tablaPropiedades";
 import {
   PlusCircle,
   MagnifyingGlass,
