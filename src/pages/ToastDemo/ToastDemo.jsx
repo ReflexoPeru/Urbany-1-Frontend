@@ -1,11 +1,14 @@
+import { useState } from 'react';
 import { useToast } from '../../contexts/ToastContext';
 import { useConfirmModal } from '../../contexts/ConfirmModalContext';
+import { useLoading } from '../../contexts/LoadingContext';
 import { allToasts } from '../../mock/toasts';
-import styles from './ToastDemo.module.css';
+import { HashLoader } from 'react-spinners';
 
 const ToastDemo = () => {
   const { toast } = useToast();
   const { confirmModal } = useConfirmModal();
+  const { showLoading, hideLoading } = useLoading();
 
   const modalExamples = [
     {
@@ -90,39 +93,121 @@ const ToastDemo = () => {
     },
   ];
 
+  const handleReloadPage = () => {
+    showLoading('Recargando página...');
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
+  };
+
+  const handleTestLoading = () => {
+    showLoading('Cargando datos...');
+    setTimeout(() => {
+      hideLoading();
+      toast.success('Datos cargados', 'Los datos se cargaron exitosamente', 3000, 'CheckCircle');
+    }, 3000);
+  };
+
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>Toasts</h1>
+    <div style={{
+      width: '100%',
+      maxWidth: '1400px',
+      margin: '0 auto',
+      padding: '40px 24px'
+    }}>
+      <div style={{
+        textAlign: 'center',
+        marginBottom: '48px'
+      }}>
+        <h1 style={{
+          margin: '0 0 12px',
+          fontFamily: 'Poppins, sans-serif',
+          fontSize: '42px',
+          fontWeight: '700',
+          color: '#1a1a1a',
+          lineHeight: '1.2'
+        }}>Toasts</h1>
       </div>
 
-      <div className={styles['button-grid']}>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+        gap: '16px',
+        marginBottom: '32px'
+      }}>
         {allToasts.map((toastData) => (
           <button
             key={toastData.id}
             onClick={() => toast[toastData.type](toastData.title, toastData.message, toastData.duration, toastData.icon)}
-            className={`${styles.button} ${styles[`button-${toastData.type}`]}`}
           >
             {toastData.title}
           </button>
         ))}
       </div>
 
-      <div className={styles.header} style={{ marginTop: '60px' }}>
-        <h1 className={styles.title}>Modals</h1>
+      <div style={{
+        textAlign: 'center',
+        marginBottom: '48px',
+        marginTop: '60px'
+      }}>
+        <h1 style={{
+          margin: '0 0 12px',
+          fontFamily: 'Poppins, sans-serif',
+          fontSize: '42px',
+          fontWeight: '700',
+          color: '#1a1a1a',
+          lineHeight: '1.2'
+        }}>Modals</h1>
       </div>
 
-      <div className={styles['button-grid']}>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+        gap: '16px',
+        marginBottom: '32px'
+      }}>
         {modalExamples.map((example, index) => (
           <button
             key={index}
             onClick={example.action}
-            className={`${styles.button} ${styles[`button-${example.type}`]}`}
           >
             {example.label}
           </button>
         ))}
       </div>
+
+
+      <div style={{
+        textAlign: 'center',
+        marginBottom: '48px',
+        marginTop: '60px'
+      }}>
+        <h1 style={{
+          margin: '0 0 12px',
+          fontFamily: 'Poppins, sans-serif',
+          fontSize: '42px',
+          fontWeight: '700',
+          color: '#1a1a1a',
+          lineHeight: '1.2'
+        }}>Loading Spinner</h1>
+      </div>
+
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        gap: '20px',
+        marginBottom: '40px' 
+      }}>
+        <button onClick={handleReloadPage}>
+          <HashLoader size={20} color="#000000" />
+          Recargar Página
+        </button>
+
+        <button onClick={handleTestLoading}>
+          Probar Loading
+        </button>
+      </div>
+
     </div>
   );
 };

@@ -7,26 +7,3 @@
   padding: 40px 24px;
 }
 
-.header {
-  text-align: center;
-  margin-bottom: 48px;
-}
-
-.title {
-  margin: 0 0 12px;
-  font-family: Poppins, sans-serif;
-  font-size: 42px;
-  font-weight: 700;
-  color: #1a1a1a;
-  line-height: 1.2;
-}
-
-.subtitle {
-  margin: 0;
-  font-family: Poppins, sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  color: #6b7280;
-  line-height: 1.5;
-}
-
