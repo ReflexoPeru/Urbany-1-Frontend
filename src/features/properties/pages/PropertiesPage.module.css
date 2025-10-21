@@ -1,60 +1,85 @@
-body {
+:global(body) {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+  font-family: 'Poppins', sans-serif !important;
   margin: 0;
   padding: 0;
-  background-color: #f0f2f5;
+  min-height: 100vh;
 }
 
-.contenedor {
-  font-family: sans-serif;
-  padding: 2rem;
-  margin: 0;
+.propertiesContainer {
+  padding: 48px 64px 48px 96px;
+  background: transparent;
+  margin: 0 40px;
+  font-family: 'Poppins', sans-serif;
 }
 
-.encabezado {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 24px;
 }
 
-.botonAñadir {
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.02em;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.addButton {
   display: flex;
-align-items: center;
-  background-color: #38E47A;
-  color: white;
+  align-items: center;
+  background-color: #E8EDF2;
+  color: #4a5568;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 10px 18px;
   border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  font-family: 'Poppins', sans-serif;
 }
 
-.botonAñadir:hover {
-  background-color: #2ec267;
+.addButton:hover {
+  background-color: #dce3eb;
+  color: #2d3748;
 }
 
 .tabs {
   display: flex;
-  gap: 0.5rem;
+  gap: 8px;
   border: none;
-  border-bottom: 1px solid #ced9f0;
-  margin-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 24px;
   flex-wrap: wrap;
 }
 
 .tab {
-  padding: 1rem 1rem;
+  padding: 12px 16px;
   background: none;
   border: none;
-  border-bottom: 3px solid #ddd;
-  border-radius: 0px;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
   cursor: pointer;
   font-weight: 600;
-  color: #333;
+  color: #64748b;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
 }
 
 .tab:hover {
-    border-bottom: 3px solid #a1a1a1 !important;
+  color: #334155;
+  border-bottom-color: #cbd5e1;
 }
 
 .tab:focus {
@@ -63,87 +88,87 @@ align-items: center;
 
 .activo {
   background: white;
-  color: #007bff;
-  border-bottom: 3px solid #2ec267;
+  color: #0f172a;
+  border-bottom-color: #3b82f6;
 }
 
-.activo:hover{
-  background: white;
-  color: #007bff;
-  border-bottom: 3px solid #23944f !important;
+.activo:hover {
+  color: #0f172a;
+  border-bottom-color: #3b82f6;
 }
 
 .contenido {
   background: white;
-  padding: 1.5rem;
-  border-radius: 0 0 8px 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.1);
   animation: fadeIn 0.3s ease-in;
 }
 
 .iconosAcciones {
   display: flex;
-  gap: 2rem;
-  margin-bottom: 1rem;
+  gap: 16px;
+  margin-bottom: 16px;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* ==================================== */
-/* ======= Tabla de propiedades =======*/
-/* ==================================== */
 .tablaContainer {
   background: #f8f9fa;
-  border: 1px solid #ced9f0;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   overflow: auto;
-  margin-top: 1rem;
+  margin-top: 16px;
 }
 
 .tablaPropiedades {
   width: 100%;
   border-collapse: collapse;
-  font-family: sans-serif;
-  font-size: 0.95rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
 }
 
 .tablaPropiedades thead {
-  background-color: #f8f9fa;
-  color: #333;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  color: #475569;
   text-align: left;
 }
 
 .tablaPropiedades th,
 .tablaPropiedades td {
-  padding: 0.9rem 1rem;
-    text-align: justify;
+  padding: 16px;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
 }
 
 .tablaPropiedades th {
   font-weight: 600;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 2px solid #e2e8f0;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .tablaPropiedades tr:hover {
-  background-color: #f2f6ff;
-  transition: background-color 0.2s ease;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  transform: scale(1.01);
+  transition: all 0.2s ease;
 }
 
 .tablaPropiedades tbody tr:last-child td {
   border-bottom: none;
 }
-/* ============================================*/
-/* =========== Barra de progreso =========== */
-.barraCalidad {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    width: 150px;
-}
 
+.barraCalidad {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 150px;
+}
 
 .barraContainer {
   width: 100%;
-  height: 5px;
+  height: 6px;
   background-color: #e5e7eb;
   border-radius: 10px;
   overflow: hidden;
@@ -159,53 +184,67 @@ align-items: center;
 
 .portales p {
   margin: 0;
-  padding: 5px;
-  background-color: #ddd;
-  font-weight: bold;
-  color: #000000;
-  border-radius: 7px;
+  padding: 6px 12px;
+  background-color: #E8EDF2;
+  font-weight: 600;
+  color: #4a5568;
+  border-radius: 8px;
   text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
 }
 
 .foto img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
-.precio  {
-  color: #5c7dc5;
+.precio {
+  color: #0f172a;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
 }
 
-.tipo  {
-  color: #5c7dc5;
+.tipo {
+  color: #64748b;
+  font-family: 'Poppins', sans-serif;
 }
 
-.optionpages{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 1rem;
-    font-size: 1.2rem;
-    color: #333;
+.optionpages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  font-size: 16px;
+  color: #334155;
+  font-family: 'Poppins', sans-serif;
 }
 
-
-.optionpages span{
-    position: relative;
-    cursor: pointer;
-    padding: 0.2rem 0.5rem;
-    border-radius: 50%;
-    background-color: #ced9f0;
+.optionpages span {
+  position: relative;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background-color: #E8EDF2;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.2s ease;
 }
 
+.optionpages span:hover {
+  background-color: #dce3eb;
+  transform: translateY(-1px);
+}
 
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: translateY(-10px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }

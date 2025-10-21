@@ -1,12 +1,9 @@
-:global(.map-page) {
-  display: flex;
-  flex-direction: column;
+:global(body) {
+  background: #f8fafc !important;
+  font-family: 'Poppins', sans-serif !important;
+  margin: 0;
+  padding: 0;
   min-height: 100vh;
-  background: #fff;
-  text-align: left;
-  color: #111827;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
 }
 
 :global(.icon-btn) {
@@ -20,10 +17,10 @@
   background: #fff;
 }
 
-/* Content */
-:global(.map-content) {
-  flex: 1;
-  max-width: 100%;
-  margin: 0;
-  padding: 16px 24px;
+.mapContent {
+  padding: 0 64px 48px 96px;
+  background: transparent;
+  height: auto;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
 }

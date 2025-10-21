@@ -11,18 +11,16 @@ const ContactsPage = () => {
   const [showTable, setShowTable] = useState(false);
 
   return (
-    <div className={`${styles.contactsContainer} ${showTable ? styles.withTable : styles.withoutTable}`}>
-      <div className={styles.contactsContent}>
-        <ContactsHeader />
-        <ContactsFilters 
-          showTable={showTable} 
-          onToggleTable={() => setShowTable(!showTable)} 
-        />
+    <div className={styles.contactsContent}>
+      <ContactsHeader />
+      <ContactsFilters 
+        showTable={showTable} 
+        onToggleTable={() => setShowTable(!showTable)} 
+      />
 
-        {/* Área de la tabla */}
-        <div className={styles.tableArea}>
-          {showTable && <ContactsTable contacts={contacts} loading={loading} />}
-        </div>
+      {/* Área de la tabla */}
+      <div className={styles.tableArea}>
+        {showTable && <ContactsTable contacts={contacts} loading={loading} />}
       </div>
     </div>
   );

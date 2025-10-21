@@ -15,12 +15,12 @@ function MapPage() {
   }
 
   return (
-    <div className="map-page">
+    <>
       <TopBar onSearchChange={handleSearchChange} onSearchSubmit={handleSearchSubmit} />
-      <main className="map-content">
+      <main className={styles.mapContent}>
         <PropertyList />
       </main>
-    </div>
+    </>
   )
 }
 

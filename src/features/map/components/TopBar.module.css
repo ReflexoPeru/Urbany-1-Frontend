@@ -1,62 +1,55 @@
-.map-topbar {
+.mapTopbar {
   position: relative;
   z-index: 10;
-  background: #fff;
-  border-bottom: 1px solid #e5e7eb;
+  font-family: 'Poppins', sans-serif;
 }
 
-.map-topbar__inner {
+.mapTopbarInner {
   max-width: 100%;
   margin: 0;
-  padding: 16px 24px;
+  padding: 25px 64px 20px 96px;
 }
 
-.map-title {
-  font-size: 24px;
-  font-weight: 700;
-  margin: 0 0 12px;
-  color: #111827;
-}
-
-.map-searchbar {
-  margin-bottom: 12px;
+.mapSearchbar {
+  margin-bottom: 16px;
   max-width: 640px;
 }
 
-.map-searchbar__field {
+.mapSearchbarField {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: #f3f4f6;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 10px 12px;
+  gap: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-family: 'Poppins', sans-serif;
 }
 
-.map-searchbar__icon {
-  width: 18px;
-  height: 18px;
-  color: #6b7280;
+.mapSearchbarIcon {
+  width: 20px;
+  height: 20px;
+  color: #64748b;
   flex: none;
 }
 
-.map-searchbar__input {
+.mapSearchbarInput {
   flex: 1;
   border: 0;
   background: transparent;
   outline: none;
   font-size: 14px;
   color: #111827;
+  font-family: 'Poppins', sans-serif;
 }
 
-
-.map-filters {
+.mapFilters {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.filter-row {
+.filterRow {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -69,20 +62,22 @@
   border-radius: 8px;
   color: #111827;
   font-size: 13px;
+  font-family: 'Poppins', sans-serif;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .chip:hover {
   background: #f9fafb;
 }
 
-.chip-muted {
+.chipMuted {
   background: #f3f4f6;
   border-color: #e5e7eb;
 }
 
 .chev {
-  opacity: .7;
+  opacity: 0.7;
   margin-left: 6px;
   font-size: 1.4em;
   line-height: 1;

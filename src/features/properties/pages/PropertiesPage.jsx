@@ -19,10 +19,10 @@ const PropertiesPage = () => {
 
 
   return (
-    <div className={styles.contenedor}>
-      <div className={styles.encabezado}>
-        <h1>Propiedades</h1>
-        <button className={styles.botonAñadir}>
+    <div className={styles.propertiesContainer}>
+      <div className={styles.header}>
+        <h1 className={styles.title}>Propiedades</h1>
+        <button className={styles.addButton}>
           <PlusCircle size={20} weight="bold" /> Añadir nueva propiedad
         </button>
       </div>
