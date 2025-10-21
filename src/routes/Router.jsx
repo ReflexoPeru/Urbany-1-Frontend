@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
 import Dashboard from '../features/dashboard/pages/dashboard';
+import Optimizations from '../features/optimizations/pages/OptimizationsPage';
 import ToastDemo from '../pages/ToastDemo';
 
 
@@ -101,7 +102,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'optimizations',
-        element: <div><h2>Optimizaciones</h2></div>,
+        element: <Optimizations/>,
       },
       {
         path: 'website',
