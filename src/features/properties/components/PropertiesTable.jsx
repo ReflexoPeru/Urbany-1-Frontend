@@ -1,9 +1,9 @@
-// src/components/Propiedades/TablaPropiedades.jsx
+// src/features/properties/components/PropertiesTable.jsx
 import React from "react";
-import { MagnifyingGlass, MapPin, Funnel, SlidersHorizontal, CaretLeft, CaretRight } from "@phosphor-icons/react";
-import styles from "../pages/propiedades.module.css";
+// Iconos no utilizados en este componente - se usan en PropertyActions
+import styles from "../pages/PropertiesPage.module.css";
 
-const TablaPropiedades = () => {
+const PropertiesTable = () => {
   return (
     <div>
       <div className={styles.tablaContainer}>
@@ -21,7 +21,7 @@ const TablaPropiedades = () => {
           <tbody>
             <tr>
               <td className={styles.foto}>
-                <img src="./public/Imgtabla1.jpg" alt="Propiedad" />
+                <img src="/Imgtabla1.jpg" alt="Propiedad" />
               </td>
               <td>Calle del Sol, 123, Ciudad</td>
               <td className={styles.calidad}>
@@ -46,4 +46,4 @@ const TablaPropiedades = () => {
   );
 };
 
-export default TablaPropiedades;
+export default PropertiesTable;

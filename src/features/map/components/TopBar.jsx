@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../styles/TopBar.module.css'
+import styles from './TopBar.module.css'
 
 function TopBar({ onSearchChange, onSearchSubmit }) {
   const [query, setQuery] = React.useState('')

@@ -1,7 +1,7 @@
 import React from 'react'
-import img1 from '../img/img.png'
-import img2 from '../img/img2 .png'
-import styles from '../styles/PropertyList.module.css'
+import img1 from '../../../assets/images/map/img.png'
+import img2 from '../../../assets/images/map/img2 .png'
+import styles from './PropertyList.module.css'
 
 const mockItems = [
   {

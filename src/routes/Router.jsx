@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
 import Dashboard from '../features/dashboard/pages/dashboard';
 import Optimizations from '../features/optimizations/pages/OptimizationsPage';
-import Properties from '../features/properties/pages/propiedades';
+import Properties from '../features/properties/pages/PropertiesPage';
 import Map from '../features/map/pages/MapPage';
 import ToastDemo from '../pages/ToastDemo';
 import Contacts from '../features/contacts/pages/ContactsPage';

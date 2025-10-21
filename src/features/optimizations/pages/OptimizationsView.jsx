@@ -1,8 +1,8 @@
 import React from 'react';
-import CategoryPill from './CategoryPill';
-import EmptyStateCard from './EmptyStateCard';
-import styles from './Optimizations.module.css';
-import undrawImage from './undraw_dev-productivity_5wps.svg';
+import CategoryPill from '../components/CategoryPill';
+import EmptyStateCard from '../components/EmptyStateCard';
+import styles from '../components/Optimizations.module.css';
+import undrawImage from '../../../assets/images/optimizations/undraw_dev-productivity_5wps.svg';
 
 export default function OptimizationsView() {
   return (
