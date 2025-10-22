@@ -36,7 +36,7 @@ export const propertiesMock = [
     address: "Calle Secundaria 789, Villa",
     type: "Terreno",
     operation: "Venta",
-    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop",
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&h=300&fit=crop",
     status: "activa",
     rooms: 0,
     bedrooms: 0,
@@ -114,7 +114,7 @@ export const getRandomProperty = () => {
 // Función helper para buscar propiedades por texto
 export const searchProperties = (query) => {
   const lowercaseQuery = query.toLowerCase();
-  return propertiesMock.filter(property => 
+  return propertiesMock.filter(property =>
     property.title.toLowerCase().includes(lowercaseQuery) ||
     property.address.toLowerCase().includes(lowercaseQuery) ||
     property.description.toLowerCase().includes(lowercaseQuery)

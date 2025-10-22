@@ -1,7 +1,7 @@
 .mapTopbar {
   position: relative;
   z-index: 10;
-  font-family: 'Poppins', sans-serif;
+  font-family: Poppins, sans-serif;
 }
 
 .mapTopbarInner {
@@ -11,36 +11,42 @@
 }
 
 .mapSearchbar {
-  margin-bottom: 16px;
   max-width: 640px;
+  margin-bottom: 16px;
 }
 
 .mapSearchbarField {
   display: flex;
-  align-items: center;
   gap: 12px;
-  background: #f8fafc;
+  align-items: center;
+
+  padding: 12px 16px;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
-  padding: 12px 16px;
-  font-family: 'Poppins', sans-serif;
+
+  font-family: Poppins, sans-serif;
+
+  background: #f8fafc;
 }
 
 .mapSearchbarIcon {
+  flex: none;
   width: 20px;
   height: 20px;
   color: #64748b;
-  flex: none;
 }
 
 .mapSearchbarInput {
   flex: 1;
+
   border: 0;
-  background: transparent;
-  outline: none;
+
+  font-family: Poppins, sans-serif;
   font-size: 14px;
   color: #111827;
-  font-family: 'Poppins', sans-serif;
+
+  background: transparent;
+  outline: none;
 }
 
 .mapFilters {
@@ -56,14 +62,18 @@
 }
 
 .chip {
+  cursor: pointer;
+
   padding: 8px 12px;
   border: 1px solid #e5e7eb;
-  background: #eef2f7;
   border-radius: 8px;
-  color: #111827;
+
+  font-family: Poppins, sans-serif;
   font-size: 13px;
-  font-family: 'Poppins', sans-serif;
-  cursor: pointer;
+  color: #111827;
+
+  background: #eef2f7;
+
   transition: background-color 0.2s ease;
 }
 
@@ -72,16 +82,20 @@
 }
 
 .chipMuted {
-  background: #f3f4f6;
   border-color: #e5e7eb;
+  background: #f3f4f6;
 }
 
 .chev {
-  opacity: 0.7;
+  transform: translateY(-1px);
+
+  display: inline-block;
+
   margin-left: 6px;
+
   font-size: 1.4em;
   line-height: 1;
-  display: inline-block;
   vertical-align: middle;
-  transform: translateY(-1px);
+
+  opacity: 0.7;
 }

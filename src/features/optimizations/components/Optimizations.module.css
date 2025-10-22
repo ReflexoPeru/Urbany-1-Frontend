@@ -1,9 +1,11 @@
 :global(body) {
-  background: #f3fff9 !important;
-  font-family: 'Poppins', sans-serif !important;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
-  min-height: 100vh;
+
+  font-family: Poppins, sans-serif !important;
+
+  background: #f3fff9 !important;
 }
 
 .header {
@@ -11,37 +13,39 @@
 }
 
 .title {
+  margin: 0 0 8px;
   font-size: 44px;
-  margin: 0 0 8px 0;
-  color: #0f172a;
   font-weight: 700;
+  color: #0f172a;
 }
 
 .subtitle {
   margin: 0;
-  color: #6b7280;
   font-size: 14px;
+  color: #6b7280;
 }
 
 .mainContent {
   display: flex;
-  align-items: flex-start;
   gap: 80px;
-  padding: 0 64px 48px 96px;
+  align-items: flex-start;
+
   min-height: 60vh;
+  padding: 0 64px 48px 96px;
 }
 
 .sidebar {
-  width: 270px;
   flex-shrink: 0;
+  width: 270px;
   padding-top: 20px;
 }
 
 .sidebarTitle {
+  margin-bottom: 8px;
+
   font-size: 12px;
   font-weight: 700;
   color: #222;
-  margin-bottom: 8px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -53,20 +57,25 @@
 }
 
 .categoriesBox {
-  background: rgba(15, 66, 140, 0.06);
-  padding: 8px 12px;
-  border-radius: 6px;
   width: max-content;
   margin-left: 0;
+  padding: 8px 12px;
+  border-radius: 6px;
+
+  background: rgb(15 66 140 / 6%);
 }
 
 .categoryPill {
-  background: transparent;
-  border-radius: 6px;
-  padding: 8px 12px;
-  color: #1b3b6f;
   cursor: pointer;
+
   display: inline-block;
+
+  padding: 8px 12px;
+  border-radius: 6px;
+
+  color: #1b3b6f;
+
+  background: transparent;
 }
 
 .active {
@@ -74,32 +83,36 @@
 }
 
 .content {
-  flex: 1;
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: flex-start;
+
   min-height: 500px;
-  padding: 0;
   margin-left: 40px;
+  padding: 0;
 }
 
 .card {
-  width: 580px;
-  min-height: 420px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.1);
-  padding: 40px 50px;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  box-sizing: border-box;
+  width: 580px;
+  min-height: 420px;
+  padding: 40px 50px;
+  border-radius: 8px;
+
   text-align: center;
+
+  background: #fff;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 7%), 0 1px 3px rgb(0 0 0 / 10%);
 }
 
 .cardTitle {
-  margin: 0 0 24px 0;
+  margin: 0 0 24px;
   font-size: 20px;
   font-weight: 600;
   color: #1a202c;
@@ -110,51 +123,52 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   height: 100%;
 }
 
 .cardImage {
   width: 300px;
   height: auto;
-  margin: 0 0 24px 0;
+  margin: 0 0 24px;
 }
 
 .cardMessage {
-  color: #6b7280;
   font-size: 14px;
+  color: #6b7280;
   text-align: center;
 }
 
 .cardMessage p {
-  margin: 0 0 8px 0;
+  margin: 0 0 8px;
 }
 
 .cardMessage p:last-child {
   margin-bottom: 0;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .header {
     padding: 24px 16px;
   }
   
   .mainContent {
     flex-direction: column;
-    padding: 0 16px 24px 16px;
     gap: 32px;
     min-height: auto;
+    padding: 0 16px 24px;
   }
   
   .sidebar {
+    order: 2;
     width: 100%;
     padding-top: 0;
-    order: 2;
   }
   
   .content {
+    order: 1;
     min-height: 300px;
     padding: 0 10px;
-    order: 1;
   }
   
   .card {

@@ -22,8 +22,7 @@
   flex: 1;
   flex-direction: column;
   padding: 16px 0;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden auto;
 }
 
 .menu-list {
