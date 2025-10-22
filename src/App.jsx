@@ -1,13 +1,13 @@
-import React from 'react'
-import Login from './features/auth/pages/login'
-import './App.css'
+import React from 'react';
+import ProfileMain from './features/profile/components/ProfileMain';
+import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Login />
+      <ProfileMain />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
