@@ -1,0 +1,225 @@
+.branch-management-container {
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #e8f5f8 0%, #d1ecf1 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.branch-management-card {
+  background: white;
+  border-radius: 16px;
+  padding: 60px 80px;
+  max-width: 800px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  margin: 40px;
+  box-sizing: border-box;
+}
+
+.license-tag {
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.main-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 30px 0;
+  line-height: 1.2;
+}
+
+.description {
+  color: #7f8c8d;
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 50px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.description p {
+  margin: 8px 0;
+}
+
+.illustration {
+  margin: 50px 0;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.illustration-image {
+  width: 100%;
+  height: 100%;
+  max-width: 400px;
+  max-height: 300px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+.upgrade-button {
+  background: linear-gradient(135deg, #6ade8d 0%, #5ee87e 100%);
+  color: white;
+  border: none;
+  padding: 20px 40px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+  width: 100%;
+  max-width: 400px;
+  margin: 40px auto 0;
+  display: block;
+}
+
+.upgrade-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+.upgrade-button:active {
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .branch-management-card {
+    padding: 40px 50px;
+    margin: 20px;
+    max-width: 700px;
+  }
+  
+  .main-title {
+    font-size: 42px;
+  }
+  
+  .description {
+    font-size: 18px;
+  }
+  
+  .illustration {
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .branch-management-container {
+    padding: 10px;
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+  
+  .branch-management-card {
+    padding: 30px 25px;
+    margin: 10px;
+    max-width: 100%;
+    width: calc(100% - 20px);
+  }
+  
+  .main-title {
+    font-size: 36px;
+    line-height: 1.1;
+  }
+  
+  .description {
+    font-size: 16px;
+    margin-bottom: 30px;
+    line-height: 1.5;
+  }
+  
+  .illustration {
+    height: 200px;
+    margin: 30px 0;
+  }
+  
+  .upgrade-button {
+    padding: 16px 32px;
+    font-size: 16px;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .branch-management-container {
+    padding: 5px;
+    padding-top: 10px;
+  }
+  
+  .branch-management-card {
+    padding: 20px 15px;
+    margin: 5px;
+    width: calc(100% - 10px);
+    border-radius: 12px;
+  }
+  
+  .main-title {
+    font-size: 28px;
+    line-height: 1.1;
+  }
+  
+  .description {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 25px;
+  }
+  
+  .illustration {
+    height: 150px;
+    margin: 25px 0;
+  }
+  
+  .license-tag {
+    font-size: 12px;
+    padding: 6px 16px;
+  }
+  
+  .upgrade-button {
+    padding: 14px 28px;
+    font-size: 15px;
+    margin-top: 25px;
+  }
+}
+
+@media (max-width: 360px) {
+  .branch-management-card {
+    padding: 15px 12px;
+    margin: 3px;
+    width: calc(100% - 6px);
+  }
+  
+  .main-title {
+    font-size: 24px;
+  }
+  
+  .description {
+    font-size: 13px;
+  }
+  
+  .illustration {
+    height: 120px;
+  }
+  
+  .upgrade-button {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+}
