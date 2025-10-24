@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
-import * as PhosphorIcons from '@phosphor-icons/react';
+import * as PhosphorIcons from 'phosphor-react';
 import styles from './ConfirmModal.module.css';
 
-const ConfirmModal = ({ 
-  isOpen, 
-  onClose, 
-  onConfirm, 
-  title, 
-  message, 
+const ConfirmModal = ({
+  isOpen,
+  onClose,
+  onConfirm,
+  title,
+  message,
   type = 'info',
   icon,
   confirmText = 'Confirmar',
@@ -20,7 +20,7 @@ const ConfirmModal = ({
     } else {
       document.body.style.overflow = 'unset';
     }
-    
+
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -68,7 +68,7 @@ const ConfirmModal = ({
 
   return (
     <div className={styles.overlay} onClick={onClose}>
-      <div 
+      <div
         className={`${styles.modal} ${styles[`modal-${type}`]}`}
         onClick={(e) => e.stopPropagation()}
       >

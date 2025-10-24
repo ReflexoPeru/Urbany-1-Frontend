@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Eye, Pencil, Trash, Check, House, Link } from '@phosphor-icons/react';
+import { Eye, Pencil, Trash, Check, House, Link } from 'phosphor-react';
 import {
     useReactTable,
     getCoreRowModel,

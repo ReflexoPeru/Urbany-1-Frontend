@@ -8,8 +8,8 @@ import {
   CurrencyDollar,
   WarningCircle,
   UserCircle
-} from '@phosphor-icons/react';
-import { notificationsMock } from '@mock/notifications';
+} from 'phosphor-react';
+import { notificationsMock } from '../../../../../mock/notifications';
 import styles from './Notifications.module.css';
 
 export const Notifications = () => {
@@ -68,14 +68,14 @@ export const Notifications = () => {
 
   return (
     <div className={styles['notification-container']} ref={notificationsRef}>
-      <div 
+      <div
         className={styles['notification-button']}
         onClick={toggleNotifications}
       >
-        <Bell 
-          size={22} 
-          weight="regular" 
-          className={styles['notification-icon']} 
+        <Bell
+          size={22}
+          weight="regular"
+          className={styles['notification-icon']}
         />
         {unreadCount > 0 && (
           <span className={styles['notification-dot']}></span>
@@ -83,10 +83,9 @@ export const Notifications = () => {
       </div>
 
       {isNotificationsOpen && (
-        <div 
-          className={`${styles['notifications-dropdown']} ${
-            isNotificationsClosing ? styles['dropdown-menu-closing'] : ''
-          }`}
+        <div
+          className={`${styles['notifications-dropdown']} ${isNotificationsClosing ? styles['dropdown-menu-closing'] : ''
+            }`}
         >
           <div className={styles['notifications-header']}>
             <h3 className={styles['notifications-title']}>Notificaciones</h3>
@@ -101,17 +100,16 @@ export const Notifications = () => {
               return (
                 <button
                   key={notification.id}
-                  className={`${styles['notification-item']} ${
-                    !notification.read ? styles['notification-unread'] : ''
-                  }`}
+                  className={`${styles['notification-item']} ${!notification.read ? styles['notification-unread'] : ''
+                    }`}
                   onClick={() => handleNotificationClick(notification.id)}
                 >
                   <div className={`${styles['notification-icon-wrapper']} ${styles[`notification-${notification.type}`]}`}>
                     {NotificationIcon && (
-                      <NotificationIcon 
-                        size={22} 
-                        weight="duotone" 
-                        className={styles['notification-icon-svg']} 
+                      <NotificationIcon
+                        size={22}
+                        weight="duotone"
+                        className={styles['notification-icon-svg']}
                       />
                     )}
                   </div>

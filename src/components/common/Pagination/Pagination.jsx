@@ -1,5 +1,5 @@
 import React from 'react';
-import { CaretLeft, CaretRight, CaretDoubleLeft, CaretDoubleRight } from '@phosphor-icons/react';
+import { CaretLeft, CaretRight, CaretDoubleLeft, CaretDoubleRight } from 'phosphor-react';
 import styles from './Pagination.module.css';
 
 const Pagination = ({

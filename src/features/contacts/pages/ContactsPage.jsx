@@ -4,7 +4,7 @@ import DataTable from '../../../components/common/DataTable';
 import ContactsHeader from '../components/ContactsHeader';
 import ContactsFilters from '../components/ContactsFilters';
 import { mockContacts } from '../../../mock/contacts';
-import { Envelope, Phone, PencilSimple, Trash, WhatsappLogo } from '@phosphor-icons/react';
+import { Envelope, Phone, PencilSimple, Trash, WhatsappLogo } from 'phosphor-react';
 import styles from './ContactsPage.module.css';
 
 const ContactsPage = () => {

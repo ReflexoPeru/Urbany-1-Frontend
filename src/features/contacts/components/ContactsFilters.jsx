@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MagnifyingGlass, Download, PlusCircle } from "@phosphor-icons/react";
+import { MagnifyingGlass, Download, PlusCircle } from "phosphor-react";
 import { Select } from '../../../components/common/Select';
 import styles from '../pages/ContactsPage.module.css';
 

@@ -3,7 +3,7 @@ import styles from "./PropertiesPage.module.css";
 import PropertiesDataTable from "../components/PropertiesDataTable";
 import PropertyTabs from "../components/PropertyTabs";
 import { mockProperties } from "../data/mockProperties";
-import { PlusCircle } from "@phosphor-icons/react";
+import { PlusCircle } from "phosphor-react";
 
 const PropertiesPage = () => {
   const [activo, setActivo] = useState("activas");

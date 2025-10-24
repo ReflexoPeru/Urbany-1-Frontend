@@ -7,6 +7,7 @@ import Map from '../features/map/pages/MapPage';
 import ToastDemo from '../pages/ToastDemo';
 import Contacts from '../features/contacts/pages/ContactsPage';
 import Profile from '../features/profile/components/Profile';
+import Branches from '../features/branches/pages/BranchManagement';
 
 
 const router = createBrowserRouter([
@@ -97,7 +98,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'branches',
-        element: <div><h2>Gestión de Sucursales</h2></div>,
+        element: <Branches />,
       },
       {
         path: 'automation',

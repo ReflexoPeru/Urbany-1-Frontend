@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ArrowLeft } from '@phosphor-icons/react';
+import { ArrowLeft } from 'phosphor-react';
 import styles from './PageTitle.module.css';
 
 export const PageTitle = () => {
@@ -53,8 +53,8 @@ export const PageTitle = () => {
   return (
     <div className={styles['title-section']}>
       {!isDashboard && (
-        <button 
-          onClick={handleGoBack} 
+        <button
+          onClick={handleGoBack}
           className={styles['back-button']}
           aria-label="Volver"
         >
