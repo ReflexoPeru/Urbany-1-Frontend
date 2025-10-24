@@ -1,0 +1,243 @@
+/* src/features/contacts/pages/ContactsPage.module.css */
+/* Reset para expansión completa */
+.contactsContainer {
+  padding: 0;
+  background-color: #ffffff;
+  min-height: 100vh;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contenido interno con padding */
+.contactsContent {
+  padding: 24px 32px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+/* Botón añadir */
+.addButton {
+  background-color: #E8EDF2;
+  color: #4a5568;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+.addButton:hover {
+  background-color: #dce3eb;
+  color: #2d3748;
+}
+
+/* Filtros */
+.filtersSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Buscador */
+.searchFilter {
+  width: 100%;
+}
+
+.searchWrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 14px;
+  color: #64748b;
+  z-index: 2;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 10px 14px 10px 40px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #4a5568;
+  background-color: #E8EDF2;
+  transition: all 0.3s ease;
+  letter-spacing: -0.01em;
+  box-sizing: border-box;
+}
+
+.searchInput::placeholder {
+  color: #64748b;
+}
+
+.searchInput:focus {
+  outline: none;
+  background-color: #E8EDF2;
+  box-shadow: 0 0 0 2px rgba(100, 116, 139, 0.2);
+}
+
+/* Dropdowns */
+.dropdownRow {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 8px;
+}
+
+.dropdownFilters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.dropdownWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownArrow {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #000000;
+  pointer-events: none;
+  font-size: 12px;
+}
+
+.dropdown {
+  padding: 8px 24px 8px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #4a5568;
+  background-color: #E8EDF2;
+  cursor: pointer;
+  appearance: none;
+  font-weight: 500;
+  height: 36px;
+  white-space: nowrap;
+  width: auto;
+  min-width: 0;
+}
+
+.dropdown:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(100, 116, 139, 0.2);
+}
+
+.dropdown:hover {
+  background-color: #dce3eb;
+}
+
+/* Botón de descarga */
+.toggleSection {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+.toggleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 3%;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.toggleButton:focus {
+  outline: none;
+}
+
+.toggleButton:focus-visible {
+  outline: 2px solid #4299e1;
+  outline-offset: 2px;
+}
+
+.toggleButton.withoutTable {
+  background: transparent;
+  color: #64748b;
+}
+
+.toggleButton.withTable {
+  background: #4299e1;
+  color: white;
+}
+
+.toggleButton.withoutTable:hover {
+  color: #475569;
+  background: transparent;
+}
+
+.toggleButton.withTable:hover {
+  background: #3182ce;
+  color: white;
+}
+
+.toggleButton:active {
+  transform: scale(0.95);
+}
+
+/* Área de la tabla que crece */
+.tableArea {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 400px;
+}
+
+/* Estados del contenedor */
+.contactsContainer.withoutTable .tableArea {
+  min-height: 200px;
+}
+
+.contactsContainer.withTable .tableArea {
+  min-height: 500px;
+}

@@ -10,7 +10,7 @@ const Login = () => {
       fontWeight: 'bold',
     
     }}>
-      <h1>Hola sanos</h1>
+      <h1>Hola gentita</h1>
     </div>
   );
 };
