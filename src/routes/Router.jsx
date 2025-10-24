@@ -8,6 +8,15 @@ import ToastDemo from '../pages/ToastDemo';
 import Contacts from '../features/contacts/pages/ContactsPage';
 import Profile from '../features/profile/components/Profile';
 import Branches from '../features/branches/pages/BranchManagement';
+import Integrations from '../features/integrations/pages/integrations';
+import Portals from '../features/integrations/pages/portales/Portals';
+import Calendar from '../features/integrations/pages/herramientas/calendar';
+import SocialMedia from '../features/integrations/pages/comunicacion/socialMedia';
+import Hoomi from '../features/integrations/pages/herramientas/hoomi';
+import Email from '../features/integrations/pages/comunicacion/Email';
+import Networks from '../features/integrations/pages/redes/Networks';
+import Marketing from '../features/integrations/pages/marketing/Marketing';
+import EmailMarketing from '../features/integrations/pages/comunicacion/emailMarketing';
 
 
 const router = createBrowserRouter([
@@ -90,7 +99,41 @@ const router = createBrowserRouter([
       },
       {
         path: 'integrations',
-        element: <div><h2>Integraciones</h2></div>,
+        element: <Integrations />,
+        children: [
+          {
+            path: 'portals',
+            element: <Portals />,
+          },
+          {
+            path: 'calendar',
+            element: <Calendar />,
+          },
+          {
+            path: 'social-media',
+            element: <SocialMedia />,
+          },
+          {
+            path: 'hoomi',
+            element: <Hoomi />,
+          },
+          {
+            path: 'email',
+            element: <Email />,
+          },
+          {
+            path: 'networks',
+            element: <Networks />,
+          },
+          {
+            path: 'marketing',
+            element: <Marketing />,
+          },
+          {
+            path: 'emailMarketing',
+            element: <EmailMarketing />,
+          },
+        ]
       },
       {
         path: 'usuarios',

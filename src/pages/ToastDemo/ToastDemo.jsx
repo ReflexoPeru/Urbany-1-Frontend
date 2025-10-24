@@ -192,11 +192,11 @@ const ToastDemo = () => {
         }}>Loading Spinner</h1>
       </div>
 
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
         gap: '20px',
-        marginBottom: '40px' 
+        marginBottom: '40px'
       }}>
         <button onClick={handleReloadPage}>
           <HashLoader size={20} color="#000000" />

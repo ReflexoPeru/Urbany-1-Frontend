@@ -58,7 +58,6 @@ export const UserProfile = () => {
 
   const handleMenuItemClick = (action) => {
     closeDropdown();
-
     setTimeout(() => {
       if (action === 'logout') {
         navigate('/login');

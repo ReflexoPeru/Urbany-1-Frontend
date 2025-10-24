@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
     "@tanstack/react-table": "^8.21.3",
     "phosphor-react": "^1.4.1",
     "react": "^19.1.1",
