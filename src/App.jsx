@@ -11,6 +11,5 @@ function App() {
       </ConfirmModalProvider>
     </ToastProvider>
   )
-}
 
-export default App
+  export default App;
