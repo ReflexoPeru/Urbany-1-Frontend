@@ -1,0 +1,54 @@
+/* Layout principal con Flexbox */
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.sidebar {
+  flex: 0 0 260px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.headerWrapper {
+  flex: 0 0 72px;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  background-color: #E1EDE6;
+  padding: 32px;
+}
+
+/* Scrollbar personalizado */
+.content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
