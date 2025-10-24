@@ -6,8 +6,8 @@ import Portals from '../features/integrations/pages/Portals';
 import Calendar from '../features/integrations/pages/calendar';
 import SocialMedia from '../features/integrations/pages/socialMedia';
 import Hoomi from '../features/integrations/pages/hoomi';
-import Email from '../features/integrations/pages/email';
-import Networks from '../features/integrations/pages/networks';
+import Email from '../features/integrations/pages/Email';
+import Networks from '../features/integrations/pages/Networks';
 import Marketing from '../features/integrations/pages/Marketing';
 import EmailMarketing from '../features/integrations/pages/emailMarketing';
 import ToastDemo from '../pages/ToastDemo';
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'dashboard',
-        element: <Dashboard/>,
+        element: <Dashboard />,
       },
       {
         path: 'propiedades',
@@ -79,7 +79,7 @@ const router = createBrowserRouter([
         path: 'configuracion',
         element: <div><h2>Configuración</h2></div>,
       },
-      
+
       ///////////////////////
       // UserProfile routes
       //////////////////////
@@ -95,38 +95,40 @@ const router = createBrowserRouter([
       {
         path: 'integrations',
         element: <Integrations />,
-      },
-      {
-        path: 'portals',
-        element: <Portals />,
-      },
-      {
-        path: 'calendar',
-        element: <Calendar />,
-      },
-      {
-        path: 'social-media',
-        element: <SocialMedia />,
-      },
-      {
-        path: 'hoomi',
-        element: <Hoomi />,
-      },
-      {
-        path: 'email',
-        element: <Email />,
-      },
-      {
-        path: 'networks',
-        element: <Networks />,
-      },
-      {
-        path: 'marketing',
-        element: <Marketing />,
-      },
-      {
-        path: 'emailMarketing',
-        element: <EmailMarketing />,
+        children: [
+          {
+            path: 'portals',
+            element: <Portals />,
+          },
+          {
+            path: 'calendar',
+            element: <Calendar />,
+          },
+          {
+            path: 'social-media',
+            element: <SocialMedia />,
+          },
+          {
+            path: 'hoomi',
+            element: <Hoomi />,
+          },
+          {
+            path: 'email',
+            element: <Email />,
+          },
+          {
+            path: 'networks',
+            element: <Networks />,
+          },
+          {
+            path: 'marketing',
+            element: <Marketing />,
+          },
+          {
+            path: 'emailMarketing',
+            element: <EmailMarketing />,
+          },
+        ]
       },
       {
         path: 'usuarios',

@@ -1,30 +1,33 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 import ScrollableContainer from '../components/ScrollableContainer/ScrollableContainer';
 import IntegrationSidebar from '../components/IntegrationSidebar/IntegrationSidebar';
 
 const Integrations = () => {
   const [selectedCategory, setSelectedCategory] = useState('portales');
-  const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleCategoryClick = (categoryId) => {
-    setSelectedCategory(categoryId);
-    if (categoryId === 'portales') {
-      navigate('/portals');
-    } else if (categoryId === 'calendario') {
-      navigate('/calendar');
-    } else if (categoryId === 'instagram-whatsapp') {
-      navigate('/social-media');
-    } else if (categoryId === 'hoomi') {
-      navigate('/hoomi');
-    } else if (categoryId === 'email') {
-      navigate('/email');
-    } else if (categoryId === 'networks') {
-      navigate('/networks');
-    } else if (categoryId === 'marketing') {
-      navigate('/marketing');
+  // Detectar categoría activa basada en la ruta actual
+  useEffect(() => {
+    const currentPath = location.pathname;
+    if (currentPath.includes('/portals')) {
+      setSelectedCategory('portales');
+    } else if (currentPath.includes('/calendar')) {
+      setSelectedCategory('calendario');
+    } else if (currentPath.includes('/social-media')) {
+      setSelectedCategory('instagram-whatsapp');
+    } else if (currentPath.includes('/hoomi')) {
+      setSelectedCategory('hoomi');
+    } else if (currentPath.includes('/email')) {
+      setSelectedCategory('email');
+    } else if (currentPath.includes('/networks')) {
+      setSelectedCategory('redes-inmobiliarias');
+    } else if (currentPath.includes('/marketing')) {
+      setSelectedCategory('marketing');
+    } else if (currentPath.includes('/emailMarketing')) {
+      setSelectedCategory('email-marketing');
     }
-  };
+  }, [location.pathname]);
 
   return (
     <ScrollableContainer>
@@ -41,24 +44,7 @@ const Integrations = () => {
         <IntegrationSidebar activeCategory={selectedCategory} />
 
         <div style={{ flex: 1 }}>
-          <div style={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center', 
-            minHeight: '400px',
-            background: '#f8fafc',
-            borderRadius: '12px',
-            border: '1px solid #e5e7eb'
-          }}>
-            <div style={{ textAlign: 'center' }}>
-              <h3 style={{ fontSize: '18px', fontWeight: '600', color: '#111827', margin: '0 0 8px 0' }}>
-                Seleccione una categoría
-              </h3>
-              <p style={{ fontSize: '14px', color: '#6b7280', margin: 0 }}>
-                Elija una categoría del menú lateral para ver las integraciones disponibles
-              </p>
-            </div>
-          </div>
+          <Outlet />
         </div>
       </div>
     </ScrollableContainer>

@@ -6,19 +6,19 @@ const IntegrationSidebar = ({ activeCategory }) => {
 
   const handleCategoryClick = (categoryId) => {
     if (categoryId === 'portales') {
-      navigate('/portals');
+      navigate('/integrations/portals');
     } else if (categoryId === 'calendario') {
-      navigate('/calendar');
+      navigate('/integrations/calendar');
     } else if (categoryId === 'instagram-whatsapp') {
-      navigate('/social-media');
+      navigate('/integrations/social-media');
     } else if (categoryId === 'hoomi') {
-      navigate('/hoomi');
+      navigate('/integrations/hoomi');
     } else if (categoryId === 'email') {
-      navigate('/email');
+      navigate('/integrations/email');
     } else if (categoryId === 'redes-inmobiliarias') {
-      navigate('/networks');
+      navigate('/integrations/networks');
     } else if (categoryId === 'email-marketing') {
-      navigate('/emailMarketing');
+      navigate('/integrations/emailMarketing');
     }
   };
 
@@ -258,4 +258,3 @@ const IntegrationSidebar = ({ activeCategory }) => {
 };
 
 export default IntegrationSidebar;
-
