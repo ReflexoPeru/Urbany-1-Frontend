@@ -3,7 +3,7 @@ import styles from './Profile.module.css';
 import Password from './Password';
 import Notifications from "./Notifications.jsx";
 import Sessions from "./Sessions.jsx";
-import { User, Lock, Bell, Monitor } from 'phosphor-react';
+import { User, Lock, Bell, Monitor, Camera } from 'phosphor-react';
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('perfil');
@@ -14,7 +14,7 @@ const Profile = () => {
     userType: ''
   });
   const [avatarUrl, setAvatarUrl] = useState(
-    'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=150&h=150&fit=crop&crop=face'
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0-wtBeKb7tsRR-E7q5Tzg07gJ1RPUBpwfa8ps1GmjVd0Znpk8Bvg5m0cdv4QlqfiwFJk&usqp=CAU'
   );
 
   // 📌 Manejar cambios en inputs
@@ -89,7 +89,7 @@ const Profile = () => {
               <div className={styles.avatarContainer}>
                 <img src={avatarUrl} alt="Avatar" className={styles.avatar} />
                 <label className={styles.cameraButton}>
-                  📷
+                  <Camera size={16} />
                   <input type="file" accept="image/*" onChange={handlePhotoUpload} hidden />
                 </label>
               </div>
