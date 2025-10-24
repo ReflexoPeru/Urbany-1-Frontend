@@ -2,14 +2,14 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
 import Dashboard from '../features/dashboard/pages/dashboard';
 import Integrations from '../features/integrations/pages/integrations';
-import Portals from '../features/integrations/pages/Portals';
-import Calendar from '../features/integrations/pages/calendar';
-import SocialMedia from '../features/integrations/pages/socialMedia';
-import Hoomi from '../features/integrations/pages/hoomi';
-import Email from '../features/integrations/pages/Email';
-import Networks from '../features/integrations/pages/Networks';
-import Marketing from '../features/integrations/pages/Marketing';
-import EmailMarketing from '../features/integrations/pages/emailMarketing';
+import Portals from '../features/integrations/pages/portales/Portals';
+import Calendar from '../features/integrations/pages/herramientas/calendar';
+import SocialMedia from '../features/integrations/pages/comunicacion/socialMedia';
+import Hoomi from '../features/integrations/pages/herramientas/hoomi';
+import Email from '../features/integrations/pages/comunicacion/Email';
+import Networks from '../features/integrations/pages/redes/Networks';
+import Marketing from '../features/integrations/pages/marketing/Marketing';
+import EmailMarketing from '../features/integrations/pages/comunicacion/emailMarketing';
 import ToastDemo from '../pages/ToastDemo';
 
 

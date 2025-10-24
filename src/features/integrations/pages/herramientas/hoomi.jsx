@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ChatCircle } from 'phosphor-react';
-import StaticCard from '../components/StaticCard';
-import ExpandableCard from '../components/ExpandableCard';
+import StaticCard from '../../components/StaticCard';
+import ExpandableCard from '../../components/ExpandableCard';
 
 const Hoomi = () => {
   const [expandedCard, setExpandedCard] = useState(null);

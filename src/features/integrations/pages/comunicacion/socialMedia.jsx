@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { InstagramLogo, WhatsappLogo } from 'phosphor-react';
-import ExpandableCard from '../components/ExpandableCard';
+import ExpandableCard from '../../components/ExpandableCard';
 
 const SocialMedia = () => {
   const [expandedCard, setExpandedCard] = useState(null);

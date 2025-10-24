@@ -1,5 +1,5 @@
 import React from 'react';
-import IntegrationAccordion from '../components/IntegrationAccordion/IntegrationAccordion';
+import IntegrationAccordion from '../../components/IntegrationAccordion/IntegrationAccordion';
 
 const EmailMarketing = () => {
   return (

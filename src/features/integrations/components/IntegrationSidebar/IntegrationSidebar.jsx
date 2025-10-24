@@ -31,6 +31,7 @@ const IntegrationSidebar = ({ activeCategory }) => {
         <li style={{ marginBottom: '4px' }}>
           <button
             style={{
+              fontFamily: 'Poppins, sans-serif',
               width: '100%',
               padding: '12px 16px',
               border: 'none',
@@ -63,6 +64,7 @@ const IntegrationSidebar = ({ activeCategory }) => {
         <li style={{ marginBottom: '4px' }}>
           <button
             style={{
+              fontFamily: 'Poppins, sans-serif',
               width: '100%',
               padding: '12px 16px',
               border: 'none',
@@ -95,6 +97,7 @@ const IntegrationSidebar = ({ activeCategory }) => {
         <li style={{ marginBottom: '4px' }}>
           <button
             style={{
+              fontFamily: 'Poppins, sans-serif',
               width: '100%',
               padding: '12px 16px',
               border: 'none',
@@ -127,6 +130,7 @@ const IntegrationSidebar = ({ activeCategory }) => {
         <li style={{ marginBottom: '4px' }}>
           <button
             style={{
+              fontFamily: 'Poppins, sans-serif',
               width: '100%',
               padding: '12px 16px',
               border: 'none',
@@ -159,6 +163,7 @@ const IntegrationSidebar = ({ activeCategory }) => {
         <li style={{ marginBottom: '4px' }}>
           <button
             style={{
+              fontFamily: 'Poppins, sans-serif',
               width: '100%',
               padding: '12px 16px',
               border: 'none',
@@ -191,6 +196,7 @@ const IntegrationSidebar = ({ activeCategory }) => {
         <li style={{ marginBottom: '4px' }}>
           <button
             style={{
+              fontFamily: 'Poppins, sans-serif',
               width: '100%',
               padding: '12px 16px',
               border: 'none',
@@ -223,6 +229,7 @@ const IntegrationSidebar = ({ activeCategory }) => {
         <li style={{ marginBottom: '4px' }}>
           <button
             style={{
+              fontFamily: 'Poppins, sans-serif',
               width: '100%',
               padding: '12px 16px',
               border: 'none',

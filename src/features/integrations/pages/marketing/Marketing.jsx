@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { GoogleLogo, FacebookLogo } from 'phosphor-react';
-import ExpandableCard from '../components/ExpandableCard';
+import ExpandableCard from '../../components/ExpandableCard';
 
 const Marketing = () => {
   const [expandedCard, setExpandedCard] = useState(null);

@@ -30,7 +30,16 @@ const Integrations = () => {
   }, [location.pathname]);
 
   return (
-    <ScrollableContainer>
+    <div style={{
+      padding: '32px',
+      fontFamily: 'Poppins, sans-serif',
+      background: '#fff',
+      borderRadius: '12px',
+      margin: '0px',
+      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+      border: '1px solid #e5e7eb',
+      minHeight: 'calc(100vh - 200px)'
+    }}>
       <div style={{ marginBottom: '32px', marginLeft: '0px' }}>
         <h1 style={{ fontSize: '32px', fontWeight: '700', margin: '0 0 8px 0', color: '#111827' }}>
           Integraciones
@@ -47,7 +56,7 @@ const Integrations = () => {
           <Outlet />
         </div>
       </div>
-    </ScrollableContainer>
+    </div>
   );
 };
 
