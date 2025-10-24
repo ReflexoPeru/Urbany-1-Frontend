@@ -4,16 +4,14 @@
   align-items: center;
   justify-content: center;
 
-  font-family: Poppins, sans-serif;
-
-
 }
 
 .branch-management-card {
   box-sizing: border-box;
   width: 70%;
-  max-width: 50%;
-  padding: 55px 80px;
+  max-width: 800px;
+  margin: 0;
+  padding: 40px 80px;
   border-radius: 16px;
 
   text-align: center;
