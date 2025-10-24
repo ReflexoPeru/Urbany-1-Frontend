@@ -1,7 +1,7 @@
 import React from 'react'
 import TopBar from '../components/TopBar'
 import PropertyList from '../components/PropertyList'
-import styles from '../styles/map.module.css'
+import styles from './MapPage.module.css'
 
 function MapPage() {
   const handleSearchChange = (value) => {
@@ -15,12 +15,12 @@ function MapPage() {
   }
 
   return (
-    <div className="map-page">
+    <>
       <TopBar onSearchChange={handleSearchChange} onSearchSubmit={handleSearchSubmit} />
-      <main className="map-content">
+      <main className={styles.mapContent}>
         <PropertyList />
       </main>
-    </div>
+    </>
   )
 }
 

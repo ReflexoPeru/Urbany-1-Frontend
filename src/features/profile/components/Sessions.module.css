@@ -1,0 +1,156 @@
+.container {
+  text-align: left;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.header {
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  margin: 0;
+
+  font-family: Poppins, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.subtitle {
+  margin-top: 0.3rem;
+
+  font-family: Poppins, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #6b7280;
+}
+
+/* Lista */
+.sessionList {
+  margin-top: 1.5rem;
+}
+
+.sectionTitle {
+  margin-bottom: 0.4rem;
+
+  font-family: Poppins, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.divider {
+  margin-bottom: 1.5rem;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+/* Cada sesión */
+.sessionItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.device {
+  margin-bottom: 0.3rem;
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.info {
+  margin: 0.15rem 0;
+  font-family: Poppins, sans-serif;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* Botón eliminar */
+.deleteButton {
+  cursor: pointer;
+
+  padding: 0.4rem;
+  border: 1px solid #d1d5db;
+  border-radius: 50%;
+
+  color: #6b7280;
+
+  background: none;
+
+  transition: all 0.3s ease;
+}
+
+.deleteButton:hover {
+  transform: scale(1.05);
+  border-color: #ef4444;
+  color: #ef4444;
+  background: #fef2f2;
+}
+
+/* Paginación */
+.pagination {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-end;
+
+  margin-top: 1.5rem;
+}
+
+.pageButton {
+  cursor: pointer;
+
+  border: none;
+
+  font-family: Poppins, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #374151;
+
+  background: none;
+
+  transition: all 0.3s ease;
+}
+
+.pageButton:hover {
+  color: #22c55e;
+}
+
+.page {
+  font-family: Poppins, sans-serif;
+  font-size: 0.95rem;
+  color: #9ca3af;
+}
+
+.pageActive {
+  padding: 0.3rem 0.65rem;
+  border-radius: 50%;
+
+  font-family: Poppins, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+
+  background: #22c55e;
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

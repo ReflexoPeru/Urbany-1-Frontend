@@ -1,38 +1,9 @@
 /* stylelint-disable order/properties-order, font-family-name-quotes */
 
-/* Reset y estilos base */
-* {
-  box-sizing: border-box;
-}
-
-html {
-  font-family: 'Poppins', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 body {
   margin: 0;
   padding: 0;
+
   min-width: 320px;
   min-height: 100vh;
-  background-color: #E1EDE6;
-  color: #1a1a1a;
-  font-family: 'Poppins', sans-serif;
-}
-
-/* Loading overlay con transiciones suaves */
-.loading-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background-color: #E1EDE6;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.loading-overlay.show {
-  opacity: 1;
-  visibility: visible;
 }

@@ -15,7 +15,7 @@ import {
   Gift,
   Question,
   SignOut
-} from '@phosphor-icons/react';
+} from 'phosphor-react';
 import styles from './UserProfile.module.css';
 
 export const UserProfile = () => {
@@ -58,7 +58,6 @@ export const UserProfile = () => {
 
   const handleMenuItemClick = (action) => {
     closeDropdown();
-    
     setTimeout(() => {
       if (action === 'logout') {
         navigate('/login');
@@ -113,7 +112,7 @@ export const UserProfile = () => {
 
   return (
     <div className={styles['user-profile-container']} ref={dropdownRef}>
-      <div 
+      <div
         className={`${styles['user-profile']} ${isDropdownOpen ? styles['user-profile-active'] : ''}`}
         onClick={toggleDropdown}
       >
@@ -126,17 +125,16 @@ export const UserProfile = () => {
           <span className={styles['user-name']}>Sanito L.</span>
           <span className={styles['user-role']}>Administrador</span>
         </div>
-        <CaretDown 
-          size={16} 
-          className={`${styles['dropdown-icon']} ${isDropdownOpen ? styles['dropdown-icon-rotated'] : ''}`} 
+        <CaretDown
+          size={16}
+          className={`${styles['dropdown-icon']} ${isDropdownOpen ? styles['dropdown-icon-rotated'] : ''}`}
         />
       </div>
 
       {isDropdownOpen && (
-        <div 
-          className={`${styles['dropdown-menu']} ${
-            isDropdownClosing ? styles['dropdown-menu-closing'] : ''
-          }`}
+        <div
+          className={`${styles['dropdown-menu']} ${isDropdownClosing ? styles['dropdown-menu-closing'] : ''
+            }`}
         >
           {menuItems.map((item) => {
             if (item.type === 'divider') {
@@ -147,9 +145,8 @@ export const UserProfile = () => {
             return (
               <button
                 key={item.id}
-                className={`${styles['menu-item']} ${
-                  item.highlight ? styles['menu-item-highlight'] : ''
-                } ${item.danger ? styles['menu-item-danger'] : ''}`}
+                className={`${styles['menu-item']} ${item.highlight ? styles['menu-item-highlight'] : ''
+                  } ${item.danger ? styles['menu-item-danger'] : ''}`}
                 onClick={() => handleMenuItemClick(item.action)}
               >
                 <Icon size={20} weight="regular" className={styles['menu-item-icon']} />

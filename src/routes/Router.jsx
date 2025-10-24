@@ -2,10 +2,24 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
 import Dashboard from '../features/dashboard/pages/dashboard';
 import Optimizations from '../features/optimizations/pages/OptimizationsPage';
-import Properties from '../features/properties/pages/propiedades';
+import Properties from '../features/properties/pages/PropertiesPage';
 import Map from '../features/map/pages/MapPage';
 import ToastDemo from '../pages/ToastDemo';
 import Contacts from '../features/contacts/pages/ContactsPage';
+import Profile from '../features/profile/components/Profile';
+import Branches from '../features/branches/pages/BranchManagement';
+import Integrations from '../features/integrations/pages/integrations';
+import Portals from '../features/integrations/pages/portales/Portals';
+import Calendar from '../features/integrations/pages/herramientas/calendar';
+import SocialMedia from '../features/integrations/pages/comunicacion/socialMedia';
+import Hoomi from '../features/integrations/pages/herramientas/hoomi';
+import Email from '../features/integrations/pages/comunicacion/Email';
+import Networks from '../features/integrations/pages/redes/Networks';
+import Marketing from '../features/integrations/pages/marketing/Marketing';
+import EmailMarketing from '../features/integrations/pages/comunicacion/emailMarketing';
+import Activities from '../features/activities/pages/Activities';
+import Business from '../features/business/pages/business';
+import Appraisals from '../features/appraisals/pages/appraisals';
 
 
 const router = createBrowserRouter([
@@ -19,19 +33,19 @@ const router = createBrowserRouter([
       },
       {
         path: 'dashboard',
-        element: <Dashboard/>,
+        element: <Dashboard />,
       },
       {
         path: 'propiedades',
-        element: <Properties/>,
+        element: <Properties />,
       },
       {
         path: 'negocios',
-        element: <div><h2>Negocios</h2></div>,
+        element: <Business />,
       },
       {
         path: 'contactos',
-        element: <Contacts/>,
+        element: <Contacts />,
       },
       {
         path: 'valoraciones',
@@ -39,7 +53,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'tasaciones',
-        element: <div><h2>Tasaciones</h2></div>,
+        element: <Appraisals />,
       },
       {
         path: 'redes',
@@ -47,7 +61,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'actividades',
-        element: <div><h2>Actividades</h2></div>,
+        element: <Activities />,
       },
       {
         path: 'reportes',
@@ -55,7 +69,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'mapa',
-        element: <Map/>,
+        element: <Map />,
       },
       {
         path: 'mensajes',
@@ -73,14 +87,14 @@ const router = createBrowserRouter([
         path: 'configuracion',
         element: <div><h2>Configuración</h2></div>,
       },
-      
+
       ///////////////////////
       // UserProfile routes
       //////////////////////
 
       {
         path: 'perfil',
-        element: <div><h2>Mi Perfil</h2></div>,
+        element: <Profile />,
       },
       {
         path: 'company',
@@ -88,7 +102,41 @@ const router = createBrowserRouter([
       },
       {
         path: 'integrations',
-        element: <div><h2>Integraciones</h2></div>,
+        element: <Integrations />,
+        children: [
+          {
+            path: 'portals',
+            element: <Portals />,
+          },
+          {
+            path: 'calendar',
+            element: <Calendar />,
+          },
+          {
+            path: 'social-media',
+            element: <SocialMedia />,
+          },
+          {
+            path: 'hoomi',
+            element: <Hoomi />,
+          },
+          {
+            path: 'email',
+            element: <Email />,
+          },
+          {
+            path: 'networks',
+            element: <Networks />,
+          },
+          {
+            path: 'marketing',
+            element: <Marketing />,
+          },
+          {
+            path: 'emailMarketing',
+            element: <EmailMarketing />,
+          },
+        ]
       },
       {
         path: 'usuarios',
@@ -96,7 +144,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'branches',
-        element: <div><h2>Gestión de Sucursales</h2></div>,
+        element: <Branches />,
       },
       {
         path: 'automation',
@@ -104,7 +152,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'optimizations',
-        element: <Optimizations/>,
+        element: <Optimizations />,
       },
       {
         path: 'website',
