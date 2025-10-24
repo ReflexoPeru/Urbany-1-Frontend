@@ -1,51 +1,104 @@
-import React, { useState } from 'react';
-import styles from './Notifications.module.css';
+import React, { useState } from "react";
+import styles from "../hooks/Notifications.module.css";
 
 const Notifications = () => {
-  const [notifications] = useState([
-    {
-      id: 1,
-      title: 'Nueva Oportunidad de Negocio',
-      message: 'Se ha creado una nueva oportunidad en el sector residencial',
-      timestamp: '2024-01-15T10:30:00Z',
-      read: false
-    },
-    {
-      id: 2,
-      title: 'Actualización de Propiedad',
-      message: 'La propiedad en 123 Main St ha sido actualizada',
-      timestamp: '2024-01-15T09:15:00Z',
-      read: true
-    }
-  ]);
+  const [notifications, setNotifications] = useState({
+    negocio: false,
+    negocioEmail: true,
+    whatsapp: true,
+    actividadesEmail: true,
+    novedades: true,
+  });
+
+  const handleToggle = (key) => {
+    setNotifications((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.profileContent}>
-        <h1 className={styles.title}>Notificaciones</h1>
+    <div className={styles.content}>
+      {/* 🔹 Título y subtítulo */}
+      <div className={styles.header}>
+        <h1 className={styles.title}>Centro de notificaciones</h1>
         <p className={styles.subtitle}>
-          Gestiona tus preferencias de notificación y revisa tus alertas.
+          Desde aquí podrás configurar las notificaciones que deseas recibir, tanto las de escritorio
+          como las de correo electrónico.
         </p>
+        <p className={styles.subtitle}>
+          Recuerda activar las notificaciones de escritorio para recibir todas tus novedades.
+        </p>
+      </div>
 
-        <div className={styles.profileContainer}>
-          <div className={styles.formSection}>
-            <div className={styles.notificationsList}>
-              {notifications.map(notification => (
-                <div key={notification.id} className={styles.notificationItem}>
-                  <h4 className={styles.notificationTitle}>{notification.title}</h4>
-                  <p className={styles.notificationMessage}>{notification.message}</p>
-                  <span className={styles.timestamp}>
-                    {new Date(notification.timestamp).toLocaleDateString()}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+      {/* 🔹 Botón de activar */}
+      <button className={styles.activateButton}>Activar notificaciones</button>
+
+      {/* 🔹 Secciones */}
+      <div className={styles.section}>
+        <h3 className={styles.sectionTitle}>Negocios</h3>
+        <label className={styles.switchLabel}>
+          <input
+            type="checkbox"
+            checked={notifications.negocio}
+            onChange={() => handleToggle("negocio")}
+          />
+          <span className={styles.switch}></span>
+          Notifícame cuando cree un nuevo negocio
+        </label>
+
+        <label className={styles.switchLabel}>
+          <input
+            type="checkbox"
+            checked={notifications.negocioEmail}
+            onChange={() => handleToggle("negocioEmail")}
+          />
+          <span className={styles.switch}></span>
+          Notifícame por email cuando se cree un nuevo negocio
+        </label>
+      </div>
+
+      <div className={styles.section}>
+        <h3 className={styles.sectionTitle}>WhatsApp</h3>
+        <label className={styles.switchLabel}>
+          <input
+            type="checkbox"
+            checked={notifications.whatsapp}
+            onChange={() => handleToggle("whatsapp")}
+          />
+          <span className={styles.switch}></span>
+          Notifícame cuando reciba un nuevo mensaje
+        </label>
+      </div>
+
+      <div className={styles.section}>
+        <h3 className={styles.sectionTitle}>Actividades</h3>
+        <label className={styles.switchLabel}>
+          <input
+            type="checkbox"
+            checked={notifications.actividadesEmail}
+            onChange={() => handleToggle("actividadesEmail")}
+          />
+          <span className={styles.switch}></span>
+          Notifícame por email las actividades que tengo agendadas para el día de hoy
+        </label>
+      </div>
+
+      <div className={styles.section}>
+        <h3 className={styles.sectionTitle}>Novedades</h3>
+        <label className={styles.switchLabel}>
+          <input
+            type="checkbox"
+            checked={notifications.novedades}
+            onChange={() => handleToggle("novedades")}
+          />
+          <span className={styles.switch}></span>
+          Notifícame las actualizaciones y novedades del CRM
+        </label>
+      </div>
+
+      <div className={styles.buttonRow}>
+        <button className={styles.saveButton}>Guardar cambios</button>
       </div>
     </div>
   );
 };
 
 export default Notifications;
-
