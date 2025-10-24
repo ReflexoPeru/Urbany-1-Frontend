@@ -11,11 +11,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@phosphor-icons/react": "^2.1.10",
-    "@tanstack/react-table": "^8.21.3",
-    "framer-motion": "^12.23.24",
-    "lottie-react": "^2.4.1",
-    "phosphor-react": "^1.4.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-hot-toast": "^2.6.0",
