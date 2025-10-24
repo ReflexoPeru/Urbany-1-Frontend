@@ -1,65 +1,93 @@
 .container {
   display: flex;
+  align-items: flex-start;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #ffffff;
+
+  min-height: 60vh;
+  padding: 2rem 0;
+
+  font-family: Poppins, sans-serif;
+
+  background: #E1EDE6;
 }
+
 .card {
-  background: #fff;
-  border-radius: 10px;
-  padding: 2rem 3rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   width: 85%;
   max-width: 950px;
+  padding: 2rem 3rem;
+  border-radius: 12px;
+
+  font-family: Poppins, sans-serif;
+
+  background: #fff;
+  box-shadow: 0 4px 20px rgb(0 0 0 / 8%), 0 1px 3px rgb(0 0 0 / 10%);
+
   animation: fadeIn 0.5s ease-in-out;
 }
+
 /* 🔹 Tabs arriba del contenido */
 .tabs {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #e2e2e2;
+  justify-content: space-between;
+
   margin: 0 -3rem 1.5rem;
-  padding: 1rem 3rem 0.75rem 3rem;
-  background-color: #fff;
+  padding: 1rem 3rem 0.75rem;
+  border-bottom: 1px solid #e2e8f0;
   border-radius: 8px 8px 0 0;
+
+  font-family: Poppins, sans-serif;
+
+  background-color: #fff;
 }
+
 /* 🔹 Botones de pestañas */
 .tab {
-  background: transparent;
+  cursor: pointer;
+
+  position: relative;
+
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  padding: 0.5rem 0;
   border: none;
+
+  font-family: Poppins, sans-serif;
   font-size: 1rem;
   font-weight: 500;
-  color: #333;
-  cursor: pointer;
-  position: relative;
-  padding: 0.5rem 0;
-  transition: color 0.2s ease;
-  outline: none; /* ✅ Quita el borde azul */
+  color: #64748b;
+
+  background: transparent;
+  outline: none;
+
+  transition: all 0.3s ease;
 }
+
 /* 🔹 Quita el contorno azul al hacer foco */
 .tab:focus,
 .tab:active {
+  border: none;
   outline: none;
   box-shadow: none;
-  border: none;
-  
+
 }
+
 /* 🔹 Espaciado entre pestañas */
-.tab + .tab {
+.tab+.tab {
   margin-left: 2.5rem;
 }
 
 /* 🔹 Hover */
 .tab:hover {
-  color: #007bff;
+  color: #22c55e;
 }
 
 /* 🔹 Pestaña activa — solo cambia color (sin subrayado ni borde) */
 .active {
-  color: #007bff;
   font-weight: 600;
+  color: #22c55e;
 }
 
 /* ❌ Elimina línea inferior de pestaña activa */
@@ -75,8 +103,9 @@
 /* 🔹 Encabezado */
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+
   padding-bottom: 1.5rem;
   border-bottom: none;
 }
@@ -87,16 +116,23 @@
 }
 
 .title {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  margin: 0;
+
+  font-family: Poppins, sans-serif;
   font-size: 1.4rem;
   font-weight: 600;
-  color: #1f1f1f;
-  margin: 0;
+  color: #0f172a;
 }
 
 .subtitle {
-  font-size: 0.9rem;
-  color: #777;
   margin-top: 0.3rem;
+  font-family: Poppins, sans-serif;
+  font-size: 0.9rem;
+  color: #6b7280;
 }
 
 /* 🔹 Avatar */
@@ -107,34 +143,47 @@
 .avatar {
   width: 85px;
   height: 85px;
-  border-radius: 50%;
-  object-fit: cover;
   border: 3px solid #fff;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+
+  object-fit: cover;
+  box-shadow: 0 0 6px rgb(0 0 0 / 10%);
 }
 
 .cameraButton {
+  cursor: pointer;
+
   position: absolute;
-  bottom: 0;
   right: 0;
-  background: #007bff;
-  color: #fff;
-  font-size: 0.8rem;
-  border-radius: 50%;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 25px;
   height: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+  border-radius: 50%;
+
+  font-size: 0.8rem;
+  color: #fff;
+
+  background: #22c55e;
+
+  transition: all 0.3s ease;
+}
+
+.cameraButton:hover {
+  transform: scale(1.1);
+  background: #16a34a;
 }
 
 /* 🔹 Formulario */
 .form {
-  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin-top: 2rem;
 }
 
 .formGrid {
@@ -149,22 +198,37 @@
 }
 
 .label {
-  font-size: 0.9rem;
-  color: #555;
   margin-bottom: 0.4rem;
+
+  font-family: Poppins, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #374151;
 }
 
 .input {
   padding: 0.7rem;
-  border: 1px solid #ccc;
+  border: 1px solid #d1d5db;
   border-radius: 6px;
+
+  font-family: Poppins, sans-serif;
   font-size: 0.9rem;
+
+  background: #fff;
   outline: none;
-  transition: border-color 0.2s ease;
+
+  transition: all 0.3s ease;
 }
 
 .input:focus {
-  border-color: #007bff;
+  border-color: #22c55e;
+  box-shadow: 0 0 0 3px rgb(34 197 94 / 10%);
+}
+
+.input.disabled {
+  cursor: not-allowed;
+  color: #6b7280;
+  background: #f9fafb;
 }
 
 /* 🔹 Botón */
@@ -174,39 +238,47 @@
 }
 
 .saveButton {
-  background: #007bff;
-  color: white;
+  cursor: pointer;
+
+  padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 6px;
-  padding: 0.75rem 1.5rem;
+
+  font-family: Poppins, sans-serif;
   font-size: 0.95rem;
-  cursor: pointer;
-  transition: background 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 3px 6px rgba(0, 123, 255, 0.3);
+  font-weight: 600;
+  color: white;
+
+  background: #22c55e;
+  box-shadow: 0 3px 6px rgb(34 197 94 / 30%);
+
+  transition: all 0.3s ease;
 }
 
 .saveButton:hover {
-  background: #005fd1;
-  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4);
+  transform: translateY(-1px);
+  background: #16a34a;
+  box-shadow: 0 4px 10px rgb(34 197 94 / 40%);
 }
 
 /* 🔹 Animación */
 @keyframes fadeIn {
   from {
-    opacity: 0;
     transform: translateY(15px);
+    opacity: 0;
   }
+
   to {
-    opacity: 1;
     transform: translateY(0);
+    opacity: 1;
   }
 }
+
 /* 🔒 Forzar fondo blanco global */
 :global(html),
 :global(body),
 :global(#root),
 :global(.App) {
-  background-color: #ffffff !important;
   overflow: visible !important;
+  background-color: #fff !important;
 }
-

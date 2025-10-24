@@ -6,6 +6,7 @@ import Properties from '../features/properties/pages/PropertiesPage';
 import Map from '../features/map/pages/MapPage';
 import ToastDemo from '../pages/ToastDemo';
 import Contacts from '../features/contacts/pages/ContactsPage';
+import Profile from '../features/profile/components/Profile';
 
 
 const router = createBrowserRouter([
@@ -19,11 +20,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'dashboard',
-        element: <Dashboard/>,
+        element: <Dashboard />,
       },
       {
         path: 'propiedades',
-        element: <Properties/>,
+        element: <Properties />,
       },
       {
         path: 'negocios',
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'contactos',
-        element: <Contacts/>,
+        element: <Contacts />,
       },
       {
         path: 'valoraciones',
@@ -55,7 +56,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'mapa',
-        element: <Map/>,
+        element: <Map />,
       },
       {
         path: 'mensajes',
@@ -73,14 +74,14 @@ const router = createBrowserRouter([
         path: 'configuracion',
         element: <div><h2>Configuración</h2></div>,
       },
-      
+
       ///////////////////////
       // UserProfile routes
       //////////////////////
 
       {
         path: 'perfil',
-        element: <div><h2>Mi Perfil</h2></div>,
+        element: <Profile />,
       },
       {
         path: 'company',
@@ -104,7 +105,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'optimizations',
-        element: <Optimizations/>,
+        element: <Optimizations />,
       },
       {
         path: 'website',

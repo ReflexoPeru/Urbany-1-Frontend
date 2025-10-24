@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import styles from "../hooks/Password.module.css";
+import styles from "./Password.module.css";
+import { Lock } from "phosphor-react";
 
 const Password = () => {
   const [showPassword, setShowPassword] = useState({
@@ -17,7 +18,10 @@ const Password = () => {
       {/* 🔹 Encabezado */}
       <div className={styles.header}>
         <div className={styles.headerText}>
-          <h1 className={styles.title}>Cambiar Contraseña</h1>
+          <h1 className={styles.title}>
+            <Lock size={20} />
+            Cambiar Contraseña
+          </h1>
           <p className={styles.subtitle}>
             Protege tus datos creando una contraseña que sea compleja y tenga la longitud suficiente. <br />
             Debe resultarte fácil de recordar pero difícil de adivinar para los demás.

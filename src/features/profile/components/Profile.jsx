@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import styles from '../hooks/Profile.module.css';
+import styles from './Profile.module.css';
 import Password from './Password';
 import Notifications from "./Notifications.jsx";
 import Sessions from "./Sessions.jsx";
+import { User, Lock, Bell, Monitor } from 'phosphor-react';
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('perfil');
@@ -27,12 +28,7 @@ const Profile = () => {
 
   // 📌 Guardar cambios
   const handleSave = () => {
-    if (!formData.fullName || !formData.phone) {
-      alert('Por favor completa todos los campos obligatorios.');
-      return;
-    }
-    console.log('Guardando datos:', formData);
-    alert('Cambios guardados exitosamente');
+    // Función de guardar - solo vista
   };
 
   // 📌 Subir foto
@@ -49,10 +45,10 @@ const Profile = () => {
 
   // 📌 Tabs del perfil
   const tabs = [
-    { id: 'perfil', label: 'Mi Perfil' },
-    { id: 'password', label: 'Cambiar contraseña' },
-    { id: 'notifications', label: 'Notificaciones' },
-    { id: 'sessions', label: 'Sesiones activas' }
+    { id: 'perfil', label: 'Mi Perfil', icon: User },
+    { id: 'password', label: 'Cambiar contraseña', icon: Lock },
+    { id: 'notifications', label: 'Notificaciones', icon: Bell },
+    { id: 'sessions', label: 'Sesiones activas', icon: Monitor }
   ];
 
   return (
@@ -60,15 +56,19 @@ const Profile = () => {
       <div className={styles.card}>
         {/* 🔹 Tabs dentro del cuadro */}
         <div className={styles.tabs}>
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`${styles.tab} ${activeTab === tab.id ? styles.active : ''}`}
-            >
-              {tab.label}
-            </button>
-          ))}
+          {tabs.map((tab) => {
+            const IconComponent = tab.icon;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`${styles.tab} ${activeTab === tab.id ? styles.active : ''}`}
+              >
+                <IconComponent size={18} />
+                {tab.label}
+              </button>
+            );
+          })}
         </div>
 
         {/* 🔹 Contenido principal */}
@@ -77,7 +77,10 @@ const Profile = () => {
             {/* Cabecera */}
             <div className={styles.header}>
               <div className={styles.headerText}>
-                <h1 className={styles.title}>Información de usuario</h1>
+                <h1 className={styles.title}>
+                  <User size={20} />
+                  Información de usuario
+                </h1>
                 <p className={styles.subtitle}>
                   Su información de usuario será visible en las publicaciones de sus inmuebles en los portales.
                 </p>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import styles from "../hooks/Sessions.module.css";
-import { Trash2 } from "lucide-react"; // ícono elegante
+import styles from "./Sessions.module.css";
+import { Monitor, Trash } from "phosphor-react"; // ícono elegante
 
 export default function Sessions() {
   const [sessions, setSessions] = useState([
@@ -24,7 +24,10 @@ export default function Sessions() {
     <div className={styles.container}>
       {/* 🔹 Cabecera */}
       <div className={styles.header}>
-        <h2 className={styles.title}>Sesiones activas</h2>
+        <h2 className={styles.title}>
+          <Monitor size={20} />
+          Sesiones activas
+        </h2>
         <p className={styles.subtitle}>
           Desde aquí podrás ver los dispositivos en los cuales tienes una sesión activa.
         </p>
@@ -47,7 +50,7 @@ export default function Sessions() {
               onClick={() => handleDelete(session.id)}
               title="Cerrar sesión"
             >
-              <Trash2 size={22} />
+              <Trash size={22} />
             </button>
           </div>
         ))}
