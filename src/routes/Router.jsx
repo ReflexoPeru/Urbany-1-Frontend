@@ -18,6 +18,8 @@ import Networks from '../features/integrations/pages/redes/Networks';
 import Marketing from '../features/integrations/pages/marketing/Marketing';
 import EmailMarketing from '../features/integrations/pages/comunicacion/emailMarketing';
 import Activities from '../features/activities/pages/Activities';
+import Business from '../features/business/pages/business';
+import Appraisals from '../features/appraisals/pages/appraisals';
 
 
 const router = createBrowserRouter([
@@ -39,7 +41,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'negocios',
-        element: <div><h2>Negocios</h2></div>,
+        element: <Business />,
       },
       {
         path: 'contactos',
@@ -51,7 +53,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'tasaciones',
-        element: <div><h2>Tasaciones</h2></div>,
+        element: <Appraisals />,
       },
       {
         path: 'redes',
