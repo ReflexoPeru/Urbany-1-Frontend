@@ -17,6 +17,7 @@ import Email from '../features/integrations/pages/comunicacion/Email';
 import Networks from '../features/integrations/pages/redes/Networks';
 import Marketing from '../features/integrations/pages/marketing/Marketing';
 import EmailMarketing from '../features/integrations/pages/comunicacion/emailMarketing';
+import Activities from '../features/activities/pages/Activities';
 
 
 const router = createBrowserRouter([
@@ -58,7 +59,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'actividades',
-        element: <div><h2>Actividades</h2></div>,
+        element: <Activities />,
       },
       {
         path: 'reportes',
