@@ -66,7 +66,7 @@ export const UserProfile = () => {
       } else if (action === 'company') {
         navigate('/company');
       } else if (action === 'integrations') {
-        navigate('/integrations');
+        navigate('/integrations/portals');
       } else if (action === 'users') {
         navigate('/usuarios');
       } else if (action === 'branches') {

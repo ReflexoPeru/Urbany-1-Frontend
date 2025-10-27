@@ -120,6 +120,10 @@ const router = createBrowserRouter([
         element: <Integrations />,
         children: [
           {
+            index: true,
+            element: <Portals />,
+          },
+          {
             path: 'portals',
             element: <Portals />,
           },
