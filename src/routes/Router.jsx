@@ -66,7 +66,7 @@ const router = createBrowserRouter([
         element: <div><h2>Redes</h2></div>,
       },
       {
-        path: 'actividades',
+        path: 'activities',
         element: <Activities />,
       },
       {

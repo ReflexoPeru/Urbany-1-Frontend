@@ -17,7 +17,7 @@ export const PageTitle = () => {
     '/valoraciones': 'Valoraciones',
     '/tasaciones': 'Tasaciones',
     '/redes': 'Redes',
-    '/actividades': 'Actividades',
+    '/activities': 'Actividades',
     '/reportes': 'Reportes',
     '/mapa': 'Mapa',
     '/mensajes': 'Mensajes',
