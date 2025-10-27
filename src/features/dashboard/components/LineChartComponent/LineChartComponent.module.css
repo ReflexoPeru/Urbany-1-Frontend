@@ -1,0 +1,44 @@
+/* src/features/dashboard/components/LineChartComponent/LineChartComponent.module.css */
+.graficoContainer {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.chartHeader h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+
+/* Selector Styles la letra semanal */
+.selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #007bff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.selector:hover {
+  background-color: #e9ecef;
+}
+
+.chartWrapper {
+  width: 100%;
+}

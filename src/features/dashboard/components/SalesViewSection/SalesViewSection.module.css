@@ -1,0 +1,30 @@
+.salesViewSection {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.viewsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.viewItem {
+  padding: 8px 0;
+  color: #555;
+  cursor: pointer;
+}
+
+.viewItem:hover {
+  color: #2196F3;
+}
