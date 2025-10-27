@@ -62,7 +62,7 @@ export const UserProfile = () => {
       if (action === 'logout') {
         navigate('/login');
       } else if (action === 'profile') {
-        navigate('/perfil');
+        navigate('/configuracion/perfil');
       } else if (action === 'company') {
         navigate('/company');
       } else if (action === 'integrations') {
