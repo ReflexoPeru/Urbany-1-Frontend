@@ -1,0 +1,118 @@
+/* stylelint-disable order/properties-order */
+
+/* ============================================
+   SIDEBAR BASE
+   ============================================ */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid #e5e7eb;
+  background-color: #fff;
+  font-family: Poppins, sans-serif;
+  overflow: hidden;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+.nav {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 16px 0;
+  overflow: hidden auto;
+}
+
+.menu-list {
+  margin: 0;
+  padding: 0 8px;
+
+  list-style: none;
+}
+
+.menu-list li {
+  margin-bottom: 1px;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  position: relative;
+  margin-top: auto;
+  padding: 16px 8px 14px;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background-color: #d1d5db;
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+.nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+.nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.nav::-webkit-scrollbar-thumb {
+  background: #e5e7eb;
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.nav::-webkit-scrollbar-thumb:hover {
+  background: #d1d5db;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (width <=768px) {
+  .sidebar {
+    width: 220px;
+  }
+
+  .menu-label {
+    padding: 0 16px 8px;
+    font-size: 10px;
+  }
+}
+
+@media (width <=640px) {
+  .sidebar {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-100%);
+    box-shadow: 4px 0 6px rgb(0 0 0 / 10%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+/* ============================================
+   MICRO-INTERACCIONES
+   ============================================ */
+@media (prefers-reduced-motion: no-preference) {
+  .sidebar * {
+    transition-duration: 0.2s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar * {
+    transition: none;
+  }
+}

@@ -1,0 +1,247 @@
+/* Contenedor principal de paginación */
+.pagination {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 24px;
+    border-top: 1px solid #e2e8f0;
+    border-radius: 0 0 12px 12px;
+
+    background: #f8fafc;
+}
+
+/* Información de paginación */
+.paginationInfo {
+    display: flex;
+    align-items: center;
+}
+
+.infoText {
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #64748b;
+}
+
+/* Controles de paginación */
+.paginationControls {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+/* Botones de paginación */
+.paginationButton {
+    cursor: pointer;
+    user-select: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 40px;
+    height: 40px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+
+    background: #fff;
+
+    transition: all 0.2s ease;
+}
+
+.paginationButton:hover:not(:disabled) {
+    transform: translateY(-1px);
+
+    border-color: #38E47A;
+
+    color: #38E47A;
+
+    background-color: #f0fdf4;
+    box-shadow: 0 2px 4px rgb(56 228 122 / 10%);
+}
+
+.navButton:hover:not(:disabled) {
+    transform: translateY(-2px);
+
+    border-color: #2BC85A;
+
+    color: #fff;
+
+    background-color: #38E47A;
+    box-shadow: 0 6px 12px rgb(56 228 122 / 30%);
+}
+
+.navButton:disabled {
+    cursor: not-allowed;
+
+    border-color: #d1d5db;
+
+    color: #9ca3af;
+
+    opacity: 0.6;
+    background-color: #f9fafb;
+    box-shadow: none;
+}
+
+.paginationButton:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgb(56 228 122 / 10%);
+}
+
+.paginationButton:disabled {
+    cursor: not-allowed;
+    color: #94a3b8;
+    opacity: 0.4;
+    background-color: #f8fafc;
+}
+
+/* Botones de navegación (flechas) */
+.navButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    border: 2px solid #38E47A;
+
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    color: #38E47A;
+
+    background: #fff;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+}
+
+/* Botones de página */
+.pageButton {
+    width: 40px;
+    min-width: 40px;
+}
+
+/* Página activa */
+.pageButton.active {
+    border-color: #38E47A;
+    font-weight: 600;
+    color: #fff;
+    background-color: #38E47A;
+}
+
+.pageButton.active:hover {
+    transform: translateY(-1px);
+
+    border-color: #2BC85A;
+
+    color: #fff;
+
+    background-color: #2BC85A;
+    box-shadow: 0 4px 8px rgb(56 228 122 / 20%);
+}
+
+/* Puntos suspensivos */
+.ellipsis {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 40px;
+    height: 40px;
+
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #94a3b8;
+}
+
+/* Responsive */
+@media (width <=768px) {
+    .pagination {
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px 20px;
+    }
+
+    .paginationInfo {
+        order: 2;
+    }
+
+    .paginationControls {
+        flex-wrap: wrap;
+        justify-content: center;
+        order: 1;
+    }
+
+    .paginationButton {
+        min-width: 36px;
+        height: 36px;
+        font-size: 13px;
+    }
+
+    .navButton {
+        width: 40px;
+        min-width: 40px;
+        height: 40px;
+        border: 2px solid #38E47A;
+
+        font-weight: 700;
+        color: #38E47A;
+
+        background: #fff;
+        box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+    }
+
+    .pageButton {
+        width: 36px;
+        min-width: 36px;
+    }
+
+    .ellipsis {
+        min-width: 36px;
+        height: 36px;
+        font-size: 13px;
+    }
+}
+
+@media (width <=480px) {
+    .paginationControls {
+        gap: 2px;
+    }
+
+    .paginationButton {
+        min-width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+
+    .navButton {
+        width: 36px;
+        min-width: 36px;
+        height: 36px;
+        border: 2px solid #38E47A;
+
+        font-weight: 700;
+        color: #38E47A;
+
+        background: #fff;
+        box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+    }
+
+    .pageButton {
+        width: 32px;
+        min-width: 32px;
+    }
+
+    .ellipsis {
+        min-width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+}

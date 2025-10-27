@@ -1,0 +1,88 @@
+/* stylelint-disable order/properties-order */
+
+.sectionContent {
+    padding: 0;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+/* Fila para logo y ubicación */
+.logoRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.logoSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.locationSection {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Información de marca de agua */
+.watermarkInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 6px;
+    border-left: 4px solid #22c55e;
+}
+
+.infoText {
+    margin: 0;
+    font-family: Poppins, sans-serif;
+    font-size: 0.9rem;
+    color: #374151;
+    flex: 1;
+}
+
+.helpIcon {
+    color: #6b7280;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.helpIcon:hover {
+    color: #22c55e;
+}
+
+/* Upload de logo */
+.logoLabel {
+    margin-bottom: 0.5rem;
+    font-family: Poppins, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.logoUpload {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Responsive */
+@media (width <=768px) {
+    .watermarkInfo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .logoRow {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
