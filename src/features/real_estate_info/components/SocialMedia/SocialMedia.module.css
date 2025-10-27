@@ -1,0 +1,24 @@
+/* stylelint-disable order/properties-order */
+
+.sectionContent {
+    padding: 0;
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 2rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Responsive */
+@media (width <=768px) {
+    .formGrid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}

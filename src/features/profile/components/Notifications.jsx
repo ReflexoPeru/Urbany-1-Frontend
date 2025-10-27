@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import styles from "./Notifications.module.css";
 import { Bell } from "phosphor-react";
+import Button from '../../../components/ui/Button/Button';
+import styles from "./Notifications.module.css";
 
 const Notifications = () => {
   const [notifications, setNotifications] = useState({
@@ -99,7 +100,7 @@ const Notifications = () => {
       </div>
 
       <div className={styles.buttonRow}>
-        <button className={styles.saveButton}>Guardar cambios</button>
+        <Button variant="primary">Guardar cambios</Button>
       </div>
     </div>
   );

@@ -1,0 +1,290 @@
+/* stylelint-disable order/properties-order */
+
+/* ============================================
+   LOADING SPINNER CONTAINER
+   ============================================ */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* ============================================
+   SPINNER BASE
+   ============================================ */
+.spinner {
+  position: relative;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  animation: spin 1s linear infinite;
+}
+
+.spinnerInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  animation: spin 1s linear infinite;
+}
+
+/* ============================================
+   SIZE VARIANTS
+   ============================================ */
+.spinner.small {
+  width: 1rem;
+  height: 1rem;
+}
+
+.spinner.medium {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.spinner.large {
+  width: 2rem;
+  height: 2rem;
+}
+
+.spinner.xlarge {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* ============================================
+   COLOR VARIANTS
+   ============================================ */
+.spinner.primary {
+  color: #38e47a;
+}
+
+.spinner.secondary {
+  color: #6b7280;
+}
+
+.spinner.white {
+  color: #fff;
+}
+
+.spinner.danger {
+  color: #ef4444;
+}
+
+.spinner.success {
+  color: #10b981;
+}
+
+.spinner.warning {
+  color: #f59e0b;
+}
+
+.spinner.info {
+  color: #3b82f6;
+}
+
+/* ============================================
+   TEXT
+   ============================================ */
+.text {
+  font-family: Poppins, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6b7280;
+  text-align: center;
+}
+
+/* ============================================
+   OVERLAY
+   ============================================ */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(255 255 255 / 80%);
+  backdrop-filter: blur(4px);
+}
+
+.overlayContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%), 0 2px 4px rgb(0 0 0 / 6%);
+}
+
+/* ============================================
+   LOADING BUTTON
+   ============================================ */
+.loadingButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  border-radius: 8px;
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.loadingButton.small {
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  min-height: 2rem;
+}
+
+.loadingButton.medium {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  min-height: 2.5rem;
+}
+
+.loadingButton.large {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  min-height: 3rem;
+}
+
+.loadingButton.primary {
+  color: #fff;
+  background: #38e47a;
+}
+
+.loadingButton.secondary {
+  color: #6b7280;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.loadingButton.danger {
+  color: #fff;
+  background: #ef4444;
+}
+
+.loadingButton.success {
+  color: #fff;
+  background: #10b981;
+}
+
+.loadingButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.buttonSpinner {
+  width: 1rem;
+  height: 1rem;
+}
+
+.buttonSpinnerInner {
+  width: 100%;
+  height: 100%;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.buttonText {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.buttonTextLoading {
+  opacity: 0.7;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   DOTS LOADER VARIANT
+   ============================================ */
+.dotsLoader {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.dotsLoader .dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: currentColor;
+  animation: dotsBounce 1.4s ease-in-out infinite both;
+}
+
+.dotsLoader .dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.dotsLoader .dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes dotsBounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   PULSE LOADER VARIANT
+   ============================================ */
+.pulseLoader {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   MICRO-INTERACCIONES
+   ============================================ */
+@media (prefers-reduced-motion: no-preference) {
+  .spinner,
+  .spinnerInner,
+  .buttonSpinnerInner {
+    animation-duration: 1s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner,
+  .spinnerInner,
+  .buttonSpinnerInner {
+    animation: none;
+  }
+}

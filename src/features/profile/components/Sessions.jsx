@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { Monitor, Trash } from "phosphor-react";
+import Button from '../../../components/ui/Button/Button';
 import styles from "./Sessions.module.css";
-import { Monitor, Trash } from "phosphor-react"; // ícono elegante
 
 export default function Sessions() {
   const [sessions, setSessions] = useState([
@@ -45,24 +46,19 @@ export default function Sessions() {
               <p className={styles.info}>ID:</p>
               <p className={styles.info}>Ult. Conexión: {session.lastConnection}</p>
             </div>
-            <button
-              className={styles.deleteButton}
+            <Button
+              variant="danger"
+              size="small"
               onClick={() => handleDelete(session.id)}
-              title="Cerrar sesión"
+              icon="trash"
             >
-              <Trash size={22} />
-            </button>
+
+            </Button>
           </div>
         ))}
       </div>
 
-      {/* 🔹 Paginación */}
-      <div className={styles.pagination}>
-        <button className={styles.pageButton}>Anterior</button>
-        <span className={styles.pageActive}>1</span>
-        <span className={styles.page}>2</span>
-        <button className={styles.pageButton}>Siguiente</button>
-      </div>
+
     </div>
   );
 }

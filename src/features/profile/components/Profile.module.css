@@ -1,103 +1,7 @@
-.container {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
+/* stylelint-disable order/properties-order */
 
-  min-height: 60vh;
-  padding: 2rem 0;
-
-  font-family: Poppins, sans-serif;
-
-  background: #E1EDE6;
-}
-
-.card {
-  width: 85%;
-  max-width: 950px;
-  padding: 2rem 3rem;
-  border-radius: 12px;
-
-  font-family: Poppins, sans-serif;
-
-  background: #fff;
-  box-shadow: 0 4px 20px rgb(0 0 0 / 8%), 0 1px 3px rgb(0 0 0 / 10%);
-
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-/* 🔹 Tabs arriba del contenido */
-.tabs {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  margin: 0 -3rem 1.5rem;
-  padding: 1rem 3rem 0.75rem;
-  border-bottom: 1px solid #e2e8f0;
-  border-radius: 8px 8px 0 0;
-
-  font-family: Poppins, sans-serif;
-
-  background-color: #fff;
-}
-
-/* 🔹 Botones de pestañas */
-.tab {
-  cursor: pointer;
-
-  position: relative;
-
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-
-  padding: 0.5rem 0;
-  border: none;
-
-  font-family: Poppins, sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #64748b;
-
-  background: transparent;
-  outline: none;
-
-  transition: all 0.3s ease;
-}
-
-/* 🔹 Quita el contorno azul al hacer foco */
-.tab:focus,
-.tab:active {
-  border: none;
-  outline: none;
-  box-shadow: none;
-
-}
-
-/* 🔹 Espaciado entre pestañas */
-.tab+.tab {
-  margin-left: 2.5rem;
-}
-
-/* 🔹 Hover */
-.tab:hover {
-  color: #22c55e;
-}
-
-/* 🔹 Pestaña activa — solo cambia color (sin subrayado ni borde) */
-.active {
-  font-weight: 600;
-  color: #22c55e;
-}
-
-/* ❌ Elimina línea inferior de pestaña activa */
-.active::after {
-  display: none;
-}
-
-/* ❌ Elimina línea azul de hover */
-.tab:hover::after {
-  display: none;
+.content {
+  padding: 2rem;
 }
 
 /* 🔹 Encabezado */
@@ -197,68 +101,17 @@
   flex-direction: column;
 }
 
-.label {
-  margin-bottom: 0.4rem;
-
-  font-family: Poppins, sans-serif;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #374151;
-}
-
-.input {
-  padding: 0.7rem;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-
-  font-family: Poppins, sans-serif;
-  font-size: 0.9rem;
-
-  background: #fff;
-  outline: none;
-
-  transition: all 0.3s ease;
-}
-
-.input:focus {
-  border-color: #22c55e;
-  box-shadow: 0 0 0 3px rgb(34 197 94 / 10%);
-}
-
-.input.disabled {
-  cursor: not-allowed;
-  color: #6b7280;
-  background: #f9fafb;
-}
-
 /* 🔹 Botón */
 .buttonContainer {
   display: flex;
   justify-content: flex-end;
 }
 
-.saveButton {
-  cursor: pointer;
-
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 6px;
-
-  font-family: Poppins, sans-serif;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: white;
-
-  background: #22c55e;
-  box-shadow: 0 3px 6px rgb(34 197 94 / 30%);
-
-  transition: all 0.3s ease;
-}
-
-.saveButton:hover {
-  transform: translateY(-1px);
-  background: #16a34a;
-  box-shadow: 0 4px 10px rgb(34 197 94 / 40%);
+/* 🔹 Placeholder */
+.placeholder {
+  padding: 2rem;
+  text-align: center;
+  color: #6b7280;
 }
 
 /* 🔹 Animación */

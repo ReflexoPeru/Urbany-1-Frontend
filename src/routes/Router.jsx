@@ -5,8 +5,14 @@ import Optimizations from '../features/optimizations/pages/OptimizationsPage';
 import Properties from '../features/properties/pages/PropertiesPage';
 import Map from '../features/map/pages/MapPage';
 import ToastDemo from '../pages/ToastDemo';
+import ComponentShowcase from '../pages/ComponentShowcase';
 import Contacts from '../features/contacts/pages/ContactsPage';
+import ConfiguracionLayout from '../features/profile/components/ConfiguracionLayout';
 import Profile from '../features/profile/components/Profile';
+import Password from '../features/profile/components/Password';
+import Notifications from '../features/profile/components/Notifications';
+import Sessions from '../features/profile/components/Sessions';
+import RealEstateInfoPage from '../features/real_estate_info/pages/RealEstateInfoPage';
 import Branches from '../features/branches/pages/BranchManagement';
 import Integrations from '../features/integrations/pages/integrations';
 import Portals from '../features/integrations/pages/portales/Portals';
@@ -85,20 +91,29 @@ const router = createBrowserRouter([
       },
       {
         path: 'configuracion',
-        element: <div><h2>Configuración</h2></div>,
-      },
-
-      ///////////////////////
-      // UserProfile routes
-      //////////////////////
-
-      {
-        path: 'perfil',
-        element: <Profile />,
+        element: <ConfiguracionLayout />,
+        children: [
+          {
+            path: 'perfil',
+            element: <Profile />,
+          },
+          {
+            path: 'password',
+            element: <Password />,
+          },
+          {
+            path: 'notificaciones',
+            element: <Notifications />,
+          },
+          {
+            path: 'sesiones',
+            element: <Sessions />,
+          },
+        ]
       },
       {
         path: 'company',
-        element: <div><h2>Perfil de la Inmobiliaria</h2></div>,
+        element: <RealEstateInfoPage />,
       },
       {
         path: 'integrations',
@@ -177,6 +192,10 @@ const router = createBrowserRouter([
       {
         path: 'toast-demo',
         element: <ToastDemo />,
+      },
+      {
+        path: 'component-showcase',
+        element: <ComponentShowcase />,
       },
     ],
   },
