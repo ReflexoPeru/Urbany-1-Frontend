@@ -1,30 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ChatCircle } from 'phosphor-react';
 import StaticCard from '../../components/StaticCard';
-import ExpandableCard from '../../components/ExpandableCard';
 
 const Hoomi = () => {
-  const [expandedCard, setExpandedCard] = useState(null);
-
-  const handleCardClick = (cardId) => {
-    setExpandedCard(expandedCard === cardId ? null : cardId);
-  };
-
   return (
-    <div>
-      <div style={{ marginBottom: '15px' }}>
-        <ExpandableCard
-          title="Cliengo"
-          description="Integre Cliengo para publicar, editar y eliminar sus inmuebles."
-          icon={<ChatCircle size={20} weight="bold" color="#3B82F6" />}
-        />
-      </div>
+    <div style={{ marginLeft: '12px' }}>
       <StaticCard
         title="Hoomi"
-        description="Integre Hoomi para publicar, editar y eliminar sus inmuebles."
-        icon={<ChatCircle size={20} weight="bold" color="#10B981" />}
-        actionText="Configurar"
-        buttonText="Configurar"
+        description="Hoomi es un bot especializado en el sector inmobiliario, diseñado para acompañarte en la gestión diaria de tus contactos y oportunidades."
+        icon={<ChatCircle size={20} weight="bold" color="#3B82F6" />}
+        features={[
+          "Responder automáticamente los mensajes de WhatsApp",
+          "Detectar el interés de tus clientes y sugerirles las propiedades más adecuadas",
+          "Crear negocios y tasaciones directamente en el CRM",
+          "Coordinar llamadas y visitas en tu agenda",
+          "Mantenerte informado sobre cada avance importante"
+        ]}
+        infoTexts={[
+          "Hoomi se conectará a tu cuenta de WhatsApp y te ayudará a gestionar solo los nuevos contactos.",
+          "Recuerda no tener configurado mensajes automáticos en tu WhatsApp, sino Hoomi se desactivará en el momento que se envíen."
+        ]}
+        actionText="Para poder usar Hoomi, primero debes conectar tu cuenta de WhatsApp"
+        buttonText="Conectar mi cuenta de WhatsApp"
       />
     </div>
   );
