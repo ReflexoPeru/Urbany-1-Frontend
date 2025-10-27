@@ -1,7 +1,7 @@
 import React from 'react'
 import { deals, summaryByStage } from '../../../mock/business'
 import styles from './Business.module.css'
-import { DownloadSimple, Plus, CalendarBlank, MagnifyingGlass, CaretDown } from '@phosphor-icons/react'
+import { DownloadSimple, Plus, CalendarBlank, MagnifyingGlass, CaretDown } from 'phosphor-react'
 
 const formatDate = (iso) => {
   const [year, month, day] = iso.split('-')

@@ -1,0 +1,166 @@
+/* stylelint-disable order/properties-order */
+
+.container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    min-height: 60vh;
+    padding: 2rem 0;
+
+    font-family: Poppins, sans-serif;
+
+    background: #E1EDE6;
+}
+
+.card {
+    width: 85%;
+    max-width: 950px;
+    padding: 2rem 3rem;
+    border-radius: 12px;
+
+    font-family: Poppins, sans-serif;
+
+    background: #fff;
+    box-shadow: 0 4px 20px rgb(0 0 0 / 8%), 0 1px 3px rgb(0 0 0 / 10%);
+
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.content {
+    padding: 0;
+}
+
+/* 🔹 Encabezado */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-bottom: 1.5rem;
+    border-bottom: none;
+}
+
+.headerText {
+    flex: 1;
+    text-align: left;
+}
+
+.title {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+
+    margin: 0;
+
+    font-family: Poppins, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.subtitle {
+    margin-top: 0.3rem;
+    font-family: Poppins, sans-serif;
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+/* 🔹 Avatar */
+.avatarContainer {
+    position: relative;
+}
+
+.avatarPlaceholder {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    background: #3b82f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 6px rgb(0 0 0 / 10%);
+}
+
+.avatarInitials {
+    font-family: Poppins, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+}
+
+.cameraButton {
+    cursor: pointer;
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+
+    font-size: 0.8rem;
+    color: #fff;
+
+    background: #22c55e;
+
+    transition: all 0.3s ease;
+}
+
+.cameraButton:hover {
+    transform: scale(1.1);
+    background: #16a34a;
+}
+
+/* 🔹 Formulario */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 2rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 🔹 Botón */
+.buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+/* 🔹 Animación */
+@keyframes fadeIn {
+    from {
+        transform: translateY(15px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* 🔒 Forzar fondo blanco global */
+:global(html),
+:global(body),
+:global(#root),
+:global(.App) {
+    overflow: visible !important;
+    background-color: #fff !important;
+}
