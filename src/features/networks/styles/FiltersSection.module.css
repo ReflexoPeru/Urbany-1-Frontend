@@ -1,0 +1,258 @@
+.filtersSection {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.searchGroup {
+  margin-bottom: 20px;
+}
+
+.searchContainer {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  max-width: 500px;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #38E47A;
+}
+
+/* NUEVO: Fila inferior para checkbox y botón */
+.bottomRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.checkboxLabel input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* CAMBIO: Botón con fondo gris claro #E8EDF2 */
+.searchButton {
+  padding: 12px 24px;
+  background: #E8EDF2; /* Nuevo color gris claro */
+  color: #333; /* Texto oscuro */
+  border: 1px solid #E8EDF2; /* Borde del mismo color */
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.searchButton:hover {
+  background: #38E47A; /* Verde al hover */
+  color: white;
+  border-color: #38E47A;
+}
+
+/* NUEVO: Contenedor para los botones de filtros en línea */
+.filtersRow {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.filtersLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
+}
+
+.filtersContainer {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* CAMBIO: Botones de filtro con fondo gris claro #E8EDF2 */
+.filterButton {
+  padding: 12px 16px;
+  border: 1px solid #E8EDF2;
+  background: #E8EDF2; /* Nuevo color gris claro */
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 120px;
+  position: relative;
+  color: #333; /* Texto oscuro */
+}
+
+.filterButton::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-color: #666; /* Iconos gris oscuro */
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  flex-shrink: 0;
+}
+
+/* Iconos específicos para cada botón */
+.filterButton:nth-child(1)::before { /* Tipo de operación */
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.filterButton:nth-child(2)::before { /* Tipo de propiedad */
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.filterButton:nth-child(3)::before { /* Precio */
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.filterButton:nth-child(4)::before { /* Ubicación */
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z'%3E%3C/path%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 11a3 3 0 11-6 0 3 3 0 016 0z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.filterButton:nth-child(5)::before { /* Ambientes */
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z'%3E%3C/path%3E%3Cpolyline points='9 22 9 12 15 12 15 22'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+.filterButton:nth-child(6)::before { /* Dormitorios */
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.filterButton:nth-child(7)::before { /* Inmobiliarias */
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.filterButton:nth-child(8)::before { /* Comisión */
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.filterButton:hover {
+  background: #38E47A; /* Verde al hover */
+  border-color: #38E47A;
+  color: white;
+}
+
+.filterButton:hover::before {
+  background-color: white; /* Iconos blancos al hover */
+}
+
+/* Texto dentro del botón */
+.filterButtonText {
+  font-size: 14px;
+  font-weight: 500;
+  color: inherit;
+  white-space: nowrap;
+}
+
+/* NUEVO: Contenedor para los iconos */
+.iconsContainer {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-left: auto;
+}
+
+/* NUEVO: Estilos para los iconos */
+.icon {
+  width: 20px;
+  height: 20px;
+  color: #6c757d;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.icon:hover {
+  color: #38E47A;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .filtersRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .filtersContainer {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .filterButton {
+    flex: 1;
+    min-width: calc(25% - 10px);
+    padding: 10px 12px;
+  }
+  
+  .searchContainer {
+    flex-direction: column;
+  }
+  
+  .bottomRow {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+  
+  .searchButton {
+    align-self: flex-end;
+  }
+  
+  .iconsContainer {
+    margin-left: 0;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .filterButton {
+    min-width: calc(33.333% - 10px);
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+  
+  .filterButtonText {
+    font-size: 12px;
+  }
+  
+  .filterButton::before {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .searchButton {
+    width: 100%;
+  }
+}
