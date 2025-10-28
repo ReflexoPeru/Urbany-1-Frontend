@@ -1,17 +1,18 @@
 /* src/features/dashboard/components/TodayTasks/TodayTasks.module.css */
 .todayTasks {
-  background: white;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: white;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 
 .title {
   margin-top: 0;
   margin-bottom: 20px;
-  color: #333;
+
   font-size: 1.2rem;
   font-weight: 600;
+  color: #333;
 }
 
 .taskItem {
@@ -29,22 +30,22 @@
 
 .taskRow {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   gap: 12px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .taskLeft {
   display: flex;
-  align-items: center;
-  gap: 12px;
   flex: 1;
+  gap: 12px;
+  align-items: center;
 }
 
 .taskRight {
   display: flex;
-  align-items: center;
   gap: 8px;
+  align-items: center;
 }
 
 .checkbox {
@@ -53,25 +54,25 @@
 
 .taskText {
   font-size: 14px;
-  color: #333;
   font-weight: 500;
   line-height: 1.4;
+  color: #333;
 }
 
 .statusChip {
+  height: 20px;
   font-size: 11px;
   font-weight: 600;
-  height: 20px;
 }
 
 .statusChip.review {
-  background-color: #e3f2fd;
   color: #1976d2;
+  background-color: #e3f2fd;
 }
 
 .statusChip.progress {
-  background-color: #fff3e0;
   color: #f57c00;
+  background-color: #fff3e0;
 }
 
 .menuButton {
@@ -80,21 +81,25 @@
 }
 
 .menuButton:hover {
-  background-color: rgba(0, 0, 0, 0.04);
   color: #333;
+  background-color: rgb(0 0 0 / 4%);
 }
 
 .seeMoreButton {
+  cursor: pointer;
+
   width: 100%;
+  margin-top: 15px;
   padding: 10px;
-  background-color: #f8f9fa;
   border: 1px solid #e0e0e0;
   border-radius: 4px;
-  color: #333;
-  cursor: pointer;
+
   font-weight: 500;
+  color: #333;
+
+  background-color: #f8f9fa;
+
   transition: background-color 0.2s;
-  margin-top: 15px;
 }
 
 .seeMoreButton:hover {
