@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./login.module.css";
 import LoginHeader from "../components/Login/LoginHeader/LoginHeader";
 import LoginForm from "../components/Login/LoginForm/LoginForm";
 import LoginRegisterSection from "../components/Login/LoginRegisterSection/LoginRegisterSection";
-import agencia_inmobiliaria from "../../../assets/agencia_inmobiliaria.jpg";
 import inmobiliaria from "../../../assets/inmobiliaria.png";
-import inmo_login from "../../../assets/inmo_login.png";
 
 const Login = () => {
   return (
+
     <div className={styles.login}>
       <div className={styles.login_container}>
         <LoginHeader />

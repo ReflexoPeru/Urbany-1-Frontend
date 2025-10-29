@@ -1,0 +1,292 @@
+.container {
+  background: #f8fafc;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.viewToggle {
+  display: flex;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.viewButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.viewButton:hover {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.viewButton.active {
+  background: #10b981;
+  color: white;
+}
+
+.addButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.addButton:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+.clearButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #6b7280;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clearButton:hover {
+  background: #4b5563;
+  transform: translateY(-1px);
+}
+
+.filtersContainer {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.filterGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.filterGroup:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  font-weight: 600;
+  color: #374151;
+  min-width: 100px;
+  font-size: 0.9rem;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filterButton {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.filterButton:hover {
+  background: #e5e7eb;
+  border-color: #d1d5db;
+}
+
+.filterButton.active {
+  background: #10b981;
+  color: white;
+  border-color: #10b981;
+  box-shadow: 0 1px 3px rgba(16, 185, 129, 0.3);
+}
+
+.mainContent {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  min-height: 400px;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+}
+
+.illustration {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.targetContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.target {
+  color: #f59e0b;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.sparkles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.sparkle1,
+.sparkle2,
+.sparkle3,
+.sparkle4 {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+.sparkle1 {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.sparkle2 {
+  top: 10%;
+  right: 15%;
+  animation-delay: 0.3s;
+}
+
+.sparkle3 {
+  bottom: 20%;
+  left: 15%;
+  animation-delay: 0.6s;
+}
+
+.sparkle4 {
+  bottom: 10%;
+  right: 10%;
+  animation-delay: 0.9s;
+}
+
+.emptyTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 0.5rem 0;
+}
+
+.emptyMessage {
+  font-size: 1rem;
+  color: #6b7280;
+  margin: 0 0 2rem 0;
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+.emptyButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.emptyButton:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+

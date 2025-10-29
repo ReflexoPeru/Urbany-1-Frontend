@@ -1,0 +1,183 @@
+.calendar {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.navButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  border-radius: 8px;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.navButton:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+  color: #374151;
+}
+
+.monthYear {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.dayHeader {
+  background: #f9fafb;
+  padding: 0.75rem;
+  text-align: center;
+  font-weight: 600;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.dayCell {
+  background: white;
+  min-height: 120px;
+  padding: 0.5rem;
+  position: relative;
+  transition: background 0.2s ease;
+}
+
+.dayCell:hover {
+  background: #f9fafb;
+}
+
+.dayCell.today {
+  background: #f0fdf4;
+}
+
+.dayCell.today .dayNumber {
+  background: #10b981;
+  color: white;
+}
+
+.dayNumber {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+}
+
+.activities {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.activityItem {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.activityItem:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.activityItem.low {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.activityItem.medium {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.activityItem.high {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.moreActivities {
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-align: center;
+  padding: 0.25rem;
+  background: #f3f4f6;
+  border-radius: 4px;
+}
+
+.addButton {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: #f3f4f6;
+  border-radius: 50%;
+  color: #6b7280;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  opacity: 0;
+}
+
+.dayCell:hover .addButton {
+  opacity: 1;
+}
+
+.addButton:hover {
+  background: #10b981;
+  color: white;
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .calendar {
+    padding: 1rem;
+  }
+  
+  .dayCell {
+    min-height: 80px;
+    padding: 0.25rem;
+  }
+  
+  .activityItem {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.4rem;
+  }
+}

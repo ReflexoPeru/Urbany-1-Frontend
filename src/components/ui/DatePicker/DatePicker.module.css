@@ -1,0 +1,342 @@
+/* stylelint-disable order/properties-order */
+
+/* ============================================
+   DATE PICKER WRAPPER
+   ============================================ */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+/* ============================================
+   LABEL
+   ============================================ */
+.label {
+  margin-bottom: 0.25rem;
+  font-family: Poppins, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.required {
+  margin-left: 0.25rem;
+  color: #ef4444;
+}
+
+/* ============================================
+   DATE PICKER CONTAINER
+   ============================================ */
+.container {
+  position: relative;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+
+  background: #fff;
+
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.container:hover {
+  border-color: #d1d5db;
+}
+
+.container.focused,
+.container.open {
+  border-color: #38e47a;
+  box-shadow: 0 0 0 3px rgb(56 228 122 / 10%);
+}
+
+.container.error {
+  border-color: #ef4444;
+}
+
+.container.error:hover,
+.container.error.focused {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgb(239 68 68 / 10%);
+}
+
+.container.disabled {
+  cursor: not-allowed;
+  border-color: #e5e7eb;
+  background: #f9fafb;
+}
+
+/* ============================================
+   INPUT CONTENT
+   ============================================ */
+.inputContent {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.calendarIcon {
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.selectedValue {
+  font-family: Poppins, sans-serif;
+  font-size: 0.875rem;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.container.disabled .selectedValue {
+  color: #9ca3af;
+}
+
+/* ============================================
+   ACTIONS
+   ============================================ */
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.clearButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  background: #e5e7eb;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clearButton:hover {
+  background: #d1d5db;
+  color: #374151;
+}
+
+/* ============================================
+   CALENDAR
+   ============================================ */
+.calendar {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  margin-top: 0.25rem;
+  width: 280px;
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%), 0 2px 4px rgb(0 0 0 / 6%);
+}
+
+/* ============================================
+   CALENDAR HEADER
+   ============================================ */
+.calendarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.navButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.navButton:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.monthYear {
+  margin: 0;
+  font-family: Poppins, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* ============================================
+   DAYS OF WEEK
+   ============================================ */
+.daysOfWeek {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.dayOfWeek {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  font-family: Poppins, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   DAYS GRID
+   ============================================ */
+.daysGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+}
+
+.day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  font-family: Poppins, sans-serif;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.day.currentMonth {
+  color: #111827;
+  background: transparent;
+}
+
+.day.currentMonth:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.day.otherMonth {
+  color: #9ca3af;
+  background: transparent;
+}
+
+.day.selected {
+  background: #38e47a;
+  color: #fff;
+  font-weight: 600;
+}
+
+.day.selected:hover {
+  background: #2ecc71;
+}
+
+.day.today {
+  background: #f3f4f6;
+  color: #38e47a;
+  font-weight: 600;
+}
+
+.day.today:hover {
+  background: #e5e7eb;
+}
+
+.day.disabled {
+  color: #d1d5db;
+  cursor: not-allowed;
+  background: transparent;
+}
+
+.day.disabled:hover {
+  background: transparent;
+}
+
+/* ============================================
+   SIZE VARIANTS
+   ============================================ */
+.container.small {
+  padding: 0.5rem 0.75rem;
+}
+
+.container.small .selectedValue {
+  font-size: 0.75rem;
+}
+
+.container.large {
+  padding: 1rem 1.25rem;
+}
+
+.container.large .selectedValue {
+  font-size: 1rem;
+}
+
+/* ============================================
+   MESSAGES
+   ============================================ */
+.errorMessage {
+  margin-top: 0.25rem;
+  font-family: Poppins, sans-serif;
+  font-size: 0.75rem;
+  color: #ef4444;
+}
+
+.helperText {
+  margin-top: 0.25rem;
+  font-family: Poppins, sans-serif;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (width <= 768px) {
+  .calendar {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+/* ============================================
+   MICRO-INTERACCIONES
+   ============================================ */
+@media (prefers-reduced-motion: no-preference) {
+  .container,
+  .navButton,
+  .day,
+  .clearButton {
+    transition-duration: 0.2s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .container,
+  .navButton,
+  .day,
+  .clearButton {
+    transition: none;
+  }
+}
+
+

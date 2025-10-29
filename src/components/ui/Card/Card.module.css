@@ -1,0 +1,127 @@
+/* stylelint-disable order/properties-order */
+
+/* ============================================
+   CARD BASE
+   ============================================ */
+.card {
+    position: relative;
+
+    overflow: hidden;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+
+    background: #fff;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 6%);
+
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10%), 0 2px 4px rgb(0 0 0 / 6%);
+}
+
+/* ============================================
+   CARD VARIANTS
+   ============================================ */
+.card.default {
+    /* Default variant styles */
+}
+
+.card.elevated {
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10%), 0 2px 4px rgb(0 0 0 / 6%);
+}
+
+.card.elevated:hover {
+    box-shadow: 0 10px 15px rgb(0 0 0 / 10%), 0 4px 6px rgb(0 0 0 / 5%);
+}
+
+.card.outlined {
+    box-shadow: none;
+    border: 2px solid #e5e7eb;
+}
+
+.card.outlined:hover {
+    border-color: #38e47a;
+    box-shadow: 0 0 0 3px rgb(56 228 122 / 10%);
+}
+
+.card.flat {
+    border: none;
+    background: #f9fafb;
+    box-shadow: none;
+}
+
+.card.flat:hover {
+    background: #f3f4f6;
+}
+
+/* ============================================
+   CARD SECTIONS
+   ============================================ */
+.header {
+    margin-bottom: 1rem;
+    padding: 1.5rem 1.5rem 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.header:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.body {
+    padding: 1.5rem;
+}
+
+.body:first-child {
+    padding-top: 1.5rem;
+}
+
+.body:last-child {
+    padding-bottom: 1.5rem;
+}
+
+.footer {
+    margin-top: 1rem;
+    padding: 0 1.5rem 1.5rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.footer:first-child {
+    margin-top: 0;
+    border-top: none;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (width <=768px) {
+
+    .header,
+    .body,
+    .footer {
+        padding: 1rem;
+    }
+
+    .card {
+        border-radius: 6px;
+    }
+}
+
+/* ============================================
+   MICRO-INTERACCIONES
+   ============================================ */
+@media (prefers-reduced-motion: no-preference) {
+    .card {
+        transition-duration: 0.2s;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        transition: none;
+    }
+}
+
