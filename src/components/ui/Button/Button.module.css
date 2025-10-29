@@ -1,0 +1,205 @@
+/* stylelint-disable order/properties-order */
+
+/* ============================================
+   BUTTON BASE
+   ============================================ */
+.button {
+    position: relative;
+
+    cursor: pointer;
+    user-select: none;
+
+    overflow: hidden;
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 8px;
+
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgb(56 228 122 / 20%);
+}
+
+.button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.button.loading {
+    cursor: not-allowed;
+}
+
+/* ============================================
+   SIZE VARIANTS
+   ============================================ */
+.button.small {
+    min-height: 2rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+}
+
+.button.medium {
+    min-height: 2.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+}
+
+.button.large {
+    min-height: 3rem;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+}
+
+/* ============================================
+   COLOR VARIANTS
+   ============================================ */
+.button.primary {
+    color: #fff;
+    background: #38e47a;
+}
+
+.button.primary:hover:not(:disabled) {
+    transform: translateY(-1px);
+    background: #2ecc71;
+    box-shadow: 0 4px 12px rgb(56 228 122 / 30%);
+}
+
+.button.primary:active:not(:disabled) {
+    transform: translateY(0);
+    background: #059669;
+}
+
+.button.secondary {
+    color: #6b7280;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+}
+
+.button.secondary:hover:not(:disabled) {
+    transform: translateY(-1px);
+    background: #f3f4f6;
+    border-color: #d1d5db;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
+}
+
+.button.secondary:active:not(:disabled) {
+    transform: translateY(0);
+    background: #e5e7eb;
+}
+
+.button.danger {
+    color: #fff;
+    background: #ef4444;
+}
+
+.button.danger:hover:not(:disabled) {
+    transform: translateY(-1px);
+    background: #dc2626;
+    box-shadow: 0 4px 12px rgb(239 68 68 / 30%);
+}
+
+.button.danger:active:not(:disabled) {
+    transform: translateY(0);
+    background: #b91c1c;
+}
+
+.button.success {
+    color: #fff;
+    background: #10b981;
+}
+
+.button.success:hover:not(:disabled) {
+    transform: translateY(-1px);
+    background: #059669;
+    box-shadow: 0 4px 12px rgb(16 185 129 / 30%);
+}
+
+.button.success:active:not(:disabled) {
+    transform: translateY(0);
+    background: #047857;
+}
+
+/* ============================================
+   FULL WIDTH
+   ============================================ */
+.button.fullWidth {
+    width: 100%;
+}
+
+/* ============================================
+   ICON STYLES
+   ============================================ */
+.icon {
+    flex-shrink: 0;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button:hover .icon {
+    transform: scale(1.05);
+}
+
+.content {
+    flex: 1;
+    text-align: center;
+}
+
+/* ============================================
+   LOADING SPINNER
+   ============================================ */
+.spinner {
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid transparent;
+    border-top: 2px solid currentcolor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (width <=768px) {
+    .button {
+        min-height: 44px;
+        /* Touch target size */
+    }
+
+    .button.small {
+        min-height: 40px;
+    }
+
+    .button.large {
+        min-height: 48px;
+    }
+}
+
+/* ============================================
+   MICRO-INTERACCIONES
+   ============================================ */
+@media (prefers-reduced-motion: no-preference) {
+    .button {
+        transition-duration: 0.2s;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .button {
+        transition: none;
+    }
+}

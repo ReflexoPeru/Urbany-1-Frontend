@@ -1,24 +1,6 @@
 import React from 'react'
-import img1 from '../img/img.png'
-import img2 from '../img/img2 .png'
-import styles from '../styles/PropertyList.module.css'
-
-const mockItems = [
-  {
-    id: 1,
-    title: 'Casa en Venta',
-    price: '$250,000',
-    address: 'Calle Principal 123, Ciudad',
-    image: img1,
-  },
-  {
-    id: 2,
-    title: 'Apartamento en Alquiler',
-    price: '$1,200/mes',
-    address: 'Avenida Central 456, Pueblo',
-    image: img2,
-  },
-]
+import { propertiesMock } from '../../../mock/properties'
+import styles from './PropertyList.module.css'
 
 function RowActions() {
   return (
@@ -41,7 +23,7 @@ function RowActions() {
   )
 }
 
-function PropertyList({ items = mockItems }) {
+function PropertyList({ items = propertiesMock }) {
   return (
     <section className={styles['property-list']}>
       <RowActions />

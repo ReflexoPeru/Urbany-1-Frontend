@@ -1,0 +1,166 @@
+/* src/features/dashboard/components/SalesByZone/SalesByZone.module.css */
+
+.salesByZone {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: none;
+  height: auto;
+  margin: 0;
+  padding: 15px 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+
+  background: #fff;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+}
+
+.header {
+  margin-bottom: 15px;
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.titleWithIcon {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* CONTENEDOR DE FILTRO SIN FONDO REDONDEADO */
+.filterContainer {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 2px 0;
+
+}
+
+.flagIcon {
+  flex-shrink: 0;
+  font-size: 24px;
+  color: #030303;
+}
+
+.chatIcon {
+  flex-shrink: 0;
+  font-size: 24px;
+  color: #0b0909;
+}
+
+.squareIcon {
+  transform: rotate(90deg);
+
+  /* Icono en posición vertical */
+  flex-shrink: 0;
+  font-size: 20px;
+  color: #2d54ae;
+}
+
+.caretIcon {
+  flex-shrink: 0;
+  font-size: 20px;
+  color: #171717;
+}
+
+.filterText {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
+}
+
+.titleSection,
+.subtitleSection {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.mainTitle {
+  margin: 0;
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #333;
+  letter-spacing: 0.5px;
+}
+
+.titleSecondary {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  margin: 0;
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #333;
+  letter-spacing: 0.5px;
+}
+
+.subtitleSecondary {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 0.5px;
+}
+
+.separator {
+  width: 100%;
+  height: 2px;
+  margin: 3px 0;
+  background-color: #000;
+}
+
+@media (width <=768px) {
+  .titleRow {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .titleWithIcon {
+    width: 100%;
+  }
+
+  .filterContainer {
+    align-self: flex-end;
+    margin-top: 3px;
+  }
+
+  .salesByZone {
+    padding: 12px 15px;
+  }
+
+  .titles {
+    gap: 10px;
+  }
+
+  .header {
+    margin-bottom: 12px;
+  }
+}
+
+@media (width >=1200px) {
+  .salesByZone {
+    padding: 18px 25px;
+  }
+}

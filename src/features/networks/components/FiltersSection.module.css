@@ -1,0 +1,198 @@
+.filtersSection {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.searchGroup {
+    margin-bottom: 20px;
+}
+
+.searchContainer {
+    display: flex;
+    gap: 10px;
+    max-width: 500px;
+    margin-bottom: 15px;
+}
+
+.searchInput {
+    flex: 1;
+
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+
+    font-size: 14px;
+}
+
+.searchInput:focus {
+    border-color: #38E47A;
+    outline: none;
+}
+
+.bottomRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.checkboxLabel {
+    cursor: pointer;
+
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    font-size: 14px;
+}
+
+.checkboxLabel input[type="checkbox"] {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+
+.searchButton {
+    cursor: pointer;
+
+    padding: 12px 24px;
+    border: 1px solid #E8EDF2;
+    border-radius: 6px;
+
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    white-space: nowrap;
+
+    background: #E8EDF2;
+
+    transition: all 0.2s ease;
+}
+
+.searchButton:hover {
+    border-color: #38E47A;
+    color: white;
+    background: #38E47A;
+}
+
+.filtersRow {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filtersLabel {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    white-space: nowrap;
+}
+
+.filtersContainer {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.filterButton {
+    cursor: pointer;
+
+    position: relative;
+
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    min-width: 120px;
+    padding: 12px 16px;
+    border: 1px solid #E8EDF2;
+    border-radius: 8px;
+
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    white-space: nowrap;
+
+    background: #E8EDF2;
+
+    transition: all 0.2s ease;
+}
+
+.filterButton:hover {
+    border-color: #38E47A;
+    color: white;
+    background: #38E47A;
+}
+
+.iconsContainer {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-left: auto;
+}
+
+.icon {
+    cursor: pointer;
+
+    width: 20px;
+    height: 20px;
+
+    color: #6c757d;
+
+    transition: color 0.2s ease;
+}
+
+.icon:hover {
+    color: #38E47A;
+}
+
+@media (width <=768px) {
+    .filtersRow {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .filtersContainer {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .filterButton {
+        flex: 1;
+        min-width: calc(25% - 10px);
+        padding: 10px 12px;
+    }
+
+    .searchContainer {
+        flex-direction: column;
+    }
+
+    .bottomRow {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+
+    .searchButton {
+        align-self: flex-end;
+    }
+
+    .iconsContainer {
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px;
+        margin-left: 0;
+    }
+}
+
+@media (width <=480px) {
+    .filterButton {
+        min-width: calc(33.333% - 10px);
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,176 @@
+/* src/features/dashboard/components/BusinessOverview/BusinessOverview.module.css */
+.businessOverview {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  padding: 15px;
+  border-radius: 8px;
+
+  background: white;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+}
+
+.cards_main_container {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.dots_container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dots_container h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Estilos base para todas las tarjetas */
+.cards_container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 30%;
+  height: auto;
+  min-height: 160px;
+  padding: 2rem 1rem;
+  border-radius: 8px;
+
+  background-color: #f8f9fa;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 10%);
+}
+
+.cards_container p {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.new_negocio {
+  display: flex;
+
+  padding: 0.8rem;
+  border: 1px solid #e9ecef;
+  border-radius: 50%;
+
+  background: white;
+}
+
+.cards_container h3 {
+  margin: 1rem 0 0.5rem;
+
+  font-size: 1rem;
+  font-weight: 600;
+  color: #666;
+  text-align: center;
+}
+
+/* Colores específicos para cada tarjeta */
+
+/* Nuevo Negocio - Azul */
+.nuevoNegocio {
+  color: white;
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.nuevoNegocio p,
+.nuevoNegocio h3 {
+  color: white;
+}
+
+.nuevoNegocio .new_negocio {
+  border-color: rgb(255 255 255 / 30%);
+  background: rgb(255 255 255 / 20%);
+}
+
+.nuevoNegocio .new_negocio svg {
+  color: white;
+}
+
+/* Contactado - Celeste */
+.contactado {
+  color: white;
+  background: linear-gradient(135deg, #5be9ff 0%, #27c1d9 100%);
+}
+
+.contactado p,
+.contactado h3 {
+  color: white;
+}
+
+.contactado .new_negocio {
+  border-color: rgb(255 255 255 / 30%);
+  background: rgb(255 255 255 / 20%);
+}
+
+.contactado .new_negocio svg {
+  color: white;
+}
+
+/* Completion Rate */
+.graficoCompletionContainer {
+  display: flex;
+  flex: 1;
+  align-items: flex-end;
+  margin: 0.5rem 0 0;
+}
+
+.completionInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 35%;
+}
+
+.completionTitle {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgb(51 51 51 / 70%);
+}
+
+.completionRate {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+
+}
+
+.completionRate h2 {
+  margin: 0;
+
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #333;
+}
+
+.completionRate p {
+  margin: 0;
+  margin-top: 4px;
+
+  /* Pequeño ajuste para alineación visual */
+
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2ec267;
+}
+
+.graficoContainer {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  width: 65%;
+}

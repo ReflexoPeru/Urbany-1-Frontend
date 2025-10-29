@@ -1,0 +1,32 @@
+:global(body) {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  font-family: Poppins, sans-serif !important;
+
+  background: #f8fafc !important;
+}
+
+:global(.icon-btn) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+  border: 1px solid #e5e7eb;
+  border-radius: 9999px;
+
+  background: #fff;
+}
+
+.mapContent {
+  overflow-y: auto;
+
+  height: auto;
+  max-height: calc(100vh - 200px);
+  padding: 0 64px 48px 96px;
+
+  background: transparent;
+}

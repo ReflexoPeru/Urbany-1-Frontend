@@ -1,0 +1,26 @@
+/* ============================================
+   PREMIUM BUTTON
+   ============================================ */
+.premium-btn {
+  cursor: pointer;
+
+  padding: 4px 13px;
+  border: 1px solid rgb(99 102 241 / 20%);
+  border-radius: 7px;
+
+  font-family: Poppins, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6366f1;
+  white-space: nowrap;
+
+  background-color: rgb(99 102 241 / 6%);
+
+  transition: all 0.2s ease;
+}
+
+.premium-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgb(56 228 122 / 30%);
+  background-color: rgb(56 228 122 / 12%);
+}
