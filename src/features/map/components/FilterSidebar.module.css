@@ -359,3 +359,183 @@
 .applyBtn:hover {
   background: #2563eb;
 }
+
+/* Estilos para el autocompletado */
+.autocompleteContainer {
+  position: relative;
+}
+
+.suggestionsList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.suggestionItem {
+  padding: 8px 16px;
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.suggestionItem:last-child {
+  border-bottom: none;
+}
+
+.suggestionItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.suggestionItem:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.suggestionItemSelected {
+  background: #eff6ff;
+  color: #3b82f6;
+  border-left: 3px solid #3b82f6;
+}
+
+.suggestionItemSelected:hover {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.checkIcon {
+  color: #3b82f6;
+  flex-shrink: 0;
+}
+
+.autocompleteContainer .input:focus {
+  border-radius: 8px 8px 0 0;
+}
+
+/* Estilos para el input múltiple con tags */
+.multiSelectInput {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  min-height: 44px;
+  cursor: text;
+  transition: border-color 0.2s ease;
+}
+
+.multiSelectInput:focus-within {
+  border-color: #3b82f6;
+  border-radius: 8px 8px 0 0;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: #e5e7eb;
+  border-radius: 6px;
+  font-family: Poppins, sans-serif;
+  font-size: 13px;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.tag span {
+  line-height: 1;
+}
+
+.tagRemove {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #9ca3af;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  line-height: 1;
+}
+
+.tagRemove:hover {
+  background: #6b7280;
+}
+
+.tagInput {
+  flex: 1;
+  min-width: 120px;
+  border: none;
+  outline: none;
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  color: #374151;
+  background: transparent;
+  padding: 4px 0;
+}
+
+.tagInput::placeholder {
+  color: #9ca3af;
+}
+
+/* Estilo específico para input de calidad (ancho completo) */
+.qualityInput {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  color: #374151;
+  background: white;
+  outline: none;
+  transition: border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.qualityInput:focus {
+  border-color: #3b82f6;
+}
+
+.qualityInput::placeholder {
+  color: #9ca3af;
+}
+
+/* Contenedor para el input de calidad con chevron */
+.qualityInputContainer {
+  position: relative;
+  width: 100%;
+}
+
+.qualityChevron {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.qualityInputContainer.open .qualityChevron {
+  transform: translateY(-50%) rotate(180deg);
+}

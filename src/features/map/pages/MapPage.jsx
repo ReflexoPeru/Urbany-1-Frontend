@@ -99,6 +99,7 @@ function MapPage() {
     // Filtros del sidebar
     if (currentFilters.sidebarFiltersData) {
       const sidebarFilters = currentFilters.sidebarFiltersData
+      console.log('Aplicando filtros del sidebar:', sidebarFilters)
 
       // Filtro por baños
       if (sidebarFilters.bathrooms && sidebarFilters.bathrooms.length > 0) {
@@ -129,12 +130,39 @@ function MapPage() {
         result = result.filter(prop => sidebarFilters.age.includes(prop.age))
       }
 
-      // Filtro por superficie
+      // Filtro por tipo de superficie (solo si hay valores min/max)
       if (sidebarFilters.minSurface || sidebarFilters.maxSurface) {
+        console.log('Filtrando por superficie:', {
+          tipo: sidebarFilters.surfaceType,
+          min: sidebarFilters.minSurface,
+          max: sidebarFilters.maxSurface
+        })
         result = result.filter(prop => {
           const minSurf = sidebarFilters.minSurface ? parseFloat(sidebarFilters.minSurface) : 0
           const maxSurf = sidebarFilters.maxSurface ? parseFloat(sidebarFilters.maxSurface) : Infinity
-          return prop.surface >= minSurf && prop.surface <= maxSurf
+          
+          // Determinar qué superficie usar según el tipo seleccionado
+          let surfaceToCheck = prop.surface // por defecto
+          if (sidebarFilters.surfaceType === 'cubierta') {
+            surfaceToCheck = prop.surfaceCovered || prop.surface
+          } else if (sidebarFilters.surfaceType === 'descubierta') {
+            surfaceToCheck = prop.surfaceUncovered || 0
+          } else if (sidebarFilters.surfaceType === 'total') {
+            surfaceToCheck = prop.surfaceTotal || prop.surface
+          }
+          
+          console.log(`Propiedad ${prop.id}: superficie ${sidebarFilters.surfaceType} = ${surfaceToCheck}`)
+          return surfaceToCheck >= minSurf && surfaceToCheck <= maxSurf
+        })
+      }
+
+      // Filtro especial para superficie descubierta = 0 (solo si no hay otros filtros de superficie)
+      if (sidebarFilters.surfaceType === 'descubierta' && !sidebarFilters.minSurface && !sidebarFilters.maxSurface) {
+        console.log('Filtrando propiedades con superficie descubierta > 0')
+        result = result.filter(prop => {
+          const uncoveredSurface = prop.surfaceUncovered || 0
+          console.log(`Propiedad ${prop.id}: superficie descubierta = ${uncoveredSurface}`)
+          return uncoveredSurface > 0
         })
       }
 
@@ -148,18 +176,24 @@ function MapPage() {
         result = result.filter(prop => prop.furnished === true)
       }
 
-      // Filtro por disposición
-      if (sidebarFilters.disposition && sidebarFilters.disposition.trim() !== '') {
+      // Filtro por disposición (array)
+      if (sidebarFilters.disposition && Array.isArray(sidebarFilters.disposition) && sidebarFilters.disposition.length > 0) {
+        console.log('Filtrando por disposición:', sidebarFilters.disposition)
+        console.log('Propiedades antes del filtro:', result.map(p => ({ id: p.id, disposition: p.disposition })))
         result = result.filter(prop => 
-          prop.disposition.toLowerCase().includes(sidebarFilters.disposition.toLowerCase())
+          sidebarFilters.disposition.includes(prop.disposition)
         )
+        console.log('Propiedades después del filtro:', result.map(p => ({ id: p.id, disposition: p.disposition })))
       }
 
-      // Filtro por orientación
-      if (sidebarFilters.orientation && sidebarFilters.orientation.trim() !== '') {
+      // Filtro por orientación (array)
+      if (sidebarFilters.orientation && Array.isArray(sidebarFilters.orientation) && sidebarFilters.orientation.length > 0) {
+        console.log('Filtrando por orientación:', sidebarFilters.orientation)
+        console.log('Propiedades antes del filtro:', result.map(p => ({ id: p.id, orientation: p.orientation })))
         result = result.filter(prop => 
-          prop.orientation.toLowerCase().includes(sidebarFilters.orientation.toLowerCase())
+          sidebarFilters.orientation.includes(prop.orientation)
         )
+        console.log('Propiedades después del filtro:', result.map(p => ({ id: p.id, orientation: p.orientation })))
       }
 
       // Filtro por propiedades exclusivas
@@ -180,6 +214,21 @@ function MapPage() {
       // Filtro por calidad
       if (sidebarFilters.propertyQuality && sidebarFilters.propertyQuality !== '') {
         result = result.filter(prop => prop.quality === sidebarFilters.propertyQuality)
+      }
+
+      // Ordenamiento
+      if (sidebarFilters.sortBy) {
+        result = [...result].sort((a, b) => {
+          const dateA = new Date(a.createdDate || '2024-01-01')
+          const dateB = new Date(b.createdDate || '2024-01-01')
+          
+          if (sidebarFilters.sortBy === 'newest') {
+            return dateB - dateA // Más nuevas primero
+          } else if (sidebarFilters.sortBy === 'oldest') {
+            return dateA - dateB // Más antiguas primero
+          }
+          return 0
+        })
       }
     }
 
