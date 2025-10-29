@@ -3,11 +3,11 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 20px;
-  background-color: #f5f5f5;
-  min-height: 100vh;
+
   max-width: 1400px;
+  min-height: 100vh;
   margin: 0 auto;
+  padding: 20px;
 }
 
 .row {
@@ -17,49 +17,57 @@
 }
 
 .col40 {
-  width: 40%;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 40%;
 }
 
 .col20 {
-  width: 20%;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 20%;
 }
 
 .col80 {
-  width: 80%;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 80%;
 }
 
 .salesSection {
-  background: white;
+  height: fit-content;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  height: fit-content;
+
+  background: white;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 
 .sectionHeader {
+  position: relative;
+
+  /* Para control de posición */
+
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
+  justify-content: space-between;
+
   margin-bottom: 25px;
-  position: relative; /* Para control de posición */
 }
 
 .sectionTitle {
   margin-top: 0;
   margin-bottom: 20px;
-  color: #333;
+
   font-size: 1.3rem;
   font-weight: 600;
-  text-align: left; /* ⬅️ CAMBIA ESTA LÍNEA de 'center' a 'left' */
+  color: #333;
+  text-align: left;
+
+  /* ⬅️ CAMBIA ESTA LÍNEA de 'center' a 'left' */
 }
 
 
@@ -67,27 +75,33 @@
 /* MODIFICADO: Cuadrícula de 3 columnas para ProgressSection */
 .progressGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+  grid-template-columns: repeat(3, 1fr);
+
+  /* 3 columnas iguales */
   gap: 20px;
 }
 
 /* Asegurar que las tarjetas tengan altura consistente */
-.progressGrid > * {
+.progressGrid>* {
   height: 100%;
-  min-height: 180px; /* Altura mínima para consistencia */
+  min-height: 180px;
+
+  /* Altura mínima para consistencia */
 }
 
 /* Contenedores con altura fija para igualar las alturas */
 .chartContainer,
 .businessContainer {
-  height: 400px; /* Ajusta esta altura según necesites */
   display: flex;
   flex-direction: column;
+  height: 400px;
+
+  /* Ajusta esta altura según necesites */
 }
 
 /* Asegurar que los componentes ocupen toda la altura disponible */
-.chartContainer > *,
-.businessContainer > * {
+.chartContainer>*,
+.businessContainer>* {
   flex: 1;
   height: 100%;
 }
@@ -110,27 +124,29 @@
 }
 
 .businessContainer .graficoCompletionContainer {
-  margin: 1rem 0 0 0;
+  margin: 1rem 0 0;
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
+@media (width <=1024px) {
   .row {
     flex-direction: column;
   }
-  
+
   .col20,
   .col40,
   .col80 {
     width: 100%;
   }
-  
+
   .chartContainer,
   .businessContainer {
-    height: auto; /* En móvil, altura automática */
+    height: auto;
+
+    /* En móvil, altura automática */
     min-height: 300px;
   }
-  
+
   /* En tablet, la cuadrícula se convierte en 2 columnas */
   .progressGrid {
     grid-template-columns: repeat(2, 1fr);
@@ -138,8 +154,7 @@
   }
 }
 
-@media (max-width: 768px) {
-  /* En móvil, la cuadrícula se convierte en una columna */
+@media (width <=768px) {
   .progressGrid {
     grid-template-columns: 1fr;
     gap: 15px;

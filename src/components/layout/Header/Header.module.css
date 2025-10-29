@@ -1,0 +1,28 @@
+/* stylelint-disable order/properties-order */
+
+/* ============================================
+   HEADER BASE
+   ============================================ */
+
+.header {
+  width: 100%;
+  height: 72px;
+  background-color: #fff;
+  display: grid;
+  grid-template-columns: minmax(200px, 300px) 1fr minmax(400px, auto);
+  align-items: center;
+  padding: 0 32px;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 3%);
+  gap: 24px;
+}
+
+/* ============================================
+   RIGHT SECTION
+   ============================================ */
+.right-section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 24px;
+}

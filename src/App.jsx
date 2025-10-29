@@ -1,12 +1,15 @@
-import React from 'react'
-import Login from './features/auth/pages/login'
+import Router from './routes/Router'
+import { ToastProvider } from './contexts/ToastContext'
+import { ConfirmModalProvider } from './contexts/ConfirmModalContext'
 import './App.css'
 
 function App() {
   return (
-    <div className="App">
-      <Login />
-    </div>
+    <ToastProvider>
+      <ConfirmModalProvider>
+        <Router />
+      </ConfirmModalProvider>
+    </ToastProvider>
   )
 }
 

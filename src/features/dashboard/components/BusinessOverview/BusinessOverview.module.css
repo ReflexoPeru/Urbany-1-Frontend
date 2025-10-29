@@ -1,49 +1,53 @@
 /* src/features/dashboard/components/BusinessOverview/BusinessOverview.module.css */
 .businessOverview {
-  background: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  height: 100%;
   display: flex;
   flex-direction: column;
+
+  height: 100%;
+  padding: 15px;
+  border-radius: 8px;
+
+  background: white;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 
 .cards_main_container {
   display: flex;
+  gap: 10px;
   justify-content: space-between;
   margin-top: 1rem;
-  gap: 10px;
 }
 
 .dots_container {
   display: flex;
+  gap: 1rem;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
 }
 
 .dots_container h2 {
   margin: 0;
-  color: #333;
   font-size: 1.2rem;
   font-weight: 600;
+  color: #333;
 }
 
 /* Estilos base para todas las tarjetas */
 .cards_container {
   display: flex;
+  flex: 1;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+
   width: 30%;
+  height: auto;
+  min-height: 160px;
   padding: 2rem 1rem;
   border-radius: 8px;
+
   background-color: #f8f9fa;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-  flex: 1;
-  min-height: 160px;
-  height: auto;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 10%);
 }
 
 .cards_container p {
@@ -54,27 +58,30 @@
 }
 
 .new_negocio {
-  padding: 0.8rem;
   display: flex;
+
+  padding: 0.8rem;
   border: 1px solid #e9ecef;
   border-radius: 50%;
+
   background: white;
 }
 
 .cards_container h3 {
-  margin: 1rem 0 0.5rem 0;
+  margin: 1rem 0 0.5rem;
+
   font-size: 1rem;
+  font-weight: 600;
   color: #666;
   text-align: center;
-  font-weight: 600;
 }
 
 /* Colores específicos para cada tarjeta */
 
 /* Nuevo Negocio - Azul */
 .nuevoNegocio {
-  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
   color: white;
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
 }
 
 .nuevoNegocio p,
@@ -83,8 +90,8 @@
 }
 
 .nuevoNegocio .new_negocio {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgb(255 255 255 / 30%);
+  background: rgb(255 255 255 / 20%);
 }
 
 .nuevoNegocio .new_negocio svg {
@@ -93,8 +100,8 @@
 
 /* Contactado - Celeste */
 .contactado {
-  background: linear-gradient(135deg, #5be9ff 0%, #27c1d9 100%);
   color: white;
+  background: linear-gradient(135deg, #5be9ff 0%, #27c1d9 100%);
 }
 
 .contactado p,
@@ -103,8 +110,8 @@
 }
 
 .contactado .new_negocio {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgb(255 255 255 / 30%);
+  background: rgb(255 255 255 / 20%);
 }
 
 .contactado .new_negocio svg {
@@ -113,10 +120,10 @@
 
 /* Completion Rate */
 .graficoCompletionContainer {
-  margin: 0.5rem 0 0 0;
-  flex: 1;
   display: flex;
+  flex: 1;
   align-items: flex-end;
+  margin: 0.5rem 0 0;
 }
 
 .completionInfo {
@@ -127,38 +134,43 @@
 }
 
 .completionTitle {
-  margin: 0 0 8px 0;
+  margin: 0 0 8px;
   font-size: 0.9rem;
-  color: rgba(51, 51, 51, 0.7);
   font-weight: 500;
+  color: rgb(51 51 51 / 70%);
 }
 
 .completionRate {
   display: flex;
-  flex-direction: row; /* Cambiado de column a row */
-  align-items: center; /* Alinear verticalmente al centro */
-  gap: 8px; /* Espacio entre el porcentaje y el incremento */
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+
 }
 
 .completionRate h2 {
   margin: 0;
+
   font-size: 2.2rem;
-  color: #333;
   font-weight: 700;
   line-height: 1;
+  color: #333;
 }
 
 .completionRate p {
   margin: 0;
+  margin-top: 4px;
+
+  /* Pequeño ajuste para alineación visual */
+
   font-size: 0.9rem;
-  color: #2ec267;
   font-weight: 600;
-  margin-top: 4px; /* Pequeño ajuste para alineación visual */
+  color: #2ec267;
 }
 
 .graficoContainer {
-  width: 65%;
-  flex: 1;
   display: flex;
+  flex: 1;
   justify-content: flex-end;
+  width: 65%;
 }
