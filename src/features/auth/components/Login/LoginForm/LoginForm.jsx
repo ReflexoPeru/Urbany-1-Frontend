@@ -7,7 +7,7 @@ const LoginForm = () => {
     const navigate = useNavigate();
 
     const handleClickLogin = () => {
-        navigate('/app/dashboard');
+        navigate('/dashboard');
     };
 
     return (

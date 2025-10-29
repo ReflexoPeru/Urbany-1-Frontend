@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/NetworksHeader.module.css';
+import styles from './NetworksHeader.module.css';
 
 const NetworksHeader = () => {
   return (

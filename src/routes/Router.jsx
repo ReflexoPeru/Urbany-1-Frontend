@@ -29,26 +29,32 @@ import Appraisals from '../features/appraisals/pages/appraisals';
 import Login from '../features/auth/pages/login';
 import Register from '../features/auth/pages/register';
 import RegisterInmobiliaria from '../features/auth/pages/register_inmobiliaria';
+import Network from '../features/integrations/pages/redes/Networks';
+import { Navigate } from 'react-router-dom';
 
 
 const router = createBrowserRouter([
+  // Ruta de Login independiente
   {
-    path: '/',
-    index: true,
+    path: '/login',
     element: <Login />,
   },
   {
-    path: '/register',
-    element: <Register />,
-  },
-  {
-    path: '/register-inmobiliaria',
-    element: <RegisterInmobiliaria />,
-  },
-  {
-    path: '/app',
+    path: '/',
     element: <MainLayout />,
     children: [
+      {
+        index: true,
+        element: <Navigate to="/login" replace />,
+      },
+      {
+        path: 'register',
+        element: <Register />,
+      },
+      {
+        path: 'register-inmobiliaria',
+        element: <RegisterInmobiliaria />,
+      },
       {
         path: 'dashboard',
         element: <Dashboard />,
@@ -75,7 +81,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'redes',
-        element: <div><h2>Redes</h2></div>,
+        element: <Network />,
       },
       {
         path: 'actividades',

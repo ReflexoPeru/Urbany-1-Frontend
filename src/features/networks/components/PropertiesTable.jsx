@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/PropertiesTable.module.css';
+import styles from './PropertiesTable.module.css';
 
 const PropertiesTable = () => {
   const properties = [
@@ -63,8 +63,8 @@ const PropertiesTable = () => {
         <thead>
           <tr>
             <th className={styles.checkboxCell}>
-              <input 
-                type="checkbox" 
+              <input
+                type="checkbox"
                 className={styles.headerCheckbox}
               />
             </th>
@@ -80,8 +80,8 @@ const PropertiesTable = () => {
           {properties.map((property) => (
             <tr key={property.id}>
               <td className={styles.checkboxCell}>
-                <input 
-                  type="checkbox" 
+                <input
+                  type="checkbox"
                   className={styles.checkbox}
                 />
               </td>

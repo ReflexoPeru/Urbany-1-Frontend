@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/FiltersSection.module.css';
+import styles from './FiltersSection.module.css';
 
 const FiltersSection = () => {
   return (
@@ -19,7 +19,7 @@ const FiltersSection = () => {
             <input type="checkbox" />
             Incluir mis propiedades
           </label>
-          
+
           <button className={styles.searchButton}>
             Ver en el Mapa
           </button>
@@ -40,7 +40,7 @@ const FiltersSection = () => {
           <button className={styles.filterButton}>Dormitorios</button>
           <button className={styles.filterButton}>Inmobiliarias</button>
           <button className={styles.filterButton}>Comisión</button>
-          
+
           {/* Contenedor para los iconos */}
           <div className={styles.iconsContainer}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={styles.icon}>
