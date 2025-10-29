@@ -1,0 +1,51 @@
+/* NetworksHeader.module.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  width: 100%;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.buttonRed {
+  background: #E8EDF2; /* Mismo color gris claro */
+  color: #333; /* Texto oscuro */
+  border: 1px solid #E8EDF2; /* Borde del mismo color */
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.buttonRed:hover {
+  background: #38E47A; /* Verde al hover */
+  color: white; /* Texto blanco al hover */
+  border-color: #38E47A;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+  
+  .title {
+    font-size: 20px;
+  }
+  
+  .buttonRed {
+    align-self: flex-end;
+  }
+}
