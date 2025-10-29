@@ -1,18 +1,18 @@
 .card {
   background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   border: 1px solid #e5e7eb;
-  padding: 16px;
+  padding: 24px;
   max-width: 100%;
   margin: 0;
 }
 
 .header {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 0;
 }
 
 .logoContainer {
@@ -22,18 +22,19 @@
 }
 
 .logo {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   background: #f8fafc;
-  border-radius: 6px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid #e5e7eb;
+  flex-shrink: 0;
 }
 
 .title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: #111827;
   margin: 0;
@@ -46,10 +47,10 @@
 }
 
 .description {
-  font-size: 14px;
+  font-size: 16px;
   color: #6b7280;
   line-height: 1.4;
-  margin: 0;
+  margin: 8px 0 20px 0;
 }
 
 .subtitle {
@@ -65,7 +66,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
 .featureItem {
@@ -75,18 +76,18 @@
 }
 
 .bullet {
-  width: 4px;
-  height: 4px;
-  background: #3B82F6;
+  width: 6px;
+  height: 6px;
+  background: #10B981;
   border-radius: 50%;
   margin-top: 6px;
   flex-shrink: 0;
 }
 
 .featureItem span {
-  font-size: 12px;
+  font-size: 14px;
   color: #6b7280;
-  line-height: 1.3;
+  line-height: 1.5;
 }
 
 .infoSection {

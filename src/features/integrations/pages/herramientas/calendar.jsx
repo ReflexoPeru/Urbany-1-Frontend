@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const Calendar = () => {
   return (
-    <div>
+    <div style={{ marginLeft: '12px' }}>
       <div style={{ marginBottom: '20px' }}>
         <h3 style={{ fontSize: '18px', fontWeight: '600', color: '#111827', margin: '0 0 12px 0' }}>
           Sincronización de calendario
