@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
-import Dashboard from '../features/dashboard/pages/dashboard';
+import Dashboard from '../features/dashboard/pages/SalesDashboardPage';
 import Optimizations from '../features/optimizations/pages/OptimizationsPage';
 import Properties from '../features/properties/pages/PropertiesPage';
 import Map from '../features/map/pages/MapPage';
@@ -26,16 +26,34 @@ import EmailMarketing from '../features/integrations/pages/comunicacion/emailMar
 import Activities from '../features/activities/pages/Activities';
 import Business from '../features/business/pages/business';
 import Appraisals from '../features/appraisals/pages/appraisals';
+import Login from '../features/auth/pages/login';
+import Register from '../features/auth/pages/register';
+import RegisterInmobiliaria from '../features/auth/pages/register_inmobiliaria';
+import Network from '../features/integrations/pages/redes/Networks';
+import { Navigate } from 'react-router-dom';
 
 
 const router = createBrowserRouter([
+  // Ruta de Login independiente
+  {
+    path: '/login',
+    element: <Login />,
+  },
   {
     path: '/',
     element: <MainLayout />,
     children: [
       {
         index: true,
-        element: <div><h2>juas juas</h2></div>,
+        element: <Navigate to="/login" replace />,
+      },
+      {
+        path: 'register',
+        element: <Register />,
+      },
+      {
+        path: 'register-inmobiliaria',
+        element: <RegisterInmobiliaria />,
       },
       {
         path: 'dashboard',
@@ -63,10 +81,10 @@ const router = createBrowserRouter([
       },
       {
         path: 'redes',
-        element: <div><h2>Redes</h2></div>,
+        element: <Network />,
       },
       {
-        path: 'actividades',
+        path: 'activities',
         element: <Activities />,
       },
       {
@@ -119,6 +137,10 @@ const router = createBrowserRouter([
         path: 'integrations',
         element: <Integrations />,
         children: [
+          {
+            index: true,
+            element: <Portals />,
+          },
           {
             path: 'portals',
             element: <Portals />,

@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import ScrollableContainer from '../components/ScrollableContainer/ScrollableContainer';
 import IntegrationSidebar from '../components/IntegrationSidebar/IntegrationSidebar';
+import IntegrationPreview from '../components/IntegrationPreview/IntegrationPreview';
 
 const Integrations = () => {
-  const [selectedCategory, setSelectedCategory] = useState('portales');
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const location = useLocation();
 
-  // Detectar categoría activa basada en la ruta actual
   useEffect(() => {
     const currentPath = location.pathname;
     if (currentPath.includes('/portals')) {
@@ -26,6 +26,8 @@ const Integrations = () => {
       setSelectedCategory('marketing');
     } else if (currentPath.includes('/emailMarketing')) {
       setSelectedCategory('email-marketing');
+    } else {
+      setSelectedCategory(null);
     }
   }, [location.pathname]);
 
@@ -53,7 +55,7 @@ const Integrations = () => {
         <IntegrationSidebar activeCategory={selectedCategory} />
 
         <div style={{ flex: 1 }}>
-          <Outlet />
+          {selectedCategory ? <Outlet /> : <IntegrationPreview />}
         </div>
       </div>
     </div>
