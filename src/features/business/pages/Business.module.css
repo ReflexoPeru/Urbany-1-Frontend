@@ -4,13 +4,14 @@
     border-radius: 8px;
     padding: 20px;
     margin: 20px 0;
+    min-height: calc(100vh - 40px);
 }
 
-.section-title {
-    margin: 32px 0 12px -3.5px;
-    font-weight: 700;
+.sectionTitle {
+    margin: 70px 0 12px -3.5px;
+    font-weight: 600;
     color: #0f172a;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .tabs-container {
@@ -101,7 +102,7 @@
 
 /* Layout */
 .page {
-    padding: 100px 48px 32px 48px;
+    padding: 20px;
     text-align: left;
     margin: 0 auto;
     max-width: 1200px;
@@ -117,7 +118,7 @@
 .title {
     color: #000;
     margin: 0 0 0 -3.5px;
-    font-size: 50px;
+    font-size: 40px;
     font-weight: 700;
 }
 
@@ -128,7 +129,7 @@
     align-items: flex-start;
 }
 
-.add-button {
+.addButton {
     border: 0;
     cursor: pointer;
     background: #22c55e;
@@ -137,6 +138,11 @@
     color: #fff;
     font-size: 16px;
     font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.addButton:hover {
+    background: #16a34a;
 }
 
 /* Search */
@@ -146,12 +152,12 @@
     width: 100%;
 }
 
-.search-box {
+.searchBox {
     position: relative;
     max-width: 100%;
 }
 
-.search-icon {
+.searchIcon {
     position: absolute;
     left: 16px;
     top: 50%;
@@ -161,7 +167,7 @@
     height: 20px;
 }
 
-.search-input {
+.searchInput {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -171,9 +177,16 @@
     background: #f8fafc;
     color: #1e293b;
     font-size: 16px;
+    transition: border-color 0.2s;
 }
 
-.search-input::placeholder {
+.searchInput:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background: white;
+}
+
+.searchInput::placeholder {
     color: #355d8c;
     opacity: 0.7;
 }
@@ -181,14 +194,20 @@
 /* Toolbar */
 .toolbar {
     display: flex;
-    gap: 12px;
+    gap: 16px;
     align-items: center;
-    margin: 25px 0 16px 0;
+    margin: 30px 0 20px 0;
+    padding: 20px;
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
 }
 
-.chip-group {
+.chipGroup {
     display: flex;
-    gap: 12px;
+    gap: 16px;
+    flex-wrap: wrap;
+    flex: 1;
 }
 
 .chip {
@@ -216,12 +235,13 @@
     margin-left: 2px;
 }
 
-.icon-group {
+.iconGroup {
     display: flex;
-    gap: 8px;
+    gap: 12px;
+    margin-left: auto;
 }
 
-.icon-btn {
+.iconBtn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -233,13 +253,87 @@
     background: #f8fafc;
     color: #334155;
     transition: all 0.2s;
+    cursor: pointer;
 }
 
-.icon-btn:hover {
+.iconBtn:hover {
     background: #f1f5f9;
+    border-color: #cbd5e1;
 }
 
-.icon-btn svg {
+.bulkDeleteBtn {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.bulkDeleteBtn:hover {
+    background: #b91c1c;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+        margin: 10px 0;
+    }
+    
+    .page {
+        padding: 15px;
+    }
+    
+    .title {
+        font-size: 32px;
+    }
+    
+    .sectionTitle {
+        margin: 50px 0 8px -3.5px;
+        font-size: 18px;
+    }
+    
+    .toolbar {
+        flex-direction: column;
+        gap: 12px;
+        padding: 15px;
+    }
+    
+    .chipGroup {
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    
+    .iconGroup {
+        margin-left: 0;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .searchBox {
+        margin: 15px 0;
+    }
+    
+    .searchInput {
+        font-size: 14px;
+        padding: 10px 12px 10px 40px;
+    }
+    
+    .addButton {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+    
+    .bulkDeleteBtn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+.iconBtn svg {
     width: 22px;
     height: 22px;
     color: #111827;
@@ -436,4 +530,17 @@ input[type="checkbox"]:checked::after {
     color: #000000;
     background: #dfe7f1;
     font-size: 16px;
+}
+
+/* Loading */
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    font-size: 16px;
+    color: #6b7280;
+    background: #f9fafb;
+    border-radius: 8px;
+    margin: 20px 0;
 }
