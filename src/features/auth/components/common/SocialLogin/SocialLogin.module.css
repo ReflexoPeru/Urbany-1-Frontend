@@ -1,0 +1,31 @@
+.social_icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.social_icon:hover {
+    border-color: #2de0a1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.social_icon img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Alinea los íconos verticalmente */
+    margin-top: 1rem;
+    gap: 1rem; /* Espaciado entre los íconos */
+}
