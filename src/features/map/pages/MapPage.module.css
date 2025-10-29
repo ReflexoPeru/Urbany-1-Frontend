@@ -5,7 +5,7 @@
 
   font-family: Poppins, sans-serif !important;
 
-  background: #f8fafc !important;
+  background: #fff !important;
 }
 
 :global(.icon-btn) {
@@ -21,8 +21,30 @@
   background: #fff;
 }
 
+.mapContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #fff;
+}
+
+.mapHeader {
+  padding: 24px 64px 0 96px;
+  background: #fff;
+}
+
+.mapTitle {
+  margin: 0;
+
+  font-family: Poppins, sans-serif;
+  font-size: 43px;
+  font-weight: 600;
+  color: #111827;
+}
+
 .mapContent {
   overflow-y: auto;
+  flex: 1;
 
   height: auto;
   max-height: calc(100vh - 200px);
