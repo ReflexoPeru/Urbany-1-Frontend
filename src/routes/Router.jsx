@@ -84,7 +84,7 @@ const router = createBrowserRouter([
         element: <Network />,
       },
       {
-        path: 'actividades',
+        path: 'activities',
         element: <Activities />,
       },
       {
