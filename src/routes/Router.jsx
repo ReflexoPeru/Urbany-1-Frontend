@@ -26,17 +26,29 @@ import EmailMarketing from '../features/integrations/pages/comunicacion/emailMar
 import Activities from '../features/activities/pages/Activities';
 import Business from '../features/business/pages/business';
 import Appraisals from '../features/appraisals/pages/appraisals';
+import Login from '../features/auth/pages/login';
+import Register from '../features/auth/pages/register';
+import RegisterInmobiliaria from '../features/auth/pages/register_inmobiliaria';
 
 
 const router = createBrowserRouter([
   {
     path: '/',
+    index: true,
+    element: <Login />,
+  },
+  {
+    path: '/register',
+    element: <Register />,
+  },
+  {
+    path: '/register-inmobiliaria',
+    element: <RegisterInmobiliaria />,
+  },
+  {
+    path: '/app',
     element: <MainLayout />,
     children: [
-      {
-        index: true,
-        element: <div><h2>juas juas</h2></div>,
-      },
       {
         path: 'dashboard',
         element: <Dashboard />,
