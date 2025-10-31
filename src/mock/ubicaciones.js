@@ -58,7 +58,29 @@ export const mockProvincias = [
     { id: 24, departamentoId: 13, nombre: "Trujillo" },
     { id: 25, departamentoId: 13, nombre: "Pacasmayo" },
     { id: 26, departamentoId: 13, nombre: "Chepén" },
-    { id: 27, departamentoId: 13, nombre: "Julcán" }
+    { id: 27, departamentoId: 13, nombre: "Julcán" },
+    // Huánuco
+    { id: 28, departamentoId: 10, nombre: "Huánuco" },
+    { id: 29, departamentoId: 10, nombre: "Ambo" },
+    { id: 30, departamentoId: 10, nombre: "Huamalíes" },
+    { id: 31, departamentoId: 10, nombre: "Dos de Mayo" },
+    { id: 32, departamentoId: 10, nombre: "Leoncio Prado" },
+    // Lambayeque
+    { id: 33, departamentoId: 14, nombre: "Chiclayo" },
+    { id: 34, departamentoId: 14, nombre: "Lambayeque" },
+    { id: 35, departamentoId: 14, nombre: "Ferreñafe" },
+    // Amazonas
+    { id: 36, departamentoId: 1, nombre: "Chachapoyas" },
+    { id: 37, departamentoId: 1, nombre: "Bagua" },
+    { id: 38, departamentoId: 1, nombre: "Luya" },
+    // Áncash
+    { id: 39, departamentoId: 2, nombre: "Huaraz" },
+    { id: 40, departamentoId: 2, nombre: "Huaralíes" },
+    { id: 41, departamentoId: 2, nombre: "Carhuaz" },
+    // Ica
+    { id: 42, departamentoId: 11, nombre: "Ica" },
+    { id: 43, departamentoId: 11, nombre: "Chincha" },
+    { id: 44, departamentoId: 11, nombre: "Nazca" }
 ];
 
 export const mockDistritos = [
@@ -104,5 +126,52 @@ export const mockDistritos = [
     { id: 32, provinciaId: 24, nombre: "Trujillo" },
     { id: 33, provinciaId: 24, nombre: "La Esperanza" },
     { id: 34, provinciaId: 24, nombre: "El Porvenir" },
-    { id: 35, provinciaId: 24, nombre: "Huanchaco" }
+    { id: 35, provinciaId: 24, nombre: "Huanchaco" },
+    // Huánuco - Huánuco
+    { id: 36, provinciaId: 28, nombre: "Huánuco" },
+    { id: 37, provinciaId: 28, nombre: "Amarilis" },
+    { id: 38, provinciaId: 28, nombre: "Chinchao" },
+    { id: 39, provinciaId: 28, nombre: "Churubamba" },
+    { id: 40, provinciaId: 28, nombre: "Santa María del Valle" },
+    // Huánuco - Ambo
+    { id: 41, provinciaId: 29, nombre: "Ambo" },
+    { id: 42, provinciaId: 29, nombre: "Cayna" },
+    { id: 43, provinciaId: 29, nombre: "Colpas" },
+    // Huánuco - Huamalíes
+    { id: 44, provinciaId: 30, nombre: "Llata" },
+    { id: 45, provinciaId: 30, nombre: "Arancay" },
+    { id: 46, provinciaId: 30, nombre: "Chavín de Pariarca" },
+    // Huánuco - Dos de Mayo
+    { id: 47, provinciaId: 31, nombre: "La Unión" },
+    { id: 48, provinciaId: 31, nombre: "Chuquis" },
+    { id: 49, provinciaId: 31, nombre: "Marías" },
+    // Huánuco - Leoncio Prado
+    { id: 50, provinciaId: 32, nombre: "Rupa-Rupa" },
+    { id: 51, provinciaId: 32, nombre: "Daniel Alomía Robles" },
+    { id: 52, provinciaId: 32, nombre: "Hermilio Valdizán" },
+    // Lambayeque - Chiclayo
+    { id: 53, provinciaId: 33, nombre: "Chiclayo" },
+    { id: 54, provinciaId: 33, nombre: "La Victoria" },
+    { id: 55, provinciaId: 33, nombre: "José Leonardo Ortiz" },
+    { id: 56, provinciaId: 33, nombre: "Pimentel" },
+    // Lambayeque - Lambayeque
+    { id: 57, provinciaId: 34, nombre: "Lambayeque" },
+    { id: 58, provinciaId: 34, nombre: "San José" },
+    { id: 59, provinciaId: 34, nombre: "Illimo" },
+    // Amazonas - Chachapoyas
+    { id: 60, provinciaId: 36, nombre: "Chachapoyas" },
+    { id: 61, provinciaId: 36, nombre: "Asunción" },
+    { id: 62, provinciaId: 36, nombre: "Balsas" },
+    // Áncash - Huaraz
+    { id: 63, provinciaId: 39, nombre: "Huaraz" },
+    { id: 64, provinciaId: 39, nombre: "Cochabamba" },
+    { id: 65, provinciaId: 39, nombre: "Colcabamba" },
+    // Ica - Ica
+    { id: 66, provinciaId: 42, nombre: "Ica" },
+    { id: 67, provinciaId: 42, nombre: "La Tinguiña" },
+    { id: 68, provinciaId: 42, nombre: "Los Aquijes" },
+    // Ica - Chincha
+    { id: 69, provinciaId: 43, nombre: "Chincha Alta" },
+    { id: 70, provinciaId: 43, nombre: "Chincha Baja" },
+    { id: 71, provinciaId: 43, nombre: "El Carmen" }
 ];

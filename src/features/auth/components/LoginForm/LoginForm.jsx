@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { User, Lock, Mail } from "lucide-react";
+import urbanyLogo from "../../../../assets/urbany.png";
 import styles from "./LoginForm.module.css";
 
 const LoginForm = () => {
@@ -14,6 +15,11 @@ const LoginForm = () => {
     return (
         <form onSubmit={handleSubmit}>
             <h1>Login</h1>
+
+            <div className={styles.logo_section}>
+                <img src={urbanyLogo} alt="Urbany Logo" className={styles.logo} />
+                <p className={styles.tagline}>Tu futuro inmobiliario comienza aquí</p>
+            </div>
 
             <div className={styles.input_box}>
                 <input type="email" placeholder="Correo electrónico" required />

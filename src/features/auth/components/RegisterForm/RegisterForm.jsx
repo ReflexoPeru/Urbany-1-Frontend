@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { User, Lock, Mail } from "lucide-react";
+import { User, Lock, Mail, Eye, EyeOff } from "lucide-react";
+import urbanyLogo from "../../../../assets/urbany.png";
 import styles from "./RegisterForm.module.css";
 
 const RegisterForm = () => {
     const navigate = useNavigate();
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -17,6 +19,11 @@ const RegisterForm = () => {
         <form onSubmit={handleSubmit}>
             <h1>Registro</h1>
 
+            <div className={styles.logo_section}>
+                <img src={urbanyLogo} alt="Urbany Logo" className={styles.logo} />
+                <p className={styles.tagline}>Tu futuro inmobiliario comienza aquí</p>
+            </div>
+
             <div className={styles.input_box}>
                 <input type="text" placeholder="Usuario" required />
                 <User className={styles.icon} size={20} />
@@ -28,8 +35,18 @@ const RegisterForm = () => {
             </div>
 
             <div className={styles.input_box}>
-                <input type="password" placeholder="Contraseña" required />
-                <Lock className={styles.icon} size={20} />
+                <input type={showPassword ? "text" : "password"} placeholder="Contraseña" required />
+                <button 
+                    type="button"
+                    className={styles.eye_button}
+                    onClick={() => setShowPassword(!showPassword)}
+                >
+                    {showPassword ? (
+                        <EyeOff className={styles.eye_icon} size={20} />
+                    ) : (
+                        <Eye className={styles.eye_icon} size={20} />
+                    )}
+                </button>
             </div>
 
             <button type="submit" className={styles.btn}>Registrar</button>

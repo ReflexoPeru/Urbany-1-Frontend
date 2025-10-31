@@ -1,3 +1,23 @@
+.logo_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    width: 180px;
+    height: auto;
+    margin-bottom: 3px;
+}
+
+.tagline {
+    font-style: italic;
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+}
+
 .input_box {
     position: relative;
     margin: 35px 0;
@@ -26,6 +46,29 @@
     top: 50%;
     transform: translateY(-50%);
     color: #888;
+}
+
+.eye_button {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.eye_icon {
+    color: #888;
+    transition: color 0.3s ease;
+}
+
+.eye_button:hover .eye_icon {
+    color: #38E47A;
 }
 
 .btn {
