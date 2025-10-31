@@ -1,14 +1,91 @@
-.container{background:#fff;border:1px solid #eef2f6;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;min-height:140px;transition:box-shadow .15s ease, transform .15s ease}
-.container:hover{box-shadow:0 6px 18px rgba(0,0,0,.12);transform:translateY(-2px)}
-.header{display:flex;align-items:center;gap:8px}
-.icon{width:28px;height:28px;border-radius:8px;background:#e7f7ef;color:#0ca678;display:grid;place-items:center}
-.title{font-weight:700;color:#0f172a}
-.sub{color:#64748b;font-weight:600}
-.progress{height:8px;background:#eef2f6;border-radius:999px;overflow:hidden}
-.fill{height:100%;background:linear-gradient(90deg,#12b886,#0ca678)}
-.meta{font-weight:700;color:#0f172a}
-.desc{font-size:12px;color:#475569}
-.avatars{display:flex;margin-top:auto}
-.avatars img{width:24px;height:24px;border-radius:50%;object-fit:cover;margin-right:-6px;border:2px solid #fff;box-shadow:0 0 0 1px #e2e8f0}
-.avatars img:hover{z-index:1;transform:scale(1.08)}
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 
+    min-height: 140px;
+    padding: 14px;
+    border: 1px solid #eef2f6;
+    border-radius: 12px;
+
+    background: #fff;
+
+    transition: box-shadow .15s ease, transform .15s ease
+}
+
+.container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgb(0 0 0 / 12%)
+}
+
+.header {
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+.icon {
+    display: grid;
+    place-items: center;
+
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+
+    color: #38e47a;
+
+    background: #e7f9ef
+}
+
+.title {
+    font-weight: 700;
+    color: #0f172a
+}
+
+.sub {
+    font-weight: 600;
+    color: #64748b
+}
+
+.progress {
+    overflow: hidden;
+    height: 8px;
+    border-radius: 999px;
+    background: #eef2f6
+}
+
+.fill {
+    height: 100%;
+    background: linear-gradient(90deg, #38e47a, #16a34a)
+}
+
+.meta {
+    font-weight: 700;
+    color: #0f172a
+}
+
+.desc {
+    font-size: 12px;
+    color: #475569
+}
+
+.avatars {
+    display: flex;
+    margin-top: auto
+}
+
+.avatars img {
+    width: 24px;
+    height: 24px;
+    margin-right: -6px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+
+    object-fit: cover;
+    box-shadow: 0 0 0 1px #e2e8f0
+}
+
+.avatars img:hover {
+    z-index: 1;
+    transform: scale(1.08)
+}

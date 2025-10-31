@@ -17,8 +17,10 @@ const Input = ({
     size = 'medium',
     variant = 'default',
     className = '',
+    wrapperClassName = '',
     name,
     prefix,
+    style,
     ...props
 }) => {
     // Configuración del tema personalizado para Urbany
@@ -87,7 +89,7 @@ const Input = ({
 
     return (
         <ConfigProvider theme={themeConfig}>
-            <div className={styles.wrapper}>
+            <div className={`${styles.wrapper} ${wrapperClassName}`}>
                 {label && (
                     <label className={styles.label}>
                         {label}
@@ -106,6 +108,7 @@ const Input = ({
                     status={error ? 'error' : ''}
                     name={name}
                     prefix={prefix}
+                    style={style}
                     {...props}
                 />
 

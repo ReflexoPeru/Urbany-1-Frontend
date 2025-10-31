@@ -1,142 +1,94 @@
 /* src/features/dashboard/pages/SalesDashboardPage.module.css */
+
 .dashboard {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
 
   max-width: 1400px;
   min-height: 100vh;
   margin: 0 auto;
-  padding: 20px;
+  padding: 24px;
+
+  font-family: Poppins, sans-serif;
+  color: #0f172a;
+
+
 }
 
 .row {
   display: flex;
-  gap: 20px;
-  width: 100%;
-  align-items: stretch;
   flex-wrap: nowrap;
+  gap: 20px;
+  align-items: stretch;
+
+  width: 100%;
 }
 
 .col40 {
   display: flex;
+  flex: 2 1 0;
   flex-direction: column;
   gap: 20px;
-  flex: 2 1 0;
 }
 
 .col20 {
   display: flex;
+  flex: 1 1 0;
   flex-direction: column;
   gap: 20px;
-  flex: 1 1 0;
 }
 
 .col80 {
   display: flex;
+  flex: 4 1 0;
   flex-direction: column;
   gap: 20px;
-  flex: 4 1 0;
 }
 
-.salesSection {
-  height: fit-content;
-  padding: 20px;
-  border-radius: 8px;
-
-  background: white;
-  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+.surfaceCard {
+  height: 100%;
 }
 
-.sectionHeader {
-  position: relative;
-
-  /* Para control de posición */
-
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-
-  margin-bottom: 25px;
-}
-
-.sectionTitle {
-  margin-top: 0;
-  margin-bottom: 20px;
-
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #333;
-  text-align: left;
-
-  /* ⬅️ CAMBIA ESTA LÍNEA de 'center' a 'left' */
-}
-
-
-
-/* MODIFICADO: Cuadrícula de 3 columnas para ProgressSection */
 .progressGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-
-  /* 3 columnas iguales */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
 }
 
-/* Asegurar que las tarjetas tengan altura consistente */
-.progressGrid>* {
-  height: 100%;
-  min-height: 180px;
-
-  /* Altura mínima para consistencia */
-}
-
-/* Contenedores con altura fija para igualar las alturas */
 .chartContainer,
 .businessContainer {
   display: flex;
   flex-direction: column;
-  height: 400px;
+  gap: 20px;
 
-  /* Ajusta esta altura según necesites */
+  height: 100%;
+  min-height: 380px;
 }
 
 .walletContainer {
   display: flex;
   flex-direction: column;
-  height: 400px;
+  height: 100%;
+  min-height: 300px;
 }
 
-/* Asegurar que los componentes ocupen toda la altura disponible */
-.chartContainer>*,
-.businessContainer>* {
-  flex: 1;
+.businessContainer :global(.MuiCard-root) {
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 
-/* Ajustar el contenido interno de BusinessOverview para que sea más compacto */
-.businessContainer .businessOverview {
-  padding: 15px;
-}
-
-.businessContainer .cards_main_container {
-  margin-top: 1rem;
-}
-
-.businessContainer .cards_container {
-  padding: 1rem;
-}
-
-.businessContainer .cards_container p {
-  font-size: 1.5rem;
-}
-
-.businessContainer .graficoCompletionContainer {
-  margin: 1rem 0 0;
+.businessContainer :global(.MuiCardContent-root) {
+  flex: 1;
 }
 
 /* Responsive */
 @media (width <=1024px) {
+  .dashboard {
+    padding: 20px;
+  }
+
   .row {
     flex-direction: column;
   }
@@ -149,22 +101,23 @@
 
   .chartContainer,
   .businessContainer {
-    height: auto;
-
-    /* En móvil, altura automática */
-    min-height: 300px;
+    min-height: 320px;
   }
 
-  /* En tablet, la cuadrícula se convierte en 2 columnas */
   .progressGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
   }
 }
 
 @media (width <=768px) {
+  .dashboard {
+    gap: 20px;
+    padding: 16px;
+  }
+
   .progressGrid {
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 16px;
   }
 }
