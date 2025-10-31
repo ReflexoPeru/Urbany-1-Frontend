@@ -29,8 +29,8 @@ import Appraisals from '../features/appraisals/pages/appraisals';
 import Login from '../features/auth/pages/login';
 import Register from '../features/auth/pages/register';
 import RegisterInmobiliaria from '../features/auth/pages/register_inmobiliaria';
-import Network from '../features/integrations/pages/redes/Networks';
 import ReportsPage from '../features/reports/pages/ReportsPage';
+import MessagePage from '../features/message/pages/MessagePage';
 import { Navigate } from 'react-router-dom';
 
 
@@ -82,7 +82,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'redes',
-        element: <Network />,
+        element: <Networks />,
       },
       {
         path: 'activities',
@@ -98,7 +98,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'mensajes',
-        element: <div><h2>Mensajes</h2></div>,
+        element: <MessagePage />,
       },
       {
         path: 'emprendimientos',
