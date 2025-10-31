@@ -1,0 +1,54 @@
+.reportsContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #fff;
+  font-family: Poppins, sans-serif;
+}
+
+.reportsHeader {
+  padding: 24px 64px 0 96px;
+  background: #fff;
+}
+
+.reportsTitle {
+  margin: 0 0 8px 0;
+  font-family: Poppins, sans-serif;
+  font-size: 43px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.reportsSubtitle {
+  margin: 0;
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.reportsContent {
+  flex: 1;
+  padding: 32px 64px 48px 96px;
+  background: transparent;
+}
+
+.categoriesSection {
+  margin-bottom: 32px;
+}
+
+.sectionTitle {
+  margin: 0 0 16px 0;
+  font-family: Poppins, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  letter-spacing: 0.5px;
+}
+
+.tableSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
