@@ -5,8 +5,19 @@ const AuthFlipForm = ({
     isRegister = false,
     onToggleRegister,
     onToggleLogin,
-    children 
+    children,
+    showFlip = true
 }) => {
+    if (!showFlip) {
+        return (
+            <div className={styles.container}>
+                <div className={styles.form_box_no_flip}>
+                    {children}
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className={`${styles.container} ${isRegister ? styles.active : ''}`}>
             <div className={styles.form_box_login}>
