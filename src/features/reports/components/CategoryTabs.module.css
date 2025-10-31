@@ -1,4 +1,3 @@
-/* stylelint-disable order/properties-order */
 
 .container {
     width: 100%;
@@ -140,7 +139,6 @@
     transform: scale(1.15);
 }
 
-/* Responsive */
 @media (width <=768px) {
     .tabs {
         overflow-x: auto;

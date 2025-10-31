@@ -8,14 +8,12 @@ import { reportsPropertiesData, reportsAgentsData } from '../../../mock/reports'
 function ReportsPage() {
   const [activeCategory, setActiveCategory] = React.useState('propiedades')
   const [searchQuery, setSearchQuery] = React.useState('')
-
-  // Obtener conteos dinámicos
   const propertiesCount = reportsPropertiesData.length
   const agentsCount = reportsAgentsData.length
 
   const handleCategoryChange = (category) => {
     setActiveCategory(category)
-    setSearchQuery('') // Limpiar búsqueda al cambiar categoría
+    setSearchQuery('') 
   }
 
   const handleSearchChange = (query) => {
