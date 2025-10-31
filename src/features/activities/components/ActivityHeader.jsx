@@ -1,5 +1,6 @@
 import React from 'react';
-import { List, Calendar, Plus } from 'lucide-react';
+import { List, Calendar } from 'lucide-react';
+import Button from '../../../components/ui/Button';
 import styles from './ActivityHeader.module.css';
 
 const ActivityHeader = ({ viewMode, onViewModeChange, onAddActivity }) => {
@@ -8,23 +9,33 @@ const ActivityHeader = ({ viewMode, onViewModeChange, onAddActivity }) => {
       <h1 className={styles.title}>Actividades</h1>
       <div className={styles.controls}>
         <div className={styles.viewToggle}>
-          <button
-            className={`${styles.viewButton} ${viewMode === 'list' ? styles.active : ''}`}
+          <Button
+            variant={viewMode === 'list' ? 'success' : 'secondary'}
+            size="small"
+            className={styles.viewButton}
             onClick={() => onViewModeChange('list')}
+            aria-pressed={viewMode === 'list'}
           >
-            <List size={20} />
-          </button>
-          <button
-            className={`${styles.viewButton} ${viewMode === 'calendar' ? styles.active : ''}`}
+            <List size={18} />
+          </Button>
+          <Button
+            variant={viewMode === 'calendar' ? 'success' : 'secondary'}
+            size="small"
+            className={styles.viewButton}
             onClick={() => onViewModeChange('calendar')}
+            aria-pressed={viewMode === 'calendar'}
           >
-            <Calendar size={20} />
-          </button>
+            <Calendar size={18} />
+          </Button>
         </div>
-        <button className={styles.addButton} onClick={onAddActivity}>
-          <Plus size={16} />
+        <Button
+          variant="primary"
+          size="medium"
+          icon="plus"
+          onClick={onAddActivity}
+        >
           Añadir nueva actividad
-        </button>
+        </Button>
       </div>
     </div>
   );

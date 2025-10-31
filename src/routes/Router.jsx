@@ -32,6 +32,7 @@ import RegisterInmobiliaria from '../features/auth/pages/register_inmobiliaria';
 import ReportsPage from '../features/reports/pages/ReportsPage';
 import MessagePage from '../features/message/pages/MessagePage';
 import CommentsPage from '../features/comment/pages/CommentsPage';
+import UsersPage from '../features/users/pages/UsersPage';
 import { Navigate } from 'react-router-dom';
 
 
@@ -179,7 +180,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'usuarios',
-        element: <div><h2>Gestión de Usuarios</h2></div>,
+        element: <UsersPage />,
       },
       {
         path: 'branches',

@@ -1,7 +1,9 @@
+/* stylelint-disable order/properties-order */
+
 .card {
-  background: #f8fafc;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
+  background: #f6fbf8;
+  border-radius: 12px;
+  border: 1px solid #dbeee3;
   padding: 0;
   max-width: 100%;
   margin: 0;
@@ -19,7 +21,7 @@
 }
 
 .header:hover {
-  background: #f1f5f9;
+  background: #e9fdf2;
 }
 
 .arrow {
@@ -42,19 +44,19 @@
 .logo {
   width: 36px;
   height: 36px;
-  background: #fff;
-  border-radius: 8px;
+  background: #f0fdf4;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #bbf7d0;
 }
 
 .title {
   font-size: 14px;
   font-weight: 600;
   color: #111827;
-  margin: 0 0 2px 0;
+  margin: 0 0 2px;
 }
 
 .description {
@@ -70,9 +72,9 @@
   gap: 12px;
   margin-top: 8px;
   padding: 16px;
-  background: #f8fafc;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #dbeee3;
 }
 
 .subtitle {
@@ -98,11 +100,11 @@
 }
 
 .bullet {
-  width: 4px;
-  height: 4px;
-  background: #3B82F6;
+  width: 5px;
+  height: 5px;
+  background: #22c55e;
   border-radius: 50%;
-  margin-top: 6px;
+  margin-top: 7px;
   flex-shrink: 0;
 }
 
@@ -138,20 +140,106 @@
   margin: 0;
 }
 
-.connectButton {
-  background: #3B82F6;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 8px 16px;
-  font-size: 12px;
+.headerContent {
+  flex: 1;
+}
+
+.infoTitle {
+  font-size: 14px;
   font-weight: 600;
+  color: #111827;
+  margin: 0 0 12px;
+}
+
+.infoList {
+  list-style: disc;
+  padding-left: 16px;
+  margin: 0 0 16px;
+  color: #6b7280;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.infoListItem {
+  margin-bottom: 6px;
+}
+
+.actionButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.connectButton {
+  justify-content: center;
+}
+
+.secondaryButton {
+  background: #ecfdf5;
+  border: 1px solid #bbf7d0;
+  color: #047857;
+}
+
+.secondaryButton:hover {
+  background: #d1fae5;
+  border-color: #86efac;
+  color: #065f46;
+}
+
+.privacyLink {
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-size: 12px;
+  color: #0f766e;
+  text-decoration: underline;
   cursor: pointer;
-  transition: background-color 0.2s ease;
   align-self: flex-start;
 }
 
-.connectButton:hover {
-  background: #2563eb;
+.privacyLink:hover {
+  color: #0c514c;
 }
 
+.emailBlock {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.emailLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.emailWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+}
+
+.emailIcon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #6b7280;
+}
+
+.emailInput {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.emailInput:focus {
+  border-color: #38e47a;
+  box-shadow: 0 0 0 3px rgb(56 228 122 / 18%);
+}

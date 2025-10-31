@@ -8,7 +8,7 @@ const Hoomi = () => {
       <StaticCard
         title="Hoomi"
         description="Hoomi es un bot especializado en el sector inmobiliario, diseñado para acompañarte en la gestión diaria de tus contactos y oportunidades."
-        icon={<ChatCircle size={20} weight="bold" color="#3B82F6" />}
+        icon={<ChatCircle size={20} weight="bold" color="#10B981" />}
         features={[
           "Responder automáticamente los mensajes de WhatsApp",
           "Detectar el interés de tus clientes y sugerirles las propiedades más adecuadas",

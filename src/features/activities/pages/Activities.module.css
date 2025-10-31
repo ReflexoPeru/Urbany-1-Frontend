@@ -1,162 +1,43 @@
 .container {
-  background: #f8fafc;
   min-height: 100vh;
   padding: 2rem;
+  background: #f8fafc;
 }
 
-.header {
+.filtersToolbar {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-.title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin: 0;
-}
-
-.controls {
-  display: flex;
-  align-items: center;
   gap: 1rem;
-}
-
-.viewToggle {
-  display: flex;
-  background: #f8f9fa;
-  border-radius: 8px;
-  padding: 4px;
-  gap: 4px;
-}
-
-.viewButton {
-  display: flex;
   align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border: none;
-  background: transparent;
-  border-radius: 6px;
-  color: #6b7280;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  justify-content: space-between;
+
+  margin-bottom: 1.5rem;
 }
 
-.viewButton:hover {
-  background: #e5e7eb;
-  color: #374151;
-}
-
-.viewButton.active {
-  background: #10b981;
-  color: white;
-}
-
-.addButton {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: #10b981;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+.filtersSummary {
   font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.addButton:hover {
-  background: #059669;
-  transform: translateY(-1px);
+  color: #1f2937;
 }
 
 .clearButton {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: #6b7280;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.clearButton:hover {
-  background: #4b5563;
-  transform: translateY(-1px);
+  margin-left: auto;
 }
 
 .filtersContainer {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
   margin-bottom: 2rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+
+  background: white;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
 }
 
-.filterGroup {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-}
-
-.filterGroup:last-child {
-  margin-bottom: 0;
-}
-
-.label {
-  font-weight: 600;
-  color: #374151;
-  min-width: 100px;
-  font-size: 0.9rem;
-}
-
-.options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.filterButton {
-  background: #f3f4f6;
-  border: 1px solid #e5e7eb;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #374151;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-}
-
-.filterButton:hover {
-  background: #e5e7eb;
-  border-color: #d1d5db;
-}
-
-.filterButton.active {
-  background: #10b981;
-  color: white;
-  border-color: #10b981;
-  box-shadow: 0 1px 3px rgba(16, 185, 129, 0.3);
-}
+/* Filter groups are now managed by the component styles */
 
 .mainContent {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   min-height: 400px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
 }
 
 .emptyState {
@@ -164,17 +45,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 4rem 2rem;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
   margin: 2rem 0;
+  padding: 4rem 2rem;
+  border-radius: 12px;
+
+  text-align: center;
+
+  background: white;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 10%);
 }
 
 .illustration {
-  margin-bottom: 2rem;
   position: relative;
+  margin-bottom: 2rem;
 }
 
 .targetContainer {
@@ -190,12 +74,9 @@
 }
 
 .sparkles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   pointer-events: none;
+  position: absolute;
+  inset: 0;
 }
 
 .sparkle1,
@@ -203,10 +84,13 @@
 .sparkle3,
 .sparkle4 {
   position: absolute;
+
   width: 8px;
   height: 8px;
-  background: #10b981;
   border-radius: 50%;
+
+  background: #10b981;
+
   animation: sparkle 1.5s ease-in-out infinite;
 }
 
@@ -229,64 +113,75 @@
 }
 
 .sparkle4 {
-  bottom: 10%;
   right: 10%;
+  bottom: 10%;
   animation-delay: 0.9s;
 }
 
 .emptyTitle {
+  margin: 0 0 0.5rem;
   font-size: 1.5rem;
   font-weight: 700;
   color: #1f2937;
-  margin: 0 0 0.5rem 0;
 }
 
 .emptyMessage {
-  font-size: 1rem;
-  color: #6b7280;
-  margin: 0 0 2rem 0;
   max-width: 400px;
+  margin: 0 0 2rem;
+
+  font-size: 1rem;
   line-height: 1.5;
+  color: #6b7280;
 }
 
 .emptyButton {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: #10b981;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
   cursor: pointer;
+
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+
+  font-weight: 600;
+  color: white;
+
+  background: #10b981;
+
   transition: all 0.2s ease;
 }
 
 .emptyButton:hover {
-  background: #059669;
   transform: translateY(-1px);
+  background: #059669;
 }
 
+
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.05);
   }
 }
 
+
 @keyframes sparkle {
-  0%, 100% {
-    opacity: 0;
+
+  0%,
+  100% {
     transform: scale(0);
+    opacity: 0;
   }
+
   50% {
-    opacity: 1;
     transform: scale(1);
+    opacity: 1;
   }
 }
-
-
-

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Check } from 'lucide-react';
 import IntegrationAccordion from '../../components/IntegrationAccordion/IntegrationAccordion';
+import Button from '../../../../components/ui/Button';
 
 const EmailMarketing = () => {
   return (
@@ -63,14 +64,14 @@ const EmailMarketing = () => {
               style={{
                 width: '100%',
                 padding: '12px',
-                border: '1px solid #d1d5db',
+                border: '1px solid #bbf7d0',
                 borderRadius: '8px',
                 fontSize: '14px',
                 outline: 'none',
                 transition: 'border-color 0.2s ease'
               }}
-              onFocus={(e) => e.target.style.borderColor = '#3B82F6'}
-              onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+              onFocus={(e) => e.target.style.borderColor = '#38e47a'}
+              onBlur={(e) => e.target.style.borderColor = '#bbf7d0'}
             />
           </div>
           
@@ -100,19 +101,34 @@ const EmailMarketing = () => {
             />
           </div>
           
-          <button style={{
-            backgroundColor: '#3B82F6',
-            color: 'white',
-            padding: '12px 24px',
-            borderRadius: '8px',
-            border: 'none',
-            fontSize: '14px',
-            fontWeight: '600',
-            cursor: 'pointer',
-            alignSelf: 'flex-start'
+          <div style={{
+            flex: 1,
+            padding: '24px',
+            border: '1px solid #bbf7d0',
+            borderRadius: '12px',
+            background: '#f6fbf8'
           }}>
-            Guardar Configuración
-          </button>
+            <div style={{
+              marginTop: '24px',
+              display: 'flex',
+              gap: '12px'
+            }}>
+              <Button variant="success" size="small">
+                Conectar
+              </Button>
+              <Button
+                variant="secondary"
+                size="small"
+                style={{
+                  background: '#ecfdf5',
+                  borderColor: '#bbf7d0',
+                  color: '#047857'
+                }}
+              >
+                Aprender más
+              </Button>
+            </div>
+          </div>
         </div>
       </IntegrationAccordion>
     </div>

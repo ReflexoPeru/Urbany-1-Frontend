@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../../../../components/ui/Button';
 import styles from './StaticCard.module.css';
 
 const StaticCard = ({ title, description, icon, features, infoTexts, actionText, buttonText }) => {
@@ -10,7 +11,7 @@ const StaticCard = ({ title, description, icon, features, infoTexts, actionText,
             {icon}
           </div>
         </div>
-        <div style={{ flex: 1 }}>
+        <div className={styles.headerContent}>
           <h3 className={styles.title}>{title}</h3>
           <p className={styles.description}>{description}</p>
         </div>
@@ -33,10 +34,10 @@ const StaticCard = ({ title, description, icon, features, infoTexts, actionText,
 
         {infoTexts && (
           <div className={styles.infoSection}>
-            <h4 style={{ fontSize: '14px', fontWeight: '600', color: '#111827', margin: '0 0 12px 0' }}>Antes de comenzar</h4>
-            <ul style={{ listStyle: 'disc', paddingLeft: '16px', margin: '0 0 16px 0', color: '#6b7280', fontSize: '12px', lineHeight: '1.4' }}>
+            <h4 className={styles.infoTitle}>Antes de comenzar</h4>
+            <ul className={styles.infoList}>
               {infoTexts.map((text, index) => (
-                <li key={index} style={{ marginBottom: '6px' }}>{text}</li>
+                <li key={index} className={styles.infoListItem}>{text}</li>
               ))}
             </ul>
           </div>
@@ -44,19 +45,19 @@ const StaticCard = ({ title, description, icon, features, infoTexts, actionText,
 
         {actionText && (
           <div className={styles.actionSection}>
-            <div style={{ display: 'flex', gap: '12px', marginBottom: '12px' }}>
-              <button className={styles.connectButton}>
+            <div className={styles.actionButtons}>
+              <Button variant="success" size="small" className={`${styles.connectButton} ${styles.primaryButton}`}>
                 {actionText}
-              </button>
+              </Button>
               {buttonText && (
-                <button className={styles.connectButton}>
+                <Button variant="secondary" size="small" className={`${styles.connectButton} ${styles.secondaryButton}`}>
                   {buttonText}
-                </button>
+                </Button>
               )}
             </div>
-            <p style={{ fontSize: '12px', color: '#6b7280', margin: 0, textDecoration: 'underline', cursor: 'pointer' }}>
+            <button type="button" className={styles.privacyLink}>
               Conoce nuestras políticas de privacidad
-            </p>
+            </button>
           </div>
         )}
       </div>
