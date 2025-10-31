@@ -31,6 +31,7 @@ import Register from '../features/auth/pages/register';
 import RegisterInmobiliaria from '../features/auth/pages/register_inmobiliaria';
 import ReportsPage from '../features/reports/pages/ReportsPage';
 import MessagePage from '../features/message/pages/MessagePage';
+import CommentsPage from '../features/comment/pages/CommentsPage';
 import { Navigate } from 'react-router-dom';
 
 
@@ -106,7 +107,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'comentarios',
-        element: <div><h2>Enviar Comentarios</h2></div>,
+        element: <CommentsPage />,
       },
       {
         path: 'configuracion',
