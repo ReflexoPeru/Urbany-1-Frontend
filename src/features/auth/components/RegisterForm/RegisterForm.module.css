@@ -1,0 +1,70 @@
+.input_box {
+    position: relative;
+    margin: 35px 0;
+}
+
+.input_box input {
+    width: 100%;
+    padding: 16px 50px 16px 20px;
+    background: #eee;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    color: #333;
+    font-weight: 500;
+}
+
+.input_box input::placeholder {
+    color: #888;
+    font-weight: 400;
+}
+
+.input_box .icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+.btn {
+    width: 100%;
+    height: 48px;
+    background: #38E47A;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(56, 228, 122, 0.3);
+}
+
+.social_icons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.social_icons a {
+    display: inline-flex;
+    padding: 10px;
+    border: 2px solid #38E47A;
+    border-radius: 8px;
+    font-size: 24px;
+    color: #38E47A;
+    transition: all 0.3s ease;
+}
+
+.social_icons a:hover {
+    background: #38E47A;
+    color: #fff;
+    transform: translateY(-3px);
+}
