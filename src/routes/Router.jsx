@@ -34,10 +34,18 @@ import { Navigate } from 'react-router-dom';
 
 
 const router = createBrowserRouter([
-  // Ruta de Login independiente
+  // Rutas de autenticación independientes (sin sidebar ni header)
   {
     path: '/login',
     element: <Login />,
+  },
+  {
+    path: '/register',
+    element: <Register />,
+  },
+  {
+    path: '/register-inmobiliaria',
+    element: <RegisterInmobiliaria />,
   },
   {
     path: '/',
@@ -46,14 +54,6 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Navigate to="/login" replace />,
-      },
-      {
-        path: 'register',
-        element: <Register />,
-      },
-      {
-        path: 'register-inmobiliaria',
-        element: <RegisterInmobiliaria />,
       },
       {
         path: 'dashboard',
