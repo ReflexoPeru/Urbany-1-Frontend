@@ -17,22 +17,9 @@ const DataTable = ({
     className = '',
     showPagination = true,
     pageSize = 10,
-    selectedRows = [],
+    rowSelection = {},
     onSelectionChange,
 }) => {
-    // Convertir selectedRows (array o objeto) a objeto si es necesario
-    const getRowSelection = () => {
-        if (!selectedRows) return {};
-        if (Array.isArray(selectedRows)) {
-            return selectedRows.reduce((acc, index) => {
-                acc[index] = true;
-                return acc;
-            }, {});
-        }
-        // Si ya es un objeto, retornarlo directamente
-        return selectedRows;
-    };
-
     const table = useReactTable({
         data,
         columns,
@@ -43,7 +30,7 @@ const DataTable = ({
         enableRowSelection: true,
         onRowSelectionChange: onSelectionChange,
         state: {
-            rowSelection: getRowSelection(),
+            rowSelection,
         },
         initialState: {
             pagination: {

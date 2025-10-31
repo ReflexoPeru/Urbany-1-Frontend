@@ -182,12 +182,6 @@ const Business = () => {
     <div className={styles.businessContainer}>
       <div className={styles.page}>
         <header className={styles.header}>
-          <div className={styles.headerInfo}>
-            <h1 className={styles.title}>Negocios</h1>
-            <p className={styles.subtitle}>
-              Gestiona tus oportunidades y mantén el seguimiento de cada etapa del embudo.
-            </p>
-          </div>
           <div className={styles.headerActions}>
             <Button variant="primary" icon="plus" onClick={handleAddBusiness}>
               Agregar nuevo negocio
