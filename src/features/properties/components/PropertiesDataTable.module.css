@@ -1,269 +1,349 @@
-/* Checkbox */
-.checkboxContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* stylelint-disable order/properties-order, color-hex-length */
+.wrapper {
+    width: 100%;
 }
 
-.checkbox {
-    cursor: pointer;
-
-    position: relative;
-
-    width: 18px;
-    height: 18px;
-    border: 2px solid #d1d5db;
-    border-radius: 4px;
-
-    appearance: none;
-    background: #fff;
-
-    transition: all 0.2s ease;
+.tableContainer {
+    overflow: hidden;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 16px 40px rgb(29 58 83 / 8%);
 }
 
-.checkbox:checked {
-    border-color: #38E47A;
-    background-color: #38E47A;
-}
+.table {
+    --grid-template-columns: 56px 110px 2fr 1.1fr 1.1fr 1fr 1.4fr 140px;
 
-.checkbox:checked::after {
-    content: '';
-
-    position: absolute;
-    top: 1px;
-    left: 4px;
-    transform: rotate(45deg);
-
-    width: 6px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-}
-
-.checkbox:hover {
-    border-color: #38E47A;
-    box-shadow: 0 0 0 2px rgb(56 228 122 / 10%);
-}
-
-/* Celdas de imagen */
-.imageCell {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.propertyImage {
-    width: 50px;
-    height: 50px;
-    border: 2px solid #e2e8f0;
-    border-radius: 8px;
-
-    object-fit: cover;
-}
-
-.imagePlaceholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 50px;
-    height: 50px;
-    border: 2px solid #e2e8f0;
-    border-radius: 8px;
-
-    font-size: 14px;
-    font-weight: 600;
-    color: white;
-
-    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-}
-
-/* Celdas de dirección */
-.addressCell {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    width: 100%;
 }
 
-.addressText {
-    font-size: 14px;
+.table[data-has-actions='false'] {
+    --grid-template-columns: 56px 110px 2fr 1.1fr 1.1fr 1fr 1.4fr;
+}
+
+.headerRow {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: var(--grid-template-columns);
+    align-items: center;
+    background: #f1f8f4;
+    border-bottom: 1px solid #e2ebe6;
+}
+
+.headerCell {
+    padding: 14px 16px;
+    font-size: 12px;
     font-weight: 600;
-    line-height: 1.4;
-    color: #1e293b;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #4a6d64;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.headerCellCheckbox {
+    justify-content: center;
+}
+
+.headerCellActions {
+    justify-content: flex-end;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.bodyRow {
+    display: grid;
+    grid-template-columns: var(--grid-template-columns);
+    align-items: stretch;
+    background: #ffffff;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.bodyRow:nth-child(even) {
+    background: #f8fcfa;
+}
+
+.bodyRow:hover {
+    background: #eef7f1;
+}
+
+.selectedRow {
+    background: #e1f5e9;
+}
+
+.bodyRow:not(:last-child) {
+    border-bottom: 1px solid #edf3ef;
+}
+
+.cell {
+    padding: 16px;
+    font-size: 14px;
+    color: #1f2d3a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+}
+
+.checkboxCell {
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+}
+
+.checkboxControl {
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
+    border: 1px solid #a3b8b0;
+    background: #ffffff;
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.checkboxControl:checked {
+    background: #38e47a;
+    border-color: #38e47a;
+}
+
+.checkboxControl:checked::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 6px;
+    height: 10px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkboxControl:hover {
+    border-color: #38e47a;
+    box-shadow: 0 0 0 3px rgb(56 228 122 / 12%);
+}
+
+.photoCellContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 2px solid #ebf2ee;
+}
+
+.photoFallback {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(135deg, #38e47a, #3aa6a0);
+}
+
+.addressMain {
+    font-weight: 600;
+    color: #1b2a20;
+}
+
+.addressMeta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: #3f5a51;
 }
 
 .codeTag {
+    padding: 3px 8px;
+    background: #e4f9ec;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #2f8a57;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.qualityWrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.qualityBar {
+    flex: 1;
+    height: 6px;
+    border-radius: 999px;
+    background: #dfe8e4;
+    overflow: hidden;
+}
+
+.qualityFill {
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #38e47a, #5fd8a8);
+    transition: width 0.3s ease;
+}
+
+.qualityValue {
+    min-width: 48px;
+    text-align: right;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2d4f44;
+}
+
+.typeMain {
+    font-weight: 600;
+}
+
+.typeSecondary {
+    font-size: 12px;
+    color: #4c6f65;
+}
+
+.priceBadge {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-
-    min-width: fit-content;
-    max-width: fit-content;
-    margin: 0;
-    padding: 2px 6px;
-    border-radius: 8px;
-
-    font-size: 8px;
-    font-weight: 700;
-    color: #1e40af;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    white-space: nowrap;
-
-    background-color: #dbeafe;
-}
-
-.cityText {
-    font-size: 12px;
-    color: #64748b;
-}
-
-/* Celdas de calidad */
-.qualityCell {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.circularProgress {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.circularChart {
-    transform: rotate(-90deg);
-    width: 50px;
-    height: 50px;
-}
-
-.circleBackground {
-    fill: none;
-    stroke: #e2e8f0;
-    stroke-width: 3;
-}
-
-.circleProgress {
-    fill: none;
-    stroke: #38E47A;
-    stroke-linecap: round;
-    stroke-width: 3;
-
-    transition: stroke-dasharray 0.3s ease;
-}
-
-.qualityText {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    font-size: 12px;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #26312c;
+    color: #ffffff;
     font-weight: 600;
-    color: #1e293b;
-    text-align: center;
 }
 
-/* Celdas de tipo */
-.typeCell {
+.portalsList {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.typeText {
-    font-size: 14px;
-    font-weight: 500;
-    color: #1e293b;
-}
-
-.categoryText {
-    font-size: 12px;
-    color: #64748b;
-}
-
-/* Celdas de precio */
-.priceCell {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.priceType {
-    font-size: 12px;
-    font-weight: 500;
-    color: #1e293b;
-}
-
-.priceText {
-    font-size: 14px;
-    font-weight: 600;
-    color: #1e293b;
-}
-
-/* Celdas de portales */
-.portalsCell {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.portalItem {
-    display: flex;
+    flex-wrap: wrap;
     gap: 8px;
-    align-items: center;
 }
 
 .portalTag {
     display: inline-flex;
     align-items: center;
-
-    min-width: fit-content;
-    padding: 4px 8px;
-    border: 1px solid #A7F3D0;
-    border-radius: 12px;
-
-    font-size: 10px;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 10px;
+    background: #f0faf4;
+    color: #2d4f44;
+    font-size: 12px;
     font-weight: 500;
-    color: #065f46;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    white-space: nowrap;
-
-    background-color: #A7F3D0;
 }
 
-.portalIcons {
-    display: flex;
-    gap: 4px;
+.portalTag svg {
+    color: #3aa6a0;
+}
+
+.actionsCell {
     align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+    gap: 10px;
 }
 
-.portalIcon {
-    width: 16px;
-    height: 16px;
-    color: #64748b;
+.actionButton {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    border: none;
+    background: #f3f7f5;
+    color: #304c43;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
+.actionButton:hover {
+    background: #e7f2ec;
+    transform: translateY(-1px);
+}
 
+.actionButton:active {
+    transform: translateY(0);
+}
 
-/* Responsive */
+.danger {
+    background: #ffe6e6;
+    color: #c53030;
+}
+
+.danger:hover {
+    background: #ffd1d1;
+}
+
+.emptyRow {
+    padding: 48px 16px;
+    text-align: center;
+    color: #567870;
+    font-size: 15px;
+}
+
+@media (width <=1024px) {
+    .table {
+        --grid-template-columns: 56px 100px 2fr 1fr 1fr 0.9fr 1.2fr 120px;
+    }
+
+    .table[data-has-actions='false'] {
+        --grid-template-columns: 56px 100px 2fr 1fr 1fr 0.9fr 1.2fr;
+    }
+}
+
 @media (width <=768px) {
-    .qualityCell {
-        flex-direction: column;
-        gap: 8px;
+    .tableContainer {
+        border-radius: 14px;
+    }
+
+    .headerRow {
+        display: none;
+    }
+
+    .bodyRow {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 16px 14px;
+    }
+
+    .bodyRow:not(:last-child) {
+        border-bottom: 1px solid #edf3ef;
+    }
+
+    .cell {
+        padding: 0;
         align-items: flex-start;
     }
 
-    .qualityBar {
-        width: 100%;
-        min-width: auto;
+    .checkboxCell {
+        grid-row: 1;
+        align-items: center;
+        justify-content: flex-start;
     }
 
-    .portalItem {
-        flex-direction: column;
-        gap: 6px;
-        align-items: flex-start;
+    .actionsCell {
+        justify-content: flex-start;
     }
 }

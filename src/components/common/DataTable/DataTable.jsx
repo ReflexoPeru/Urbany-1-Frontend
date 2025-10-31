@@ -20,6 +20,19 @@ const DataTable = ({
     selectedRows = [],
     onSelectionChange,
 }) => {
+    // Convertir selectedRows (array o objeto) a objeto si es necesario
+    const getRowSelection = () => {
+        if (!selectedRows) return {};
+        if (Array.isArray(selectedRows)) {
+            return selectedRows.reduce((acc, index) => {
+                acc[index] = true;
+                return acc;
+            }, {});
+        }
+        // Si ya es un objeto, retornarlo directamente
+        return selectedRows;
+    };
+
     const table = useReactTable({
         data,
         columns,
@@ -30,10 +43,7 @@ const DataTable = ({
         enableRowSelection: true,
         onRowSelectionChange: onSelectionChange,
         state: {
-            rowSelection: selectedRows.reduce((acc, index) => {
-                acc[index] = true;
-                return acc;
-            }, {}),
+            rowSelection: getRowSelection(),
         },
         initialState: {
             pagination: {
@@ -49,29 +59,32 @@ const DataTable = ({
                     <thead className={styles.tableHeader}>
                         {table.getHeaderGroups().map(headerGroup => (
                             <tr key={headerGroup.id} className={styles.headerRow}>
-                                {headerGroup.headers.map(header => (
-                                    <th
-                                        key={header.id}
-                                        className={styles.headerCell}
-                                        onClick={header.column.getToggleSortingHandler()}
-                                        style={{
-                                            cursor: header.column.getCanSort() ? 'pointer' : 'default',
-                                        }}
-                                    >
-                                        <div className={styles.headerContent}>
-                                            {flexRender(
-                                                header.column.columnDef.header,
-                                                header.getContext()
-                                            )}
-                                            {header.column.getIsSorted() === 'asc' && (
-                                                <span className={styles.sortIcon}>↑</span>
-                                            )}
-                                            {header.column.getIsSorted() === 'desc' && (
-                                                <span className={styles.sortIcon}>↓</span>
-                                            )}
-                                        </div>
-                                    </th>
-                                ))}
+                                {headerGroup.headers.map(header => {
+                                    const isSelectColumn = header.id === 'select';
+                                    return (
+                                        <th
+                                            key={header.id}
+                                            className={`${styles.headerCell} ${isSelectColumn ? styles.headerCellCenter : ''}`}
+                                            onClick={header.column.getToggleSortingHandler()}
+                                            style={{
+                                                cursor: header.column.getCanSort() ? 'pointer' : 'default',
+                                            }}
+                                        >
+                                            <div className={`${styles.headerContent} ${isSelectColumn ? styles.headerContentCenter : ''}`}>
+                                                {flexRender(
+                                                    header.column.columnDef.header,
+                                                    header.getContext()
+                                                )}
+                                                {header.column.getIsSorted() === 'asc' && (
+                                                    <span className={styles.sortIcon}>↑</span>
+                                                )}
+                                                {header.column.getIsSorted() === 'desc' && (
+                                                    <span className={styles.sortIcon}>↓</span>
+                                                )}
+                                            </div>
+                                        </th>
+                                    );
+                                })}
                             </tr>
                         ))}
                     </thead>
@@ -82,11 +95,17 @@ const DataTable = ({
                                 className={styles.dataRow}
                                 onClick={() => onRowClick?.(row.original)}
                             >
-                                {row.getVisibleCells().map(cell => (
-                                    <td key={cell.id} className={styles.dataCell}>
-                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                    </td>
-                                ))}
+                                {row.getVisibleCells().map(cell => {
+                                    const isSelectColumn = cell.column.id === 'select';
+                                    return (
+                                        <td
+                                            key={cell.id}
+                                            className={`${styles.dataCell} ${isSelectColumn ? styles.dataCellCenter : ''}`}
+                                        >
+                                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                        </td>
+                                    );
+                                })}
                             </tr>
                         ))}
                     </tbody>

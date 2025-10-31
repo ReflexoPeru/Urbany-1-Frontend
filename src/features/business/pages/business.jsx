@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
-import { DownloadSimple, Plus, CalendarBlank, MagnifyingGlass } from 'phosphor-react'
+import { DownloadSimple, CalendarBlank, MagnifyingGlass } from 'phosphor-react'
+import Button from '../../../components/ui/Button/Button'
+import Pagination from '../../../components/common/Pagination/Pagination'
+import ConfirmModal from '../../../components/ui/Modal/ConfirmModal'
+import { useToast } from '../../../contexts/ToastContext'
 import { useBusiness } from '../hooks/useBusiness'
 import StageTabs from '../components/StageTabs'
 import FilterDropdown from '../components/FilterDropdown'
 import BusinessTable from '../components/BusinessTable'
-import Pagination from '../components/Pagination'
 import CalendarModal from '../components/CalendarModal'
 import DealModal from '../components/DealModal'
-import DeleteDealModal from '../components/DeleteDealModal'
 import EmptyTableState from '../components/EmptyTableState'
 import DownloadModal from '../components/DownloadModal'
 import styles from './Business.module.css'
@@ -29,6 +31,8 @@ const Business = () => {
     deleteDeal,
     deleteMultipleDeals
   } = useBusiness()
+
+  const { toast } = useToast()
 
   const [selectedDeals, setSelectedDeals] = useState([])
   const [dealModalOpen, setDealModalOpen] = useState(false)
@@ -128,10 +132,19 @@ const Business = () => {
 
   const handleConfirmDelete = async (dealId) => {
     try {
+      if (!dealId) {
+        setDeleteModalOpen(false)
+        setDealToDelete(null)
+        return
+      }
+
       await deleteDeal(dealId)
       setDeleteModalOpen(false)
+      setDealToDelete(null)
+      toast.success('Negocio eliminado', 'El negocio se eliminó correctamente.')
     } catch (error) {
       console.error('Error deleting deal:', error)
+      toast.error('Error al eliminar', 'No se pudo eliminar el negocio.')
     }
   }
 
@@ -146,8 +159,10 @@ const Business = () => {
       await deleteMultipleDeals(selectedDeals)
       setSelectedDeals([])
       setBulkDeleteModalOpen(false)
+      toast.success('Negocios eliminados', 'Los negocios seleccionados fueron eliminados.')
     } catch (error) {
       console.error('Error deleting deals:', error)
+      toast.error('Error al eliminar', 'No se pudieron eliminar los negocios seleccionados.')
     }
   }
 
@@ -164,37 +179,78 @@ const Business = () => {
   const tagOptions = tags
 
   return (
-    <div className={styles.container}>
+    <div className={styles.businessContainer}>
       <div className={styles.page}>
-        <div className={styles.header}>
-          <h2 className={styles.title}>Negocios</h2>
-          <button className={styles.addButton} onClick={handleAddBusiness}>
-            Agregar nuevo negocio
-          </button>
-        </div>
-
-        <h3 className={styles.sectionTitle}>Estado del Negocio</h3>
-        <StageTabs
-          stages={summary}
-          activeStage={filters.stage}
-          onStageChange={handleStageChange}
-        />
-
-        <div className={styles.search}>
-          <div className={styles.searchBox}>
-            <MagnifyingGlass className={styles.searchIcon} weight="bold" />
-            <input
-              placeholder="Buscar por nombre, correo electrónico, teléfono y propiedad"
-              className={styles.searchInput}
-              type="text"
-              value={filters.search}
-              onChange={handleSearch}
-            />
+        <header className={styles.header}>
+          <div className={styles.headerInfo}>
+            <h1 className={styles.title}>Negocios</h1>
+            <p className={styles.subtitle}>
+              Gestiona tus oportunidades y mantén el seguimiento de cada etapa del embudo.
+            </p>
           </div>
-        </div>
+          <div className={styles.headerActions}>
+            <Button variant="primary" icon="plus" onClick={handleAddBusiness}>
+              Agregar nuevo negocio
+            </Button>
+          </div>
+        </header>
 
-        <div className={styles.toolbar}>
-          <div className={styles.chipGroup}>
+        <section className={styles.summarySection}>
+          <div className={styles.sectionHeader}>
+            <h3 className={styles.sectionTitle}>Estado del negocio</h3>
+            <span className={styles.sectionHint}>Resumen de operaciones por etapa</span>
+          </div>
+          <StageTabs
+            stages={summary}
+            activeStage={filters.stage}
+            onStageChange={handleStageChange}
+          />
+        </section>
+
+        <section className={styles.tableSection}>
+          <div className={styles.controlHeader}>
+            <div className={styles.searchBox}>
+              <MagnifyingGlass className={styles.searchIcon} weight="bold" />
+              <input
+                placeholder="Buscar por nombre, correo electrónico, teléfono y propiedad"
+                className={styles.searchInput}
+                type="text"
+                value={filters.search}
+                onChange={handleSearch}
+              />
+            </div>
+
+            <div className={styles.iconGroup}>
+              <button
+                className={styles.iconBtn}
+                aria-label="Descargar"
+                onClick={handleExport}
+              >
+                <DownloadSimple weight="bold" />
+              </button>
+              <Button variant="ghost" size="small" icon="plus" onClick={handleAddBusiness}>
+                Nuevo
+              </Button>
+              <button
+                className={styles.iconBtn}
+                aria-label="Calendario"
+                onClick={handleCalendar}
+              >
+                <CalendarBlank weight="bold" />
+              </button>
+              {selectedDeals.length > 0 && (
+                <button
+                  className={styles.bulkDeleteBtn}
+                  aria-label="Eliminar seleccionados"
+                  onClick={handleBulkDelete}
+                >
+                  Eliminar ({selectedDeals.length})
+                </button>
+              )}
+            </div>
+          </div>
+
+          <div className={styles.filtersRow}>
             <FilterDropdown
               label="Agente"
               options={agentOptions}
@@ -219,69 +275,41 @@ const Business = () => {
               multiple={true}
             />
             <FilterDropdown
-              label="Todos"
+              label="Etapa"
               options={stageOptions}
               value={filters.stage}
               onChange={handleStageChange}
             />
           </div>
-          <div className={styles.iconGroup}>
-            <button
-              className={styles.iconBtn}
-              aria-label="Descargar"
-              onClick={handleExport}
-            >
-              <DownloadSimple weight="bold" />
-            </button>
-            <button
-              className={styles.iconBtn}
-              aria-label="Agregar"
-              onClick={handleAddBusiness}
-            >
-              <Plus weight="bold" />
-            </button>
-            <button
-              className={styles.iconBtn}
-              aria-label="Calendario"
-              onClick={handleCalendar}
-            >
-              <CalendarBlank weight="bold" />
-            </button>
-            {selectedDeals.length > 0 && (
-              <button
-                className={styles.bulkDeleteBtn}
-                aria-label="Eliminar seleccionados"
-                onClick={handleBulkDelete}
-              >
-                Eliminar ({selectedDeals.length})
-              </button>
+
+          <div className={styles.tableContent}>
+            {loading ? (
+              <div className={styles.loading}>Cargando...</div>
+            ) : deals.length === 0 ? (
+              <EmptyTableState onAddNew={handleAddBusiness} />
+            ) : (
+              <>
+                <BusinessTable
+                  deals={deals}
+                  selectedDeals={selectedDeals}
+                  onSelectDeal={handleSelectDeal}
+                  onSelectAll={handleSelectAll}
+                  onViewDeal={handleViewDeal}
+                  onEditDeal={handleEditDeal}
+                  onDeleteDeal={handleDeleteDeal}
+                />
+
+                <Pagination
+                  currentPage={pagination.page}
+                  totalPages={pagination.totalPages}
+                  totalItems={pagination.total}
+                  itemsPerPage={filters.limit}
+                  onPageChange={changePage}
+                />
+              </>
             )}
           </div>
-        </div>
-
-        {loading ? (
-          <div className={styles.loading}>Cargando...</div>
-        ) : deals.length === 0 ? (
-          <EmptyTableState onAddNew={handleAddBusiness} />
-        ) : (
-          <>
-            <BusinessTable
-              deals={deals}
-              selectedDeals={selectedDeals}
-              onSelectDeal={handleSelectDeal}
-              onSelectAll={handleSelectAll}
-              onViewDeal={handleViewDeal}
-              onEditDeal={handleEditDeal}
-              onDeleteDeal={handleDeleteDeal}
-            />
-
-            <Pagination
-              currentPage={pagination.page}
-              totalPages={pagination.totalPages}
-              onPageChange={changePage}
-            />
-          </>
-        )}
+        </section>
       </div>
 
       <DealModal
@@ -292,29 +320,36 @@ const Business = () => {
         mode={modalMode}
       />
 
-              <CalendarModal
-                isOpen={calendarModalOpen}
-                onClose={() => setCalendarModalOpen(false)}
-                deals={deals}
-                onViewDeal={handleViewDeal}
-              />
-
-      <DeleteDealModal
-        deal={dealToDelete}
-        isOpen={deleteModalOpen}
-        onClose={() => setDeleteModalOpen(false)}
-        onConfirm={handleConfirmDelete}
+      <CalendarModal
+        isOpen={calendarModalOpen}
+        onClose={() => setCalendarModalOpen(false)}
+        deals={deals}
+        onViewDeal={handleViewDeal}
       />
 
-      <DeleteDealModal
-        deal={{ 
-          name: `${selectedDeals.length} negocios seleccionados`,
-          id: selectedDeals
+      <ConfirmModal
+        isOpen={deleteModalOpen}
+        onClose={() => {
+          setDeleteModalOpen(false)
+          setDealToDelete(null)
         }}
+        onConfirm={() => handleConfirmDelete(dealToDelete?.id)}
+        title="Eliminar negocio"
+        message={dealToDelete ? `¿Seguro que deseas eliminar el negocio de ${dealToDelete.name}?` : ''}
+        type="danger"
+        confirmText="Eliminar"
+        cancelText="Cancelar"
+      />
+
+      <ConfirmModal
         isOpen={bulkDeleteModalOpen}
         onClose={() => setBulkDeleteModalOpen(false)}
         onConfirm={handleConfirmBulkDelete}
-        isBulkDelete={true}
+        title="Eliminar negocios seleccionados"
+        message={`¿Seguro que deseas eliminar ${selectedDeals.length} negocios seleccionados?`}
+        type="danger"
+        confirmText="Eliminar todos"
+        cancelText="Cancelar"
       />
 
       <DownloadModal
