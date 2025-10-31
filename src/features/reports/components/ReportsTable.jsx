@@ -1,8 +1,7 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 import styles from './ReportsTable.module.css'
+import Pagination from '../../../components/common/Pagination'
 import { reportsPropertiesData, reportsAgentsData } from '../../../mock/reports'
-
-// Tabla de reportes sin checkbox, calidad ni acciones - v2
 
 const normalizeData = (data) =>
   data.map((item, index) => ({
@@ -22,12 +21,12 @@ const getInitials = (name = '') =>
 const ReportsTable = ({
   category,
   searchQuery,
-  onRowClick
+  onRowClick,
+  itemsPerPage = 10
 }) => {
-  // Obtener datos según la categoría
+  const [currentPage, setCurrentPage] = useState(1)
   const rawData = category === 'agentes' ? reportsAgentsData : reportsPropertiesData
 
-  // Filtrar datos basado en la búsqueda
   const filteredData = useMemo(() => {
     if (!searchQuery) return rawData
 
@@ -44,7 +43,21 @@ const ReportsTable = ({
     )
   }, [searchQuery, rawData, category])
 
-  const rows = useMemo(() => normalizeData(filteredData), [filteredData])
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [category, searchQuery])
+
+  const totalItems = filteredData.length
+  const totalPages = Math.ceil(totalItems / itemsPerPage)
+  const startIndex = (currentPage - 1) * itemsPerPage
+  const endIndex = startIndex + itemsPerPage
+  const paginatedData = filteredData.slice(startIndex, endIndex)
+
+  const rows = useMemo(() => normalizeData(paginatedData), [paginatedData])
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page)
+  }
 
   if (category === 'agentes') {
     return (
@@ -129,6 +142,17 @@ const ReportsTable = ({
               )}
             </div>
           </div>
+
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            totalItems={totalItems}
+            itemsPerPage={itemsPerPage}
+            onPageChange={handlePageChange}
+            showInfo={true}
+            showPageNumbers={true}
+            maxVisiblePages={5}
+          />
         </div>
       </div>
     )
@@ -232,6 +256,17 @@ const ReportsTable = ({
             )}
           </div>
         </div>
+
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          totalItems={totalItems}
+          itemsPerPage={itemsPerPage}
+          onPageChange={handlePageChange}
+          showInfo={true}
+          showPageNumbers={true}
+          maxVisiblePages={5}
+        />
       </div>
     </div>
   )

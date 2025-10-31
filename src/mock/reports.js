@@ -8,9 +8,7 @@ export const reportsPropertiesData = [
     type: 'Apartamento',
     bedrooms: 2,
     price: 'USD 180,000',
-    portals: [
-      { name: 'Sin difundir', color: '#6b7280' }
-    ],
+    portals: { name: 'Sin difundir', color: '#6b7280' },
     image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&h=300&fit=crop'
   },
   {
@@ -22,9 +20,7 @@ export const reportsPropertiesData = [
     type: 'Casa',
     bedrooms: 3,
     price: 'USD 320,000',
-    portals: [
-      { name: 'Idealista', color: '#10b981' }
-    ],
+    portals: { name: 'Idealista', color: '#10b981' },
     image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=400&h=300&fit=crop'
   },
   {
@@ -36,9 +32,7 @@ export const reportsPropertiesData = [
     type: 'Estudio',
     bedrooms: 1,
     price: 'USD 150,000',
-    portals: [
-      { name: 'Idealista', color: '#10b981' }
-    ],
+    portals: { name: 'Idealista', color: '#10b981' },
     image: null
   },
   {
@@ -50,9 +44,7 @@ export const reportsPropertiesData = [
     type: 'Duplex',
     bedrooms: 3,
     price: 'USD 380,000',
-    portals: [
-      { name: 'Fotocasa', color: '#f59e0b' }
-    ],
+    portals: { name: 'Fotocasa', color: '#f59e0b' },
     image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&h=300&fit=crop'
   },
   {
