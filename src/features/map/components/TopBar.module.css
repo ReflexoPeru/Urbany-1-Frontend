@@ -10,9 +10,16 @@
   padding: 25px 64px 20px 96px;
 }
 
+.searchAndIncludeRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
 .mapSearchbar {
   max-width: 640px;
-  margin-bottom: 16px;
+  flex: 1;
 }
 
 .mapSearchbarField {
@@ -26,7 +33,7 @@
 
   font-family: Poppins, sans-serif;
 
-  background: #f8fafc;
+  background: #fff;
 }
 
 .mapSearchbarIcon {
@@ -98,4 +105,705 @@
   vertical-align: middle;
 
   opacity: 0.7;
+}
+
+.filterDropdown {
+  position: relative;
+}
+
+.chipActive {
+  background: #3b82f6 !important;
+  color: white !important;
+  border-color: #3b82f6 !important;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 50;
+  
+  min-width: 200px;
+  margin-top: 4px;
+  padding: 8px 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  
+  background: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.dropdownItem {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  border: none;
+  
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  color: #374151;
+  text-align: left;
+  
+  background: transparent;
+  cursor: pointer;
+  
+  transition: background-color 0.2s ease;
+}
+
+.dropdownItem:hover {
+  background: #f3f4f6;
+}
+
+.priceDropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 50;
+  
+  min-width: 320px;
+  margin-top: 4px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  
+  background: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.priceSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.currencySection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.currencyLabel {
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.currencyButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.currencyBtn {
+  padding: 8px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  
+  background: white;
+  cursor: pointer;
+  
+  transition: all 0.2s ease;
+}
+
+.currencyBtnActive {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.priceInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.priceInputGroup {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: white;
+}
+
+.priceInputPrefix {
+  padding: 12px 16px;
+  border-right: 1px solid #e5e7eb;
+  
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  
+  background: #f9fafb;
+}
+
+.priceInput {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  color: #374151;
+  
+  background: transparent;
+  outline: none;
+}
+
+.priceInput::placeholder {
+  color: #9ca3af;
+}
+
+.priceActions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.clearBtn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #374151;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  
+  background: transparent;
+  cursor: pointer;
+  
+  transition: all 0.2s ease;
+}
+
+.clearBtn:hover {
+  color: #111827;
+  text-decoration-thickness: 3px;
+}
+
+.saveBtn {
+  padding: 10px 20px;
+  border: 1px solid #3b82f6;
+  border-radius: 8px;
+  
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  
+  background: #3b82f6;
+  cursor: pointer;
+  
+  transition: all 0.2s ease;
+}
+
+.saveBtn:hover {
+  background: #2563eb;
+}
+
+.propertyTypeDropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 50;
+  
+  min-width: 400px;
+  margin-top: 4px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  
+  background: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.propertyTypeSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.propertyTypeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.checkboxItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+  
+  background: white;
+  cursor: pointer;
+  
+  transition: all 0.2s ease;
+}
+
+.checkboxChecked {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: white;
+}
+
+.checkboxLabel {
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  color: #374151;
+  cursor: pointer;
+  user-select: none;
+}
+
+.propertyTypeActions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.rangeDropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 50;
+  
+  min-width: 380px;
+  margin-top: 4px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  
+  background: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.rangeSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.numberRange {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.numberBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  min-width: 48px;
+  height: 48px;
+  padding: 8px;
+  border: 2px solid #d1d5db;
+  border-radius: 12px;
+  
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #6b7280;
+  
+  background: white;
+  cursor: pointer;
+  
+  transition: all 0.2s ease;
+}
+
+.numberBtn:hover {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+.numberBtnActive {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: white;
+}
+
+.numberBtnActive:hover {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: white;
+}
+
+.rangeActions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.locationDropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 50;
+  
+  min-width: 400px;
+  margin-top: 4px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  
+  background: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.locationSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.locationInputGroup {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  gap: 12px;
+}
+
+.locationIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.locationInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  color: #374151;
+  
+  background: transparent;
+}
+
+.locationInput::placeholder {
+  color: #9ca3af;
+}
+
+.locationActions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.clearAllBtn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #374151;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  
+  background: transparent;
+  cursor: pointer;
+  
+  transition: all 0.2s ease;
+}
+
+.clearAllBtn:hover {
+  color: #111827;
+  text-decoration-thickness: 3px;
+}
+
+.realEstateDropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 50;
+  
+  min-width: 400px;
+  margin-top: 4px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  
+  background: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.realEstateSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.realEstateInputGroup {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  gap: 12px;
+}
+
+.realEstateIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.realEstateInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  color: #374151;
+  
+  background: transparent;
+}
+
+.realEstateInput::placeholder {
+  color: #9ca3af;
+}
+
+.realEstateActions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.commissionDropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 50;
+  
+  min-width: 200px;
+  margin-top: 4px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  
+  background: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.commissionSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.commissionOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.commissionOption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.commissionBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  min-width: 80px;
+  height: 40px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.commissionBadge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.commissionBadgeSelected {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.commissionText {
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.commissionCheck {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  
+  background: #3b82f6;
+  color: white;
+  flex-shrink: 0;
+}
+
+.multiSelectDropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 50;
+  
+  min-width: 280px;
+  margin-top: 4px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  
+  background: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.multiSelectSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.checkboxList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checkboxItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+  
+  background: white;
+  cursor: pointer;
+  
+  transition: all 0.2s ease;
+}
+
+.checkboxChecked {
+  background: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.checkIcon {
+  width: 12px;
+  height: 12px;
+  color: white;
+}
+
+.checkboxLabel {
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  color: #374151;
+  cursor: pointer;
+  user-select: none;
+}
+
+.multiSelectActions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.actionIcons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-left: auto;
+}
+
+.iconBtn {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 6px;
+  color: #6b7280;
+  transition: all 0.2s ease;
+}
+
+.iconBtn:hover {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.iconBtn svg {
+  width: 20px;
+  height: 20px;
+  opacity: 0.8;
+  stroke: currentColor;
+}
+
+.iconBtn:hover svg {
+  opacity: 1;
 }

@@ -1,190 +1,296 @@
-import React, { useMemo, useState } from 'react';
-import { Eye, Pencil, Trash, Check, House, Link } from 'phosphor-react';
-import {
-    useReactTable,
-    getCoreRowModel,
-    getSortedRowModel,
-    getFilteredRowModel,
-    getPaginationRowModel,
-    flexRender,
-} from '@tanstack/react-table';
-import DataTable from '../../../components/common/DataTable';
+import React, { useEffect, useMemo, useState } from 'react';
+import { Eye, Pencil, Trash, House, Link as LinkIcon } from 'phosphor-react';
 import styles from './PropertiesDataTable.module.css';
 
-const PropertiesDataTable = ({ data = [], onRowClick, onEdit, onDelete, onView }) => {
-    const [selectedRows, setSelectedRows] = useState([]);
+const formatPrice = (value) => {
+    if (value === undefined || value === null || Number.isNaN(Number(value))) {
+        return '--';
+    }
 
-    const columns = useMemo(
-        () => [
-            {
-                id: 'select',
-                header: ({ table }) => (
-                    <div className={styles.checkboxContainer}>
-                        <input
-                            type="checkbox"
-                            checked={table.getIsAllPageRowsSelected()}
-                            onChange={(e) => table.toggleAllPageRowsSelected(e.target.checked)}
-                            className={styles.checkbox}
-                        />
-                    </div>
-                ),
-                cell: ({ row }) => (
-                    <div className={styles.checkboxContainer}>
-                        <input
-                            type="checkbox"
-                            checked={row.getIsSelected()}
-                            onChange={(e) => row.toggleSelected(e.target.checked)}
-                            className={styles.checkbox}
-                        />
-                    </div>
-                ),
-            },
-            {
-                accessorKey: 'image',
-                header: 'FOTO',
-                cell: ({ getValue, row }) => {
-                    const image = getValue();
-                    const address = row.original.address;
-                    const initials = address ? address.split(' ').map(word => word[0]).join('').slice(0, 2) : 'PR';
+    return new Intl.NumberFormat('es-PE', {
+        minimumFractionDigits: 0,
+    }).format(value);
+};
 
-                    return (
-                        <div className={styles.imageCell}>
-                            {image ? (
-                                <img src={image} alt="Propiedad" className={styles.propertyImage} />
-                            ) : (
-                                <div className={styles.imagePlaceholder}>
-                                    {initials}
-                                </div>
-                            )}
-                        </div>
-                    );
-                },
-            },
-            {
-                accessorKey: 'address',
-                header: 'DIRECCIÓN',
-                cell: ({ getValue, row }) => {
-                    const address = getValue();
-                    const city = row.original.city;
-                    const code = row.original.code;
+const normalizePortals = (portals) => {
+    if (Array.isArray(portals)) {
+        return portals.length ? portals : ['Sin difundir'];
+    }
 
-                    return (
-                        <div className={styles.addressCell}>
-                            <div className={styles.addressText}>{address}</div>
-                            {code && <div className={styles.codeTag}>{code}</div>}
-                            {city && <div className={styles.cityText}>{city}</div>}
-                        </div>
-                    );
-                },
-            },
-            {
-                accessorKey: 'quality',
-                header: 'CALIDAD',
-                cell: ({ getValue }) => {
-                    const quality = getValue();
-                    const percentage = Math.min(Math.max(quality, 0), 100);
+    if (typeof portals === 'string' && portals.trim()) {
+        return [portals.trim()];
+    }
 
-                    return (
-                        <div className={styles.qualityCell}>
-                            <div className={styles.circularProgress}>
-                                <svg className={styles.circularChart} viewBox="0 0 36 36">
-                                    <path
-                                        className={styles.circleBackground}
-                                        d="M18 2.0845
-                      a 15.9155 15.9155 0 0 1 0 31.831
-                      a 15.9155 15.9155 0 0 1 0 -31.831"
-                                    />
-                                    <path
-                                        className={styles.circleProgress}
-                                        strokeDasharray={`${percentage}, 100`}
-                                        d="M18 2.0845
-                      a 15.9155 15.9155 0 0 1 0 31.831
-                      a 15.9155 15.9155 0 0 1 0 -31.831"
-                                    />
-                                </svg>
-                                <div className={styles.qualityText}>{quality}%</div>
-                            </div>
-                        </div>
-                    );
-                },
-            },
-            {
-                accessorKey: 'type',
-                header: 'TIPO',
-                cell: ({ getValue, row }) => {
-                    const type = getValue();
-                    const category = row.original.category;
+    return ['Sin difundir'];
+};
 
-                    return (
-                        <div className={styles.typeCell}>
-                            <div className={styles.typeText}>{type}</div>
-                            {category && <div className={styles.categoryText}>{category}</div>}
-                        </div>
-                    );
-                },
-            },
-            {
-                accessorKey: 'price',
-                header: 'PRECIO',
-                cell: ({ getValue, row }) => {
-                    const price = getValue();
-                    const currency = row.original.currency || '$';
+const PropertyImage = ({ image, address }) => {
+    const [hasError, setHasError] = useState(false);
+    const initials = useMemo(() => {
+        if (!address) {
+            return 'PR';
+        }
 
-                    return (
-                        <div className={styles.priceCell}>
-                            <div className={styles.priceType}>Venta</div>
-                            <div className={styles.priceText}>
-                                {currency} {price?.toLocaleString()}
-                            </div>
-                        </div>
-                    );
-                },
-            },
-            {
-                accessorKey: 'portals',
-                header: 'PORTALES',
-                cell: ({ getValue }) => {
-                    const portals = getValue();
+        return address
+            .split(' ')
+            .filter(Boolean)
+            .map((word) => word[0])
+            .join('')
+            .slice(0, 2)
+            .toUpperCase();
+    }, [address]);
 
-                    return (
-                        <div className={styles.portalsCell}>
-                            {Array.isArray(portals) ? (
-                                portals.map((portal, index) => (
-                                    <div key={index} className={styles.portalItem}>
-                                        <span className={styles.portalTag}>{portal}</span>
-                                        <div className={styles.portalIcons}>
-                                            <House size={16} className={styles.portalIcon} />
-                                            <Link size={16} className={styles.portalIcon} />
-                                        </div>
-                                    </div>
-                                ))
-                            ) : (
-                                <div className={styles.portalItem}>
-                                    <span className={styles.portalTag}>{portals}</span>
-                                    <div className={styles.portalIcons}>
-                                        <House size={16} className={styles.portalIcon} />
-                                        <Link size={16} className={styles.portalIcon} />
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-                    );
-                },
-            },
-        ],
-        [onView, onEdit, onDelete]
-    );
+    if (!image || hasError) {
+        return <div className={styles.photoFallback}>{initials}</div>;
+    }
 
     return (
-        <DataTable
-            data={data}
-            columns={columns}
-            onRowClick={onRowClick}
-            showPagination={true}
-            pageSize={10}
-            selectedRows={selectedRows}
-            onSelectionChange={setSelectedRows}
+        <img
+            src={image}
+            alt={address ?? 'Propiedad'}
+            className={styles.photo}
+            onError={() => setHasError(true)}
         />
+    );
+};
+
+const QualityIndicator = ({ value }) => {
+    const percentage = Math.max(0, Math.min(100, Number(value) || 0));
+
+    return (
+        <div className={styles.qualityWrapper}>
+            <div className={styles.qualityBar}>
+                <div className={styles.qualityFill} style={{ width: `${percentage}%` }} />
+            </div>
+            <span className={styles.qualityValue}>{percentage}%</span>
+        </div>
+    );
+};
+
+const PropertiesDataTable = ({ data = [], onRowClick, onEdit, onDelete, onView }) => {
+    const rows = useMemo(
+        () =>
+            data.map((item, index) => ({
+                ...item,
+                __rowId: item?.id ?? `row-${index}`,
+            })),
+        [data]
+    );
+
+    const [selectedIds, setSelectedIds] = useState([]);
+
+    const selectableIds = useMemo(() => rows.map((item) => item.__rowId), [rows]);
+    const isAllSelected = selectableIds.length > 0 && selectedIds.length === selectableIds.length;
+    const showActions = Boolean(onView || onEdit || onDelete);
+
+    useEffect(() => {
+        setSelectedIds((previous) => previous.filter((id) => selectableIds.includes(id)));
+    }, [selectableIds]);
+
+    const handleSelectAll = (checked) => {
+        if (checked) {
+            setSelectedIds(selectableIds);
+        } else {
+            setSelectedIds([]);
+        }
+    };
+
+    const handleSelectRow = (rowId, checked) => {
+        setSelectedIds((previous) => {
+            if (checked) {
+                if (previous.includes(rowId)) {
+                    return previous;
+                }
+
+                return [...previous, rowId];
+            }
+
+            return previous.filter((item) => item !== rowId);
+        });
+    };
+
+    const handleRowClick = (event, property) => {
+        if (event.target.closest('button') || event.target.closest('input')) {
+            return;
+        }
+
+        onRowClick?.(property);
+    };
+
+    const gridTemplate = showActions
+        ? '56px 110px 2fr 1.1fr 1.1fr 1fr 1.4fr 140px'
+        : '56px 110px 2fr 1.1fr 1.1fr 1fr 1.4fr';
+
+    return (
+        <div className={styles.wrapper}>
+            <div className={styles.tableContainer}>
+                <div
+                    className={styles.table}
+                    style={{ '--grid-template-columns': gridTemplate }}
+                    data-has-actions={showActions}
+                    role="table"
+                >
+                    <div className={styles.headerRow} role="row">
+                        <div
+                            className={`${styles.headerCell} ${styles.checkboxCell} ${styles.headerCellCheckbox}`}
+                            role="columnheader"
+                        >
+                            <input
+                                type="checkbox"
+                                className={styles.checkboxControl}
+                                checked={isAllSelected}
+                                onChange={(event) => handleSelectAll(event.target.checked)}
+                                aria-label="Seleccionar todas las propiedades"
+                            />
+                        </div>
+                        <div className={styles.headerCell} role="columnheader">
+                            Foto
+                        </div>
+                        <div className={styles.headerCell} role="columnheader">
+                            Dirección
+                        </div>
+                        <div className={styles.headerCell} role="columnheader">
+                            Calidad
+                        </div>
+                        <div className={styles.headerCell} role="columnheader">
+                            Tipo
+                        </div>
+                        <div className={styles.headerCell} role="columnheader">
+                            Precio
+                        </div>
+                        <div className={styles.headerCell} role="columnheader">
+                            Portales
+                        </div>
+                        {showActions && (
+                            <div className={`${styles.headerCell} ${styles.headerCellActions}`} role="columnheader">
+                                Acciones
+                            </div>
+                        )}
+                    </div>
+
+                    <div className={styles.body} role="rowgroup">
+                        {rows.length === 0 ? (
+                            <div className={styles.emptyRow} role="row">
+                                No se encontraron propiedades.
+                            </div>
+                        ) : (
+                            rows.map((property) => {
+                                const rowId = property.__rowId;
+                                const isSelected = selectedIds.includes(rowId);
+                                const portals = normalizePortals(property.portals);
+
+                                return (
+                                    <div
+                                        key={rowId}
+                                        className={`${styles.bodyRow} ${isSelected ? styles.selectedRow : ''}`}
+                                        role="row"
+                                        onClick={(event) => handleRowClick(event, property)}
+                                    >
+                                        <div className={`${styles.cell} ${styles.checkboxCell}`} role="cell">
+                                            <input
+                                                type="checkbox"
+                                                className={styles.checkboxControl}
+                                                checked={isSelected}
+                                                onChange={(event) => handleSelectRow(rowId, event.target.checked)}
+                                                onClick={(event) => event.stopPropagation()}
+                                                aria-label={`Seleccionar ${property.address ?? 'propiedad'}`}
+                                            />
+                                        </div>
+
+                                        <div className={styles.cell} role="cell">
+                                            <div className={styles.photoCellContent}>
+                                                <PropertyImage image={property.image} address={property.address} />
+                                            </div>
+                                        </div>
+
+                                        <div className={styles.cell} role="cell">
+                                            <span className={styles.addressMain}>
+                                                {property.address ?? 'Dirección no disponible'}
+                                            </span>
+                                            <span className={styles.addressMeta}>
+                                                {property.code && <span className={styles.codeTag}>{property.code}</span>}
+                                                {property.city && <span>{property.city}</span>}
+                                            </span>
+                                        </div>
+
+                                        <div className={styles.cell} role="cell">
+                                            <QualityIndicator value={property.quality} />
+                                        </div>
+
+                                        <div className={styles.cell} role="cell">
+                                            <span className={styles.typeMain}>{property.type ?? 'Sin tipo'}</span>
+                                            {property.category && <span className={styles.typeSecondary}>{property.category}</span>}
+                                        </div>
+
+                                        <div className={styles.cell} role="cell">
+                                            <span className={styles.priceBadge}>
+                                                {property.currency ?? '$'} {formatPrice(property.price)}
+                                            </span>
+                                        </div>
+
+                                        <div className={styles.cell} role="cell">
+                                            <div className={styles.portalsList}>
+                                                {portals.map((portal, index) => (
+                                                    <span key={`${rowId}-portal-${index}`} className={styles.portalTag}>
+                                                        <House size={14} />
+                                                        <span>{portal}</span>
+                                                        <LinkIcon size={14} />
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+
+                                        {showActions && (
+                                            <div className={`${styles.cell} ${styles.actionsCell}`} role="cell">
+                                                {onView && (
+                                                    <button
+                                                        type="button"
+                                                        className={styles.actionButton}
+                                                        onClick={(event) => {
+                                                            event.stopPropagation();
+                                                            onView(property);
+                                                        }}
+                                                        aria-label="Ver propiedad"
+                                                    >
+                                                        <Eye size={18} />
+                                                    </button>
+                                                )}
+                                                {onEdit && (
+                                                    <button
+                                                        type="button"
+                                                        className={styles.actionButton}
+                                                        onClick={(event) => {
+                                                            event.stopPropagation();
+                                                            onEdit(property);
+                                                        }}
+                                                        aria-label="Editar propiedad"
+                                                    >
+                                                        <Pencil size={18} />
+                                                    </button>
+                                                )}
+                                                {onDelete && (
+                                                    <button
+                                                        type="button"
+                                                        className={`${styles.actionButton} ${styles.danger}`}
+                                                        onClick={(event) => {
+                                                            event.stopPropagation();
+                                                            onDelete(property);
+                                                        }}
+                                                        aria-label="Eliminar propiedad"
+                                                    >
+                                                        <Trash size={18} />
+                                                    </button>
+                                                )}
+                                            </div>
+                                        )}
+                                    </div>
+                                );
+                            })
+                        )}
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 };
 

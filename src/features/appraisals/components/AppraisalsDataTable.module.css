@@ -1,52 +1,49 @@
 /* stylelint-disable order/properties-order, color-hex-length */
+
 .wrapper {
     width: 100%;
 }
 
 .tableContainer {
     overflow: hidden;
-    border-radius: 20px;
-    background: #ffffff;
-    box-shadow: 0 16px 40px rgb(29 58 83 / 8%);
+    border-radius: 24px;
+    background: #fff;
+    box-shadow: 0 18px 36px rgb(27 61 51 / 11%);
 }
 
 .table {
-    --grid-template-columns: 56px 110px 2fr 1.1fr 1.1fr 1fr 1.4fr 140px;
+    --grid-template-columns: 56px minmax(180px, 1.45fr) minmax(220px, 1.35fr) minmax(160px, 1.05fr) minmax(280px, 2.1fr) minmax(200px, 1.2fr) 112px;
 
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-.table[data-has-actions='false'] {
-    --grid-template-columns: 56px 110px 2fr 1.1fr 1.1fr 1fr 1.4fr;
-}
-
 .headerRow {
-    position: sticky;
-    top: 0;
-    z-index: 2;
     display: grid;
     grid-template-columns: var(--grid-template-columns);
     align-items: center;
     background: #f1f8f4;
     border-bottom: 1px solid #e2ebe6;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 .headerCell {
-    padding: 14px 16px;
+    padding: 12px 16px;
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #4a6d64;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: flex-end;
 }
 
 .headerCellCheckbox {
     justify-content: center;
+    align-items: center;
 }
 
 .headerCellActions {
@@ -56,7 +53,6 @@
 .body {
     display: flex;
     flex-direction: column;
-    width: 100%;
 }
 
 .bodyRow {
@@ -64,7 +60,7 @@
     grid-template-columns: var(--grid-template-columns);
     align-items: stretch;
     background: #ffffff;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    transition: background-color 0.2s ease;
     cursor: pointer;
 }
 
@@ -85,19 +81,18 @@
 }
 
 .cell {
-    padding: 16px;
-    font-size: 14px;
+    padding: 14px 16px;
+    font-size: 13px;
     color: #1f2d3a;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 6px;
+    align-items: flex-start;
+    gap: 12px;
+    line-height: 1.45;
 }
 
 .checkboxCell {
-    align-items: center;
     justify-content: center;
-    gap: 0;
+    align-items: center;
     padding: 0;
 }
 
@@ -106,11 +101,16 @@
     height: 18px;
     border-radius: 6px;
     border: 1px solid #a3b8b0;
-    background: #ffffff;
+    background: #fff;
     appearance: none;
     cursor: pointer;
     position: relative;
     transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.checkboxControl:hover {
+    border-color: #38e47a;
+    box-shadow: 0 0 0 3px rgb(56 228 122 / 12%);
 }
 
 .checkboxControl:checked {
@@ -130,137 +130,135 @@
     transform: rotate(45deg);
 }
 
-.checkboxControl:hover {
-    border-color: #38e47a;
-    box-shadow: 0 0 0 3px rgb(56 228 122 / 12%);
-}
-
-.photoCellContent {
+.clientCell {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 14px;
 }
 
-.photo {
-    width: 56px;
-    height: 56px;
-    border-radius: 12px;
-    object-fit: cover;
-    border: 2px solid #ebf2ee;
-}
-
-.photoFallback {
-    width: 56px;
-    height: 56px;
-    border-radius: 12px;
+.clientInfo {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    font-weight: 700;
-    color: #ffffff;
-    background: linear-gradient(135deg, #38e47a, #3aa6a0);
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
 }
 
-.addressMain {
+.clientName {
     font-weight: 600;
-    color: #1b2a20;
+    color: #123429;
 }
 
-.addressMeta {
+.clientMeta {
     display: flex;
-    gap: 10px;
     flex-wrap: wrap;
-    font-size: 12px;
-    color: #3f5a51;
-}
-
-.codeTag {
-    padding: 3px 8px;
-    background: #e4f9ec;
-    border-radius: 999px;
-    font-size: 11px;
-    font-weight: 600;
-    color: #2f8a57;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-}
-
-.qualityWrapper {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.qualityBar {
-    flex: 1;
-    height: 6px;
-    border-radius: 999px;
-    background: #dfe8e4;
-    overflow: hidden;
-}
-
-.qualityFill {
-    height: 100%;
-    border-radius: inherit;
-    background: linear-gradient(90deg, #38e47a, #5fd8a8);
-    transition: width 0.3s ease;
-}
-
-.qualityValue {
-    min-width: 48px;
-    text-align: right;
-    font-size: 13px;
-    font-weight: 600;
-    color: #2d4f44;
-}
-
-.typeMain {
-    font-weight: 600;
-}
-
-.typeSecondary {
+    gap: 10px;
     font-size: 12px;
     color: #4c6f65;
 }
 
-.priceBadge {
+.badge {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 6px 12px;
+    padding: 3px 10px;
     border-radius: 999px;
-    background: #26312c;
-    color: #ffffff;
+    font-size: 11px;
     font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: #e4f9ec;
+    color: #267552;
 }
 
-.portalsList {
+.statusBadge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.statusPending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.statusScheduled {
+    background: #e0f2fe;
+    color: #1d4ed8;
+}
+
+.statusIn_progress {
+    background: #ede9fe;
+    color: #5b21b6;
+}
+
+.statusCompleted {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.emailCell,
+.phoneCell,
+.propertyCell,
+.statusCell {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: #3f5a51;
+}
+
+.propertyInfo {
     display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.propertyAddress {
+    font-weight: 600;
+    color: #123429;
+}
+
+.propertyMeta {
+    display: inline-flex;
     flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    font-size: 12px;
+    color: #4c6f65;
+}
+
+.valueRange {
+    font-weight: 600;
+    color: #123429;
+}
+
+.textValue {
+    display: inline-block;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+.statusBadge {
+    white-space: nowrap;
+}
+
+.statusCell {
+    flex-direction: column;
+    align-items: flex-start;
     gap: 8px;
 }
 
-.portalTag {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 4px 10px;
-    border-radius: 10px;
-    background: #f0faf4;
-    color: #2d4f44;
+.statusHint {
     font-size: 12px;
-    font-weight: 500;
-}
-
-.portalTag svg {
-    color: #3aa6a0;
+    color: #60786f;
+    line-height: 1.3;
 }
 
 .actionsCell {
-    align-items: center;
     justify-content: flex-end;
-    flex-direction: row;
     gap: 10px;
 }
 
@@ -305,17 +303,13 @@
 
 @media (width <=1024px) {
     .table {
-        --grid-template-columns: 56px 100px 2fr 1fr 1fr 0.9fr 1.2fr 120px;
-    }
-
-    .table[data-has-actions='false'] {
-        --grid-template-columns: 56px 100px 2fr 1fr 1fr 0.9fr 1.2fr;
+        --grid-template-columns: 56px minmax(160px, 1.3fr) minmax(180px, 1.2fr) minmax(130px, 0.9fr) minmax(220px, 1.6fr) minmax(160px, 1.05fr) minmax(150px, 1fr) 104px;
     }
 }
 
 @media (width <=768px) {
     .tableContainer {
-        border-radius: 14px;
+        border-radius: 20px;
     }
 
     .headerRow {
@@ -325,11 +319,7 @@
     .bodyRow {
         grid-template-columns: 1fr;
         gap: 12px;
-        padding: 16px 14px;
-    }
-
-    .bodyRow:not(:last-child) {
-        border-bottom: 1px solid #edf3ef;
+        padding: 18px;
     }
 
     .cell {
@@ -338,9 +328,7 @@
     }
 
     .checkboxCell {
-        grid-row: 1;
-        align-items: center;
-        justify-content: flex-start;
+        flex-direction: row;
     }
 
     .actionsCell {

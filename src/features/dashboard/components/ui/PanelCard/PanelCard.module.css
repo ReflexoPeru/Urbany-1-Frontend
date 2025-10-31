@@ -1,0 +1,6 @@
+.card{background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.08);padding:16px;display:flex;flex-direction:column;gap:12px;height:100%}
+.header{display:flex;align-items:center;justify-content:space-between}
+.title{margin:0;font-weight:800;color:#0f172a}
+.right{display:flex;gap:8px}
+.body{display:flex;flex-direction:column;gap:12px;height:100%}
+
