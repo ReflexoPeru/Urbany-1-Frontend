@@ -20,7 +20,7 @@ import Calendar from '../features/integrations/pages/herramientas/calendar';
 import SocialMedia from '../features/integrations/pages/comunicacion/socialMedia';
 import Hoomi from '../features/integrations/pages/herramientas/hoomi';
 import Email from '../features/integrations/pages/comunicacion/Email';
-import Networks from '../features/integrations/pages/redes/Networks';
+import Networks from '../features/networks/pages/NetworksPage';
 import Marketing from '../features/integrations/pages/marketing/Marketing';
 import EmailMarketing from '../features/integrations/pages/comunicacion/emailMarketing';
 import Activities from '../features/activities/pages/Activities';
@@ -31,8 +31,10 @@ import Register from '../features/auth/pages/register';
 import RegisterInmobiliaria from '../features/auth/pages/register_inmobiliaria';
 import ReportsPage from '../features/reports/pages/ReportsPage';
 import MessagePage from '../features/message/pages/MessagePage';
+import HelpPage from '../features/help/pages/HelpPage';
 import CommentsPage from '../features/comment/pages/CommentsPage';
 import UsersPage from '../features/users/pages/UsersPage';
+import WebsitePage from '../features/website/pages/WebsitePage';
 import { Navigate } from 'react-router-dom';
 
 
@@ -196,7 +198,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'website',
-        element: <div><h2>Sitio Web</h2></div>,
+        element: <WebsitePage />,
       },
       {
         path: 'blog',
@@ -212,7 +214,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'help',
-        element: <div><h2>Ayuda</h2></div>,
+        element: <HelpPage />,
       },
       {
         path: 'toast-demo',

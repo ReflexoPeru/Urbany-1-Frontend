@@ -1,0 +1,18 @@
+.illustrationWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.image {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+}
+
+@media (width <=768px) {
+    .image {
+        max-width: 360px;
+    }
+}
+
+

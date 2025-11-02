@@ -3,7 +3,7 @@
 .pageWrapper {
     min-height: 100vh;
     padding: clamp(1.5rem, 4vw, 3rem);
-    background: linear-gradient(180deg, #f3fbf7 0%, #eef5f1 45%, #ffffff 100%);
+    background: #f6f8f7;
     display: flex;
     justify-content: center;
     font-family: Poppins, sans-serif;

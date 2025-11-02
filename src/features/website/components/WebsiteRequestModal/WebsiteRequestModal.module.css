@@ -1,0 +1,46 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.helperText {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #475569;
+}
+
+.textareaGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.textarea {
+    border-radius: 12px !important;
+    box-shadow: none !important;
+}
+
+.error {
+    font-size: 0.85rem;
+    color: #dc2626;
+}
+
+.statusError {
+    padding: 12px 14px;
+    border-radius: 10px;
+
+    font-size: 0.9rem;
+    color: #b91c1c;
+
+    background: rgb(248 113 113 / 12%);
+}
+
+

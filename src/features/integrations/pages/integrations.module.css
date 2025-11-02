@@ -3,18 +3,17 @@
 .wrapper {
   padding: clamp(1.5rem, 4vw, 3rem);
   min-height: calc(100vh - 120px);
-  background: linear-gradient(180deg, #f3fbf7 0%, #eef7f1 45%, #fff 100%);
+  background: #f6f8f7;
+  border-radius: 12px;
 }
 
 .inner {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  background: #fff;
-  border-radius: 24px;
-  border: 1px solid #dbeee3;
-  box-shadow: 0 24px 48px rgb(17 55 37 / 12%);
-  padding: clamp(1.75rem, 3vw, 2.75rem);
+  background: #f6f8f7;
+  border-radius: 12px;
+  padding: clamp(1rem, 1vw, 0.7rem);
   min-height: calc(100vh - 200px);
   font-family: Poppins, sans-serif;
 }
@@ -52,7 +51,7 @@
   min-height: 0;
 }
 
-@media (width <= 960px) {
+@media (width <=960px) {
   .content {
     flex-direction: column;
   }

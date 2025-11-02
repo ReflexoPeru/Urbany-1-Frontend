@@ -1,7 +1,8 @@
 .container {
   min-height: 100vh;
   padding: 2rem;
-  background: #f8fafc;
+  border-radius: 12px;
+  background: #f6f8f7;
 }
 
 .filtersToolbar {
@@ -156,32 +157,4 @@
 .emptyButton:hover {
   transform: translateY(-1px);
   background: #059669;
-}
-
-
-@keyframes pulse {
-
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-
-@keyframes sparkle {
-
-  0%,
-  100% {
-    transform: scale(0);
-    opacity: 0;
-  }
-
-  50% {
-    transform: scale(1);
-    opacity: 1;
-  }
 }

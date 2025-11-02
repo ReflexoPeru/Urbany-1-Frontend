@@ -1,36 +1,17 @@
-:global(body) {
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-
-  font-family: Poppins, sans-serif !important;
-
-  background: #fff !important;
-}
-
-:global(.icon-btn) {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 36px;
-  height: 36px;
-  border: 1px solid #e5e7eb;
-  border-radius: 9999px;
-
-  background: #fff;
-}
-
 .mapContainer {
   display: flex;
   flex-direction: column;
+
   min-height: 100vh;
-  background: #fff;
+  border-radius: 12px;
+
+  background: #f6f8f7;
 }
 
 .mapHeader {
   padding: 24px 64px 0 96px;
-  background: #fff;
+  border-radius: 12px;
+  background: #f6f8f7;
 }
 
 .mapTitle {
