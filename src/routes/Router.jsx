@@ -31,6 +31,8 @@ import Register from '../features/auth/pages/register';
 import RegisterInmobiliaria from '../features/auth/pages/register_inmobiliaria';
 import Network from '../features/integrations/pages/redes/Networks';
 import ReportsPage from '../features/reports/pages/ReportsPage';
+import VenturesPage from '../features/emprendimientos/pages/VenturesPage';
+import VentureDetailPage from '../features/emprendimientos/pages/VentureDetailPage';
 import { Navigate } from 'react-router-dom';
 
 
@@ -102,7 +104,20 @@ const router = createBrowserRouter([
       },
       {
         path: 'emprendimientos',
-        element: <div><h2>Emprendimientos</h2></div>,
+        children: [
+          {
+            index: true,
+            element: <VenturesPage />,
+          },
+          {
+            path: 'nuevo',
+            element: <VentureDetailPage />,
+          },
+          {
+            path: ':id',
+            element: <VentureDetailPage />,
+          },
+        ],
       },
       {
         path: 'comentarios',
