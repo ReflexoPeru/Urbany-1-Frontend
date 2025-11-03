@@ -387,8 +387,8 @@
 }
 
 @media (width <=1024px) {
-
     .headerRow,
+
     .bodyRow {
         grid-template-columns: 56px 2.4fr 1fr 1.2fr 1.1fr 1.3fr;
     }

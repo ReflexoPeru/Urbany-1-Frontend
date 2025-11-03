@@ -9,24 +9,20 @@ const ActivityHeader = ({ viewMode, onViewModeChange, onAddActivity }) => {
       <h1 className={styles.title}>Actividades</h1>
       <div className={styles.controls}>
         <div className={styles.viewToggle}>
-          <Button
-            variant={viewMode === 'list' ? 'success' : 'secondary'}
-            size="small"
-            className={styles.viewButton}
+          <button
+            className={`${styles.viewButton} ${viewMode === 'list' ? styles.active : ''}`}
             onClick={() => onViewModeChange('list')}
             aria-pressed={viewMode === 'list'}
           >
             <List size={18} />
-          </Button>
-          <Button
-            variant={viewMode === 'calendar' ? 'success' : 'secondary'}
-            size="small"
-            className={styles.viewButton}
+          </button>
+          <button
+            className={`${styles.viewButton} ${viewMode === 'calendar' ? styles.active : ''}`}
             onClick={() => onViewModeChange('calendar')}
             aria-pressed={viewMode === 'calendar'}
           >
             <Calendar size={18} />
-          </Button>
+          </button>
         </div>
         <Button
           variant="primary"

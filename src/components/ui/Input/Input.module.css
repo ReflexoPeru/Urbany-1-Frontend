@@ -42,7 +42,6 @@
     font-family: Poppins, sans-serif !important;
     font-size: 0.875rem !important;
     min-height: 40px !important;
-    padding: 0 !important;
     background: transparent !important;
 }
 
@@ -65,7 +64,7 @@
 :global(.ant-input-affix-wrapper .ant-input) {
     border: none !important;
     box-shadow: none !important;
-    padding: 0 !important;
+    padding: 0.75rem 0.75rem 0.75rem 1rem !important;
 }
 
 :global(.ant-input-affix-wrapper .ant-input:focus) {
@@ -82,6 +81,25 @@
     padding-left: 0.75rem !important;
 }
 
+/* Password icon styling */
+:global(.ant-input-password-icon) {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding-right: 0.75rem !important;
+    color: #9ca3af !important;
+    transition: color 0.2s ease !important;
+}
+
+:global(.ant-input-password-icon:hover) {
+    color: #374151 !important;
+}
+
+:global(.ant-input-password-icon svg) {
+    width: 12px !important;
+    height: 12px !important;
+}
+
 :global(.ant-input) {
     border-radius: 8px !important;
     border: 1px solid #e5e7eb !important;
@@ -89,15 +107,6 @@
     font-size: 0.875rem !important;
     min-height: 40px !important;
     padding: 0.75rem 1rem !important;
-}
-
-/* Prefix spacing para iconos */
-:global(.ant-input-affix-wrapper .ant-input-prefix) {
-    margin-right: 8px;
-}
-
-:global(.ant-input-affix-wrapper .ant-input-prefix > *:not(:last-child)) {
-    margin-right: 8px;
 }
 
 :global(.ant-input:hover) {
@@ -166,8 +175,8 @@
    RESPONSIVE DESIGN
    ============================================ */
 @media (width <=768px) {
-
     :global(.ant-input),
+
     :global(.ant-input::placeholder) {
         font-size: 16px !important;
 
