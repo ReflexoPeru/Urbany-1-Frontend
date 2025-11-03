@@ -1,0 +1,45 @@
+/* stylelint-disable order/properties-order */
+
+.body {
+    justify-content: center;
+}
+
+.wrapper {
+    display: grid;
+    place-items: center;
+    gap: 14px;
+
+    text-align: center;
+    font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.iconWrapper {
+    width: 92px;
+    height: 92px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 999px;
+    background: #e7f9ef;
+    color: #38e47a;
+}
+
+.value {
+    font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: #1f7a4a;
+}
+
+.label {
+    font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+@media (width <=768px) {
+    .value {
+        font-size: 24px;
+    }
+}

@@ -1,0 +1,185 @@
+/* stylelint-disable order/properties-order */
+
+/* ============================================
+   INPUT WRAPPER
+   ============================================ */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+/* ============================================
+   LABEL
+   ============================================ */
+.label {
+    margin-bottom: 0.25rem;
+    font-family: Poppins, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.required {
+    margin-left: 2px;
+    color: #ef4444;
+}
+
+/* ============================================
+   ANT DESIGN INPUT CUSTOM STYLES
+   ============================================ */
+
+/* Override Ant Design Input styles */
+:global(.ant-input) {
+    font-family: Poppins, sans-serif !important;
+    font-size: 0.875rem !important;
+}
+
+:global(.ant-input-affix-wrapper) {
+    border-radius: 8px !important;
+    border: 1px solid #e5e7eb !important;
+    font-family: Poppins, sans-serif !important;
+    font-size: 0.875rem !important;
+    min-height: 40px !important;
+    background: transparent !important;
+}
+
+:global(.ant-input-affix-wrapper:hover) {
+    border-color: #d1d5db !important;
+}
+
+:global(.ant-input-affix-wrapper-focused) {
+    border-color: #38e47a !important;
+    box-shadow: 0 0 0 3px rgb(56 228 122 / 10%) !important;
+}
+
+:global(.ant-input-affix-wrapper-disabled) {
+    background-color: #f9fafb !important;
+    border-color: #e5e7eb !important;
+    cursor: not-allowed !important;
+}
+
+/* Inner input */
+:global(.ant-input-affix-wrapper .ant-input) {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0.75rem 0.75rem 0.75rem 1rem !important;
+}
+
+:global(.ant-input-affix-wrapper .ant-input:focus) {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Prefix/Icon container alignment */
+:global(.ant-input-affix-wrapper .ant-input-prefix) {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-right: 8px !important;
+    padding-left: 0.75rem !important;
+}
+
+/* Password icon styling */
+:global(.ant-input-password-icon) {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding-right: 0.75rem !important;
+    color: #9ca3af !important;
+    transition: color 0.2s ease !important;
+}
+
+:global(.ant-input-password-icon:hover) {
+    color: #374151 !important;
+}
+
+:global(.ant-input-password-icon svg) {
+    width: 12px !important;
+    height: 12px !important;
+}
+
+:global(.ant-input) {
+    border-radius: 8px !important;
+    border: 1px solid #e5e7eb !important;
+    font-family: Poppins, sans-serif !important;
+    font-size: 0.875rem !important;
+    min-height: 40px !important;
+    padding: 0.75rem 1rem !important;
+}
+
+:global(.ant-input:hover) {
+    border-color: #d1d5db !important;
+}
+
+:global(.ant-input:focus) {
+    border-color: #38e47a !important;
+    box-shadow: 0 0 0 3px rgb(56 228 122 / 10%) !important;
+}
+
+:global(.ant-input:disabled) {
+    background-color: #f9fafb !important;
+    border-color: #e5e7eb !important;
+    cursor: not-allowed !important;
+}
+
+:global(.ant-input::placeholder) {
+    color: #9ca3af !important;
+    font-family: Poppins, sans-serif !important;
+    font-size: 0.875rem !important;
+}
+
+/* Input error state */
+:global(.ant-input-status-error) {
+    border-color: #ef4444 !important;
+}
+
+:global(.ant-input-status-error:focus) {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 3px rgb(239 68 68 / 10%) !important;
+}
+
+/* Small size */
+:global(.ant-input-sm) {
+    min-height: 32px !important;
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.75rem !important;
+}
+
+/* Large size */
+:global(.ant-input-lg) {
+    min-height: 48px !important;
+    padding: 1rem 1.25rem !important;
+    font-size: 1rem !important;
+}
+
+/* ============================================
+   ERROR & HELPER TEXT
+   ============================================ */
+.errorMessage {
+    color: #ef4444;
+    font-family: Poppins, sans-serif;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.helperText {
+    color: #6b7280;
+    font-family: Poppins, sans-serif;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (width <=768px) {
+    :global(.ant-input),
+
+    :global(.ant-input::placeholder) {
+        font-size: 16px !important;
+
+        /* Prevents zoom on iOS */
+    }
+}

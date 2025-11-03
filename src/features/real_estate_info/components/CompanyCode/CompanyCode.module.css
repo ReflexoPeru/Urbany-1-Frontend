@@ -1,0 +1,10 @@
+/* stylelint-disable order/properties-order */
+
+.sectionContent {
+    padding: 0;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}

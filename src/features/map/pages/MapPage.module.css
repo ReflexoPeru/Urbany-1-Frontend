@@ -1,0 +1,67 @@
+.mapContainer {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100vh;
+  border-radius: 12px;
+
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  background: linear-gradient(to bottom, #f0fdf4, #fff);
+}
+
+.mapHeader {
+  padding: 24px 64px 0 96px;
+  border-radius: 12px;
+  background: transparent;
+}
+
+.mapTitle {
+  margin: 0;
+
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 43px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.mapContent {
+  overflow: hidden auto;
+  flex: 1;
+
+  height: auto;
+  max-height: calc(100vh - 200px);
+  padding: 0 64px 48px 96px;
+
+  background: transparent;
+}
+
+/* Responsive */
+@media (width <=1024px) {
+  .mapHeader {
+    padding: 20px 32px 0;
+  }
+
+  .mapTitle {
+    font-size: 32px;
+  }
+
+  .mapContent {
+    padding: 0 32px 32px;
+  }
+}
+
+@media (width <=768px) {
+  .mapHeader {
+    padding: 16px 16px 0;
+  }
+
+  .mapTitle {
+    font-size: 24px;
+  }
+
+  .mapContent {
+    padding: 0 16px 24px;
+  }
+}

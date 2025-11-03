@@ -1,0 +1,31 @@
+.auth_container {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+
+    background-image: url('../../../assets/edificio.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.auth_container::before {
+    content: "";
+
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+
+    background: rgb(56 228 122 / 15%);
+}
+
+.auth_container>* {
+    position: relative;
+    z-index: 1;
+}

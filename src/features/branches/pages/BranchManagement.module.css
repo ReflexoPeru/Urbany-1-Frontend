@@ -1,0 +1,78 @@
+.page {
+    min-height: 100%;
+    padding: 34px 12px;
+    border-radius: 12px;
+    background: #f6f8f7;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 48px 56px;
+    border-radius: 24px;
+
+    text-align: center;
+
+    box-shadow: 4px 30px 60px -28px rgb(15 23 42 / 25%);
+}
+
+.badgeWrapper {
+    display: inline-flex;
+}
+
+.title {
+    margin: 0;
+
+    font-family: Poppins, sans-serif;
+    font-size: clamp(2.2rem, 3vw, 3rem);
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.subtitle {
+    max-width: 520px;
+    margin: 0;
+
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #475569;
+}
+
+.illustration {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.illustration img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.note {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #64748b;
+}
+
+@media (width <=768px) {
+    .page {
+        padding: 48px 20px;
+    }
+
+    .card {
+        padding: 36px 32px;
+    }
+}

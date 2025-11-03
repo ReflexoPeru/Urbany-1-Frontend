@@ -1,0 +1,939 @@
+.mapTopbar {
+  position: relative;
+  z-index: 10;
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.mapTopbarInner {
+  max-width: 100%;
+  margin: 0;
+  padding: 25px 64px 20px 96px;
+}
+
+.searchAndIncludeRow {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.mapSearchbar {
+  flex: 1;
+  min-width: 0;
+  max-width: 640px;
+}
+
+.mapSearchbarField {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  padding: 12px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  background: #fff;
+
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mapSearchbarField:focus-within {
+  border-color: #38e47a;
+  box-shadow: 0 0 0 3px rgb(56 228 122 / 10%);
+}
+
+.mapSearchbarIcon {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  color: #6b7280;
+}
+
+.mapSearchbarInput {
+  flex: 1;
+
+  min-width: 0;
+  border: 0;
+
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  color: #0f172a;
+
+  background: transparent;
+  outline: none;
+}
+
+.mapSearchbarInput::placeholder {
+  color: #9ca3af;
+}
+
+.mapFilters {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filterRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-width: 0;
+}
+
+.chip {
+  cursor: pointer;
+
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  color: #0f172a;
+  white-space: nowrap;
+
+  background: #f9fafb;
+
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chip:hover {
+  border-color: #d1d5db;
+  background: #f3f4f6;
+}
+
+.chipMuted {
+  border-color: #e5e7eb;
+  background: #f3f4f6;
+}
+
+.chev {
+  transform: translateY(-1px);
+
+  display: inline-block;
+
+  margin-left: 6px;
+
+  font-size: 1.4em;
+  line-height: 1;
+  vertical-align: middle;
+
+  opacity: 0.7;
+}
+
+.filterDropdown {
+  position: relative;
+}
+
+.chipActive {
+  border-color: #38e47a !important;
+  color: white !important;
+  background: #38e47a !important;
+  box-shadow: 0 2px 8px rgb(56 228 122 / 30%);
+}
+
+.dropdownMenu {
+  position: absolute;
+  z-index: 10000;
+  top: 100%;
+  left: 0;
+
+  min-width: 200px;
+  margin-top: 4px;
+  padding: 8px 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+
+  background: white;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+}
+
+.dropdownItem {
+  cursor: pointer;
+
+  display: block;
+
+  width: 100%;
+  padding: 8px 16px;
+  border: none;
+
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  color: #374151;
+  text-align: left;
+
+  background: transparent;
+
+  transition: background-color 0.2s ease;
+}
+
+.dropdownItem:hover {
+  background: #f3f4f6;
+}
+
+.priceDropdownMenu {
+  position: absolute;
+  z-index: 10000;
+  top: 100%;
+  left: 0;
+
+  min-width: 320px;
+  margin-top: 4px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  background: white;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+}
+
+.priceSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.currencySection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.currencyLabel {
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.currencyButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.currencyBtn {
+  cursor: pointer;
+
+  padding: 8px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+
+  background: white;
+
+  transition: all 0.2s ease;
+}
+
+.currencyBtnActive {
+  border-color: #38e47a;
+  color: white;
+  background: #38e47a;
+  box-shadow: 0 2px 8px rgb(56 228 122 / 30%);
+}
+
+.priceInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.priceInputGroup {
+  display: flex;
+  align-items: center;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+
+  background: white;
+}
+
+.priceInputPrefix {
+  padding: 12px 16px;
+  border-right: 1px solid #e5e7eb;
+
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+
+  background: #f9fafb;
+}
+
+.priceInput {
+  flex: 1;
+
+  padding: 12px 16px;
+  border: none;
+
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  color: #374151;
+
+  background: transparent;
+  outline: none;
+}
+
+.priceInput::placeholder {
+  color: #9ca3af;
+}
+
+.priceActions {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.clearBtn {
+  cursor: pointer;
+
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #374151;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+
+  background: transparent;
+
+  transition: all 0.2s ease;
+}
+
+.clearBtn:hover {
+  color: #111827;
+  text-decoration-thickness: 3px;
+}
+
+.saveBtn {
+  cursor: pointer;
+
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+
+  background: linear-gradient(135deg, #38e47a, #2ecc71);
+  box-shadow: 0 2px 8px rgb(56 228 122 / 30%);
+
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.saveBtn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #2ecc71, #059669);
+  box-shadow: 0 4px 12px rgb(56 228 122 / 40%);
+}
+
+.propertyTypeDropdownMenu {
+  position: absolute;
+  z-index: 10000;
+  top: 100%;
+  left: 0;
+
+  min-width: 400px;
+  margin-top: 4px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  background: white;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+}
+
+.propertyTypeSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.propertyTypeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.checkboxItem {
+  cursor: pointer;
+
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  padding: 4px 0;
+}
+
+.checkbox {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+
+  background: white;
+
+  transition: all 0.2s ease;
+}
+
+.checkboxChecked {
+  border-color: #38e47a;
+  color: white;
+  background: #38e47a;
+}
+
+.checkboxLabel {
+  cursor: pointer;
+  user-select: none;
+
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  color: #374151;
+}
+
+.propertyTypeActions {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.rangeDropdownMenu {
+  position: absolute;
+  z-index: 10000;
+  top: 100%;
+  left: 0;
+
+  min-width: 380px;
+  margin-top: 4px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  background: white;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+}
+
+.rangeSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.numberRange {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 4px;
+  justify-content: center;
+}
+
+.numberBtn {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 48px;
+  height: 48px;
+  padding: 8px;
+  border: 2px solid #d1d5db;
+  border-radius: 12px;
+
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #6b7280;
+
+  background: white;
+
+  transition: all 0.2s ease;
+}
+
+.numberBtn:hover {
+  border-color: #38e47a;
+  color: #059669;
+}
+
+.numberBtnActive {
+  border-color: #38e47a;
+  color: white;
+  background: #38e47a;
+  box-shadow: 0 2px 8px rgb(56 228 122 / 30%);
+}
+
+.numberBtnActive:hover {
+  border-color: #2ecc71;
+  color: white;
+  background: #2ecc71;
+}
+
+.rangeActions {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.locationDropdownMenu {
+  position: absolute;
+  z-index: 10000;
+  top: 100%;
+  left: 0;
+
+  min-width: 400px;
+  margin-top: 4px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  background: white;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+}
+
+.locationSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.locationInputGroup {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+
+  background: white;
+}
+
+.locationIcon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  color: #6b7280;
+}
+
+.locationInput {
+  flex: 1;
+
+  border: none;
+
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  color: #374151;
+
+  background: transparent;
+  outline: none;
+}
+
+.locationInput::placeholder {
+  color: #9ca3af;
+}
+
+.locationActions {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.clearAllBtn {
+  cursor: pointer;
+
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #374151;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+
+  background: transparent;
+
+  transition: all 0.2s ease;
+}
+
+.clearAllBtn:hover {
+  color: #111827;
+  text-decoration-thickness: 3px;
+}
+
+.realEstateDropdownMenu {
+  position: absolute;
+  z-index: 10000;
+  top: 100%;
+  left: 0;
+
+  min-width: 400px;
+  margin-top: 4px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  background: white;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+}
+
+.realEstateSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.realEstateInputGroup {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+
+  background: white;
+}
+
+.realEstateIcon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  color: #6b7280;
+}
+
+.realEstateInput {
+  flex: 1;
+
+  border: none;
+
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  color: #374151;
+
+  background: transparent;
+  outline: none;
+}
+
+.realEstateInput::placeholder {
+  color: #9ca3af;
+}
+
+.realEstateActions {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.commissionDropdownMenu {
+  position: absolute;
+  z-index: 10000;
+  top: 100%;
+  left: 0;
+
+  min-width: 200px;
+  margin-top: 4px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  background: white;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+}
+
+.commissionSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.commissionOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.commissionOption {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.commissionBadge {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 80px;
+  height: 40px;
+  padding: 8px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+
+  transition: all 0.2s ease;
+}
+
+.commissionBadge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+}
+
+.commissionBadgeSelected {
+  border-color: #38e47a;
+  box-shadow: 0 0 0 2px rgb(56 228 122 / 30%);
+}
+
+.commissionText {
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.commissionCheck {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+
+  color: white;
+
+  background: #38e47a;
+}
+
+.multiSelectDropdownMenu {
+  position: absolute;
+  z-index: 10000;
+  top: 100%;
+  left: 0;
+
+  min-width: 280px;
+  margin-top: 4px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  background: white;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+}
+
+.multiSelectSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.checkboxList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checkboxItem {
+  cursor: pointer;
+
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  padding: 4px 0;
+}
+
+.checkbox {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+
+  background: white;
+
+  transition: all 0.2s ease;
+}
+
+.checkIcon {
+  width: 12px;
+  height: 12px;
+  color: white;
+}
+
+.checkboxLabel {
+  cursor: pointer;
+  user-select: none;
+
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  color: #374151;
+}
+
+.multiSelectActions {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.actionIcons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-left: auto;
+}
+
+.iconBtn {
+  all: unset;
+
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px;
+  border-radius: 6px;
+
+  color: #6b7280;
+
+  transition: all 0.2s ease;
+}
+
+.iconBtn:hover {
+  color: #374151;
+  background-color: #f3f4f6;
+}
+
+.iconBtn svg {
+  width: 20px;
+  height: 20px;
+  opacity: 0.8;
+  stroke: currentcolor;
+}
+
+.iconBtn:hover svg {
+  opacity: 1;
+}
+
+/* Responsive */
+@media (width <=1024px) {
+  .mapTopbarInner {
+    padding: 20px 32px;
+  }
+
+  .dropdownMenu,
+  .priceDropdownMenu,
+  .propertyTypeDropdownMenu,
+  .rangeDropdownMenu,
+  .locationDropdownMenu,
+  .realEstateDropdownMenu,
+  .commissionDropdownMenu,
+  .multiSelectDropdownMenu {
+    right: 0;
+    left: 0;
+    min-width: 100%;
+  }
+}
+
+@media (width <=768px) {
+  .mapTopbarInner {
+    padding: 20px 16px;
+  }
+
+  .searchAndIncludeRow {
+    flex-wrap: wrap;
+  }
+
+  .mapSearchbar {
+    min-width: 100%;
+  }
+
+  .filterRow {
+    gap: 8px;
+  }
+
+  .chip {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .priceDropdownMenu,
+  .propertyTypeDropdownMenu,
+  .rangeDropdownMenu,
+  .locationDropdownMenu,
+  .realEstateDropdownMenu,
+  .commissionDropdownMenu,
+  .multiSelectDropdownMenu {
+    padding: 16px;
+  }
+
+  .propertyTypeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .numberRange {
+    flex-wrap: wrap;
+  }
+
+  .priceActions,
+  .propertyTypeActions,
+  .rangeActions,
+  .locationActions,
+  .realEstateActions,
+  .multiSelectActions {
+    flex-direction: column;
+  }
+
+  .clearBtn,
+  .saveBtn,
+  .clearAllBtn {
+    justify-content: center;
+    width: 100%;
+  }
+}

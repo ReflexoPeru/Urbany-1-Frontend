@@ -102,7 +102,7 @@
   animation: dropdown-slide-out 0.25s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
 }
 
-@media (height >= 700px) {
+@media (height >=700px) {
   .dropdown-menu {
     max-height: none;
     overflow-y: visible;
@@ -155,22 +155,69 @@
   animation: menu-item-fade-in 0.3s ease-out backwards;
 }
 
-.menu-item:nth-child(1) { animation-delay: 0.05s; }
-.menu-item:nth-child(2) { animation-delay: 0.08s; }
-.menu-item:nth-child(3) { animation-delay: 0.11s; }
-.menu-item:nth-child(4) { animation-delay: 0.14s; }
-.menu-item:nth-child(5) { animation-delay: 0.17s; }
-.menu-item:nth-child(6) { animation-delay: 0.20s; }
-.menu-item:nth-child(7) { animation-delay: 0.23s; }
-.menu-item:nth-child(8) { animation-delay: 0.26s; }
-.menu-item:nth-child(9) { animation-delay: 0.29s; }
-.menu-item:nth-child(10) { animation-delay: 0.32s; }
-.menu-item:nth-child(11) { animation-delay: 0.35s; }
-.menu-item:nth-child(12) { animation-delay: 0.38s; }
-.menu-item:nth-child(13) { animation-delay: 0.41s; }
-.menu-item:nth-child(14) { animation-delay: 0.44s; }
-.menu-item:nth-child(15) { animation-delay: 0.47s; }
-.menu-item:nth-child(16) { animation-delay: 0.50s; }
+.menu-item:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.menu-item:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.menu-item:nth-child(3) {
+  animation-delay: 0.11s;
+}
+
+.menu-item:nth-child(4) {
+  animation-delay: 0.14s;
+}
+
+.menu-item:nth-child(5) {
+  animation-delay: 0.17s;
+}
+
+.menu-item:nth-child(6) {
+  animation-delay: 0.20s;
+}
+
+.menu-item:nth-child(7) {
+  animation-delay: 0.23s;
+}
+
+.menu-item:nth-child(8) {
+  animation-delay: 0.26s;
+}
+
+.menu-item:nth-child(9) {
+  animation-delay: 0.29s;
+}
+
+.menu-item:nth-child(10) {
+  animation-delay: 0.32s;
+}
+
+.menu-item:nth-child(11) {
+  animation-delay: 0.35s;
+}
+
+.menu-item:nth-child(12) {
+  animation-delay: 0.38s;
+}
+
+.menu-item:nth-child(13) {
+  animation-delay: 0.41s;
+}
+
+.menu-item:nth-child(14) {
+  animation-delay: 0.44s;
+}
+
+.menu-item:nth-child(15) {
+  animation-delay: 0.47s;
+}
+
+.menu-item:nth-child(16) {
+  animation-delay: 0.50s;
+}
 
 .menu-item::before {
   content: "";
@@ -197,9 +244,9 @@
 }
 
 .menu-item-icon {
-  color: #6b7280;
-  flex-shrink: 0;
   z-index: 1;
+  flex-shrink: 0;
+  color: #6b7280;
   transition: all 0.2s ease;
 }
 
@@ -213,9 +260,9 @@
    ============================================ */
 
 .menu-item-highlight {
-  background: linear-gradient(135deg, rgb(99 102 241 / 8%), rgb(99 102 241 / 4%));
   border: 1px solid rgb(99 102 241 / 15%);
   color: #6366f1;
+  background: linear-gradient(135deg, rgb(99 102 241 / 8%), rgb(99 102 241 / 4%));
 }
 
 .menu-item-highlight::before {
@@ -243,14 +290,14 @@
    ============================================ */
 
 .menu-item:hover .menu-item-icon {
-  color: #38e47a;
   transform: scale(1.1);
+  color: #38e47a;
 }
 
 .menu-item-highlight:hover {
-  background: linear-gradient(135deg, rgb(99 102 241 / 15%), rgb(99 102 241 / 8%));
   border-color: rgb(99 102 241 / 25%);
   color: #5558e3;
+  background: linear-gradient(135deg, rgb(99 102 241 / 15%), rgb(99 102 241 / 8%));
 }
 
 .menu-item-highlight:hover .menu-item-icon {
@@ -258,8 +305,8 @@
 }
 
 .menu-item-danger:hover {
-  background-color: rgb(220 38 38 / 6%);
   color: #b91c1c;
+  background-color: rgb(220 38 38 / 6%);
 }
 
 .menu-item-danger:hover .menu-item-icon {
@@ -272,15 +319,15 @@
 
 .menu-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, #e5e7eb 20%, #e5e7eb 80%, transparent);
   margin: 6px 0;
+  background: linear-gradient(90deg, transparent, #e5e7eb 20%, #e5e7eb 80%, transparent);
 }
 
 /* Animaciones */
 @keyframes dropdown-slide-in {
   0% {
-    opacity: 0;
     transform: translateY(-20px) scale(0.9) rotateX(-15deg);
+    opacity: 0;
   }
 
   50% {
@@ -288,15 +335,15 @@
   }
 
   100% {
-    opacity: 1;
     transform: translateY(0) scale(1) rotateX(0);
+    opacity: 1;
   }
 }
 
 @keyframes dropdown-slide-out {
   0% {
-    opacity: 1;
     transform: translateY(0) scale(1) rotateX(0);
+    opacity: 1;
   }
 
   50% {
@@ -304,20 +351,20 @@
   }
 
   100% {
-    opacity: 0;
     transform: translateY(-30px) scale(0.85) rotateX(-20deg);
+    opacity: 0;
     filter: blur(2px);
   }
 }
 
 @keyframes menu-item-fade-in {
   from {
-    opacity: 0;
     transform: translateX(-20px);
+    opacity: 0;
   }
 
   to {
-    opacity: 1;
     transform: translateX(0);
+    opacity: 1;
   }
 }

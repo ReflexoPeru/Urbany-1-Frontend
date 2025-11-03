@@ -1,0 +1,184 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.imageSection {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f9fafb;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mainInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ventureTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  font-family: Poppins, sans-serif;
+}
+
+.locationRow,
+.tagRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.icon {
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+.location {
+  color: #6b7280;
+}
+
+.tag {
+  display: inline-flex;
+  padding: 4px 12px;
+  background: #dcfce7;
+  color: #059669;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.description {
+  margin: 0;
+  color: #374151;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.section {
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 16px 0;
+  font-family: Poppins, sans-serif;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 8px 0;
+}
+
+.fieldIcon {
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.fieldLabel {
+  font-weight: 500;
+  color: #374151;
+  min-width: 140px;
+  font-size: 14px;
+}
+
+.fieldValue {
+  color: #111827;
+  flex: 1;
+  font-size: 14px;
+}
+
+.stage {
+  color: #38e47a;
+  font-weight: 600;
+}
+
+.characteristicsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.characteristicItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  background: #f9fafb;
+  border-radius: 8px;
+}
+
+.charLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.charValue {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.amenitiesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.amenityItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #f0fdf4;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #059669;
+  font-weight: 500;
+}
+
+.amenityIcon {
+  color: #38e47a;
+  flex-shrink: 0;
+}
+
+@media (width <= 768px) {
+  .content {
+    gap: 20px;
+  }
+
+  .characteristicsGrid,
+  .amenitiesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+

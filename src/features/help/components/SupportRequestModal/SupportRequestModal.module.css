@@ -1,0 +1,150 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.description {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #475569;
+}
+
+.fieldGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.textArea {
+    border-radius: 12px !important;
+    box-shadow: none !important;
+}
+
+.textArea textarea {
+    font-family: Poppins, sans-serif;
+    line-height: 1.6;
+}
+
+.helper {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.error {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #ef4444;
+}
+
+.inputWrapper {
+    margin: 0;
+}
+
+.attachments {
+    gap: 12px;
+}
+
+.attachmentControls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+.attachButton {
+    cursor: pointer;
+
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+
+    padding: 10px 16px;
+    border: 1px dashed rgb(37 99 235 / 40%);
+    border-radius: 10px;
+
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #2563eb;
+
+    background: rgb(37 99 235 / 10%);
+
+    transition: all 0.2s ease;
+}
+
+.attachButton:hover {
+    border-color: rgb(37 99 235 / 60%);
+    background: rgb(37 99 235 / 14%);
+}
+
+.fileInput {
+    display: none;
+}
+
+.attachmentInfo {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+
+    padding: 8px 12px;
+    border-radius: 10px;
+
+    font-size: 0.85rem;
+    color: #0f172a;
+
+    background: #f1f5f9;
+}
+
+.attachmentName {
+    overflow: hidden;
+    max-width: 170px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.removeAttachment {
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 22px;
+    height: 22px;
+    border: none;
+    border-radius: 50%;
+
+    color: #ef4444;
+
+    background: transparent;
+
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.removeAttachment:hover {
+    color: #b91c1c;
+    background: rgb(239 68 68 / 12%);
+}
+
+.statusError {
+    padding: 12px 14px;
+    border-radius: 10px;
+
+    font-size: 0.9rem;
+    color: #b91c1c;
+
+    background: rgb(248 113 113 / 12%);
+}
+
+@media (width <=640px) {
+    .attachmentName {
+        max-width: 120px;
+    }
+}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ArrowLeft } from '@phosphor-icons/react';
+import { ArrowLeft } from 'phosphor-react';
 import styles from './PageTitle.module.css';
 
 export const PageTitle = () => {
@@ -17,17 +17,29 @@ export const PageTitle = () => {
     '/valoraciones': 'Valoraciones',
     '/tasaciones': 'Tasaciones',
     '/redes': 'Redes',
-    '/actividades': 'Actividades',
+    '/activities': 'Actividades',
     '/reportes': 'Reportes',
-    '/configuracion': 'Configuración',
     '/mapa': 'Mapa',
     '/mensajes': 'Mensajes',
     '/emprendimientos': 'Emprendimientos',
     '/comentarios': 'Enviar Comentarios',
-    // UserProfile routes
-    '/perfil': 'Mi Perfil',
-    '/company': 'Perfil de la Inmobiliaria',
-    '/integrations': 'Integraciones',
+    // Configuracion nested routes
+    '/configuracion/perfil': 'Mi Perfil',
+    '/configuracion/password': 'Cambiar contraseña',
+    '/configuracion/notificaciones': 'Notificaciones',
+    '/configuracion/sesiones': 'Sesiones activas',
+    // Integrations nested routes
+    '/integrations': 'Portales',
+    '/integrations/portals': 'Portales',
+    '/integrations/calendar': 'Calendario',
+    '/integrations/social-media': 'Redes Sociales',
+    '/integrations/hoomi': 'Hoomi',
+    '/integrations/email': 'Email',
+    '/integrations/networks': 'Redes',
+    '/integrations/marketing': 'Marketing',
+    '/integrations/emailMarketing': 'Email Marketing',
+    // Independent routes
+    '/company': 'Información inmobiliaria',
     '/usuarios': 'Gestión de Usuarios',
     '/branches': 'Gestión de Sucursales',
     '/automation': 'Automatización',
@@ -53,8 +65,8 @@ export const PageTitle = () => {
   return (
     <div className={styles['title-section']}>
       {!isDashboard && (
-        <button 
-          onClick={handleGoBack} 
+        <button
+          onClick={handleGoBack}
           className={styles['back-button']}
           aria-label="Volver"
         >
