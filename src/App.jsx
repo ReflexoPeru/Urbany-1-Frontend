@@ -1,11 +1,11 @@
 import React from 'react'
-import Login from './features/auth/pages/login'
+import SubscriptionPage from './subscription/SubscriptionPage'
 import './App.css'
 
 function App() {
   return (
     <div className="App">
-      <Login />
+      <SubscriptionPage />
     </div>
   )
 }
