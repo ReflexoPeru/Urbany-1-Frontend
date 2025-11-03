@@ -1,0 +1,79 @@
+/* stylelint-disable order/properties-order */
+
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    justify-content: center;
+}
+
+.subtitle {
+    margin: 0;
+    font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #64748b;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+    align-items: center;
+}
+
+.iconBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: #e7f9ef;
+    color: #1f5133;
+}
+
+.rowContent {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.rowTitle {
+    font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.rowDescription {
+    font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #94a3b8;
+}
+
+.selectInline {
+    min-width: 150px;
+}
+
+.selectInline :global(.ant-select-selector) {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+@media (width <=768px) {
+    .row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .iconBadge {
+        width: 32px;
+        height: 32px;
+    }
+
+    .selectInline {
+        width: 100%;
+    }
+}

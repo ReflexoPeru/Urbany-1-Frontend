@@ -1,0 +1,126 @@
+/* stylelint-disable order/properties-order */
+
+/* ============================================
+   SELECT WRAPPER
+   ============================================ */
+.selectWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+/* ============================================
+   LABEL
+   ============================================ */
+.label {
+  margin-bottom: 0.25rem;
+  font-family: Poppins, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+/* ============================================
+   ANT DESIGN SELECT CUSTOM STYLES
+   ============================================ */
+
+/* Override Ant Design Select styles */
+:global(.ant-select) {
+  font-family: Poppins, sans-serif !important;
+}
+
+:global(.ant-select .ant-select-selector) {
+  border-radius: 8px !important;
+  border: 1px solid #e5e7eb !important;
+  font-family: Poppins, sans-serif !important;
+  font-size: 0.875rem !important;
+  min-height: 40px !important;
+  padding: 0.75rem 1rem !important;
+  padding-right: 3rem !important;
+}
+
+:global(.ant-select:hover .ant-select-selector) {
+  border-color: #d1d5db !important;
+}
+
+:global(.ant-select-focused .ant-select-selector) {
+  border-color: #38e47a !important;
+  box-shadow: 0 0 0 3px rgb(56 228 122 / 10%) !important;
+}
+
+:global(.ant-select-disabled .ant-select-selector) {
+  background-color: #f9fafb !important;
+  border-color: #e5e7eb !important;
+  cursor: not-allowed !important;
+}
+
+:global(.ant-select-selection-placeholder) {
+  color: #9ca3af !important;
+  font-family: Poppins, sans-serif !important;
+  font-size: 0.875rem !important;
+}
+
+:global(.ant-select-selection-item) {
+  color: #111827 !important;
+  font-family: Poppins, sans-serif !important;
+  font-size: 0.875rem !important;
+}
+
+:global(.ant-select-arrow) {
+  color: #6b7280 !important;
+  right: 12px !important;
+}
+
+:global(.ant-select-dropdown) {
+  border-radius: 8px !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 20px 40px rgb(0 0 0 / 20%), 0 8px 16px rgb(0 0 0 / 15%) !important;
+  margin-top: 4px !important;
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  max-height: 280px !important;
+  overflow-y: auto !important;
+}
+
+:global(.ant-select-item) {
+  font-family: Poppins, sans-serif !important;
+  font-size: 0.875rem !important;
+  padding: 10px 14px !important;
+  min-height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  border-bottom: 1px solid #f3f4f6 !important;
+  color: #111827 !important;
+}
+
+:global(.ant-select-item:last-child) {
+  border-bottom: none !important;
+  padding-bottom: 12px !important;
+}
+
+:global(.ant-select-item:hover) {
+  background-color: #f1f5f9 !important;
+}
+
+:global(.ant-select-item-option-selected) {
+  background-color: #ecfdf5 !important;
+  color: #22c55e !important;
+  font-weight: 500 !important;
+}
+
+:global(.ant-select-item-option-active) {
+  background-color: #f1f5f9 !important;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (width <=768px) {
+
+  :global(.ant-select-selection-item),
+  :global(.ant-select-selection-placeholder) {
+    font-size: 16px !important;
+
+    /* Prevents zoom on iOS */
+  }
+}

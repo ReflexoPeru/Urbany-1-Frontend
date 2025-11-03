@@ -1,0 +1,51 @@
+/* stylelint-disable order/properties-order */
+.container {
+  width: 200px;
+  padding: 24px 0;
+  font-family: Poppins, sans-serif;
+}
+
+.title {
+  margin: 0 0 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  margin-bottom: 4px;
+}
+
+.button {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  color: #60766d;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  background: #ecfdf5;
+  color: #14532d;
+}
+
+.button.active {
+  background: #d1fae5;
+  color: #047857;
+  font-weight: 600;
+  box-shadow: 0 8px 18px rgb(16 185 129 / 20%);
+}

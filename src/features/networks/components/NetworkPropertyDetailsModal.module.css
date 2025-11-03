@@ -1,0 +1,256 @@
+/* stylelint-disable order/properties-order, color-hex-length */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgb(8 24 18 / 28%);
+    backdrop-filter: blur(10px);
+    z-index: 130;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+}
+
+.modal {
+    width: min(880px, 100%);
+    border-radius: 28px;
+    background: #ffffff;
+    box-shadow: 0 40px 80px rgb(23 62 48 / 32%);
+    display: flex;
+    flex-direction: column;
+    padding: 28px 30px;
+    gap: 24px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.headerInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.operation {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #38e47a, #39a69d);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    width: fit-content;
+}
+
+.title {
+    margin: 0;
+    font-size: 1.65rem;
+    color: #123429;
+}
+
+.subtitle {
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #4d6c62;
+    font-size: 0.95rem;
+}
+
+.closeButton {
+    border: none;
+    background: #f1f8f4;
+    color: #2d4f44;
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.closeButton:hover {
+    transform: translateY(-1px);
+    background: #e5f3ed;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 24px;
+}
+
+.photoPanel {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #eef5f1;
+    min-height: 280px;
+    box-shadow: 0 28px 60px rgb(22 64 50 / 26%);
+}
+
+.photoPanel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photoFallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: #4d6c62;
+}
+
+.badgesRow {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    display: inline-flex;
+    gap: 12px;
+}
+
+.priceBadge,
+.commissionBadge {
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-weight: 700;
+    color: #123429;
+    background: rgb(255 255 255 / 92%);
+    box-shadow: 0 10px 22px rgb(19 53 40 / 22%);
+}
+
+.commissionBadge {
+    color: #1c6f4d;
+}
+
+.detailsPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.detailGroup h3 {
+    margin: 0 0 8px;
+    font-size: 1rem;
+    color: #1f2d3a;
+}
+
+.detailGroup ul {
+    margin: 0;
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: #4d6c62;
+}
+
+.detailGroup p {
+    margin: 0;
+    color: #4d6c62;
+    line-height: 1.5;
+}
+
+.realEstateCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 18px;
+    border-radius: 16px;
+    background: #f6fbf8;
+    border: 1px solid #dbe8e2;
+}
+
+.realEstateInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: #2d4f44;
+}
+
+.realEstateName {
+    font-weight: 600;
+    color: #123429;
+}
+
+.contactPhone {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #1c6f4d;
+    font-weight: 600;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.secondaryButton {
+    border: none;
+    background: transparent;
+    color: #214136;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.secondaryButton:hover {
+    color: #123429;
+}
+
+.footerActions {
+    display: inline-flex;
+    gap: 12px;
+}
+
+@media (width <=900px) {
+    .content {
+        grid-template-columns: 1fr;
+    }
+
+    .photoPanel {
+        min-height: 220px;
+    }
+}
+
+@media (width <=640px) {
+    .overlay {
+        padding: 18px;
+    }
+
+    .modal {
+        padding: 24px;
+        border-radius: 22px;
+    }
+
+    .footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footerActions {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+}

@@ -1,0 +1,350 @@
+/* stylelint-disable order/properties-order, color-hex-length */
+.wrapper {
+    width: 100%;
+}
+
+.tableContainer {
+    overflow: hidden;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 16px 40px rgb(29 58 83 / 8%);
+}
+
+.table {
+    --grid-template-columns: 56px 110px 2fr 1.1fr 1.1fr 1fr 1.4fr 140px;
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.table[data-has-actions='false'] {
+    --grid-template-columns: 56px 110px 2fr 1.1fr 1.1fr 1fr 1.4fr;
+}
+
+.headerRow {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: var(--grid-template-columns);
+    align-items: center;
+    background: #f1f8f4;
+    border-bottom: 1px solid #e2ebe6;
+}
+
+.headerCell {
+    padding: 14px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #4a6d64;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.headerCellCheckbox {
+    justify-content: center;
+}
+
+.headerCellActions {
+    justify-content: flex-end;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.bodyRow {
+    display: grid;
+    grid-template-columns: var(--grid-template-columns);
+    align-items: stretch;
+    background: #ffffff;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.bodyRow:nth-child(even) {
+    background: #f8fcfa;
+}
+
+.bodyRow:hover {
+    background: #eef7f1;
+}
+
+.selectedRow {
+    background: #e1f5e9;
+}
+
+.bodyRow:not(:last-child) {
+    border-bottom: 1px solid #edf3ef;
+}
+
+.cell {
+    padding: 16px;
+    font-size: 14px;
+    color: #1f2d3a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+}
+
+.checkboxCell {
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+}
+
+.checkboxControl {
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
+    border: 1px solid #a3b8b0;
+    background: #ffffff;
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.checkboxControl:checked {
+    background: #38e47a;
+    border-color: #38e47a;
+}
+
+.checkboxControl:checked::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 6px;
+    height: 10px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkboxControl:hover {
+    border-color: #38e47a;
+    box-shadow: 0 0 0 3px rgb(56 228 122 / 12%);
+}
+
+.photoCellContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 2px solid #ebf2ee;
+}
+
+.photoFallback {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(135deg, #38e47a, #3aa6a0);
+}
+
+.addressMain {
+    font-weight: 600;
+    color: #1b2a20;
+}
+
+.addressMeta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: #3f5a51;
+}
+
+.codeTag {
+    padding: 3px 8px;
+    background: #e4f9ec;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #2f8a57;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.qualityWrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.qualityBar {
+    flex: 1;
+    height: 6px;
+    border-radius: 999px;
+    background: #dfe8e4;
+    overflow: hidden;
+}
+
+.qualityFill {
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #38e47a, #5fd8a8);
+    transition: width 0.3s ease;
+}
+
+.qualityValue {
+    min-width: 48px;
+    text-align: right;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2d4f44;
+}
+
+.typeMain {
+    font-weight: 600;
+}
+
+.typeSecondary {
+    font-size: 12px;
+    color: #4c6f65;
+}
+
+.priceBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #26312c;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.portalsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.portalTag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 10px;
+    background: #f0faf4;
+    color: #2d4f44;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.portalTag svg {
+    color: #3aa6a0;
+}
+
+.actionsCell {
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.actionButton {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    border: none;
+    background: #f3f7f5;
+    color: #304c43;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.actionButton:hover {
+    background: #e7f2ec;
+    transform: translateY(-1px);
+}
+
+.actionButton:active {
+    transform: translateY(0);
+}
+
+.danger {
+    background: #ffe6e6;
+    color: #c53030;
+}
+
+.danger:hover {
+    background: #ffd1d1;
+}
+
+.emptyRow {
+    padding: 48px 16px;
+    text-align: center;
+    color: #567870;
+    font-size: 15px;
+}
+
+@media (width <=1024px) {
+    .table {
+        --grid-template-columns: 56px 100px 2fr 1fr 1fr 0.9fr 1.2fr 120px;
+    }
+
+    .table[data-has-actions='false'] {
+        --grid-template-columns: 56px 100px 2fr 1fr 1fr 0.9fr 1.2fr;
+    }
+}
+
+@media (width <=768px) {
+    .tableContainer {
+        border-radius: 14px;
+    }
+
+    .headerRow {
+        display: none;
+    }
+
+    .bodyRow {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 16px 14px;
+    }
+
+    .bodyRow:not(:last-child) {
+        border-bottom: 1px solid #edf3ef;
+    }
+
+    .cell {
+        padding: 0;
+        align-items: flex-start;
+    }
+
+    .checkboxCell {
+        grid-row: 1;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .actionsCell {
+        justify-content: flex-start;
+    }
+
+}

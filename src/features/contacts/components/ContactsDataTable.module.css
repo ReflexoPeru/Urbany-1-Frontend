@@ -1,0 +1,286 @@
+/* stylelint-disable order/properties-order, color-hex-length */
+
+.wrapper {
+    width: 100%;
+}
+
+.tableContainer {
+    overflow: hidden;
+    border-radius: 24px;
+    background: #fff;
+    box-shadow: 0 18px 36px rgb(27 61 51 / 11%);
+}
+
+.table {
+    --grid-template-columns: 56px 2fr 1.8fr 1.4fr 1.3fr 120px;
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.headerRow {
+    display: grid;
+    grid-template-columns: var(--grid-template-columns);
+    align-items: center;
+    background: #f1f8f4;
+    border-bottom: 1px solid #e2ebe6;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.headerCell {
+    padding: 14px 18px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #4a6d64;
+    display: flex;
+    align-items: center;
+}
+
+.headerCellCheckbox {
+    justify-content: center;
+}
+
+.headerCellActions {
+    justify-content: flex-end;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+}
+
+.bodyRow {
+    display: grid;
+    grid-template-columns: var(--grid-template-columns);
+    align-items: stretch;
+    background: #ffffff;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.bodyRow:nth-child(even) {
+    background: #f8fcfa;
+}
+
+.bodyRow:hover {
+    background: #eef7f1;
+}
+
+.selectedRow {
+    background: #e1f5e9;
+}
+
+.bodyRow:not(:last-child) {
+    border-bottom: 1px solid #edf3ef;
+}
+
+
+.cell {
+    padding: 16px 18px;
+    font-size: 14px;
+    color: #1f2d3a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.checkboxCell {
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.checkboxControl {
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
+    border: 1px solid #a3b8b0;
+    background: #fff;
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.checkboxControl:hover {
+    border-color: #38e47a;
+    box-shadow: 0 0 0 3px rgb(56 228 122 / 12%);
+}
+
+.checkboxControl:checked {
+    background: #38e47a;
+    border-color: #38e47a;
+}
+
+.checkboxControl:checked::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 6px;
+    height: 10px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.contactCell {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.avatarWrapper {
+    flex-shrink: 0;
+}
+
+.avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 16px;
+    object-fit: cover;
+    border: 2px solid #ebf2ee;
+}
+
+.avatarFallback {
+    width: 44px;
+    height: 44px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, #38e47a, #3aa6a0);
+}
+
+.contactInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+}
+
+.contactName {
+    font-weight: 600;
+    color: #123429;
+}
+
+.contactMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 12px;
+    color: #4c6f65;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: #e4f9ec;
+    color: #267552;
+}
+
+.emailCell,
+.phoneCell,
+.dateCell {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #3f5a51;
+    justify-content: flex-start;
+}
+
+.actionsCell {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.actionButton {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    border: none;
+    background: #f3f7f5;
+    color: #304c43;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.actionButton:hover {
+    background: #e7f2ec;
+    transform: translateY(-1px);
+}
+
+.actionButton:active {
+    transform: translateY(0);
+}
+
+.danger {
+    background: #ffe6e6;
+    color: #c53030;
+}
+
+.danger:hover {
+    background: #ffd1d1;
+}
+
+.emptyRow {
+    padding: 48px 16px;
+    text-align: center;
+    color: #567870;
+    font-size: 15px;
+}
+
+@media (width <=1024px) {
+    .table {
+        --grid-template-columns: 56px 1.8fr 1.6fr 1.3fr 1.1fr 110px;
+    }
+}
+
+@media (width <=768px) {
+    .tableContainer {
+        border-radius: 20px;
+    }
+
+    .headerRow {
+        display: none;
+    }
+
+    .bodyRow {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px;
+    }
+
+    .cell {
+        padding: 0;
+        align-items: flex-start;
+    }
+
+    .checkboxCell {
+        flex-direction: row;
+    }
+
+    .actionsCell {
+        justify-content: flex-start;
+    }
+
+}

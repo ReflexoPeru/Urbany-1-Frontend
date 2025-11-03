@@ -1,0 +1,259 @@
+/* stylelint-disable order/properties-order, color-hex-length */
+
+.appraisalsContainer {
+    min-height: 100vh;
+    padding: clamp(1.5rem, 4vw, 2.8rem);
+    display: flex;
+    justify-content: center;
+    border-radius: 12px;
+    background: #f6f8f7;
+    font-family: Poppins, sans-serif;
+}
+
+.page {
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.headerInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.title {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 2.4rem);
+    font-weight: 700;
+    color: #123429;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    margin: 0;
+    font-size: 1rem;
+    color: #567870;
+    max-width: 480px;
+    line-height: 1.5;
+}
+
+.headerActions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.statsSection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.statCard {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 20px 22px;
+    border-radius: 24px;
+    border: 1px solid transparent;
+    background: linear-gradient(180deg, #ffffff 0%, #f7fbf9 100%);
+    box-shadow: 0 12px 30px rgb(27 61 51 / 10%);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    cursor: pointer;
+}
+
+.statCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 36px rgb(27 61 51 / 12%);
+}
+
+.statCardActive {
+    border-color: #38e47a;
+    box-shadow: 0 20px 44px rgb(56 228 122 / 18%);
+}
+
+.statHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #3a5c52;
+    font-weight: 600;
+}
+
+.statValue {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #123429;
+}
+
+.filtersCard {
+    background: #fff;
+    border-radius: 24px;
+    padding: 26px 28px;
+    box-shadow: 0 18px 36px rgb(27 61 51 / 11%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.controlHeader {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+}
+
+.searchBox {
+    position: relative;
+    flex: 1 1 260px;
+}
+
+.searchIcon {
+    position: absolute;
+    top: 50%;
+    left: 18px;
+    transform: translateY(-50%);
+    color: #49a78c;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 14px 16px 14px 54px;
+    border-radius: 14px;
+    border: 1px solid #dce7e1;
+    background: #f6fbf8;
+    font-size: 0.97rem;
+    color: #1f2d3a;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: #38e47a;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgb(56 228 122 / 18%);
+}
+
+.filtersRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.filterSelect {
+    flex: 1 1 200px;
+    min-width: 180px;
+}
+
+.tableSection {
+    background: #fff;
+    border-radius: 24px;
+    padding: 26px 28px 32px;
+    box-shadow: 0 18px 36px rgb(27 61 51 / 11%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.emptyState {
+    padding: 48px 16px;
+    text-align: center;
+    color: #567870;
+}
+
+.bulkDeleteButton {
+    padding: 10px 16px;
+    border-radius: 12px;
+    border: 1px solid #fbd2d2;
+    background: #fef3f3;
+    color: #c63939;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.bulkDeleteButton:hover {
+    transform: translateY(-1px);
+    background: #fbd9d9;
+    border-color: #f8a7a7;
+}
+
+.iconGroup {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.iconButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    border: 1px solid #dbe8e2;
+    background: #f8fcf9;
+    color: #2b463e;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.iconButton:hover {
+    transform: translateY(-1px);
+    border-color: #38e47a;
+    box-shadow: 0 10px 18px rgb(56 228 122 / 15%);
+}
+
+@media (width <=1024px) {
+    .filterSelect {
+        min-width: 160px;
+    }
+}
+
+@media (width <=768px) {
+    .appraisalsContainer {
+        padding: 1.5rem 1rem;
+    }
+
+    .page {
+        gap: 18px;
+    }
+
+    .filtersCard,
+    .tableSection {
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .controlHeader {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .iconGroup {
+        justify-content: flex-start;
+    }
+
+    .filtersRow {
+        flex-direction: column;
+    }
+
+    .filterSelect {
+        width: 100%;
+        min-width: unset;
+    }
+}
