@@ -1,37 +1,43 @@
 import React from 'react';
-import './BranchManagement.css';
+import Badge from '../../../components/common/Badge';
+import Button from '../../../components/ui/Button';
 import illustrationImage from '../../../assets/images/optimizations/undraw_dev-productivity_5wps.svg';
+import styles from './BranchManagement.module.css';
 
 const BranchManagement = () => {
   return (
-    <div className="branch-management-container">
-      <div className="branch-management-card">
-        {/* Licencia Profesional */}
-        <div className="license-tag">
-          Licencia Profesional
+    <div className={styles.page}>
+      <section className={styles.card}>
+        <div className={styles.badgeWrapper}>
+          <Badge variant="warning" size="medium">
+            Licencia Profesional
+          </Badge>
         </div>
 
-        {/* Título principal */}
-        <h1 className="main-title">Gestión de Sucursales</h1>
+        <h1 className={styles.title}>Gestión de Sucursales</h1>
 
-        <div className="description">
-          <p>Podrás organizar mejor tu información.</p>
-          <p>Asigna tus propiedades, negocios y contactos a la sucursal que correspondiente.</p>
-        </div>
+        <p className={styles.subtitle}>
+          Organiza tu operación inmobiliaria con sucursales. Asigna propiedades, negocios y contactos para visualizar el
+          rendimiento de cada oficina en segundos.
+        </p>
 
-        <div className="illustration">
+        <div className={styles.illustration}>
           <img
             src={illustrationImage}
             alt="Ilustración de gestión de sucursales"
-            className="illustration-image"
           />
         </div>
 
-        {/* Botón de actualización */}
-        <button className="upgrade-button">
-          + Actualiza a Licencia Profesional
-        </button>
-      </div>
+        <div className={styles.actions}>
+          <Button variant="primary" size="large" fullWidth>
+            Actualiza a Licencia Profesional
+          </Button>
+        </div>
+
+        <p className={styles.note}>
+          Incluye sucursales ilimitadas y reportes avanzados para tu equipo.
+        </p>
+      </section>
     </div>
   );
 };

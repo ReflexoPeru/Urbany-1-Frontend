@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Eye, Pencil, Trash, House, Link as LinkIcon } from 'phosphor-react';
 import styles from './PropertiesDataTable.module.css';
+import Pagination from '../../../components/common/Pagination';
 
 const formatPrice = (value) => {
     if (value === undefined || value === null || Number.isNaN(Number(value))) {
@@ -67,6 +68,8 @@ const QualityIndicator = ({ value }) => {
     );
 };
 
+const ITEMS_PER_PAGE = 10;
+
 const PropertiesDataTable = ({ data = [], onRowClick, onEdit, onDelete, onView }) => {
     const rows = useMemo(
         () =>
@@ -78,14 +81,31 @@ const PropertiesDataTable = ({ data = [], onRowClick, onEdit, onDelete, onView }
     );
 
     const [selectedIds, setSelectedIds] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
 
     const selectableIds = useMemo(() => rows.map((item) => item.__rowId), [rows]);
     const isAllSelected = selectableIds.length > 0 && selectedIds.length === selectableIds.length;
     const showActions = Boolean(onView || onEdit || onDelete);
+    const totalItems = rows.length;
+    const totalPages = Math.max(1, Math.ceil(totalItems / ITEMS_PER_PAGE));
+    const paginatedRows = useMemo(() => {
+        const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+        return rows.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+    }, [rows, currentPage]);
 
     useEffect(() => {
         setSelectedIds((previous) => previous.filter((id) => selectableIds.includes(id)));
     }, [selectableIds]);
+
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [data]);
+
+    useEffect(() => {
+        if (currentPage > totalPages) {
+            setCurrentPage(totalPages);
+        }
+    }, [currentPage, totalPages]);
 
     const handleSelectAll = (checked) => {
         if (checked) {
@@ -174,7 +194,7 @@ const PropertiesDataTable = ({ data = [], onRowClick, onEdit, onDelete, onView }
                                 No se encontraron propiedades.
                             </div>
                         ) : (
-                            rows.map((property) => {
+                            paginatedRows.map((property) => {
                                 const rowId = property.__rowId;
                                 const isSelected = selectedIds.includes(rowId);
                                 const portals = normalizePortals(property.portals);
@@ -289,6 +309,16 @@ const PropertiesDataTable = ({ data = [], onRowClick, onEdit, onDelete, onView }
                         )}
                     </div>
                 </div>
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    totalItems={totalItems}
+                    itemsPerPage={ITEMS_PER_PAGE}
+                    onPageChange={setCurrentPage}
+                    showInfo
+                    showPageNumbers
+                    maxVisiblePages={5}
+                />
             </div>
         </div>
     );

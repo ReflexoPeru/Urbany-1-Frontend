@@ -1,0 +1,236 @@
+/* stylelint-disable order/properties-order, color-hex-length */
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 22px 24px 26px;
+    border-radius: 24px;
+    background: #ffffff;
+    box-shadow: 0 18px 36px rgb(27 61 51 / 12%);
+}
+
+.controlBar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.searchGroup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+}
+
+.searchBox {
+    position: relative;
+    width: clamp(260px, 30vw, 420px);
+}
+
+.searchIcon {
+    position: absolute;
+    top: 50%;
+    left: 18px;
+    transform: translateY(-50%);
+    color: #38e47a;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 14px 16px 14px 52px;
+    border-radius: 16px;
+    border: 1px solid #dbe8e2;
+    background: #f6fbf8;
+    font-size: 0.95rem;
+    color: #123429;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: #38e47a;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgb(56 228 122 / 18%);
+}
+
+.checkboxControl {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #275046;
+    background: #eef7f2;
+    padding: 10px 16px;
+    border-radius: 14px;
+}
+
+.checkboxControl input {
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
+    border: 1px solid #aac6ba;
+    accent-color: #38e47a;
+}
+
+.actionsGroup {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.mapButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    border-radius: 14px;
+    border: 1px solid #cfe9dc;
+    background: linear-gradient(135deg, #f0fff7 0%, #e7fbf1 100%);
+    color: #105b3f;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.mapButton:hover {
+    transform: translateY(-1px);
+    border-color: #38e47a;
+    box-shadow: 0 14px 28px rgb(56 228 122 / 18%);
+}
+
+.iconButton {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    border: 1px solid #dbe8e2;
+    background: #f8fcf9;
+    color: #2d4f44;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.iconButton:hover {
+    transform: translateY(-1px);
+    border-color: #38e47a;
+    background: #ffffff;
+    box-shadow: 0 12px 20px rgb(56 228 122 / 14%);
+}
+
+.iconButtonActive {
+    color: #d94862;
+    border-color: #f2c2cd;
+    background: #fff0f4;
+}
+
+.iconButtonDanger {
+    color: #c53030;
+    border-color: #f9d4d4;
+    background: #fff4f4;
+}
+
+.iconButtonDanger:hover {
+    border-color: #f09d9d;
+    background: #ffe1e1;
+}
+
+.iconButtonDisabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    border-color: #e5efea;
+}
+
+.filtersRow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+}
+
+.footerBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.summary {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2d4f44;
+}
+
+.selectionLabel {
+    color: #106745;
+}
+
+.footerActions {
+    display: inline-flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.clearButton {
+    border: none;
+    background: transparent;
+    color: #c53030;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.clearButton:hover {
+    color: #a11f1f;
+}
+
+.syncButton {
+    border-radius: 12px !important;
+}
+
+@media (width <=900px) {
+    .filtersRow {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+}
+
+@media (width <=680px) {
+    .controlBar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .searchGroup {
+        width: 100%;
+    }
+
+    .searchBox {
+        width: 100%;
+    }
+
+    .actionsGroup {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .mapButton {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .footerBar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+

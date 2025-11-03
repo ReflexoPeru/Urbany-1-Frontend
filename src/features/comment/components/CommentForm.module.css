@@ -1,0 +1,278 @@
+.formCard {
+  position: relative;
+
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+
+  background: white;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 10%);
+}
+
+.header {
+  margin-bottom: 12px;
+  text-align: right;
+}
+
+.title {
+  margin: 0;
+
+  font-family: Poppins, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.typeSelector {
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+
+  margin-bottom: 12px;
+  padding: 0;
+  border-bottom: 1px solid #e2e8f0;
+
+  background: transparent;
+}
+
+.typeButton {
+  cursor: pointer;
+
+  position: relative;
+
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  padding: 0.625rem 1rem;
+  border: none;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+
+  font-family: Poppins, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+
+  background: transparent;
+
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.typeButton::before {
+  content: '';
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 0;
+  height: 3px;
+
+  background: #22c55e;
+
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.typeButton:hover {
+  color: #334155;
+  background: rgb(34 197 94 / 5%);
+}
+
+.typeButton:hover::before {
+  width: 100%;
+  background: #cbd5e1;
+}
+
+.typeButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(34 197 94 / 20%);
+}
+
+.typeButton:active {
+  transform: translateY(1px);
+}
+
+.typeButtonActive {
+  border-bottom-color: #22c55e;
+  font-weight: 600;
+  color: #0f172a;
+  background: rgb(34 197 94 / 8%);
+}
+
+.typeButtonActive::before {
+  width: 100%;
+  background: #22c55e;
+}
+
+.typeButtonActive:hover {
+  border-bottom-color: #22c55e;
+  color: #0f172a;
+  background: rgb(34 197 94 / 12%);
+}
+
+.typeButtonActive:hover::before {
+  background: #22c55e;
+}
+
+.textareaContainer {
+  margin-bottom: 12px;
+}
+
+.textarea {
+  resize: none;
+
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 120px;
+  padding: 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  color: #374151;
+
+  background: #fff;
+
+  transition: border-color 0.2s ease;
+}
+
+.textarea:focus {
+  border-color: #38e47a;
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(56 228 122 / 10%);
+}
+
+.textarea::placeholder {
+  font-style: italic;
+  color: #9ca3af;
+}
+
+.disclaimer {
+  margin-bottom: 12px;
+  padding: 0;
+  background: transparent;
+}
+
+.disclaimer p {
+  margin: 0;
+
+  font-family: Poppins, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #6b7280;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+}
+
+.cancelButton {
+  cursor: pointer;
+
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+
+  font-size: 16px;
+  font-weight: 500;
+  color: #6b7280;
+
+  background: #f3f4f6;
+
+  transition: all 0.2s ease;
+}
+
+.cancelButton:hover {
+  color: #374151;
+  background: #e5e7eb;
+}
+
+.submitButton {
+  cursor: pointer;
+
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+
+  background: #6b7280;
+
+  transition: all 0.2s ease;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: #374151;
+}
+
+.submitButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+@media (width <=768px) {
+  .formCard {
+    padding: 24px;
+    border-radius: 12px;
+  }
+
+  .title {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .header {
+    text-align: center;
+  }
+
+  .typeSelector {
+    scrollbar-width: none;
+
+    overflow-x: auto;
+    gap: 0;
+
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+  }
+
+  .typeSelector::-webkit-scrollbar {
+    display: none;
+  }
+
+  .typeButton {
+    gap: 0.375rem;
+    padding: 0.625rem 1rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .textarea {
+    min-height: 100px;
+    padding: 12px;
+  }
+
+  .actions {
+    flex-direction: column-reverse;
+  }
+
+  .cancelButton,
+  .submitButton {
+    justify-content: center;
+    width: 100%;
+  }
+}

@@ -6,7 +6,8 @@
   min-height: 60vh;
   padding: 2rem;
   font-family: Poppins, sans-serif;
-  background: #E1EDE6;
+  border-radius: 12px;
+  background: #f6f8f7;
   animation: fadeIn 0.4s ease-in-out;
 }
 
@@ -151,7 +152,9 @@
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
 
