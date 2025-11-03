@@ -30,7 +30,15 @@ import Login from '../features/auth/pages/login';
 import Register from '../features/auth/pages/register';
 import RegisterInmobiliaria from '../features/auth/pages/register_inmobiliaria';
 import ReportsPage from '../features/reports/pages/ReportsPage';
+import MessagePage from '../features/message/pages/MessagePage';
+import CommentsPage from '../features/comment/pages/CommentsPage';
+import UsersPage from '../features/users/pages/UsersPage';
 import { Navigate } from 'react-router-dom';
+import WebsitePage from '../features/website/pages/WebsitePage';
+import VenturesPage from '../features/emprendimientos/pages/VenturesPage';
+import VentureDetailPage from '../features/emprendimientos/pages/VentureDetailPage';
+import HelpPage from '../features/help/pages/HelpPage';
+
 
 
 const router = createBrowserRouter([
