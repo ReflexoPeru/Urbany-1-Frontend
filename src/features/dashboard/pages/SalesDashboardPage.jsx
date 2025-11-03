@@ -10,7 +10,7 @@ import WalletValue from '../components/WalletValue';
 import TasksList from '../components/TasksList';
 import ZoneFilters from '../components/ZoneFilters';
 import { useDashboard } from '../hooks/useDashboard';
-import { Card, Row, Col } from 'antd';
+import { Row, Col } from 'antd';
 import { BriefcaseBusiness, BadgeCheck, UsersRound } from 'lucide-react';
 
 const SalesDashboardPage = () => {
@@ -20,16 +20,16 @@ const SalesDashboardPage = () => {
 
   const chartData = useMemo(() => {
     if (period === 'Semanal') return data.chart;
-    if (period === 'Mensual') return data.chart.map(p => ({ ...p, valor: Math.min(100, Math.round(p.valor*1.1)) }));
-    return data.chart.map(p => ({ ...p, valor: Math.max(0, Math.round(p.valor*0.9)) }));
+    if (period === 'Mensual') return data.chart.map(p => ({ ...p, valor: Math.min(100, Math.round(p.valor * 1.1)) }));
+    return data.chart.map(p => ({ ...p, valor: Math.max(0, Math.round(p.valor * 0.9)) }));
   }, [data.chart, period]);
 
   return (
     <div className={styles.dashboard}>
       <Row gutter={16} align="stretch">
         <Col span={18}>
-          <PanelCard title="Ventas Concretas">
-            <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:16 }}>
+          <PanelCard title="Ventas Concretas" className={styles.surfaceCard}>
+            <div className={styles.progressGrid}>
               <KpiCard icon={BriefcaseBusiness} title="Cantidad de Operaciones" percent={data.progress.operations.percent} current={data.progress.operations.current} total={data.progress.operations.total} users={data.progress.users} description="Operaciones en curso del equipo durante el período actual" />
               <KpiCard icon={BadgeCheck} title="Ventas Concretadas" percent={data.progress.sales.percent} current={data.progress.sales.current} total={data.progress.sales.total} users={data.progress.users} description="Cierres confirmados registrados en el CRM" />
               <KpiCard icon={UsersRound} title="Negocios abiertos por usuario" percent={data.progress.userOpen.percent} current={data.progress.userOpen.current} total={data.progress.userOpen.total} users={data.progress.users} description="Promedio de oportunidades activas por asesor" />
@@ -37,34 +37,34 @@ const SalesDashboardPage = () => {
           </PanelCard>
         </Col>
         <Col span={6}>
-          <MiniCalendar value={calendarValue} onChange={setCalendarValue} />
+          <MiniCalendar value={calendarValue} onChange={setCalendarValue} className={styles.surfaceCard} />
         </Col>
       </Row>
 
       <div className={styles.row}>
         <div className={styles.col40}>
           <div className={styles.chartContainer}>
-            <SalesChart data={chartData} period={period} onChangePeriod={setPeriod} />
+            <SalesChart data={chartData} period={period} onChangePeriod={setPeriod} className={styles.surfaceCard} />
           </div>
         </div>
         <div className={styles.col40}>
           <div className={styles.businessContainer}>
-            <ActiveSummary counts={data.businessCounts} rate={data.completionRate} spark={data.completionSpark} />
+            <ActiveSummary counts={data.businessCounts} rate={data.completionRate} spark={data.completionSpark} className={styles.surfaceCard} />
           </div>
         </div>
         <div className={styles.col20}>
           <div className={styles.walletContainer}>
-            <WalletValue valuePen={walletPen} />
+            <WalletValue valuePen={walletPen} className={styles.surfaceCard} />
           </div>
         </div>
       </div>
 
       <div className={styles.row}>
         <div className={styles.col80}>
-          <TasksList tasks={tasks} users={users} onAdd={addTask} onToggle={toggleTask} onDelete={deleteTask} />
+          <TasksList tasks={tasks} users={users} onAdd={addTask} onToggle={toggleTask} onDelete={deleteTask} className={styles.surfaceCard} />
         </div>
         <div className={styles.col40}>
-          <ZoneFilters period={zonePeriod} view={zoneView} onChangePeriod={setZonePeriod} onChangeView={setZoneView} />
+          <ZoneFilters period={zonePeriod} view={zoneView} onChangePeriod={setZonePeriod} onChangeView={setZoneView} className={styles.surfaceCard} />
         </div>
       </div>
     </div>

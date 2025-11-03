@@ -1,4 +1,4 @@
-/* Networks Integration Styles */
+/* stylelint-disable order/properties-order - Networks Integration Styles */
 .container {
     display: flex;
     flex-direction: column;
@@ -29,9 +29,10 @@
 
     width: 48px;
     height: 48px;
-    border-radius: 8px;
+    border: 1px solid #bbf7d0;
+    border-radius: 10px;
 
-    background: #f3f4f6;
+    background: #f0fdf4;
 }
 
 .networks-content {
@@ -72,9 +73,9 @@
     width: 6px;
     height: 6px;
     margin-top: 8px;
-    border-radius: 1px;
+    border-radius: 2px;
 
-    background: #8b5cf6;
+    background: #10b981;
 }
 
 .feature-text {
@@ -129,17 +130,19 @@
 
     padding: 10px 20px;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
 
     font-size: 14px;
     font-weight: 600;
-    color: #fff;
+    color: #0f241b;
 
-    background-color: #2563eb;
+    background-color: #38e47a;
+    box-shadow: 0 12px 20px rgb(56 228 122 / 28%);
 
-    transition: background-color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease;
 }
 
 .accordion-button:hover {
-    background-color: #1d4ed8;
+    background-color: #2ecc71;
+    box-shadow: 0 12px 24px rgb(46 204 113 / 26%);
 }

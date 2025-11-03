@@ -1,7 +1,7 @@
 .mapTopbar {
   position: relative;
   z-index: 10;
-  font-family: Poppins, sans-serif;
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .mapTopbarInner {
@@ -12,14 +12,15 @@
 
 .searchAndIncludeRow {
   display: flex;
-  align-items: center;
   gap: 16px;
+  align-items: center;
   margin-bottom: 16px;
 }
 
 .mapSearchbar {
-  max-width: 640px;
   flex: 1;
+  min-width: 0;
+  max-width: 640px;
 }
 
 .mapSearchbarField {
@@ -28,32 +29,44 @@
   align-items: center;
 
   padding: 12px 16px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
 
-  font-family: Poppins, sans-serif;
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   background: #fff;
+
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mapSearchbarField:focus-within {
+  border-color: #38e47a;
+  box-shadow: 0 0 0 3px rgb(56 228 122 / 10%);
 }
 
 .mapSearchbarIcon {
   flex: none;
   width: 20px;
   height: 20px;
-  color: #64748b;
+  color: #6b7280;
 }
 
 .mapSearchbarInput {
   flex: 1;
 
+  min-width: 0;
   border: 0;
 
-  font-family: Poppins, sans-serif;
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 14px;
-  color: #111827;
+  color: #0f172a;
 
   background: transparent;
   outline: none;
+}
+
+.mapSearchbarInput::placeholder {
+  color: #9ca3af;
 }
 
 .mapFilters {
@@ -66,6 +79,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  min-width: 0;
 }
 
 .chip {
@@ -75,17 +89,19 @@
   border: 1px solid #e5e7eb;
   border-radius: 8px;
 
-  font-family: Poppins, sans-serif;
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 13px;
-  color: #111827;
+  color: #0f172a;
+  white-space: nowrap;
 
-  background: #eef2f7;
+  background: #f9fafb;
 
-  transition: background-color 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .chip:hover {
-  background: #f9fafb;
+  border-color: #d1d5db;
+  background: #f3f4f6;
 }
 
 .chipMuted {
@@ -112,41 +128,44 @@
 }
 
 .chipActive {
-  background: #3b82f6 !important;
+  border-color: #38e47a !important;
   color: white !important;
-  border-color: #3b82f6 !important;
+  background: #38e47a !important;
+  box-shadow: 0 2px 8px rgb(56 228 122 / 30%);
 }
 
 .dropdownMenu {
   position: absolute;
+  z-index: 10000;
   top: 100%;
   left: 0;
-  z-index: 50;
-  
+
   min-width: 200px;
   margin-top: 4px;
   padding: 8px 0;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
-  
+
   background: white;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
 }
 
 .dropdownItem {
+  cursor: pointer;
+
   display: block;
+
   width: 100%;
   padding: 8px 16px;
   border: none;
-  
+
   font-family: Poppins, sans-serif;
   font-size: 14px;
   color: #374151;
   text-align: left;
-  
+
   background: transparent;
-  cursor: pointer;
-  
+
   transition: background-color 0.2s ease;
 }
 
@@ -156,18 +175,18 @@
 
 .priceDropdownMenu {
   position: absolute;
+  z-index: 10000;
   top: 100%;
   left: 0;
-  z-index: 50;
-  
+
   min-width: 320px;
   margin-top: 4px;
   padding: 20px;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
-  
+
   background: white;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
 }
 
 .priceSection {
@@ -195,25 +214,27 @@
 }
 
 .currencyBtn {
+  cursor: pointer;
+
   padding: 8px 16px;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
-  
+
   font-family: Poppins, sans-serif;
   font-size: 14px;
   font-weight: 500;
   color: #374151;
-  
+
   background: white;
-  cursor: pointer;
-  
+
   transition: all 0.2s ease;
 }
 
 .currencyBtnActive {
-  background: #3b82f6;
+  border-color: #38e47a;
   color: white;
-  border-color: #3b82f6;
+  background: #38e47a;
+  box-shadow: 0 2px 8px rgb(56 228 122 / 30%);
 }
 
 .priceInputs {
@@ -225,32 +246,35 @@
 .priceInputGroup {
   display: flex;
   align-items: center;
+
   border: 1px solid #e5e7eb;
   border-radius: 8px;
+
   background: white;
 }
 
 .priceInputPrefix {
   padding: 12px 16px;
   border-right: 1px solid #e5e7eb;
-  
+
   font-family: Poppins, sans-serif;
   font-size: 14px;
   font-weight: 500;
   color: #6b7280;
-  
+
   background: #f9fafb;
 }
 
 .priceInput {
   flex: 1;
+
   padding: 12px 16px;
   border: none;
-  
+
   font-family: Poppins, sans-serif;
   font-size: 14px;
   color: #374151;
-  
+
   background: transparent;
   outline: none;
 }
@@ -261,16 +285,18 @@
 
 .priceActions {
   display: flex;
-  justify-content: space-between;
   gap: 12px;
+  justify-content: space-between;
   margin-top: 8px;
 }
 
 .clearBtn {
+  cursor: pointer;
+
   padding: 10px 20px;
   border: none;
   border-radius: 8px;
-  
+
   font-family: Poppins, sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -278,10 +304,9 @@
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
-  
+
   background: transparent;
-  cursor: pointer;
-  
+
   transition: all 0.2s ease;
 }
 
@@ -291,39 +316,43 @@
 }
 
 .saveBtn {
-  padding: 10px 20px;
-  border: 1px solid #3b82f6;
-  border-radius: 8px;
-  
-  font-family: Poppins, sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  color: white;
-  
-  background: #3b82f6;
   cursor: pointer;
-  
-  transition: all 0.2s ease;
+
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+
+  background: linear-gradient(135deg, #38e47a, #2ecc71);
+  box-shadow: 0 2px 8px rgb(56 228 122 / 30%);
+
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .saveBtn:hover {
-  background: #2563eb;
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #2ecc71, #059669);
+  box-shadow: 0 4px 12px rgb(56 228 122 / 40%);
 }
 
 .propertyTypeDropdownMenu {
   position: absolute;
+  z-index: 10000;
   top: 100%;
   left: 0;
-  z-index: 50;
-  
+
   min-width: 400px;
   margin-top: 4px;
   padding: 20px;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
-  
+
   background: white;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
 }
 
 .propertyTypeSection {
@@ -339,47 +368,52 @@
 }
 
 .checkboxItem {
-  display: flex;
-  align-items: center;
-  gap: 12px;
   cursor: pointer;
+
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
   padding: 4px 0;
 }
 
 .checkbox {
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   width: 20px;
   height: 20px;
   border: 2px solid #d1d5db;
   border-radius: 4px;
-  
+
   background: white;
-  cursor: pointer;
-  
+
   transition: all 0.2s ease;
 }
 
 .checkboxChecked {
-  background: #3b82f6;
-  border-color: #3b82f6;
+  border-color: #38e47a;
   color: white;
+  background: #38e47a;
 }
 
 .checkboxLabel {
+  cursor: pointer;
+  user-select: none;
+
   font-family: Poppins, sans-serif;
   font-size: 14px;
   color: #374151;
-  cursor: pointer;
-  user-select: none;
 }
 
 .propertyTypeActions {
   display: flex;
-  justify-content: space-between;
   gap: 12px;
+  justify-content: space-between;
+
   margin-top: 8px;
   padding-top: 16px;
   border-top: 1px solid #e5e7eb;
@@ -387,18 +421,18 @@
 
 .rangeDropdownMenu {
   position: absolute;
+  z-index: 10000;
   top: 100%;
   left: 0;
-  z-index: 50;
-  
+
   min-width: 380px;
   margin-top: 4px;
   padding: 20px;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
-  
+
   background: white;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
 }
 
 .rangeSection {
@@ -409,54 +443,57 @@
 
 .numberRange {
   display: flex;
+  flex-wrap: nowrap;
   gap: 4px;
   justify-content: center;
-  flex-wrap: nowrap;
 }
 
 .numberBtn {
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   min-width: 48px;
   height: 48px;
   padding: 8px;
   border: 2px solid #d1d5db;
   border-radius: 12px;
-  
+
   font-family: Poppins, sans-serif;
   font-size: 16px;
   font-weight: 500;
   color: #6b7280;
-  
+
   background: white;
-  cursor: pointer;
-  
+
   transition: all 0.2s ease;
 }
 
 .numberBtn:hover {
-  border-color: #3b82f6;
-  color: #3b82f6;
+  border-color: #38e47a;
+  color: #059669;
 }
 
 .numberBtnActive {
-  background: #3b82f6;
-  border-color: #3b82f6;
+  border-color: #38e47a;
   color: white;
+  background: #38e47a;
+  box-shadow: 0 2px 8px rgb(56 228 122 / 30%);
 }
 
 .numberBtnActive:hover {
-  background: #2563eb;
-  border-color: #2563eb;
+  border-color: #2ecc71;
   color: white;
+  background: #2ecc71;
 }
 
 .rangeActions {
   display: flex;
-  justify-content: space-between;
   gap: 12px;
+  justify-content: space-between;
+
   margin-top: 8px;
   padding-top: 16px;
   border-top: 1px solid #e5e7eb;
@@ -464,18 +501,18 @@
 
 .locationDropdownMenu {
   position: absolute;
+  z-index: 10000;
   top: 100%;
   left: 0;
-  z-index: 50;
-  
+
   min-width: 400px;
   margin-top: 4px;
   padding: 20px;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
-  
+
   background: white;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
 }
 
 .locationSection {
@@ -486,32 +523,36 @@
 
 .locationInputGroup {
   display: flex;
+  gap: 12px;
   align-items: center;
+
   padding: 12px 16px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
+
   background: white;
-  gap: 12px;
 }
 
 .locationIcon {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
+
   color: #6b7280;
-  flex-shrink: 0;
 }
 
 .locationInput {
   flex: 1;
+
   border: none;
-  outline: none;
-  
+
   font-family: Poppins, sans-serif;
   font-size: 14px;
   color: #374151;
-  
+
   background: transparent;
+  outline: none;
 }
 
 .locationInput::placeholder {
@@ -520,16 +561,18 @@
 
 .locationActions {
   display: flex;
-  justify-content: space-between;
   gap: 12px;
+  justify-content: space-between;
   margin-top: 8px;
 }
 
 .clearAllBtn {
+  cursor: pointer;
+
   padding: 10px 20px;
   border: none;
   border-radius: 8px;
-  
+
   font-family: Poppins, sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -537,10 +580,9 @@
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
-  
+
   background: transparent;
-  cursor: pointer;
-  
+
   transition: all 0.2s ease;
 }
 
@@ -551,18 +593,18 @@
 
 .realEstateDropdownMenu {
   position: absolute;
+  z-index: 10000;
   top: 100%;
   left: 0;
-  z-index: 50;
-  
+
   min-width: 400px;
   margin-top: 4px;
   padding: 20px;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
-  
+
   background: white;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
 }
 
 .realEstateSection {
@@ -573,32 +615,36 @@
 
 .realEstateInputGroup {
   display: flex;
+  gap: 12px;
   align-items: center;
+
   padding: 12px 16px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
+
   background: white;
-  gap: 12px;
 }
 
 .realEstateIcon {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
+
   color: #6b7280;
-  flex-shrink: 0;
 }
 
 .realEstateInput {
   flex: 1;
+
   border: none;
-  outline: none;
-  
+
   font-family: Poppins, sans-serif;
   font-size: 14px;
   color: #374151;
-  
+
   background: transparent;
+  outline: none;
 }
 
 .realEstateInput::placeholder {
@@ -607,25 +653,25 @@
 
 .realEstateActions {
   display: flex;
-  justify-content: space-between;
   gap: 12px;
+  justify-content: space-between;
   margin-top: 8px;
 }
 
 .commissionDropdownMenu {
   position: absolute;
+  z-index: 10000;
   top: 100%;
   left: 0;
-  z-index: 50;
-  
+
   min-width: 200px;
   margin-top: 4px;
   padding: 20px;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
-  
+
   background: white;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
 }
 
 .commissionSection {
@@ -642,34 +688,35 @@
 
 .commissionOption {
   display: flex;
+  gap: 16px;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
 }
 
 .commissionBadge {
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   min-width: 80px;
   height: 40px;
   padding: 8px 16px;
-  border-radius: 12px;
   border: 1px solid #d1d5db;
-  
-  cursor: pointer;
+  border-radius: 12px;
+
   transition: all 0.2s ease;
 }
 
 .commissionBadge:hover {
   transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 
 .commissionBadgeSelected {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  border-color: #38e47a;
+  box-shadow: 0 0 0 2px rgb(56 228 122 / 30%);
 }
 
 .commissionText {
@@ -681,32 +728,33 @@
 
 .commissionCheck {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  
+
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  
-  background: #3b82f6;
+
   color: white;
-  flex-shrink: 0;
+
+  background: #38e47a;
 }
 
 .multiSelectDropdownMenu {
   position: absolute;
+  z-index: 10000;
   top: 100%;
   left: 0;
-  z-index: 50;
-  
+
   min-width: 280px;
   margin-top: 4px;
   padding: 20px;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
-  
+
   background: white;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
 }
 
 .multiSelectSection {
@@ -722,32 +770,30 @@
 }
 
 .checkboxItem {
-  display: flex;
-  align-items: center;
-  gap: 12px;
   cursor: pointer;
+
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
   padding: 4px 0;
 }
 
 .checkbox {
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   width: 20px;
   height: 20px;
   border: 2px solid #d1d5db;
   border-radius: 4px;
-  
-  background: white;
-  cursor: pointer;
-  
-  transition: all 0.2s ease;
-}
 
-.checkboxChecked {
-  background: #3b82f6;
-  border-color: #3b82f6;
+  background: white;
+
+  transition: all 0.2s ease;
 }
 
 .checkIcon {
@@ -757,17 +803,19 @@
 }
 
 .checkboxLabel {
+  cursor: pointer;
+  user-select: none;
+
   font-family: Poppins, sans-serif;
   font-size: 14px;
   color: #374151;
-  cursor: pointer;
-  user-select: none;
 }
 
 .multiSelectActions {
   display: flex;
-  justify-content: space-between;
   gap: 12px;
+  justify-content: space-between;
+
   margin-top: 8px;
   padding-top: 16px;
   border-top: 1px solid #e5e7eb;
@@ -782,28 +830,110 @@
 
 .iconBtn {
   all: unset;
+
   cursor: pointer;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   padding: 8px;
   border-radius: 6px;
+
   color: #6b7280;
+
   transition: all 0.2s ease;
 }
 
 .iconBtn:hover {
-  background-color: #f3f4f6;
   color: #374151;
+  background-color: #f3f4f6;
 }
 
 .iconBtn svg {
   width: 20px;
   height: 20px;
   opacity: 0.8;
-  stroke: currentColor;
+  stroke: currentcolor;
 }
 
 .iconBtn:hover svg {
   opacity: 1;
+}
+
+/* Responsive */
+@media (width <=1024px) {
+  .mapTopbarInner {
+    padding: 20px 32px;
+  }
+
+  .dropdownMenu,
+  .priceDropdownMenu,
+  .propertyTypeDropdownMenu,
+  .rangeDropdownMenu,
+  .locationDropdownMenu,
+  .realEstateDropdownMenu,
+  .commissionDropdownMenu,
+  .multiSelectDropdownMenu {
+    right: 0;
+    left: 0;
+    min-width: 100%;
+  }
+}
+
+@media (width <=768px) {
+  .mapTopbarInner {
+    padding: 20px 16px;
+  }
+
+  .searchAndIncludeRow {
+    flex-wrap: wrap;
+  }
+
+  .mapSearchbar {
+    min-width: 100%;
+  }
+
+  .filterRow {
+    gap: 8px;
+  }
+
+  .chip {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .priceDropdownMenu,
+  .propertyTypeDropdownMenu,
+  .rangeDropdownMenu,
+  .locationDropdownMenu,
+  .realEstateDropdownMenu,
+  .commissionDropdownMenu,
+  .multiSelectDropdownMenu {
+    padding: 16px;
+  }
+
+  .propertyTypeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .numberRange {
+    flex-wrap: wrap;
+  }
+
+  .priceActions,
+  .propertyTypeActions,
+  .rangeActions,
+  .locationActions,
+  .realEstateActions,
+  .multiSelectActions {
+    flex-direction: column;
+  }
+
+  .clearBtn,
+  .saveBtn,
+  .clearAllBtn {
+    justify-content: center;
+    width: 100%;
+  }
 }

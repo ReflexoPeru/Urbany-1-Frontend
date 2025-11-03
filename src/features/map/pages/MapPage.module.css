@@ -1,49 +1,33 @@
-:global(body) {
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-
-  font-family: Poppins, sans-serif !important;
-
-  background: #fff !important;
-}
-
-:global(.icon-btn) {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 36px;
-  height: 36px;
-  border: 1px solid #e5e7eb;
-  border-radius: 9999px;
-
-  background: #fff;
-}
-
 .mapContainer {
   display: flex;
   flex-direction: column;
+
   min-height: 100vh;
-  background: #fff;
+  border-radius: 12px;
+
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  background: linear-gradient(to bottom, #f0fdf4, #fff);
 }
 
 .mapHeader {
   padding: 24px 64px 0 96px;
-  background: #fff;
+  border-radius: 12px;
+  background: transparent;
 }
 
 .mapTitle {
   margin: 0;
 
-  font-family: Poppins, sans-serif;
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 43px;
-  font-weight: 600;
-  color: #111827;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.02em;
 }
 
 .mapContent {
-  overflow-y: auto;
+  overflow: hidden auto;
   flex: 1;
 
   height: auto;
@@ -51,4 +35,33 @@
   padding: 0 64px 48px 96px;
 
   background: transparent;
+}
+
+/* Responsive */
+@media (width <=1024px) {
+  .mapHeader {
+    padding: 20px 32px 0;
+  }
+
+  .mapTitle {
+    font-size: 32px;
+  }
+
+  .mapContent {
+    padding: 0 32px 32px;
+  }
+}
+
+@media (width <=768px) {
+  .mapHeader {
+    padding: 16px 16px 0;
+  }
+
+  .mapTitle {
+    font-size: 24px;
+  }
+
+  .mapContent {
+    padding: 0 16px 24px;
+  }
 }

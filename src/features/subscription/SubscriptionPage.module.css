@@ -1,0 +1,418 @@
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+.header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 1.25rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 0.25rem 0 0;
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+.headerActions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.primary {
+  cursor: pointer;
+
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+
+  color: #fff;
+
+  background: #2563eb;
+}
+
+.secondary {
+  cursor: pointer;
+
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+
+  color: #374151;
+
+  background: #eef2ff;
+}
+
+.page {
+  min-height: 100vh;
+
+  font-size: 1rem;
+
+  /* body/medium/medium: size ~16px */
+  font-weight: 500;
+
+  /* medium */
+  line-height: 1.5;
+
+  background: #F6FFFA;
+}
+
+.periodoToggle {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+
+  background: #f9fafb;
+}
+
+.toggleLabel {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  font-weight: 500;
+  color: #111827;
+}
+
+.badge {
+  display: inline-block;
+
+  margin-left: 0.4rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 999px;
+
+  font-size: 0.75rem;
+  color: #16a34a;
+
+  background: #dcfce7;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.card {
+  cursor: pointer;
+
+  position: relative;
+
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  background: #fff;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 15%);
+}
+
+.cardSelected {
+  border-color: #007bff;
+  box-shadow: 0 4px 16px rgb(0 123 255 / 20%);
+}
+
+.cardSelected:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgb(0 123 255 / 30%);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.planNameRow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.planRadio {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  accent-color: #007bff;
+}
+
+.planName {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.planBadge {
+  font-weight: 600;
+  color: #374151;
+}
+
+.precioWrap {
+  display: flex;
+  gap: 0.25rem;
+  align-items: baseline;
+}
+
+.precio {
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.periodo {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.featureItem {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  font-size: 0.95rem;
+  color: #111827;
+}
+
+.check {
+  display: inline-block;
+
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+
+  font-size: 0.9rem;
+  line-height: 20px;
+  color: #fff;
+  text-align: center;
+
+  background: #10b981;
+}
+
+.actionBtn {
+  cursor: pointer;
+
+  width: 100%;
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+
+  color: #111827;
+
+  background: #f9fafb;
+}
+
+@media (width <=900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.integrationBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 980px;
+  margin: 12px auto 20px;
+  padding: 16px 20px;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+
+  background: #fff;
+  box-shadow: 0 2px 8px rgb(17 24 39 / 8%);
+}
+
+.integrationLeft {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.iconRow {
+  display: flex;
+  gap: 8px;
+}
+
+.roundIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+
+  background: #F3F4F6;
+}
+
+.integrationTitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.integrationDesc {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #6B7280;
+}
+
+.periodoToggle {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 16px 0;
+}
+
+.toggleBtn {
+  cursor: pointer;
+
+  padding: 6px 10px;
+  border: none;
+
+  font-weight: 500;
+  color: #111827;
+
+  background: transparent;
+}
+
+.toggleBtnActive {
+  color: #2563EB;
+}
+
+.switch {
+  position: relative;
+
+  width: 48px;
+  height: 24px;
+  border-radius: 9999px;
+
+  background: #E5E7EB;
+}
+
+.knob {
+  position: absolute;
+  top: 2px;
+
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+
+  background: #2563EB;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
+
+  transition: left 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.badge {
+  margin-left: 8px;
+  padding: 4px 8px;
+  border-radius: 12px;
+
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+
+  background: #10b981;
+}
+
+.planHeaderLeft {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.radio {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #9CA3AF;
+  border-radius: 50%;
+}
+
+.radioActive {
+  border-color: #2563EB;
+  box-shadow: inset 0 0 0 4px #2563EB33;
+}
+
+.cardActive {
+  border-color: #2563EB;
+  box-shadow: 0 0 0 2px #2563EB22;
+}
+
+.periodoUpper {
+  margin-left: 6px;
+  font-size: 12px;
+  color: #6B7280;
+  text-transform: uppercase;
+}
+
+/* Estilos para características */
+.features {
+  margin: 0 0 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.feature {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  padding: 6px 0;
+
+  font-size: 14px;
+  color: #555;
+}
+
+.checkmark {
+  font-size: 16px;
+  font-weight: bold;
+  color: #28a745;
+}
+
+/* Estados del botón de acción */
+.actionBtnSelected {
+  border-color: #28a745 !important;
+  color: white !important;
+  background: #28a745 !important;
+}
+
+.actionBtnSelected:hover {
+  border-color: #1e7e34 !important;
+  background: #1e7e34 !important;
+}

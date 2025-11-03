@@ -1,23 +1,29 @@
 import React from "react";
-import RegisterHeaderInmobiliaria from "../components/Register/RegisterHeaderInmobiliaria/RegisterHeaderInmobiliaria";
-import RegisterInmobiliariaForm from "../components/Register/RegisterInmobiliariaForm/RegisterInmobiliariaForm";
-import RegisterOptions from "../components/Register/RegisterOptions/RegisterOptions";
+import { useNavigate } from "react-router-dom";
+import RegisterInmobiliariaForm from "../components/RegisterInmobiliariaForm/RegisterInmobiliariaForm";
+import AuthFlipForm from "../components/AuthFlipForm/AuthFlipForm";
 import styles from "./register_inmobiliaria.module.css";
-import urbany_register from "../../../assets/urbany_register.jpeg";
 
 const RegisterInmobiliaria = () => {
+    const navigate = useNavigate();
+
+    const handleToggleToRegister = () => {
+        setTimeout(() => {
+            navigate('/register', { replace: true });
+        }, 2000);
+    };
+
     return (
-        <div className={styles.register}>
-            <div className={styles.register_container}>
-                <RegisterHeaderInmobiliaria />
+        <div className={styles.auth_container}>
+            <AuthFlipForm 
+                isRegister={true}
+                onToggleRegister={handleToggleToRegister}
+                onToggleLogin={handleToggleToRegister}
+            >
                 <RegisterInmobiliariaForm />
-                <RegisterOptions />
-            </div>
-            <div className={styles.register_image}>
-                <img src={urbany_register} alt="Register Background" />
-            </div>
+            </AuthFlipForm>
         </div>
-    )
-}
+    );
+};
 
 export default RegisterInmobiliaria;

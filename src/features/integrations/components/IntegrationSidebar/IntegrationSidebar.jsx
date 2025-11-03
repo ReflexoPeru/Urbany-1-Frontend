@@ -1,264 +1,76 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+const categories = [
+  { id: 'portales', label: 'Portales', path: '/integrations/portals' },
+  { id: 'calendario', label: 'Calendario', path: '/integrations/calendar' },
+  { id: 'instagram-whatsapp', label: 'Instagram y WhatsApp', path: '/integrations/social-media' },
+  { id: 'hoomi', label: 'Hoomi', path: '/integrations/hoomi' },
+  { id: 'email', label: 'Correo electrónico', path: '/integrations/email' },
+  { id: 'redes-inmobiliarias', label: 'Redes inmobiliarias', path: '/integrations/networks' },
+  { id: 'marketing', label: 'Marketing digital', path: '/integrations/marketing' },
+  { id: 'email-marketing', label: 'Email marketing', path: '/integrations/emailMarketing' },
+];
+
+const baseButtonStyle = {
+  fontFamily: 'Poppins, sans-serif',
+  width: '100%',
+  padding: '12px 16px',
+  border: 'none',
+  fontSize: '14px',
+  textAlign: 'left',
+  borderRadius: '8px',
+  cursor: 'pointer',
+  transition: 'all 0.2s ease',
+};
 
 const IntegrationSidebar = ({ activeCategory }) => {
   const navigate = useNavigate();
 
-  const handleCategoryClick = (categoryId) => {
-    if (categoryId === 'portales') {
-      navigate('/integrations/portals');
-    } else if (categoryId === 'calendario') {
-      navigate('/integrations/calendar');
-    } else if (categoryId === 'instagram-whatsapp') {
-      navigate('/integrations/social-media');
-    } else if (categoryId === 'hoomi') {
-      navigate('/integrations/hoomi');
-    } else if (categoryId === 'email') {
-      navigate('/integrations/email');
-    } else if (categoryId === 'redes-inmobiliarias') {
-      navigate('/integrations/networks');
-    } else if (categoryId === 'email-marketing') {
-      navigate('/integrations/emailMarketing');
-    }
+  const handleCategoryClick = (path) => {
+    navigate(path);
   };
 
   return (
-    <div style={{ width: '200px' }}>
-      <h3 style={{ fontSize: '12px', fontWeight: '600', color: '#6b7280', textTransform: 'uppercase', margin: '0 0 16px 0' }}>
-        CATEGORÍAS
+    <div style={{ width: '220px' }}>
+      <h3 style={{ fontSize: '12px', fontWeight: '600', color: '#4b6359', textTransform: 'uppercase', margin: '0 0 16px 0' }}>
+        Categorías
       </h3>
       <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-        <li style={{ marginBottom: '4px' }}>
-          <button
-            style={{
-              fontFamily: 'Poppins, sans-serif',
-              width: '100%',
-              padding: '12px 16px',
-              border: 'none',
-              background: activeCategory === 'portales' ? '#dbeafe' : 'transparent',
-              color: activeCategory === 'portales' ? '#1d4ed8' : '#6b7280',
-              fontSize: '14px',
-              fontWeight: activeCategory === 'portales' ? '600' : '400',
-              textAlign: 'left',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease'
-            }}
-            onMouseEnter={(e) => {
-              if (activeCategory !== 'portales') {
-                e.target.style.background = '#f1f5f9';
-                e.target.style.color = '#374151';
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (activeCategory !== 'portales') {
-                e.target.style.background = 'transparent';
-                e.target.style.color = '#6b7280';
-              }
-            }}
-            onClick={() => handleCategoryClick('portales')}
-          >
-            Portales
-          </button>
-        </li>
-        <li style={{ marginBottom: '4px' }}>
-          <button
-            style={{
-              fontFamily: 'Poppins, sans-serif',
-              width: '100%',
-              padding: '12px 16px',
-              border: 'none',
-              background: activeCategory === 'calendario' ? '#dbeafe' : 'transparent',
-              color: activeCategory === 'calendario' ? '#1d4ed8' : '#6b7280',
-              fontSize: '14px',
-              fontWeight: activeCategory === 'calendario' ? '600' : '400',
-              textAlign: 'left',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease'
-            }}
-            onMouseEnter={(e) => {
-              if (activeCategory !== 'calendario') {
-                e.target.style.background = '#f1f5f9';
-                e.target.style.color = '#374151';
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (activeCategory !== 'calendario') {
-                e.target.style.background = 'transparent';
-                e.target.style.color = '#6b7280';
-              }
-            }}
-            onClick={() => handleCategoryClick('calendario')}
-          >
-            Calendario
-          </button>
-        </li>
-        <li style={{ marginBottom: '4px' }}>
-          <button
-            style={{
-              fontFamily: 'Poppins, sans-serif',
-              width: '100%',
-              padding: '12px 16px',
-              border: 'none',
-              background: activeCategory === 'instagram-whatsapp' ? '#dbeafe' : 'transparent',
-              color: activeCategory === 'instagram-whatsapp' ? '#1d4ed8' : '#6b7280',
-              fontSize: '14px',
-              fontWeight: activeCategory === 'instagram-whatsapp' ? '600' : '400',
-              textAlign: 'left',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease'
-            }}
-            onMouseEnter={(e) => {
-              if (activeCategory !== 'instagram-whatsapp') {
-                e.target.style.background = '#f1f5f9';
-                e.target.style.color = '#374151';
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (activeCategory !== 'instagram-whatsapp') {
-                e.target.style.background = 'transparent';
-                e.target.style.color = '#6b7280';
-              }
-            }}
-            onClick={() => handleCategoryClick('instagram-whatsapp')}
-          >
-            Instagram y WhatsApp
-          </button>
-        </li>
-        <li style={{ marginBottom: '4px' }}>
-          <button
-            style={{
-              fontFamily: 'Poppins, sans-serif',
-              width: '100%',
-              padding: '12px 16px',
-              border: 'none',
-              background: activeCategory === 'hoomi' ? '#dbeafe' : 'transparent',
-              color: activeCategory === 'hoomi' ? '#1d4ed8' : '#6b7280',
-              fontSize: '14px',
-              fontWeight: activeCategory === 'hoomi' ? '600' : '400',
-              textAlign: 'left',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease'
-            }}
-            onMouseEnter={(e) => {
-              if (activeCategory !== 'hoomi') {
-                e.target.style.background = '#f1f5f9';
-                e.target.style.color = '#374151';
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (activeCategory !== 'hoomi') {
-                e.target.style.background = 'transparent';
-                e.target.style.color = '#6b7280';
-              }
-            }}
-            onClick={() => handleCategoryClick('hoomi')}
-          >
-            Hoomi
-          </button>
-        </li>
-        <li style={{ marginBottom: '4px' }}>
-          <button
-            style={{
-              fontFamily: 'Poppins, sans-serif',
-              width: '100%',
-              padding: '12px 16px',
-              border: 'none',
-              background: activeCategory === 'email' ? '#dbeafe' : 'transparent',
-              color: activeCategory === 'email' ? '#1d4ed8' : '#6b7280',
-              fontSize: '14px',
-              fontWeight: activeCategory === 'email' ? '600' : '400',
-              textAlign: 'left',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease'
-            }}
-            onMouseEnter={(e) => {
-              if (activeCategory !== 'email') {
-                e.target.style.background = '#f1f5f9';
-                e.target.style.color = '#374151';
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (activeCategory !== 'email') {
-                e.target.style.background = 'transparent';
-                e.target.style.color = '#6b7280';
-              }
-            }}
-            onClick={() => handleCategoryClick('email')}
-          >
-            Correo electrónico
-          </button>
-        </li>
-        <li style={{ marginBottom: '4px' }}>
-          <button
-            style={{
-              fontFamily: 'Poppins, sans-serif',
-              width: '100%',
-              padding: '12px 16px',
-              border: 'none',
-              background: activeCategory === 'redes-inmobiliarias' ? '#dbeafe' : 'transparent',
-              color: activeCategory === 'redes-inmobiliarias' ? '#1d4ed8' : '#6b7280',
-              fontSize: '14px',
-              fontWeight: activeCategory === 'redes-inmobiliarias' ? '600' : '400',
-              textAlign: 'left',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease'
-            }}
-            onMouseEnter={(e) => {
-              if (activeCategory !== 'redes-inmobiliarias') {
-                e.target.style.background = '#f1f5f9';
-                e.target.style.color = '#374151';
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (activeCategory !== 'redes-inmobiliarias') {
-                e.target.style.background = 'transparent';
-                e.target.style.color = '#6b7280';
-              }
-            }}
-            onClick={() => handleCategoryClick('redes-inmobiliarias')}
-          >
-            Redes inmobiliarias
-          </button>
-        </li>
-        <li style={{ marginBottom: '4px' }}>
-          <button
-            style={{
-              fontFamily: 'Poppins, sans-serif',
-              width: '100%',
-              padding: '12px 16px',
-              border: 'none',
-              background: activeCategory === 'email-marketing' ? '#dbeafe' : 'transparent',
-              color: activeCategory === 'email-marketing' ? '#1d4ed8' : '#6b7280',
-              fontSize: '14px',
-              fontWeight: activeCategory === 'email-marketing' ? '600' : '400',
-              textAlign: 'left',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease'
-            }}
-            onMouseEnter={(e) => {
-              if (activeCategory !== 'email-marketing') {
-                e.target.style.background = '#f1f5f9';
-                e.target.style.color = '#374151';
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (activeCategory !== 'email-marketing') {
-                e.target.style.background = 'transparent';
-                e.target.style.color = '#6b7280';
-              }
-            }}
-            onClick={() => handleCategoryClick('email-marketing')}
-          >
-            Email marketing
-          </button>
-        </li>
+        {categories.map((category) => {
+          const isActive = activeCategory === category.id;
+          const baseColor = '#60766d';
+          const style = {
+            ...baseButtonStyle,
+            background: isActive ? '#d1fae5' : 'transparent',
+            color: isActive ? '#047857' : baseColor,
+            fontWeight: isActive ? '600' : '400',
+            boxShadow: isActive ? '0 8px 18px rgb(16 185 129 / 20%)' : 'none',
+          };
+
+          return (
+            <li key={category.id} style={{ marginBottom: '4px' }}>
+              <button
+                type="button"
+                style={style}
+                onMouseEnter={(event) => {
+                  if (!isActive) {
+                    event.currentTarget.style.background = '#ecfdf5';
+                    event.currentTarget.style.color = '#14532d';
+                  }
+                }}
+                onMouseLeave={(event) => {
+                  if (!isActive) {
+                    event.currentTarget.style.background = 'transparent';
+                    event.currentTarget.style.color = baseColor;
+                  }
+                }}
+                onClick={() => handleCategoryClick(category.path)}
+              >
+                {category.label}
+              </button>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

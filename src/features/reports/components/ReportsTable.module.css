@@ -1,0 +1,442 @@
+
+.wrapper {
+    width: 100%;
+}
+
+.tableContainer {
+    overflow: hidden;
+    border-radius: 24px;
+    background: #fff;
+    box-shadow: 0 18px 36px rgb(27 61 51 / 11%);
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.headerRow {
+    display: grid;
+    align-items: center;
+    background: #f1f8f4;
+    border-bottom: 1px solid #e2ebe6;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.table:not(:has(.agentCell)) .headerRow,
+.table:not(:has(.agentCell)) .bodyRow {
+    grid-template-columns: 100px 2fr 1.5fr 1.2fr 1.4fr;
+}
+
+.table:has(.agentCell) .headerRow,
+.table:has(.agentCell) .bodyRow {
+    grid-template-columns: 2.5fr 2fr 1fr 1fr 1.3fr 1.3fr;
+}
+
+.headerCell {
+    padding: 14px 18px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #4a6d64;
+    display: flex;
+    align-items: center;
+}
+
+.headerCellCheckbox {
+    justify-content: center;
+}
+
+.headerCellActions {
+    justify-content: flex-end;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+}
+
+.bodyRow {
+    display: grid;
+    align-items: stretch;
+    background: #ffffff;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.bodyRow:nth-child(even) {
+    background: #f8fcfa;
+}
+
+.bodyRow:hover {
+    background: #eef7f1;
+}
+
+.selectedRow {
+    background: #e1f5e9;
+}
+
+.bodyRow:not(:last-child) {
+    border-bottom: 1px solid #edf3ef;
+}
+
+.cell {
+    padding: 16px 18px;
+    font-size: 14px;
+    color: #1f2d3a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.checkboxCell {
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.checkboxControl {
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
+    border: 1px solid #a3b8b0;
+    background: #fff;
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.checkboxControl:hover {
+    border-color: #38e47a;
+    box-shadow: 0 0 0 3px rgb(56 228 122 / 12%);
+}
+
+.checkboxControl:checked {
+    background: #38e47a;
+    border-color: #38e47a;
+}
+
+.checkboxControl:checked::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 6px;
+    height: 10px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.photoCell {
+    justify-content: center;
+    padding: 12px;
+}
+
+.photoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.propertyPhoto {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 2px solid #ebf2ee;
+}
+
+.photoPlaceholder {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #10b981;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.addressCell {
+    display: flex;
+    align-items: flex-start;
+}
+
+.addressContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+}
+
+.propertyCode {
+    font-weight: 600;
+    color: #123429;
+    font-size: 14px;
+}
+
+.propertyAddress {
+    font-size: 12px;
+    color: #4c6f65;
+}
+
+.propertyRef {
+    font-size: 11px;
+    color: #10b981;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.qualityCell {
+    display: flex;
+    align-items: center;
+}
+
+.qualityContainer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.qualityBar {
+    flex: 1;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.qualityFill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.qualityText {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    min-width: 32px;
+}
+
+.typeCell {
+    display: flex;
+    align-items: flex-start;
+}
+
+.typeContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+}
+
+.propertyType {
+    font-weight: 600;
+    color: #123429;
+    font-size: 14px;
+}
+
+.propertyDetails {
+    font-size: 12px;
+    color: #4c6f65;
+}
+
+.priceCell {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.priceTag {
+    padding: 8px 14px;
+    background: #123429;
+    color: white;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.portalsCell {
+    display: flex;
+    align-items: flex-start;
+}
+
+.portalsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.portalBadge {
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.portalBadge::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.agentCell {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.avatarWrapper {
+    flex-shrink: 0;
+}
+
+.avatarFallback {
+    width: 44px;
+    height: 44px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, #38e47a, #3aa6a0);
+}
+
+.agentInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+}
+
+.agentName {
+    font-weight: 600;
+    color: #123429;
+}
+
+.agentPhone {
+    font-size: 12px;
+    color: #4c6f65;
+}
+
+.emailCell,
+.statCell {
+    display: inline-flex;
+    align-items: center;
+    font-size: 13px;
+    color: #3f5a51;
+    justify-content: flex-start;
+}
+
+.statCell {
+    font-weight: 600;
+    color: #123429;
+    justify-content: center;
+    text-align: center;
+}
+
+.actionsCell {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.actionButton {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    border: none;
+    background: #f3f7f5;
+    color: #304c43;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.actionButton:hover {
+    background: #e7f2ec;
+    transform: translateY(-1px);
+}
+
+.actionButton:active {
+    transform: translateY(0);
+}
+
+.danger {
+    background: #ffe6e6;
+    color: #c53030;
+}
+
+.danger:hover {
+    background: #ffd1d1;
+}
+
+.emptyRow {
+    padding: 48px 16px;
+    text-align: center;
+    color: #567870;
+    font-size: 15px;
+}
+
+@media (width <=1024px) {
+    .table:not(:has(.agentCell)) .headerRow,
+    .table:not(:has(.agentCell)) .bodyRow {
+        grid-template-columns: 90px 1.8fr 1.2fr 1fr 1.2fr;
+    }
+
+    .table:has(.agentCell) .headerRow,
+    .table:has(.agentCell) .bodyRow {
+        grid-template-columns: 2fr 1.8fr 0.9fr 0.9fr 1.1fr 1.1fr;
+    }
+}
+
+@media (width <=768px) {
+    .tableContainer {
+        border-radius: 20px;
+    }
+
+    .headerRow {
+        display: none;
+    }
+
+    .bodyRow {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px;
+    }
+
+    .cell {
+        padding: 0;
+        align-items: flex-start;
+    }
+
+    .checkboxCell {
+        flex-direction: row;
+    }
+
+    .actionsCell {
+        justify-content: flex-start;
+    }
+}

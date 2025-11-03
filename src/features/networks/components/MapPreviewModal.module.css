@@ -1,0 +1,127 @@
+/* stylelint-disable order/properties-order, color-hex-length */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgb(11 32 24 / 32%);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    z-index: 110;
+}
+
+.modal {
+    width: min(640px, 100%);
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 32px 70px rgb(21 60 45 / 28%);
+    padding: 26px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.headerInfo {
+    display: inline-flex;
+    gap: 14px;
+    align-items: flex-start;
+    color: #123429;
+}
+
+.title {
+    margin: 0;
+    font-size: 1.45rem;
+    font-weight: 700;
+}
+
+.subtitle {
+    margin: 6px 0 0;
+    color: #4d6c62;
+    font-size: 0.95rem;
+}
+
+.closeButton {
+    border: none;
+    background: #f1f8f4;
+    color: #2d4f44;
+    width: 34px;
+    height: 34px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.closeButton:hover {
+    transform: translateY(-1px);
+    background: #e5f3ed;
+}
+
+.preview {
+    border-radius: 20px;
+    background: linear-gradient(135deg, #d5fbea 0%, #f3fef7 100%);
+    padding: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px;
+    border: 1px dashed #9ad8ba;
+}
+
+.placeholder {
+    font-weight: 600;
+    color: #2d4f44;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+}
+
+.secondaryButton {
+    border: none;
+    background: transparent;
+    color: #4d6c62;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.secondaryButton:hover {
+    color: #123429;
+}
+
+@media (width <=640px) {
+    .overlay {
+        padding: 18px;
+    }
+
+    .modal {
+        padding: 22px;
+    }
+
+    .footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .footer button {
+        width: 100%;
+    }
+}
+
+

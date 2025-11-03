@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
+import Button from '../../../../components/ui/Button';
 
 const Calendar = () => {
   return (
     <div style={{ marginLeft: '12px' }}>
       <div style={{ marginBottom: '20px' }}>
-        <h3 style={{ fontSize: '18px', fontWeight: '600', color: '#111827', margin: '0 0 12px 0' }}>
+        <h3 style={{ fontSize: '18px', fontWeight: '600', color: '#123429', margin: '0 0 12px 0' }}>
           Sincronización de calendario
         </h3>
-        <p style={{ fontSize: '14px', color: '#6b7280', margin: '0 0 2px 0' }}>
+        <p style={{ fontSize: '14px', color: '#58786f', margin: '0 0 2px 0' }}>
           Visualizá todas tus actividades en un sólo lugar
         </p>
 
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px', marginBottom: '16px' }}>
           <div style={{ flex: 1, maxWidth: '400px' }}>
-            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 0 0', color: '#6b7280', fontSize: '14px', lineHeight: '1.5' }}>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: '#58786f', fontSize: '14px', lineHeight: '1.5' }}>
               <li style={{ marginBottom: '8px', display: 'flex', alignItems: 'flex-start', gap: '8px', whiteSpace: 'nowrap' }}>
                 <div style={{ width: '6px', height: '6px', background: '#10B981', borderRadius: '1px', marginTop: '6px', flexShrink: 0 }}></div>
                 <span>Ya no cambiarás entre Urbany y tu calendario de Google</span>
@@ -46,7 +47,7 @@ const Calendar = () => {
               right: '8px',
               width: '30px',
               height: '30px',
-              background: '#10B981',
+              background: '#f0fdf4',
               borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
@@ -54,61 +55,37 @@ const Calendar = () => {
               border: '3px solid white'
             }}>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="white" />
+                <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="#10B981" />
               </svg>
             </div>
           </div>
         </div>
 
-        <p style={{ fontSize: '14px', color: '#6b7280', margin: '0 0 16px 0', lineHeight: '1.4' }}>
+        <p style={{ fontSize: '14px', color: '#58786f', margin: '0 0 16px 0', lineHeight: '1.4' }}>
           Sincroniza tus eventos en Urbany con el proveedor número uno: Google Calendar
         </p>
 
         <div style={{ display: 'flex', gap: '12px' }}>
-          <button style={{
-            padding: '12px 24px',
-            background: '#3B82F6',
-            color: 'white',
-            border: 'none',
-            borderRadius: '8px',
-            fontSize: '14px',
-            fontWeight: '600',
-            cursor: 'pointer',
-            transition: 'background-color 0.2s ease'
-          }}
-            onMouseOver={(e) => e.target.style.background = '#2563EB'}
-            onMouseOut={(e) => e.target.style.background = '#3B82F6'}
-          >
+          <Button variant="primary" size="small">
             Añadir cuenta nueva
-          </button>
-          <button style={{
-            padding: '12px 24px',
-            background: 'white',
-            color: '#3B82F6',
-            border: '1px solid #3B82F6',
-            borderRadius: '8px',
-            fontSize: '14px',
-            fontWeight: '600',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            transition: 'all 0.2s ease'
-          }}
-            onMouseOver={(e) => {
-              e.target.style.background = '#3B82F6';
-              e.target.style.color = 'white';
-            }}
-            onMouseOut={(e) => {
-              e.target.style.background = 'white';
-              e.target.style.color = '#3B82F6';
+          </Button>
+          <Button
+            variant="secondary"
+            size="small"
+            style={{
+              background: '#ecfdf5',
+              border: '1px solid #bbf7d0',
+              color: '#047857',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px'
             }}
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M8 5V19L19 12L8 5Z" fill="currentColor" />
             </svg>
             ¿Cómo funciona?
-          </button>
+          </Button>
         </div>
       </div>
     </div>

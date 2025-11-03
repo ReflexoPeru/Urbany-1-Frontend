@@ -10,6 +10,7 @@ const CustomSelect = ({
   placeholder = 'Seleccionar...',
   disabled = false,
   className = '',
+  wrapperClassName = '',
   ...props
 }) => {
   const handleChange = (selectedValue) => {
@@ -79,7 +80,7 @@ const CustomSelect = ({
   };
 
   return (
-    <div className={styles.selectWrapper}>
+    <div className={`${styles.selectWrapper} ${wrapperClassName}`}>
       {label && (
         <label className={styles.label}>
           {label}

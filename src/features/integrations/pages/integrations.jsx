@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import ScrollableContainer from '../components/ScrollableContainer/ScrollableContainer';
 import IntegrationSidebar from '../components/IntegrationSidebar/IntegrationSidebar';
 import IntegrationPreview from '../components/IntegrationPreview/IntegrationPreview';
+import styles from './integrations.module.css';
 
 const Integrations = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -32,30 +33,21 @@ const Integrations = () => {
   }, [location.pathname]);
 
   return (
-    <div style={{
-      padding: '32px',
-      fontFamily: 'Poppins, sans-serif',
-      background: '#fff',
-      borderRadius: '12px',
-      margin: '0px',
-      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-      border: '1px solid #e5e7eb',
-      minHeight: 'calc(100vh - 200px)'
-    }}>
-      <div style={{ marginBottom: '32px', marginLeft: '0px' }}>
-        <h1 style={{ fontSize: '32px', fontWeight: '700', margin: '0 0 8px 0', color: '#111827' }}>
-          Integraciones
-        </h1>
-        <p style={{ fontSize: '16px', color: '#6b7280', margin: '0 0 24px 0' }}>
-          Seleccione una categoría de integración para comenzar
-        </p>
-      </div>
+    <div className={styles.wrapper}>
+      <div className={styles.inner}>
+        <header className={styles.header}>
+          <h1 className={styles.title}>Integraciones</h1>
+          <p className={styles.subtitle}>Seleccione una categoría de integración para comenzar</p>
+        </header>
 
-      <div style={{ display: 'flex', gap: '16px' }}>
-        <IntegrationSidebar activeCategory={selectedCategory} />
+        <div className={styles.content}>
+          <IntegrationSidebar activeCategory={selectedCategory} />
 
-        <div style={{ flex: 1 }}>
-          {selectedCategory ? <Outlet /> : <IntegrationPreview />}
+          <div className={styles.main}>
+            <ScrollableContainer>
+              {selectedCategory ? <Outlet /> : <IntegrationPreview />}
+            </ScrollableContainer>
+          </div>
         </div>
       </div>
     </div>

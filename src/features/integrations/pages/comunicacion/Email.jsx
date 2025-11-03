@@ -8,7 +8,7 @@ const Email = () => {
       <StaticCard
         title="Integración de correo electrónico"
         description="Pero primero debe estar tu web configurada. ¿Qué podré hacer una vez que tenga mi cuenta creada?"
-        icon={<Mail size={20} color="#3B82F6" />}
+        icon={<Mail size={20} color="#10B981" />}
         features={[
           "Sincronizar los correos de urbany con tu cuenta de email profesional",
           "Difundir tus propiedades por email",
