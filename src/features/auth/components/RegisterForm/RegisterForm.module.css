@@ -97,9 +97,34 @@
     transition: all 0.3s ease;
 }
 
-.btn:hover {
+.btn:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgb(56 228 122 / 30%);
+}
+
+.btn:disabled {
+    cursor: not-allowed;
+    transform: none;
+    opacity: 0.6;
+}
+
+.error_message {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    margin-bottom: 15px;
+    padding: 12px 16px;
+    border-radius: 8px;
+
+    font-size: 14px;
+    color: #c33;
+
+    background-color: #fee;
+}
+
+.error_icon {
+    flex-shrink: 0;
 }
 
 .social_icons {

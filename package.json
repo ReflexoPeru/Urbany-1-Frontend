@@ -24,6 +24,7 @@
     "@tabler/icons-react": "^3.35.0",
     "@tanstack/react-table": "^8.21.3",
     "antd": "^5.27.6",
+    "axios": "^1.13.2",
     "dayjs": "^1.11.18",
     "lucide-react": "^0.548.0",
     "phosphor-react": "^1.4.1",

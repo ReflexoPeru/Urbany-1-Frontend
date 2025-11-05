@@ -1,8 +1,9 @@
 import { Navigate } from 'react-router-dom'
+import { getCookie } from '../../../../utils/cookieUtility'
 
 const ProtectedRoute = ({ children }) => {
-    // Varificar si hay token en localStorage (sesión activa)
-    const token = localStorage.getItem('token');
+    // Verificar si hay token en cookies (sesión activa)
+    const token = getCookie('token');
 
     // Si no hay token, redirigir al login
     if (!token) {

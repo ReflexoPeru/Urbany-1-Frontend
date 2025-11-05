@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { removeCookie, getCookie } from '../../../utils/cookieUtility'
 
 const Dashboard = () => {
     const navigate = useNavigate()
@@ -14,8 +15,11 @@ const Dashboard = () => {
     }, [])
 
     const handleLogout = () => {
-        // Limpiar toda la información de la sesión
-        localStorage.removeItem('token')
+        // Limpiar toda la información de la sesión (cookies)
+        removeCookie('token')
+        removeCookie('refresh_token')
+        removeCookie('user_id')
+        // También limpiar localStorage si existe información del usuario
         localStorage.removeItem('user')
         navigate('/login')
     }
@@ -34,7 +38,7 @@ const Dashboard = () => {
                     marginBottom: '2rem',
                     border: '1px'
                 }}>
-                    <h2 style={{ marginTop: 0, color: '#2de0a1'}}>¡Sesión activa!</h2>
+                    <h2 style={{ marginTop: 0, color: '#2de0a1' }}>¡Sesión activa!</h2>
                     <p><strong>Usuario:</strong> {user.name} </p>
                     <p><strong>Email:</strong> {user.email} </p>
                     <p><strong>ID:</strong> {user.id} </p>
