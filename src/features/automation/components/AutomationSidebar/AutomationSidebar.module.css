@@ -1,0 +1,82 @@
+/* stylelint-disable order/properties-order - Sidebar styling aligned con Urbany palette */
+
+.container {
+  width: 220px;
+  padding: 8px 0 8px 4px;
+  font-family: Poppins, sans-serif;
+}
+
+.title {
+  margin: 0 0 16px;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4b6359;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.item {
+  margin: 0;
+}
+
+.button {
+  cursor: pointer;
+
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 10px;
+
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #60766d;
+  text-align: left;
+
+  background: transparent;
+
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  color: #14532d;
+  background: #f0fdf4;
+}
+
+.active {
+  font-weight: 600;
+  color: #047857;
+  background: #d1fae5;
+  box-shadow: 0 8px 18px rgb(16 185 129 / 25%);
+}
+
+.active:hover {
+  background: #a7f3d0;
+}
+
+@media (width <=960px) {
+  .container {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .list {
+    flex-flow: row wrap;
+    gap: 8px;
+  }
+
+  .button {
+    flex: 1 1 160px;
+  }
+}

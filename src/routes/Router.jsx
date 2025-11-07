@@ -35,6 +35,10 @@ import HelpPage from '../features/help/pages/HelpPage';
 import CommentsPage from '../features/comment/pages/CommentsPage';
 import UsersPage from '../features/users/pages/UsersPage';
 import WebsitePage from '../features/website/pages/WebsitePage';
+import Automation from '../features/automation/pages/automation';
+import FlujosTrabajo from '../features/automation/pages/flujos-d-trabajo/flujos-d-trabajo';
+//import PlantillasEmail from '../features/automation/pages/plantillas-email/plantillas-email';
+//import PlantillasWhatsApp from '../features/automation/pages/plantillas-whatsapp/plantillas-whatsapp';
 import { Navigate } from 'react-router-dom';
 
 
@@ -190,7 +194,26 @@ const router = createBrowserRouter([
       },
       {
         path: 'automation',
-        element: <div><h2>Automatización</h2></div>,
+        element: <Automation />,
+        children: [
+          {
+            index: true,
+            element: <Automation />,
+          },
+          {
+            path: 'flujos-de-trabajo',
+            element: <FlujosTrabajo />,
+            // Flujos de trabajos es el unico con vistas, los demas solo son etiquetas para indicar lo que ira
+          },
+          {
+            path: 'plantillas-email',
+            element: <h1>Plantillas de Email</h1>,
+          },
+          {
+            path: 'plantillas-whatsapp',
+            element: <h1>Plantillas de WhatsApp</h1>
+          },
+        ]
       },
       {
         path: 'optimizations',
