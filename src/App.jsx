@@ -1,5 +1,5 @@
 import React from 'react'
-import SubscriptionPage from './subscription/SubscriptionPage'
+import SubscriptionPage from './subscription'
 import './App.css'
 
 function App() {

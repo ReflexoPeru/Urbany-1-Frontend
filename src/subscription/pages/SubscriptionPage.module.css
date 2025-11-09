@@ -33,18 +33,22 @@
   background: #2563eb;
   color: #fff;
   border: none;
-  padding: 0.6rem 1rem;
+  padding: 0.35rem 0.8rem;
   border-radius: 8px;
   cursor: pointer;
+  font-size: 0.9rem;
+  line-height: 1.2;
 }
 
 .secondary {
   background: #eef2ff;
   color: #374151;
   border: none;
-  padding: 0.6rem 1rem;
+  padding: 0.35rem 0.8rem;
   border-radius: 8px;
   cursor: pointer;
+  font-size: 0.9rem;
+  line-height: 1.2;
 }
 
 .page {
@@ -220,6 +224,7 @@
   box-shadow: 0 2px 8px rgba(17,24,39,0.08);
 }
 .integrationLeft { display: flex; gap: 14px; align-items: center; }
+.integrationRight { display: flex; flex-direction: column; gap: 10px; }
 .iconRow { display: flex; gap: 8px; }
 .roundIcon {
   display: inline-flex;
@@ -248,6 +253,7 @@
   border-radius: 9999px;
   background: #E5E7EB;
   position: relative;
+  cursor: pointer;
 }
 .knob {
   position: absolute;
