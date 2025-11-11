@@ -262,6 +262,21 @@
     box-shadow: 0 20px 40px -24px rgb(15 23 42 / 20%);
 }
 
+.searchBox {
+    position: relative;
+    flex: 1 1 260px;
+}
+
+.searchBox::before {
+    content: '🔍';
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    opacity: 0.4;
+}
+
 .searchRow {
     display: flex;
     flex-wrap: wrap;
@@ -271,12 +286,90 @@
 
 .searchInput {
     flex: 1 1 260px;
+    padding: 14px 18px 14px 44px;
+    border-radius: 16px;
+    border: 1px solid #d5e6de;
+    background: #f6fbf8;
+    font-size: 0.95rem;
+    color: #123429;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: #38e47a;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgb(56 228 122 / 18%);
+}
+
+.checkboxControl {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 16px;
+    border: 1px solid #c6e4d6;
+    background: #e9f5ef;
+    color: #256148;
+    font-weight: 600;
+}
+
+.checkboxControl input {
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
+    border: 1px solid #9cccb6;
+    accent-color: #31c970;
 }
 
 .additionalActions {
     display: flex;
     gap: 12px;
     align-items: center;
+}
+
+.mapButton {
+    padding: 10px 18px;
+    border-radius: 14px;
+    border: 1px solid #cce9da;
+    background: linear-gradient(135deg, #f2fff7 0%, #e9fbf2 100%);
+    color: #105b3f;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.mapButton:hover {
+    transform: translateY(-1px);
+    border-color: #38e47a;
+    box-shadow: 0 14px 28px rgb(56 228 122 / 18%);
+}
+
+.iconButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 14px;
+    border-radius: 14px;
+    border: 1px solid #dbe8e2;
+    background: #f8fcf9;
+    color: #2d4f44;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.iconButton:hover {
+    transform: translateY(-1px);
+    border-color: #38e47a;
+    background: #ffffff;
+    box-shadow: 0 12px 20px rgb(56 228 122 / 14%);
+}
+
+.iconButtonActive {
+    color: #d94862;
+    border-color: #f2c2cd;
+    background: #fff0f4;
 }
 
 .filtersRow {
@@ -294,6 +387,42 @@
     border-radius: 20px;
     background: #fff;
     box-shadow: 0 28px 48px -28px rgb(15 23 42 / 24%);
+}
+
+.summaryRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.summaryInfo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    font-weight: 600;
+    color: #2d4f44;
+}
+
+.summaryActions {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.networkChip {
+    background: #eef7f2;
+    border-radius: 12px;
+    padding: 6px 12px;
+}
+
+.selectionChip {
+    background: #fef3f3;
+    border-radius: 12px;
+    padding: 6px 12px;
+    color: #c53030;
 }
 
 .emptyState {

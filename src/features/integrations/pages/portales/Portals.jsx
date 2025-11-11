@@ -1,9 +1,11 @@
 import React from 'react';
 import ExpandableCard from '../../components/ExpandableCard';
 import { portalsData } from '../../../../mock/portals';
+import { useToast } from '../../../../contexts/ToastContext';
 
 const Portals = () => {
   const { customIntegrations, paidPortals } = portalsData;
+  const { toast } = useToast();
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -21,6 +23,14 @@ const Portals = () => {
       case 'inactive': return 'Desconectado';
       default: return 'Desconectado';
     }
+  };
+
+  const handlePortalRequest = (portal, type = 'connect') => {
+    if (type === 'guide') {
+      toast.info('Guía enviada', `Te enviamos las instrucciones para conectar ${portal.title}.`);
+      return;
+    }
+    toast.success('Solicitud registrada', `Nuestro equipo te ayudará a conectar ${portal.title}.`);
   };
 
   return (
@@ -99,6 +109,8 @@ const Portals = () => {
                 setupSteps={integration.setupSteps}
                 pricing={integration.pricing}
                 lastSync={integration.lastSync}
+                onActionPrimary={() => handlePortalRequest(integration)}
+                onSecondaryAction={() => handlePortalRequest(integration, 'guide')}
               />
             );
           })}
@@ -136,6 +148,8 @@ const Portals = () => {
               lastSync={integration.lastSync}
               actionText={integration.actionText}
               buttonText={integration.buttonText}
+              onActionPrimary={() => handlePortalRequest(integration)}
+              onSecondaryAction={() => handlePortalRequest(integration, 'guide')}
             />
           ))}
         </div>

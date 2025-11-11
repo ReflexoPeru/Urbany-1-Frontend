@@ -27,9 +27,13 @@ const NetworkFilters = ({
     onBulkRemove,
     selectionStats,
     sortOption,
-    onSortChange
+    onSortChange,
+    onViewNetwork,
+    onEditNetwork,
+    selectedNetwork
 }) => {
     const selectedCount = selectionStats?.selectedCount ?? 0
+    const hasNetwork = Boolean(selectedNetwork)
 
     return (
         <div className={styles.wrapper}>
@@ -70,15 +74,17 @@ const NetworkFilters = ({
                         <Faders size={18} weight="bold" />
                     </button>
 
-                    <button
-                        type="button"
-                        className={`${styles.iconButton} ${selectedCount === 0 ? styles.iconButtonDisabled : styles.iconButtonDanger}`}
-                        onClick={onBulkRemove}
-                        disabled={selectedCount === 0}
-                        aria-label="Eliminar propiedades seleccionadas"
-                    >
-                        <Trash size={18} weight="bold" />
-                    </button>
+                    {selectedCount > 0 && (
+                        <Button
+                            variant="dangerSoft"
+                            size="medium"
+                            icon="trash"
+                            onClick={onBulkRemove}
+                            className={styles.bulkDeleteButton}
+                        >
+                            Eliminar ({selectedCount})
+                        </Button>
+                    )}
 
                     <button
                         type="button"
@@ -151,6 +157,11 @@ const NetworkFilters = ({
                     <span>
                         {selectionStats.total} resultados · {selectionStats.mineCount} míos · {selectionStats.favoritesCount} favoritos
                     </span>
+                    {hasNetwork && (
+                        <span className={styles.networkLabel}>
+                            Red activa: <strong>{selectedNetwork.name}</strong>
+                        </span>
+                    )}
                     {selectedCount > 0 && (
                         <span className={styles.selectionLabel}>
                             {selectedCount} seleccionados
@@ -162,9 +173,27 @@ const NetworkFilters = ({
                     <button type="button" className={styles.clearButton} onClick={onClearFilters}>
                         Limpiar filtros
                     </button>
-                    <Button variant="secondary" size="small" className={styles.syncButton} onClick={onOpenAdvancedFilters}>
-                        Configurar filtros
-                    </Button>
+                    <div className={styles.footerButtons}>
+                        <Button variant="secondary" size="small" className={styles.syncButton} onClick={onOpenAdvancedFilters}>
+                            Configurar filtros
+                        </Button>
+                        <Button
+                            variant="secondary"
+                            size="small"
+                            onClick={onViewNetwork}
+                            disabled={!hasNetwork}
+                        >
+                            Ver red
+                        </Button>
+                        <Button
+                            variant="ghost"
+                            size="small"
+                            onClick={onEditNetwork}
+                            disabled={!hasNetwork}
+                        >
+                            Editar red
+                        </Button>
+                    </div>
                 </div>
             </div>
         </div>

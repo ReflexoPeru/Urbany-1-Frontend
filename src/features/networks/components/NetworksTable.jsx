@@ -36,7 +36,8 @@ const NetworksTable = ({
     onViewProperty,
     onOpenDetails,
     onToggleFavorite,
-    onRemoveProperty
+    onRemoveProperty,
+    onEditProperty
 }) => {
     const rows = useMemo(
         () => data.map((item, index) => ({
@@ -134,6 +135,7 @@ const NetworksTable = ({
                                         key={rowId}
                                         className={`${styles.bodyRow} ${isSelected ? styles.selectedRow : ''}`}
                                         role="row"
+                                        onClick={() => onViewProperty?.(property)}
                                     >
                                         <div className={`${styles.cell} ${styles.checkboxCell}`} role="cell">
                                             <input
@@ -142,6 +144,7 @@ const NetworksTable = ({
                                                 checked={isSelected}
                                                 onChange={(event) => handleSelectRow(rowId, event.target.checked)}
                                                 aria-label={`Seleccionar ${property.address}`}
+                                                onClick={(event) => event.stopPropagation()}
                                             />
                                         </div>
 
@@ -155,7 +158,10 @@ const NetworksTable = ({
                                                 <button
                                                     type="button"
                                                     className={`${styles.favoriteButton} ${property.isFavorite ? styles.favoriteActive : ''}`}
-                                                    onClick={() => onToggleFavorite?.(property)}
+                                                onClick={(event) => {
+                                                    event.stopPropagation()
+                                                    onToggleFavorite?.(property)
+                                                }}
                                                     aria-label={property.isFavorite ? 'Quitar de favoritos' : 'Marcar como favorita'}
                                                 >
                                                     <HeartStraight size={16} weight={property.isFavorite ? 'fill' : 'bold'} />
@@ -214,7 +220,10 @@ const NetworksTable = ({
                                                 <button
                                                     type="button"
                                                     className={styles.rowButton}
-                                                    onClick={() => onViewProperty?.(property)}
+                                                onClick={(event) => {
+                                                    event.stopPropagation()
+                                                    onViewProperty?.(property)
+                                                }}
                                                     aria-label="Ver propiedad"
                                                 >
                                                     <CaretRight size={18} weight="bold" />
@@ -222,15 +231,32 @@ const NetworksTable = ({
                                                 <button
                                                     type="button"
                                                     className={styles.rowButton}
-                                                    onClick={() => onOpenDetails?.(property)}
+                                                onClick={(event) => {
+                                                    event.stopPropagation()
+                                                    onOpenDetails?.(property)
+                                                }}
                                                     aria-label="Ver detalles"
                                                 >
                                                     <Info size={18} weight="bold" />
                                                 </button>
                                                 <button
                                                     type="button"
+                                                    className={styles.rowButton}
+                                                    onClick={(event) => {
+                                                        event.stopPropagation()
+                                                        onEditProperty?.(property)
+                                                    }}
+                                                    aria-label="Editar propiedad"
+                                                >
+                                                    <span className={styles.rowButtonText}>✎</span>
+                                                </button>
+                                                <button
+                                                    type="button"
                                                     className={`${styles.rowButton} ${styles.rowButtonDanger}`}
-                                                    onClick={() => onRemoveProperty?.(property)}
+                                                onClick={(event) => {
+                                                    event.stopPropagation()
+                                                    onRemoveProperty?.(property)
+                                                }}
                                                     aria-label="Eliminar de la red"
                                                 >
                                                     <Trash size={18} weight="bold" />

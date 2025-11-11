@@ -6,7 +6,14 @@ const AuthFlipForm = ({
     onToggleRegister,
     onToggleLogin,
     children,
-    showFlip = true
+    showFlip = true,
+    suppressPanels = false,
+    invertLayout = false,
+    showRegisterPanel = true,
+    showLoginPanel = true,
+    loginPanelLabel = "¡Bienvenido de nuevo!",
+    loginPanelSubtitle = "¿Ya tienes cuenta?",
+    loginButtonText = "Iniciar Sesión"
 }) => {
     if (!showFlip) {
         return (
@@ -19,35 +26,46 @@ const AuthFlipForm = ({
     }
 
     return (
-        <div className={`${styles.container} ${isRegister ? styles.active : ''}`}>
+        <div
+            className={[
+                styles.container,
+                isRegister ? styles.active : '',
+                suppressPanels ? styles.hidePanels : '',
+                invertLayout ? styles.invert : ''
+            ].join(' ').trim()}
+        >
             <div className={styles.form_box_login}>
                 {children}
             </div>
             
             <div className={styles.toggle_box}>
-                <div className={styles.toggle_panel_left}>
-                    <h1>¡Hola, Bienvenido!</h1>
-                    <p>¿No tienes cuenta?</p>
-                    <button 
-                        type="button"
-                        className={styles.btn} 
-                        onClick={onToggleRegister}
-                    >
-                        Registrarse
-                    </button>
-                </div>
+                {showRegisterPanel && (
+                    <div className={styles.toggle_panel_left}>
+                        <h1>¡Hola, Bienvenido!</h1>
+                        <p>¿No tienes cuenta?</p>
+                        <button 
+                            type="button"
+                            className={styles.btn} 
+                            onClick={onToggleRegister}
+                        >
+                            Registrarse
+                        </button>
+                    </div>
+                )}
 
-                <div className={styles.toggle_panel_right}>
-                    <h1>¡Bienvenido de nuevo!</h1>
-                    <p>¿Ya tienes cuenta?</p>
-                    <button 
-                        type="button"
-                        className={styles.btn}
-                        onClick={onToggleLogin}
-                    >
-                        Iniciar Sesión
-                    </button>
-                </div>
+                {showLoginPanel && (
+                    <div className={styles.toggle_panel_right}>
+                        <h1>{loginPanelLabel}</h1>
+                        <p>{loginPanelSubtitle}</p>
+                        <button 
+                            type="button"
+                            className={styles.btn}
+                            onClick={onToggleLogin}
+                        >
+                            {loginButtonText}
+                        </button>
+                    </div>
+                )}
             </div>
         </div>
     );

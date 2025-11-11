@@ -66,7 +66,7 @@
   line-height: 1.4;
 }
 
-.content {
+.detailContainer {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -127,10 +127,31 @@
   margin: 0;
 }
 
-.actionSection {
+.detailContainer {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.detailContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #dbeee3;
+}
+
+.actionsStandalone {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px dashed #bbf7d0;
+  background: #f8fdfb;
 }
 
 .actionText {

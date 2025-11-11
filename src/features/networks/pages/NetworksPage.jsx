@@ -1,26 +1,77 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../../components/ui/Button/Button';
 import ConfirmModal from '../../../components/ui/Modal/ConfirmModal';
 import { useToast } from '../../../contexts/ToastContext';
 import {
     NetworkFilters,
-    NetworksTable,
-    NetworkFormModal,
-    NetworkPropertyDetailsModal,
     AdvancedFiltersModal,
-    MapPreviewModal
+    MapPreviewModal,
+    NetworkDetailsModal
 } from '../components';
-import useNetworks from '../hooks/useNetworks';
+import NetworkPropertyDetailsModal from '../components/NetworkPropertyDetailsModal';
+import VenturesTable from '../../emprendimientos/components/VenturesTable';
+import { useNetworks } from '../hooks/useNetworks';
 import styles from './NetworksPage.module.css';
+import slugify from '../../../utils/slugify';
+
+const formatPriceLabel = (value, currency) => {
+    if (value === undefined || value === null) {
+        return 'Sin precio';
+    }
+    try {
+        const formatted = new Intl.NumberFormat('es-CO', {
+            minimumFractionDigits: 0
+        }).format(Number(value));
+        return currency ? `${currency} ${formatted}` : formatted;
+    } catch {
+        return currency ? `${currency} ${value}` : String(value);
+    }
+};
+
+const mapPropertyToVenture = (property, networkName) => {
+    const locationParts = [property.city, property.neighborhood].filter(Boolean);
+    const location = locationParts.length > 0 ? locationParts.join(' · ') : 'Sin ubicación';
+    const priceLabel = formatPriceLabel(property.price, property.currency);
+    const commissionLabel = property.commission != null ? `${property.commission}% comisión` : 'Sin comisión';
+
+    return {
+        id: property.id,
+        title: property.address || 'Sin dirección',
+        location,
+        tag: property.code || property.coverage || commissionLabel,
+        administrator: property.realEstate?.name
+            ? `${property.realEstate.name}${property.commission != null ? ` · ${property.commission}%` : ''}`
+            : commissionLabel,
+        stage: property.operation || property.propertyType || 'Sin tipo',
+        createdAt: property.publishedAt,
+        imageUrl: property.image,
+        description: property.description || '',
+        characteristics: {
+            delivery: property.coverage || 'Sin cobertura',
+            price: priceLabel,
+            units: commissionLabel,
+            floors: property.quality != null ? `${property.quality}% calidad` : 'Sin dato',
+            parking: property.contact?.phone || 'Sin contacto',
+            apartments: property.bedrooms != null ? `${property.bedrooms} dorm.` : 'Sin dato',
+            offices: property.bathrooms != null ? `${property.bathrooms} baños` : 'Sin dato'
+        },
+        amenities: {
+            runningWater: Boolean(property.isFavorite),
+            heating: Boolean(property.isMine),
+            boiler: false,
+            boxDeposit: false
+        },
+        networkName
+    };
+};
 
 const NetworksPage = () => {
     const navigate = useNavigate();
     const { toast } = useToast();
 
     const {
-        networks,
-        selectedNetworkId,
+        selectedNetwork,
         searchTerm,
         setSearchTerm,
         includeMineOnly,
@@ -38,28 +89,46 @@ const NetworksPage = () => {
         properties,
         selectedPropertyIds,
         selectProperties,
+        clearSelection,
         togglePropertyFavorite,
         removePropertiesFromNetwork,
-        createNetwork,
+        updateProperty,
         selectionStats
     } = useNetworks();
 
-    const [isCreateModalOpen, setCreateModalOpen] = useState(false);
     const [isAdvancedFiltersOpen, setAdvancedFiltersOpen] = useState(false);
     const [isMapModalOpen, setMapModalOpen] = useState(false);
-    const [detailProperty, setDetailProperty] = useState(null);
-    const [isDetailsModalOpen, setDetailsModalOpen] = useState(false);
     const [confirmModalOpen, setConfirmModalOpen] = useState(false);
     const [pendingRemoval, setPendingRemoval] = useState(null);
     const [isBulkRemoval, setIsBulkRemoval] = useState(false);
+    const [isNetworkDetailsOpen, setNetworkDetailsOpen] = useState(false);
+    const [detailProperty, setDetailProperty] = useState(null);
+    const [detailMode, setDetailMode] = useState('view');
+    const [propertyModalOpen, setPropertyModalOpen] = useState(false);
 
     const totalProperties = properties.length;
 
-    const handleSubmitCreate = (payload) => {
-        const network = createNetwork(payload);
-        toast.success('Red creada', `Se creó la red ${network.name}.`);
-        setCreateModalOpen(false);
-    };
+    const ventures = useMemo(
+        () => properties.map((property) => mapPropertyToVenture(property, selectedNetwork?.name ?? '')),
+        [properties, selectedNetwork]
+    );
+
+    const propertyMap = useMemo(
+        () => properties.reduce((accumulator, property) => {
+            accumulator[property.id] = property;
+            return accumulator;
+        }, {}),
+        [properties]
+    );
+
+    useEffect(() => {
+        if (propertyModalOpen && detailProperty) {
+            const updated = propertyMap[detailProperty.id];
+            if (updated && updated !== detailProperty) {
+                setDetailProperty(updated);
+            }
+        }
+    }, [propertyMap, propertyModalOpen, detailProperty]);
 
     const handleApplyAdvancedFilters = ({ coverage, quality, includeMineOnly: mine, showFavoritesOnly: favorites }) => {
         updateFilter('coverage', coverage);
@@ -70,17 +139,7 @@ const NetworksPage = () => {
         toast.info('Filtros aplicados', 'Actualizamos la vista según los filtros avanzados.');
     };
 
-    const handleToggleFavorite = (property) => {
-        togglePropertyFavorite(property.id);
-        toast.info(
-            property.isFavorite ? 'Quitaste de favoritos' : 'Marcaste como favorita',
-            property.address
-        );
-    };
-
     const handleRemoveProperty = (property) => {
-        setDetailsModalOpen(false);
-        setDetailProperty(null);
         setPendingRemoval(property);
         setIsBulkRemoval(false);
         setConfirmModalOpen(true);
@@ -96,6 +155,7 @@ const NetworksPage = () => {
     };
 
     const handleConfirmRemoval = () => {
+        const removedIds = isBulkRemoval ? [...selectedPropertyIds] : pendingRemoval ? [pendingRemoval.id] : [];
         if (isBulkRemoval) {
             removePropertiesFromNetwork(selectedPropertyIds);
             toast.success('Propiedades eliminadas', 'Se eliminaron las propiedades seleccionadas de la red.');
@@ -103,13 +163,43 @@ const NetworksPage = () => {
             removePropertiesFromNetwork([pendingRemoval.id]);
             toast.success('Propiedad eliminada', `${pendingRemoval.address} salió de la red.`);
         }
+        if (removedIds.includes(detailProperty?.id)) {
+            setPropertyModalOpen(false);
+            setDetailProperty(null);
+            setDetailMode('view');
+        }
+        clearSelection();
         setConfirmModalOpen(false);
         setPendingRemoval(null);
     };
 
-    const handleViewProperty = (property) => {
+    const openPropertyModal = (property, mode = 'view') => {
         setDetailProperty(property);
-        setDetailsModalOpen(true);
+        setDetailMode(mode);
+        setPropertyModalOpen(true);
+    };
+
+    const handleViewProperty = (property) => {
+        openPropertyModal(property, 'view');
+    };
+
+    const handleEditProperty = (property) => {
+        openPropertyModal(property, 'edit');
+    };
+
+    const handleToggleFavorite = (property) => {
+        togglePropertyFavorite(property.id);
+        toast.info(
+            property.isFavorite ? 'Quitaste de favoritos' : 'Marcaste como favorita',
+            property.address
+        );
+        if (detailProperty?.id === property.id) {
+            setDetailProperty((previous) => (
+                previous
+                    ? { ...previous, isFavorite: !previous.isFavorite }
+                    : previous
+            ));
+        }
     };
 
     const handleGoToMap = () => {
@@ -117,17 +207,93 @@ const NetworksPage = () => {
         navigate('/mapa');
     };
 
-    const handleViewExternalFromModal = () => {
-        toast.info('Próximamente', 'Estamos preparando la ficha detallada de la propiedad.');
+    const closePropertyModal = () => {
+        setPropertyModalOpen(false);
+        setDetailProperty(null);
+        setDetailMode('view');
     };
 
-    const selectedNetworkName = networks.find((network) => network.id === selectedNetworkId)?.name ?? 'Sin red';
+    const handleViewExternalFromModal = (property) => {
+        if (!property) {
+            return;
+        }
+        closePropertyModal();
+        navigate(`/redes/propiedades/${property.id}`, { state: { property } });
+    };
+
+    const handleViewRealEstateFromModal = (property) => {
+        if (!property?.realEstate?.name) {
+            toast.info('Sin inmobiliaria', 'Esta propiedad no tiene una inmobiliaria asociada.');
+            return;
+        }
+        const realEstateSlug = slugify(property.realEstate.name);
+        closePropertyModal();
+        navigate(`/redes/inmobiliarias/${realEstateSlug}`, {
+            state: {
+                realEstateName: property.realEstate.name
+            }
+        });
+    };
+
+    const handleClearFilters = () => {
+        clearFilters();
+        setSearchTerm('');
+    };
+
+    const selectedNetworkName = selectedNetwork?.name ?? 'Sin red';
+
+    const handleSelectVenture = (ventureId) => {
+        if (selectedPropertyIds.includes(ventureId)) {
+            selectProperties(selectedPropertyIds.filter((id) => id !== ventureId));
+        } else {
+            selectProperties([...selectedPropertyIds, ventureId]);
+        }
+    };
+
+    const handleSelectAllVentures = () => {
+        if (selectedPropertyIds.length === ventures.length) {
+            selectProperties([]);
+        } else {
+            selectProperties(ventures.map((venture) => venture.id));
+        }
+    };
+
+    const handleViewVenture = (venture) => {
+        const property = propertyMap[venture.id];
+        if (property) {
+            handleViewProperty(property);
+        }
+    };
+
+    const handleEditVenture = (venture) => {
+        const property = propertyMap[venture.id];
+        if (property) {
+            handleEditProperty(property);
+        }
+    };
+
+    const handleDeleteVenture = (venture) => {
+        const property = propertyMap[venture.id];
+        if (property) {
+            handleRemoveProperty(property);
+        }
+    };
+
+    const handleCreateNetwork = () => {
+        navigate('/redes/nueva');
+    };
+
+    const handleEditSelectedNetwork = () => {
+        if (selectedNetwork) {
+            navigate(`/redes/${selectedNetwork.id}`);
+        }
+    };
 
     return (
         <div className={styles.pageContainer}>
             <div className={styles.layout}>
                 <div className={styles.actionsBar}>
-                    <Button variant="primary" icon="plus" onClick={() => setCreateModalOpen(true)}>
+                    <Button variant="primary" icon="plus" onClick={handleCreateNetwork}>
                         Crear nueva red
                     </Button>
                 </div>
@@ -141,7 +307,7 @@ const NetworksPage = () => {
                     onToggleFavoritesOnly={toggleFavoritesOnly}
                     filters={filters}
                     onFilterChange={updateFilter}
-                    onClearFilters={clearFilters}
+                    onClearFilters={handleClearFilters}
                     filterOptions={filterOptions}
                     onOpenAdvancedFilters={() => setAdvancedFiltersOpen(true)}
                     onOpenMap={() => setMapModalOpen(true)}
@@ -149,24 +315,23 @@ const NetworksPage = () => {
                     selectionStats={selectionStats}
                     sortOption={sortOption}
                     onSortChange={setSortOption}
+                    onViewNetwork={() => setNetworkDetailsOpen(true)}
+                    onEditNetwork={handleEditSelectedNetwork}
+                    selectedNetwork={selectedNetwork}
                 />
 
-                <NetworksTable
-                    data={properties}
-                    selectedIds={selectedPropertyIds}
-                    onSelectionChange={selectProperties}
-                    onViewProperty={handleViewProperty}
-                    onOpenDetails={handleViewProperty}
-                    onToggleFavorite={handleToggleFavorite}
-                    onRemoveProperty={handleRemoveProperty}
-                />
+                <section className={styles.tableCard}>
+                    <VenturesTable
+                        ventures={ventures}
+                        selectedVentures={selectedPropertyIds}
+                        onSelectVenture={handleSelectVenture}
+                        onSelectAll={handleSelectAllVentures}
+                        onViewVenture={handleViewVenture}
+                        onEditVenture={handleEditVenture}
+                        onDeleteVenture={handleDeleteVenture}
+                    />
+                </section>
             </div>
-
-            <NetworkFormModal
-                isOpen={isCreateModalOpen}
-                onClose={() => setCreateModalOpen(false)}
-                onSubmit={handleSubmitCreate}
-            />
 
             <AdvancedFiltersModal
                 isOpen={isAdvancedFiltersOpen}
@@ -187,12 +352,34 @@ const NetworksPage = () => {
             />
 
             <NetworkPropertyDetailsModal
-                isOpen={isDetailsModalOpen}
+                isOpen={propertyModalOpen}
                 property={detailProperty}
-                onClose={() => setDetailsModalOpen(false)}
+                initialMode={detailMode}
+                onClose={() => {
+                    closePropertyModal();
+                }}
                 onToggleFavorite={handleToggleFavorite}
-                onRemove={handleRemoveProperty}
+                onRemove={(property) => {
+                    handleRemoveProperty(property);
+                    closePropertyModal();
+                }}
                 onViewExternal={handleViewExternalFromModal}
+                onViewRealEstate={handleViewRealEstateFromModal}
+                onUpdate={(propertyId, updates) => {
+                    updateProperty(propertyId, updates);
+                    toast.success('Propiedad actualizada', 'Los cambios se guardaron correctamente.');
+                    setDetailProperty((previous) => (
+                        previous?.id === propertyId
+                            ? {
+                                ...previous,
+                                ...updates,
+                                contact: updates?.contact
+                                    ? { ...previous.contact, ...updates.contact }
+                                    : previous.contact
+                            }
+                            : previous
+                    ));
+                }}
             />
 
             <ConfirmModal
@@ -213,6 +400,12 @@ const NetworksPage = () => {
                 type="danger"
                 confirmText="Eliminar"
                 cancelText="Cancelar"
+            />
+
+            <NetworkDetailsModal
+                isOpen={isNetworkDetailsOpen}
+                onClose={() => setNetworkDetailsOpen(false)}
+                network={selectedNetwork}
             />
         </div>
     );

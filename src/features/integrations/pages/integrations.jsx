@@ -19,14 +19,14 @@ const Integrations = () => {
       setSelectedCategory('instagram-whatsapp');
     } else if (currentPath.includes('/hoomi')) {
       setSelectedCategory('hoomi');
+    } else if (currentPath.includes('/emailMarketing')) {
+      setSelectedCategory('email-marketing');
     } else if (currentPath.includes('/email')) {
       setSelectedCategory('email');
     } else if (currentPath.includes('/networks')) {
       setSelectedCategory('redes-inmobiliarias');
     } else if (currentPath.includes('/marketing')) {
       setSelectedCategory('marketing');
-    } else if (currentPath.includes('/emailMarketing')) {
-      setSelectedCategory('email-marketing');
     } else {
       setSelectedCategory(null);
     }

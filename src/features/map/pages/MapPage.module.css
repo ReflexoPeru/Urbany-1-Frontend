@@ -1,67 +1,32 @@
 .mapContainer {
   display: flex;
   flex-direction: column;
-
+  gap: 24px;
   min-height: 100vh;
-  border-radius: 12px;
-
+  padding: clamp(20px, 4vw, 40px) clamp(24px, 6vw, 72px) clamp(32px, 6vw, 80px);
+  background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);
   font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-
-  background: linear-gradient(to bottom, #f0fdf4, #fff);
-}
-
-.mapHeader {
-  padding: 24px 64px 0 96px;
-  border-radius: 12px;
-  background: transparent;
-}
-
-.mapTitle {
-  margin: 0;
-
-  font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 43px;
-  font-weight: 700;
-  color: #0f172a;
-  letter-spacing: -0.02em;
 }
 
 .mapContent {
-  overflow: hidden auto;
   flex: 1;
-
-  height: auto;
-  max-height: calc(100vh - 200px);
-  padding: 0 64px 48px 96px;
-
-  background: transparent;
+  overflow: hidden auto;
+  padding-right: 4px;
 }
 
-/* Responsive */
-@media (width <=1024px) {
-  .mapHeader {
-    padding: 20px 32px 0;
-  }
-
-  .mapTitle {
-    font-size: 32px;
-  }
-
-  .mapContent {
-    padding: 0 32px 32px;
+@media (width <= 1024px) {
+  .mapContainer {
+    padding: 24px clamp(16px, 5vw, 48px) 48px;
   }
 }
 
-@media (width <=768px) {
-  .mapHeader {
-    padding: 16px 16px 0;
-  }
-
-  .mapTitle {
-    font-size: 24px;
+@media (width <= 768px) {
+  .mapContainer {
+    gap: 16px;
+    padding: 20px 16px 40px;
   }
 
   .mapContent {
-    padding: 0 16px 24px;
+    padding-right: 0;
   }
 }

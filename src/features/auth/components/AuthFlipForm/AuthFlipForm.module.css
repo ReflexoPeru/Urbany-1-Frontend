@@ -142,6 +142,56 @@ form {
     background: transparent;
 }
 
+.invert .form_box_login {
+    left: 0;
+    right: auto;
+}
+
+.invert.container.active .form_box_login {
+    left: 50%;
+    right: auto;
+}
+
+.hidePanels .toggle_panel_left,
+.hidePanels .toggle_panel_right {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.invert .toggle_box::before {
+    left: auto;
+    right: -250%;
+}
+
+.invert.container.active .toggle_box::before {
+    left: auto;
+    right: 50%;
+}
+
+.invert .toggle_panel_left {
+    left: auto;
+    right: 0;
+    transition-delay: 1.2s;
+}
+
+.invert.container.active .toggle_panel_left {
+    left: auto;
+    right: -50%;
+    transition-delay: 0.6s;
+}
+
+.invert .toggle_panel_right {
+    right: auto;
+    left: -50%;
+    transition-delay: 0.6s;
+}
+
+.invert.container.active .toggle_panel_right {
+    right: auto;
+    left: 0;
+    transition-delay: 1.2s;
+}
+
 @media screen and (width <=650px) {
     .container {
         height: calc(100vh - 40px);
@@ -194,6 +244,50 @@ form {
 
     .container.active .toggle_panel_right {
         bottom: 0;
+    }
+
+    .invert .form_box_login {
+        left: auto;
+        right: 0;
+    }
+
+    .invert.container.active .form_box_login {
+        left: auto;
+        right: 0;
+        bottom: 30%;
+    }
+
+    .invert .toggle_box::before {
+        top: -270%;
+        right: 0;
+        left: auto;
+    }
+
+    .invert.container.active .toggle_box::before {
+        top: 70%;
+        left: auto;
+        right: 0;
+    }
+
+    .invert .toggle_panel_left {
+        right: 0;
+        left: auto;
+        top: 0;
+    }
+
+    .invert.container.active .toggle_panel_left {
+        right: 0;
+        top: -30%;
+    }
+
+    .invert .toggle_panel_right {
+        left: 0;
+        right: auto;
+        bottom: -30%;
+    }
+
+    .invert.container.active .toggle_panel_right {
+        left: 0;
     }
 }
 

@@ -113,6 +113,31 @@
     background: #b91c1c;
 }
 
+.button.dangerSoft {
+    color: #dc2626;
+    background: #fee2e2;
+    border: 1px solid #fecaca;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.button.dangerSoft .icon {
+    color: #dc2626;
+}
+
+.button.dangerSoft:hover:not(:disabled) {
+    transform: translateY(-1px);
+    background: #fecaca;
+    border-color: #fca5a5;
+    box-shadow: 0 4px 12px rgb(252 165 165 / 30%);
+}
+
+.button.dangerSoft:active:not(:disabled) {
+    transform: translateY(0);
+    background: #fca5a5;
+    border-color: #f87171;
+}
+
 .button.success {
     color: #fff;
     background: #10b981;

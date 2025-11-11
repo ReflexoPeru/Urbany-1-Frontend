@@ -1,8 +1,9 @@
 .page {
     min-height: 100%;
-    padding: 34px 12px;
-    border-radius: 12px;
+    padding: 48px 12px;
     background: #f6f8f7;
+    display: flex;
+    justify-content: center;
 }
 
 .card {
@@ -10,15 +11,8 @@
     flex-direction: column;
     gap: 24px;
     align-items: center;
-
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 48px 56px;
-    border-radius: 24px;
-
+    max-width: 640px;
     text-align: center;
-
-    box-shadow: 4px 30px 60px -28px rgb(15 23 42 / 25%);
 }
 
 .badgeWrapper {
@@ -69,10 +63,6 @@
 
 @media (width <=768px) {
     .page {
-        padding: 48px 20px;
-    }
-
-    .card {
-        padding: 36px 32px;
+        padding: 40px 20px;
     }
 }
