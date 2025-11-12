@@ -143,6 +143,58 @@
     gap: 18px;
 }
 
+.editGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.fieldRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.field {
+    flex: 1 1 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1f2d3a;
+}
+
+.input,
+.select,
+.textarea {
+    width: 100%;
+    border: 1px solid #cfe1d8;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 0.95rem;
+    color: #1f2d3a;
+    background: #f7fbf8;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+    outline: none;
+    border-color: #38e47a;
+    box-shadow: 0 0 0 3px rgb(56 228 122 / 22%);
+    background: #ffffff;
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 96px;
+}
+
 .detailGroup h3 {
     margin: 0 0 8px;
     font-size: 1rem;

@@ -1,12 +1,18 @@
 export const mockNetworks = [
     {
         id: '2clics',
-        name: '2clics',
-        description: 'Sincronización automática con la red 2clics.',
-        tagColor: '#2563eb',
+        name: 'CRM Urbany',
+        description: 'Red activa administrada por CRM Urbany.',
+        tagColor: '#38e47a',
         badgeText: '19',
         connectionStatus: 'connected',
-        lastSync: '2025-10-28T08:45:00Z'
+        lastSync: '2025-10-28T08:45:00Z',
+        defaultCommission: 30,
+        sharePolicy: 'Prioridad de respuesta inmediata y seguimiento diario.',
+        contactName: 'Camila Urbany',
+        contactEmail: 'camila@crmurbany.com',
+        contactPhone: '+57 300 555 1020',
+        syncFrequency: 'Cada 4 horas'
     },
     {
         id: 'urbyt',
@@ -15,7 +21,13 @@ export const mockNetworks = [
         tagColor: '#f97316',
         badgeText: '8',
         connectionStatus: 'connected',
-        lastSync: '2025-10-28T07:10:00Z'
+        lastSync: '2025-10-28T07:10:00Z',
+        defaultCommission: 28,
+        sharePolicy: 'Distribución en portales aliados y CRM corporativo.',
+        contactName: 'Rodrigo León',
+        contactEmail: 'rleon@urbyt.com',
+        contactPhone: '+51 945 555 101',
+        syncFrequency: 'Diaria'
     },
     {
         id: 'realconnect',
@@ -24,7 +36,13 @@ export const mockNetworks = [
         tagColor: '#0f766e',
         badgeText: '15',
         connectionStatus: 'pending',
-        lastSync: '2025-10-26T18:32:00Z'
+        lastSync: '2025-10-26T18:32:00Z',
+        defaultCommission: 25,
+        sharePolicy: 'Requiere certificación vigente y reporte semanal.',
+        contactName: 'Ana Torres',
+        contactEmail: 'atorres@realconnect.com',
+        contactPhone: '+51 999 111 222',
+        syncFrequency: 'Semanal'
     },
     {
         id: 'alianza360',
@@ -33,7 +51,13 @@ export const mockNetworks = [
         tagColor: '#9333ea',
         badgeText: '5',
         connectionStatus: 'connected',
-        lastSync: '2025-10-21T12:15:00Z'
+        lastSync: '2025-10-21T12:15:00Z',
+        defaultCommission: 26,
+        sharePolicy: 'Propiedades verificadas con portafolio fotográfico completo.',
+        contactName: 'Felipe Gómez',
+        contactEmail: 'fgomez@alianza360.com',
+        contactPhone: '+57 301 555 1010',
+        syncFrequency: 'Cada 12 horas'
     }
 ];
 

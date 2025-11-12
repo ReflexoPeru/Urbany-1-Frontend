@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { User, Lock, Mail, Eye, EyeOff } from "lucide-react";
+import { User, Mail, Eye, EyeOff } from "lucide-react";
 import urbanyLogo from "../../../../assets/urbany.png";
 import styles from "./RegisterForm.module.css";
 
-const RegisterForm = () => {
+const RegisterForm = ({ onContinue }) => {
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setTimeout(() => {
-            navigate('/register-inmobiliaria');
-        }, 500);
+        if (onContinue) {
+            onContinue();
+            return;
+        }
+        navigate('/register-inmobiliaria');
     };
 
     return (
@@ -49,7 +51,7 @@ const RegisterForm = () => {
                 </button>
             </div>
 
-            <button type="submit" className={styles.btn}>Registrar</button>
+            <button type="submit" className={styles.btn}>Continuar</button>
 
             <p>o regístrate con</p>
 

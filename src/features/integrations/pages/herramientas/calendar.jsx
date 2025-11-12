@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../../../../components/ui/Button';
+import ConfirmModal from '../../../../components/ui/Modal/ConfirmModal';
+import { useToast } from '../../../../contexts/ToastContext';
 
 const Calendar = () => {
+  const { toast } = useToast();
+  const [showConnectModal, setShowConnectModal] = useState(false);
+  const [showHelpModal, setShowHelpModal] = useState(false);
+
+  const handleConnectAccount = () => {
+    setShowConnectModal(false);
+    toast.success('Solicitud enviada', 'Te contactaremos para ayudarte con la sincronización.');
+  };
+
+  const handleHelp = () => {
+    setShowHelpModal(false);
+    toast.info('Revisa tu correo', 'Te enviamos la guía completa para conectar Google Calendar.');
+  };
+
   return (
     <div style={{ marginLeft: '12px' }}>
       <div style={{ marginBottom: '20px' }}>
@@ -29,7 +45,7 @@ const Calendar = () => {
               </li>
             </ul>
           </div>
-          <div style={{ width: '120px', height: '120px', borderRadius: '50%', background: '#10B981', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, position: 'relative', marginTop: '-60px' }}>
+          <div style={{ width: '120px', height: '120px', borderRadius: '50%', background: '#10B981', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, position: 'relative', marginTop: '-55px' }}>
             <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="white" strokeWidth="2" fill="none" />
               <line x1="16" y1="2" x2="16" y2="6" stroke="white" strokeWidth="2" strokeLinecap="round" />
@@ -66,12 +82,13 @@ const Calendar = () => {
         </p>
 
         <div style={{ display: 'flex', gap: '12px' }}>
-          <Button variant="primary" size="small">
+          <Button variant="primary" size="small" onClick={() => setShowConnectModal(true)}>
             Añadir cuenta nueva
           </Button>
           <Button
             variant="secondary"
             size="small"
+            onClick={() => setShowHelpModal(true)}
             style={{
               background: '#ecfdf5',
               border: '1px solid #bbf7d0',
@@ -88,6 +105,26 @@ const Calendar = () => {
           </Button>
         </div>
       </div>
+
+      <ConfirmModal
+        isOpen={showConnectModal}
+        onClose={() => setShowConnectModal(false)}
+        onConfirm={handleConnectAccount}
+        title="Conectar Google Calendar"
+        message="Nuestro equipo se pondrá en contacto para habilitar la integración en tu cuenta. ¿Deseas solicitar la conexión ahora?"
+        confirmText="Solicitar ayuda"
+        cancelText="Cancelar"
+      />
+
+      <ConfirmModal
+        isOpen={showHelpModal}
+        onClose={() => setShowHelpModal(false)}
+        onConfirm={handleHelp}
+        title="¿Cómo funciona la sincronización?"
+        message="Te enviaremos un tutorial paso a paso con los requisitos y configuraciones necesarias para conectar Google Calendar."
+        confirmText="Recibir guía"
+        cancelText="Cerrar"
+      />
     </div>
   );
 };

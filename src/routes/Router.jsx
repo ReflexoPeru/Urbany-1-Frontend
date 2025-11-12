@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
 import Dashboard from '../features/dashboard/pages/SalesDashboardPage';
 import Optimizations from '../features/optimizations/pages/OptimizationsPage';
@@ -20,7 +20,7 @@ import Calendar from '../features/integrations/pages/herramientas/calendar';
 import SocialMedia from '../features/integrations/pages/comunicacion/socialMedia';
 import Hoomi from '../features/integrations/pages/herramientas/hoomi';
 import Email from '../features/integrations/pages/comunicacion/Email';
-import Networks from '../features/networks/pages/NetworksPage';
+import NetworksPage from '../features/networks/pages/NetworksPage';
 import Marketing from '../features/integrations/pages/marketing/Marketing';
 import EmailMarketing from '../features/integrations/pages/comunicacion/emailMarketing';
 import Activities from '../features/activities/pages/Activities';
@@ -38,7 +38,11 @@ import WebsitePage from '../features/website/pages/WebsitePage';
 import VenturesPage from '../features/emprendimientos/pages/VenturesPage';
 import VentureDetailPage from '../features/emprendimientos/pages/VentureDetailPage';
 import HelpPage from '../features/help/pages/HelpPage';
-
+import NetworkDetailPage from '../features/networks/pages/NetworkDetailPage';
+import NetworkPropertyViewPage from '../features/networks/pages/NetworkPropertyViewPage';
+import NetworkRealEstateViewPage from '../features/networks/pages/NetworkRealEstateViewPage';
+import { NetworksProvider } from '../features/networks/hooks/useNetworks.jsx';
+import NetworksIntegrationPage from '../features/integrations/pages/redes/Networks';
 
 
 const router = createBrowserRouter([
@@ -89,7 +93,33 @@ const router = createBrowserRouter([
       },
       {
         path: 'redes',
-        element: <Networks />,
+        element: (
+          <NetworksProvider>
+            <Outlet />
+          </NetworksProvider>
+        ),
+        children: [
+          {
+            index: true,
+            element: <NetworksPage />,
+          },
+          {
+            path: 'nueva',
+            element: <NetworkDetailPage />,
+          },
+          {
+            path: 'propiedades/:propertyId',
+            element: <NetworkPropertyViewPage />,
+          },
+          {
+            path: 'inmobiliarias/:slug',
+            element: <NetworkRealEstateViewPage />,
+          },
+          {
+            path: ':id',
+            element: <NetworkDetailPage />,
+          },
+        ],
       },
       {
         path: 'activities',
@@ -184,7 +214,7 @@ const router = createBrowserRouter([
           },
           {
             path: 'networks',
-            element: <Networks />,
+            element: <NetworksIntegrationPage />,
           },
           {
             path: 'marketing',

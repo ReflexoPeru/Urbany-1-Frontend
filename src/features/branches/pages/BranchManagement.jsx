@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Badge from '../../../components/common/Badge';
 import Button from '../../../components/ui/Button';
+import ConfirmModal from '../../../components/ui/Modal/ConfirmModal';
+import { useToast } from '../../../contexts/ToastContext';
 import illustrationImage from '../../../assets/images/optimizations/undraw_dev-productivity_5wps.svg';
 import styles from './BranchManagement.module.css';
 
 const BranchManagement = () => {
+  const { toast } = useToast();
+  const navigate = useNavigate();
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+
+  const handleUpgrade = () => {
+    setShowUpgradeModal(true);
+  };
+
+  const handleConfirmUpgrade = () => {
+    setShowUpgradeModal(false);
+    toast.info('Equipo comercial notificado', 'Te contactaremos para activar la licencia profesional.');
+    navigate('/subscription');
+  };
+
   return (
     <div className={styles.page}>
       <section className={styles.card}>
@@ -22,22 +39,27 @@ const BranchManagement = () => {
         </p>
 
         <div className={styles.illustration}>
-          <img
-            src={illustrationImage}
-            alt="Ilustración de gestión de sucursales"
-          />
+          <img src={illustrationImage} alt="Ilustración de gestión de sucursales" />
         </div>
 
-        <div className={styles.actions}>
-          <Button variant="primary" size="large" fullWidth>
-            Actualiza a Licencia Profesional
-          </Button>
-        </div>
+        <Button variant="primary" size="large" onClick={handleUpgrade}>
+          Actualiza a Licencia Profesional
+        </Button>
 
         <p className={styles.note}>
           Incluye sucursales ilimitadas y reportes avanzados para tu equipo.
         </p>
       </section>
+
+      <ConfirmModal
+        isOpen={showUpgradeModal}
+        onClose={() => setShowUpgradeModal(false)}
+        onConfirm={handleConfirmUpgrade}
+        title="Actualizar licencia"
+        message="Con la licencia profesional podrás crear sucursales ilimitadas y acceder a reportes avanzados. ¿Deseas que nuestro equipo habilite la actualización?"
+        confirmText="Solicitar actualización"
+        cancelText="Cancelar"
+      />
     </div>
   );
 };

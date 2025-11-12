@@ -20,7 +20,7 @@
 
 .headerRow {
     display: grid;
-    grid-template-columns: 56px 2.6fr 1fr 1.2fr 1.1fr 1.4fr;
+    grid-template-columns: 56px 2.4fr 0.8fr 1.1fr 1.1fr 1.4fr;
     align-items: center;
     background: #f5f9f6;
     border-bottom: 1px solid #e4ede8;
@@ -46,15 +46,17 @@
 
 .bodyRow {
     display: grid;
-    grid-template-columns: 56px 2.6fr 1fr 1.2fr 1.1fr 1.4fr;
+    grid-template-columns: 56px 2.4fr 0.8fr 1.1fr 1.1fr 1.4fr;
     align-items: stretch;
     background: #ffffff;
     border-bottom: 1px solid #edf2ef;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
 }
 
 .bodyRow:hover {
     background: #f6fbf8;
+    box-shadow: inset 0 0 0 1px #e0f2eb;
 }
 
 .selectedRow {
@@ -65,8 +67,9 @@
     padding: 16px 20px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
     justify-content: center;
+    align-items: flex-start;
 }
 
 .checkboxCell {
@@ -221,7 +224,8 @@
 }
 
 .commissionCell {
-    align-items: center;
+    align-items: flex-start;
+    text-align: left;
 }
 
 .commissionBadge {
@@ -238,6 +242,7 @@
 
 .typeCell {
     gap: 6px;
+    align-items: flex-start;
 }
 
 .typeMain {
@@ -252,6 +257,8 @@
 
 .priceCell {
     gap: 10px;
+    align-items: flex-start;
+    text-align: left;
 }
 
 .operationBadge {
@@ -278,9 +285,10 @@
 }
 
 .priceValue {
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 700;
     color: #0f2b1f;
+    letter-spacing: -0.01em;
 }
 
 .realEstateCell {
@@ -363,6 +371,11 @@
     justify-content: center;
     cursor: pointer;
     transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.rowButtonText {
+    font-size: 0.8rem;
+    font-weight: 700;
 }
 
 .rowButton:hover {

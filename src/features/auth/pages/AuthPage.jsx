@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import AuthFlipForm from "../components/AuthFlipForm/AuthFlipForm";
 import LoginForm from "../components/LoginForm/LoginForm";
@@ -8,30 +8,71 @@ import styles from "./AuthPage.module.css";
 const AuthPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const [isRegister, setIsRegister] = useState(location.pathname === '/register');
+
+    const initialView = location.pathname === '/register' ? 'register' : 'login';
+    const [isRegister, setIsRegister] = useState(initialView === 'register');
+    const [currentView, setCurrentView] = useState(initialView);
+    const [suppressPanels, setSuppressPanels] = useState(false);
+    const timeoutsRef = useRef([]);
+
+    useEffect(() => {
+        return () => {
+            timeoutsRef.current.forEach(clearTimeout);
+            timeoutsRef.current = [];
+        };
+    }, []);
+
+    const scheduleTimeout = (callback, delay) => {
+        const id = setTimeout(() => {
+            callback();
+            timeoutsRef.current = timeoutsRef.current.filter((storedId) => storedId !== id);
+        }, delay);
+        timeoutsRef.current.push(id);
+    };
+
+    const flipDuration = 2000;
 
     const handleToggleRegister = () => {
+        if (currentView === 'register') {
+            return;
+        }
         setIsRegister(true);
-        setTimeout(() => {
+        setSuppressPanels(false);
+        scheduleTimeout(() => {
+            setCurrentView('register');
             navigate('/register', { replace: true });
-        }, 2000);
+        }, flipDuration);
     };
 
     const handleToggleLogin = () => {
+        if (currentView === 'login') {
+            return;
+        }
         setIsRegister(false);
-        setTimeout(() => {
+        setSuppressPanels(false);
+        scheduleTimeout(() => {
+            setCurrentView('login');
             navigate('/login', { replace: true });
-        }, 2000);
+        }, flipDuration);
+    };
+
+    const handleContinueRegister = () => {
+        navigate('/register-inmobiliaria', { replace: true });
     };
 
     return (
         <div className={styles.auth_container}>
-            <AuthFlipForm 
+            <AuthFlipForm
                 isRegister={isRegister}
                 onToggleRegister={handleToggleRegister}
                 onToggleLogin={handleToggleLogin}
+                suppressPanels={suppressPanels}
             >
-                {isRegister ? <RegisterForm /> : <LoginForm />}
+                {currentView === 'register' ? (
+                    <RegisterForm onContinue={handleContinueRegister} />
+                ) : (
+                    <LoginForm />
+                )}
             </AuthFlipForm>
         </div>
     );

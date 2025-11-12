@@ -6,6 +6,7 @@ export { default as NetworkFormModal } from './NetworkFormModal'
 export { default as NetworkPropertyDetailsModal } from './NetworkPropertyDetailsModal'
 export { default as AdvancedFiltersModal } from './AdvancedFiltersModal'
 export { default as MapPreviewModal } from './MapPreviewModal'
+export { default as NetworkDetailsModal } from './NetworkDetailsModal'
 
 
 

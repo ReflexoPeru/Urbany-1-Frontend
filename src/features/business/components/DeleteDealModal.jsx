@@ -2,8 +2,13 @@ import React from 'react'
 import { X, AlertTriangle } from 'lucide-react'
 import styles from './DeleteDealModal.module.css'
 
-const DeleteDealModal = ({ deal, isOpen, onClose, onConfirm, isBulkDelete = false }) => {
+const DeleteDealModal = ({ deal, isOpen, onClose, onConfirm, isBulkDelete = false, entityType = 'deal' }) => {
   if (!isOpen || !deal) return null
+  const isAppraisal = entityType === 'appraisal'
+  const isProperty = entityType === 'property'
+
+  const singularLabel = isAppraisal ? 'Tasación' : isProperty ? 'Propiedad' : 'Negocio'
+  const pluralLabel = isAppraisal ? 'Tasaciones' : isProperty ? 'Propiedades' : 'Negocios'
 
   const handleConfirm = () => {
     if (isBulkDelete) {
@@ -21,7 +26,7 @@ const DeleteDealModal = ({ deal, isOpen, onClose, onConfirm, isBulkDelete = fals
           <div className={styles.titleSection}>
             <AlertTriangle className={styles.icon} size={24} />
             <h2 className={styles.title}>
-              {isBulkDelete ? 'Eliminar Negocios' : 'Eliminar Negocio'}
+              {isBulkDelete ? `Eliminar ${pluralLabel}` : `Eliminar ${singularLabel}`}
             </h2>
           </div>
           <button className={styles.closeButton} onClick={onClose}>
@@ -33,7 +38,7 @@ const DeleteDealModal = ({ deal, isOpen, onClose, onConfirm, isBulkDelete = fals
           <p className={styles.message}>
             {isBulkDelete 
               ? `¿Estás seguro de que deseas eliminar ${deal.name}?`
-              : `¿Estás seguro de que deseas eliminar el negocio de ${deal.name}?`
+              : `¿Estás seguro de que deseas eliminar ${isAppraisal ? 'la tasación de' : isProperty ? 'la propiedad de' : 'el negocio de'} ${deal.name}?`
             }
           </p>
           <p className={styles.warning}>

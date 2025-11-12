@@ -1,12 +1,16 @@
 import React from 'react'
 import TopBar from '../components/TopBar'
 import PropertyList from '../components/PropertyList'
-import { propertiesMock, searchProperties } from '../../../mock/properties_prueba'
+import { propertiesMock } from '../../../mock/properties_prueba'
 import styles from './MapPage.module.css'
+import { useConfirmModal } from '../../../contexts/ConfirmModalContext'
 
 function MapPage() {
+  const { confirmModal } = useConfirmModal()
+  const [properties, setProperties] = React.useState(propertiesMock)
   const [filteredProperties, setFilteredProperties] = React.useState(propertiesMock)
   const [searchQuery, setSearchQuery] = React.useState('')
+  const [selectedPropertyIds, setSelectedPropertyIds] = React.useState([])
   const [filters, setFilters] = React.useState({
     operation: '',
     propertyType: '',
@@ -19,213 +23,176 @@ function MapPage() {
     includeMyProperties: false
   })
 
-  const applyFilters = (properties, currentFilters, query = '') => {
-    let result = properties
+  const applyFilters = React.useCallback((baseProperties, currentFilters, query = '') => {
+    let result = [...baseProperties]
 
-    if (query.trim() !== '') {
-      result = searchProperties(query)
-    }
-
-    if (currentFilters.selectedOperations && currentFilters.selectedOperations.length > 0) {
-      result = result.filter(prop => currentFilters.selectedOperations.includes(prop.operation))
-    }
-    
-    if (currentFilters.propertyType && currentFilters.propertyTypeArray && currentFilters.propertyTypeArray.length > 0) {
-      result = result.filter(prop => currentFilters.propertyTypeArray.includes(prop.type))
-    }
-
-    if (currentFilters.roomsArray && currentFilters.roomsArray.length > 0) {
-      result = result.filter(prop => {
-        return currentFilters.roomsArray.includes(prop.rooms) || 
-               (currentFilters.roomsArray.includes(5) && prop.rooms >= 5)
-      })
-    }
-
-    if (currentFilters.bedroomsArray && currentFilters.bedroomsArray.length > 0) {
-      result = result.filter(prop => {
-        return currentFilters.bedroomsArray.includes(prop.bedrooms) || 
-               (currentFilters.bedroomsArray.includes(5) && prop.bedrooms >= 5)
-      })
-    }
-
-    if (currentFilters.locationText && currentFilters.locationText.trim() !== '') {
-      result = result.filter(prop => 
-        prop.address.toLowerCase().includes(currentFilters.locationText.toLowerCase())
+    const trimmedQuery = query.trim().toLowerCase()
+    if (trimmedQuery !== '') {
+      result = result.filter((property) =>
+        property.title.toLowerCase().includes(trimmedQuery) ||
+        property.address.toLowerCase().includes(trimmedQuery) ||
+        property.description.toLowerCase().includes(trimmedQuery)
       )
     }
 
+    if (currentFilters.selectedOperations && currentFilters.selectedOperations.length > 0) {
+      result = result.filter((property) => currentFilters.selectedOperations.includes(property.operation))
+    }
+
+    if (currentFilters.propertyTypeArray && currentFilters.propertyTypeArray.length > 0) {
+      result = result.filter((property) => currentFilters.propertyTypeArray.includes(property.type))
+    }
+
+    if (currentFilters.roomsArray && currentFilters.roomsArray.length > 0) {
+      result = result.filter((property) =>
+        currentFilters.roomsArray.includes(property.rooms) ||
+        (currentFilters.roomsArray.includes(5) && property.rooms >= 5)
+      )
+    }
+
+    if (currentFilters.bedroomsArray && currentFilters.bedroomsArray.length > 0) {
+      result = result.filter((property) =>
+        currentFilters.bedroomsArray.includes(property.bedrooms) ||
+        (currentFilters.bedroomsArray.includes(5) && property.bedrooms >= 5)
+      )
+    }
+
+    if (currentFilters.locationText && currentFilters.locationText.trim() !== '') {
+      const locationQuery = currentFilters.locationText.toLowerCase()
+      result = result.filter((property) => property.address.toLowerCase().includes(locationQuery))
+    }
+
     if (currentFilters.realEstateText && currentFilters.realEstateText.trim() !== '') {
-      result = result.filter(prop => {
-        const searchText = currentFilters.realEstateText.toLowerCase()
-        return prop.title.toLowerCase().includes(searchText) || 
-               prop.description.toLowerCase().includes(searchText)
-      })
+      const realEstateQuery = currentFilters.realEstateText.toLowerCase()
+      result = result.filter((property) =>
+        property.title.toLowerCase().includes(realEstateQuery) ||
+        property.description.toLowerCase().includes(realEstateQuery)
+      )
     }
 
     if (currentFilters.commissionsArray && currentFilters.commissionsArray.length > 0) {
-      result = result.filter(prop => {
-        const commissionValues = currentFilters.commissionsArray.map(c => parseInt(c))
-        return commissionValues.includes(prop.commission)
-      })
+      const commissionValues = currentFilters.commissionsArray.map((value) => parseInt(value, 10))
+      result = result.filter((property) => commissionValues.includes(property.commission))
     }
 
-    // Filtro de precio
     if (currentFilters.priceRangeData && currentFilters.priceRangeData.currency === 'USD') {
-      const minPrice = currentFilters.priceRangeData.min ? parseFloat(currentFilters.priceRangeData.min) : null
-      const maxPrice = currentFilters.priceRangeData.max ? parseFloat(currentFilters.priceRangeData.max) : null
-      
-      result = result.filter(prop => {
-        if (prop.currency !== 'USD') return false
-        
-        const propPrice = prop.priceValue
-        
-        if (minPrice && maxPrice) {
-          return propPrice >= minPrice && propPrice <= maxPrice
-        } else if (minPrice) {
-          return propPrice >= minPrice
-        } else if (maxPrice) {
-          return propPrice <= maxPrice
+      const minPrice = currentFilters.priceRangeData.min ? Number.parseFloat(currentFilters.priceRangeData.min) : null
+      const maxPrice = currentFilters.priceRangeData.max ? Number.parseFloat(currentFilters.priceRangeData.max) : null
+
+      result = result.filter((property) => {
+        if (property.currency !== 'USD') {
+          return false
         }
-        
+
+        const price = property.priceValue
+
+        if (minPrice !== null && maxPrice !== null) {
+          return price >= minPrice && price <= maxPrice
+        }
+        if (minPrice !== null) {
+          return price >= minPrice
+        }
+        if (maxPrice !== null) {
+          return price <= maxPrice
+        }
         return true
       })
     }
 
-    // Filtro para incluir solo mis propiedades
     if (currentFilters.includeMyProperties) {
-      result = result.filter(prop => prop.isMyProperty === true)
+      result = result.filter((property) => property.isMyProperty)
     }
 
-    // Filtros del sidebar
     if (currentFilters.sidebarFiltersData) {
       const sidebarFilters = currentFilters.sidebarFiltersData
-      console.log('Aplicando filtros del sidebar:', sidebarFilters)
 
-      // Filtro por baños
       if (sidebarFilters.bathrooms && sidebarFilters.bathrooms.length > 0) {
-        result = result.filter(prop => {
-          return sidebarFilters.bathrooms.some(bathroomFilter => {
-            if (bathroomFilter === '5+') {
-              return prop.bathrooms >= 5
-            }
-            return prop.bathrooms === parseInt(bathroomFilter)
-          })
-        })
+        result = result.filter((property) =>
+          sidebarFilters.bathrooms.some((filterValue) =>
+            filterValue === '5+' ? property.bathrooms >= 5 : property.bathrooms === Number.parseInt(filterValue, 10)
+          )
+        )
       }
 
-      // Filtro por garages
       if (sidebarFilters.garages && sidebarFilters.garages.length > 0) {
-        result = result.filter(prop => {
-          return sidebarFilters.garages.some(garageFilter => {
-            if (garageFilter === '5+') {
-              return prop.garages >= 5
-            }
-            return prop.garages === parseInt(garageFilter)
-          })
-        })
+        result = result.filter((property) =>
+          sidebarFilters.garages.some((filterValue) =>
+            filterValue === '5+' ? property.garages >= 5 : property.garages === Number.parseInt(filterValue, 10)
+          )
+        )
       }
 
-      // Filtro por antigüedad
       if (sidebarFilters.age && sidebarFilters.age.length > 0) {
-        result = result.filter(prop => sidebarFilters.age.includes(prop.age))
+        result = result.filter((property) => sidebarFilters.age.includes(property.age))
       }
 
-      // Filtro por tipo de superficie (solo si hay valores min/max)
       if (sidebarFilters.minSurface || sidebarFilters.maxSurface) {
-        console.log('Filtrando por superficie:', {
-          tipo: sidebarFilters.surfaceType,
-          min: sidebarFilters.minSurface,
-          max: sidebarFilters.maxSurface
-        })
-        result = result.filter(prop => {
-          const minSurf = sidebarFilters.minSurface ? parseFloat(sidebarFilters.minSurface) : 0
-          const maxSurf = sidebarFilters.maxSurface ? parseFloat(sidebarFilters.maxSurface) : Infinity
-          
-          // Determinar qué superficie usar según el tipo seleccionado
-          let surfaceToCheck = prop.surface // por defecto
+        const minSurface = sidebarFilters.minSurface ? Number.parseFloat(sidebarFilters.minSurface) : 0
+        const maxSurface = sidebarFilters.maxSurface ? Number.parseFloat(sidebarFilters.maxSurface) : Number.POSITIVE_INFINITY
+
+        result = result.filter((property) => {
+          let surface = property.surface ?? 0
           if (sidebarFilters.surfaceType === 'cubierta') {
-            surfaceToCheck = prop.surfaceCovered || prop.surface
+            surface = property.surfaceCovered ?? property.surface ?? 0
           } else if (sidebarFilters.surfaceType === 'descubierta') {
-            surfaceToCheck = prop.surfaceUncovered || 0
+            surface = property.surfaceUncovered ?? 0
           } else if (sidebarFilters.surfaceType === 'total') {
-            surfaceToCheck = prop.surfaceTotal || prop.surface
+            surface = property.surfaceTotal ?? property.surface ?? 0
           }
-          
-          console.log(`Propiedad ${prop.id}: superficie ${sidebarFilters.surfaceType} = ${surfaceToCheck}`)
-          return surfaceToCheck >= minSurf && surfaceToCheck <= maxSurf
+          return surface >= minSurface && surface <= maxSurface
         })
       }
 
-      // Filtro especial para superficie descubierta = 0 (solo si no hay otros filtros de superficie)
-      if (sidebarFilters.surfaceType === 'descubierta' && !sidebarFilters.minSurface && !sidebarFilters.maxSurface) {
-        console.log('Filtrando propiedades con superficie descubierta > 0')
-        result = result.filter(prop => {
-          const uncoveredSurface = prop.surfaceUncovered || 0
-          console.log(`Propiedad ${prop.id}: superficie descubierta = ${uncoveredSurface}`)
-          return uncoveredSurface > 0
-        })
+      if (
+        sidebarFilters.surfaceType === 'descubierta' &&
+        !sidebarFilters.minSurface &&
+        !sidebarFilters.maxSurface
+      ) {
+        result = result.filter((property) => (property.surfaceUncovered ?? 0) > 0)
       }
 
-      // Filtro por acepta permuta
       if (sidebarFilters.acceptsExchange) {
-        result = result.filter(prop => prop.acceptsExchange === true)
+        result = result.filter((property) => property.acceptsExchange)
       }
 
-      // Filtro por amoblado
       if (sidebarFilters.furnished) {
-        result = result.filter(prop => prop.furnished === true)
+        result = result.filter((property) => property.furnished)
       }
 
-      // Filtro por disposición (array)
       if (sidebarFilters.disposition && Array.isArray(sidebarFilters.disposition) && sidebarFilters.disposition.length > 0) {
-        console.log('Filtrando por disposición:', sidebarFilters.disposition)
-        console.log('Propiedades antes del filtro:', result.map(p => ({ id: p.id, disposition: p.disposition })))
-        result = result.filter(prop => 
-          sidebarFilters.disposition.includes(prop.disposition)
-        )
-        console.log('Propiedades después del filtro:', result.map(p => ({ id: p.id, disposition: p.disposition })))
+        result = result.filter((property) => sidebarFilters.disposition.includes(property.disposition))
       }
 
-      // Filtro por orientación (array)
       if (sidebarFilters.orientation && Array.isArray(sidebarFilters.orientation) && sidebarFilters.orientation.length > 0) {
-        console.log('Filtrando por orientación:', sidebarFilters.orientation)
-        console.log('Propiedades antes del filtro:', result.map(p => ({ id: p.id, orientation: p.orientation })))
-        result = result.filter(prop => 
-          sidebarFilters.orientation.includes(prop.orientation)
-        )
-        console.log('Propiedades después del filtro:', result.map(p => ({ id: p.id, orientation: p.orientation })))
+        result = result.filter((property) => sidebarFilters.orientation.includes(property.orientation))
       }
 
-      // Filtro por propiedades exclusivas
       if (sidebarFilters.exclusiveProperties === 'sí') {
-        result = result.filter(prop => prop.exclusive === true)
+        result = result.filter((property) => property.exclusive)
       }
 
-      // Filtro por servicios
       if (sidebarFilters.services) {
-        result = result.filter(prop => prop.services === true)
+        result = result.filter((property) => property.services)
       }
 
-      // Filtro por ambientes
       if (sidebarFilters.environments) {
-        result = result.filter(prop => prop.environments === true)
+        result = result.filter((property) => property.environments)
       }
 
-      // Filtro por calidad
       if (sidebarFilters.propertyQuality && sidebarFilters.propertyQuality !== '') {
-        result = result.filter(prop => prop.quality === sidebarFilters.propertyQuality)
+        result = result.filter((property) => property.quality === sidebarFilters.propertyQuality)
       }
 
-      // Ordenamiento
       if (sidebarFilters.sortBy) {
         result = [...result].sort((a, b) => {
-          const dateA = new Date(a.createdDate || '2024-01-01')
-          const dateB = new Date(b.createdDate || '2024-01-01')
-          
+          const dateA = new Date(a.createdDate ?? '2024-01-01')
+          const dateB = new Date(b.createdDate ?? '2024-01-01')
+
           if (sidebarFilters.sortBy === 'newest') {
-            return dateB - dateA // Más nuevas primero
-          } else if (sidebarFilters.sortBy === 'oldest') {
-            return dateA - dateB // Más antiguas primero
+            return dateB.getTime() - dateA.getTime()
+          }
+          if (sidebarFilters.sortBy === 'oldest') {
+            return dateA.getTime() - dateB.getTime()
           }
           return 0
         })
@@ -233,64 +200,63 @@ function MapPage() {
     }
 
     return result
-  }
+  }, [])
 
   const handleSearchChange = (value) => {
     setSearchQuery(value)
-    const results = applyFilters(propertiesMock, filters, value)
+    const results = applyFilters(properties, filters, value)
     setFilteredProperties(results)
   }
 
   const handleSearchSubmit = (query) => {
-    const results = applyFilters(propertiesMock, filters, query)
+    const results = applyFilters(properties, filters, query)
     setFilteredProperties(results)
   }
 
   const handleFilterChange = (filterType, value, selectedItems = null) => {
     const newFilters = { ...filters, [filterType]: value }
-    
+
     if (selectedItems && filterType === 'operation') {
       newFilters.selectedOperations = selectedItems
     }
-    
+
     if (selectedItems && filterType === 'propertyType') {
       newFilters.propertyTypeArray = selectedItems
     }
-    
+
     if (selectedItems && filterType === 'rooms') {
       newFilters.roomsArray = selectedItems
     }
-    
+
     if (selectedItems && filterType === 'bedrooms') {
       newFilters.bedroomsArray = selectedItems
     }
-    
+
     if (filterType === 'location') {
       newFilters.locationText = selectedItems || ''
     }
-    
+
     if (filterType === 'realEstate') {
       newFilters.realEstateText = selectedItems || ''
     }
-    
+
     if (filterType === 'commission') {
       newFilters.commissionsArray = selectedItems || []
     }
-    
+
     if (filterType === 'includeMyProperties') {
       newFilters.includeMyProperties = value
     }
-    
+
     if (filterType === 'priceRange') {
       newFilters.priceRangeData = selectedItems || null
     }
-    
+
     if (filterType === 'sidebarFilters') {
       newFilters.sidebarFiltersData = selectedItems || null
     }
-    
+
     if (filterType === 'clearAll') {
-      // Limpiar todos los filtros
       const clearedFilters = {
         operation: '',
         propertyType: '',
@@ -305,28 +271,104 @@ function MapPage() {
       }
       setFilters(clearedFilters)
       setSearchQuery('')
-      setFilteredProperties(propertiesMock)
+      setFilteredProperties(properties)
       return
     }
-    
+
     setFilters(newFilters)
-    const results = applyFilters(propertiesMock, newFilters, searchQuery)
+    const results = applyFilters(properties, newFilters, searchQuery)
     setFilteredProperties(results)
+  }
+
+  React.useEffect(() => {
+    setSelectedPropertyIds((previous) =>
+      previous.filter((id) => filteredProperties.some((property) => property.id === id))
+    )
+  }, [filteredProperties])
+
+  const handleToggleSelection = (propertyId) => {
+    setSelectedPropertyIds((previous) =>
+      previous.includes(propertyId)
+        ? previous.filter((id) => id !== propertyId)
+        : [...previous, propertyId]
+    )
+  }
+
+  const handleSelectAllVisible = () => {
+    setSelectedPropertyIds(filteredProperties.map((property) => property.id))
+  }
+
+  const handleClearSelection = () => {
+    setSelectedPropertyIds([])
+  }
+
+  const handleDeleteProperty = (propertyId) => {
+    const property = properties.find((item) => item.id === propertyId)
+    confirmModal.danger(
+      'Eliminar propiedad',
+      `Esta acción removerá ${property?.title ?? 'la propiedad seleccionada'} del listado de mapa.`,
+      () => {
+        setProperties((previous) => {
+          const updated = previous.filter((item) => item.id !== propertyId)
+          const nextFiltered = applyFilters(updated, filters, searchQuery)
+          setFilteredProperties(nextFiltered)
+          return updated
+        })
+        setSelectedPropertyIds((previous) => previous.filter((id) => id !== propertyId))
+      },
+      {
+        confirmText: 'Eliminar',
+        cancelText: 'Cancelar'
+      }
+    )
+  }
+
+  const handleDeleteSelected = () => {
+    if (selectedPropertyIds.length === 0) {
+      return
+    }
+
+    const total = selectedPropertyIds.length
+    confirmModal.danger(
+      total === 1 ? 'Eliminar propiedad seleccionada' : 'Eliminar propiedades seleccionadas',
+      total === 1
+        ? 'Se eliminará la propiedad seleccionada del listado.'
+        : `Se eliminarán ${total} propiedades del listado.`,
+      () => {
+        setProperties((previous) => {
+          const updated = previous.filter((property) => !selectedPropertyIds.includes(property.id))
+          const nextFiltered = applyFilters(updated, filters, searchQuery)
+          setFilteredProperties(nextFiltered)
+          return updated
+        })
+        setSelectedPropertyIds([])
+      },
+      {
+        confirmText: 'Eliminar',
+        cancelText: 'Cancelar'
+      }
+    )
   }
 
   return (
     <div className={styles.mapContainer}>
-      <div className={styles.mapHeader}>
-        <h1 className={styles.mapTitle}>Mapa</h1>
-      </div>
-      <TopBar 
-        onSearchChange={handleSearchChange} 
+      <TopBar
+        onSearchChange={handleSearchChange}
         onSearchSubmit={handleSearchSubmit}
         onFilterChange={handleFilterChange}
         filters={filters}
       />
       <main className={styles.mapContent}>
-        <PropertyList items={filteredProperties} searchQuery={searchQuery} />
+        <PropertyList
+          items={filteredProperties}
+          searchQuery={searchQuery}
+          selectedIds={selectedPropertyIds}
+          onToggleSelect={handleToggleSelection}
+          onSelectAll={handleSelectAllVisible}
+          onClearSelection={handleClearSelection}
+          onDeleteSelected={handleDeleteSelected}
+          onDelete={handleDeleteProperty}
+        />
       </main>
     </div>
   )
