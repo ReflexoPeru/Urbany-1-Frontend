@@ -21,5 +21,27 @@ export default defineConfig({
       '@routes': path.resolve(__dirname, './src/routes'),
       '@mock': path.resolve(__dirname, './src/mock'),
     }
+  },
+  server: {
+    proxy: {
+      // Proxy para todas las peticiones que empiecen con /api
+      '/api': {
+        target: 'http://178.156.143.222',
+        changeOrigin: true,
+        secure: false, // Permitir conexiones HTTP (no HTTPS)
+        rewrite: (path) => path, // No reescribir la ruta, mantener /api
+        configure: (proxy, _options) => {
+          proxy.on('error', (err, _req, _res) => {
+            console.log('proxy error', err);
+          });
+          proxy.on('proxyReq', (proxyReq, req, _res) => {
+            console.log('Sending Request to the Target:', req.method, req.url);
+          });
+          proxy.on('proxyRes', (proxyRes, req, _res) => {
+            console.log('Received Response from the Target:', proxyRes.statusCode, req.url);
+          });
+        },
+      }
+    }
   }
 })

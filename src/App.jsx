@@ -1,6 +1,7 @@
 import Router from './routes/Router'
 import { ToastProvider } from './contexts/ToastContext'
 import { ConfirmModalProvider } from './contexts/ConfirmModalContext'
+import ToastContainer from './components/ui/Toast/ToastContainer'
 import './App.css'
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <ToastProvider>
       <ConfirmModalProvider>
         <Router />
+        <ToastContainer />
       </ConfirmModalProvider>
     </ToastProvider>
   )

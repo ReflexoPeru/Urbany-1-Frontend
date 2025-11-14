@@ -1,44 +1,71 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useToast } from '../../../contexts/ToastContext';
+import { useLoading } from '../../../contexts/LoadingContext';
+import { logout, getUserData } from '../../../services/auth';
 
 const Dashboard = () => {
-    const navigate = useNavigate()
-    const [user, setUser] = useState();
+    const navigate = useNavigate();
+    const { toast } = useToast();
+    const { showLoading, hideLoading } = useLoading();
+    const [user, setUser] = useState(null);
 
     // Cargar información del usuario al montar el componente
     useEffect(() => {
-        const userData = localStorage.getItem('user')
+        const userData = getUserData();
         if (userData) {
-            setUser(JSON.parse(userData))
+            setUser(userData);
         }
-    }, [])
+    }, []);
 
-    const handleLogout = () => {
-        // Limpiar toda la información de la sesión
-        localStorage.removeItem('token')
-        localStorage.removeItem('user')
-        navigate('/login')
-    }
+    const handleLogout = async () => {
+        try {
+            showLoading("Cerrando sesión...");
+            await logout();
 
+            toast.success(
+                "Sesión cerrada",
+                "Has cerrado sesión correctamente",
+                3000,
+                "SignOut"
+            );
+
+            // Redirigir al login después de un breve delay
+            setTimeout(() => {
+                navigate('/login');
+            }, 500);
+        } catch (error) {
+            console.error("Error al cerrar sesión:", error);
+            toast.error(
+                "Error",
+                "Hubo un problema al cerrar sesión",
+                3000,
+                "WarningCircle"
+            );
+            // Aún así redirigir al login
+            navigate('/login');
+        } finally {
+            hideLoading();
+        }
+    };
 
     return (
         <div style={{ padding: '2rem' }}>
             <h1>Dashboard - CRM Urbany</h1>
 
-            {/* Mostrar informción del usuario si existe */}
+            {/* Mostrar información del usuario si existe */}
             {user && (
                 <div style={{
                     background: '#f8f9fa',
                     padding: '1.5rem',
                     borderRadius: '8px',
                     marginBottom: '2rem',
-                    border: '1px'
+                    border: '1px solid #dee2e6'
                 }}>
-                    <h2 style={{ marginTop: 0, color: '#2de0a1'}}>¡Sesión activa!</h2>
-                    <p><strong>Usuario:</strong> {user.name} </p>
-                    <p><strong>Email:</strong> {user.email} </p>
-                    <p><strong>ID:</strong> {user.id} </p>
-                    <p><strong>Token:</strong> {user.token ? '✅ Activo' : '❌ Inactivo'} </p>
+                    <h2 style={{ marginTop: 0, color: '#2de0a1' }}>¡Sesión activa!</h2>
+                    <p><strong>Nombre:</strong> {user.first_name} {user.last_name}</p>
+                    <p><strong>Email:</strong> {user.email}</p>
+                    <p><strong>ID:</strong> {user.id}</p>
                 </div>
             )}
 
@@ -52,7 +79,8 @@ const Dashboard = () => {
                         color: 'white',
                         border: 'none',
                         borderRadius: '4px',
-                        cursor: 'pointer'
+                        cursor: 'pointer',
+                        fontSize: '1rem'
                     }}
                 >
                     Cerrar sesión
@@ -69,7 +97,7 @@ const Dashboard = () => {
                 </details>
             )}
         </div>
-    )
-}
+    );
+};
 
-export default Dashboard
+export default Dashboard;

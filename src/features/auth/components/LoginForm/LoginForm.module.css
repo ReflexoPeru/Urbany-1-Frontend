@@ -42,6 +42,11 @@
     color: #888;
 }
 
+.input_box input.input_error {
+    border: 2px solid #dc3545;
+    background: #fff5f5;
+}
+
 .input_box .icon {
     position: absolute;
     top: 50%;
@@ -49,6 +54,16 @@
     transform: translateY(-50%);
 
     color: #888;
+}
+
+.error_message {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 12px;
+    font-weight: 500;
+    color: #dc3545;
 }
 
 .forgot_link {

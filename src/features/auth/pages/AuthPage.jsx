@@ -56,10 +56,6 @@ const AuthPage = () => {
         }, flipDuration);
     };
 
-    const handleContinueRegister = () => {
-        navigate('/register-inmobiliaria', { replace: true });
-    };
-
     return (
         <div className={styles.auth_container}>
             <AuthFlipForm
@@ -69,7 +65,7 @@ const AuthPage = () => {
                 suppressPanels={suppressPanels}
             >
                 {currentView === 'register' ? (
-                    <RegisterForm onContinue={handleContinueRegister} />
+                    <RegisterForm />
                 ) : (
                     <LoginForm />
                 )}

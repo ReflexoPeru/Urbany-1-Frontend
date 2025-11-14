@@ -1,0 +1,21 @@
+/* Estilos globales */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    overflow: hidden auto;
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    overflow: visible;
+    min-height: 100vh;
+}
+
+/* Asegurar que los toasts no se vean afectados por contextos de apilamiento */
+body {
+    position: relative;
+}
