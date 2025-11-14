@@ -1,21 +1,33 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { MagnifyingGlass } from 'phosphor-react';
 import Button from '../../../components/ui/Button';
 import { Select } from '../../../components/common/Select';
 import ConfirmModal from '../../../components/ui/Modal/ConfirmModal';
 import { useToast } from '../../../contexts/ToastContext';
-import { mockUsers, userRoles, userStatuses } from '../../../mock/users';
+import { userRoles, userStatuses } from '../../../mock/users';
 import { UsersTable, UserFormModal, UserDetailsModal, ResetPasswordModal } from '../components';
+import { useUsers, useCreateUser, useUpdateUser, useDeleteUser, useChangePassword } from '../hooks/userHooks';
 import styles from './UsersPage.module.css';
 
 const roleFilterOptions = [{ value: 'all', label: 'Todos los roles' }, ...userRoles];
 const statusFilterOptions = [{ value: 'all', label: 'Todos los estados' }, ...userStatuses];
 
 const UsersPage = () => {
-    const [users, setUsers] = useState(mockUsers);
+    const [page] = useState(1);
+    const [searchQuery, setSearchQuery] = useState('');
     const [search, setSearch] = useState('');
     const [roleFilter, setRoleFilter] = useState(roleFilterOptions[0]);
     const [statusFilter, setStatusFilter] = useState(statusFilterOptions[0]);
+
+    const { users, loading, error, pagination, refetch } = useUsers({ 
+        page, 
+        search: searchQuery, 
+        pageSize: 20 
+    });
+    const { create } = useCreateUser();
+    const { update } = useUpdateUser();
+    const { remove } = useDeleteUser();
+    const { changePassword } = useChangePassword();
 
     const [formModalOpen, setFormModalOpen] = useState(false);
     const [formMode, setFormMode] = useState('create');
@@ -34,20 +46,20 @@ const UsersPage = () => {
 
     const { toast } = useToast();
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setSearchQuery(search);
+        }, 500);
+        return () => clearTimeout(timer);
+    }, [search]);
+
     const filteredUsers = useMemo(() => {
         return users.filter((user) => {
-            const matchesSearch = search
-                ? [user.name, user.email]
-                    .filter(Boolean)
-                    .some((field) => field.toLowerCase().includes(search.toLowerCase().trim()))
-                : true;
-
             const matchesRole = roleFilter.value === 'all' ? true : user.role === roleFilter.value;
             const matchesStatus = statusFilter.value === 'all' ? true : user.status === statusFilter.value;
-
-            return matchesSearch && matchesRole && matchesStatus;
+            return matchesRole && matchesStatus;
         });
-    }, [users, search, roleFilter, statusFilter]);
+    }, [users, roleFilter, statusFilter]);
 
     const handleInviteUser = () => {
         setFormMode('create');
@@ -81,65 +93,74 @@ const UsersPage = () => {
         setResetModalOpen(true);
     };
 
-    const handleSubmitForm = (payload) => {
-        if (formMode === 'create') {
-            const newUser = {
-                id: `user-${Date.now()}`,
-                ...payload,
-                lastLogin: null,
-                phone: '',
-                teams: [],
-            };
-            setUsers((prev) => [newUser, ...prev]);
-            toast.success('Invitación enviada', 'El usuario recibirá un correo para activar su cuenta.');
-        } else if (userEditing) {
-            setUsers((prev) => prev.map((user) => (user.id === userEditing.id ? { ...user, ...payload } : user)));
-            toast.success('Usuario actualizado', 'Los cambios se guardaron correctamente.');
+    const handleSubmitForm = async (payload) => {
+        try {
+            if (formMode === 'create') {
+                await create(payload);
+                toast.success('Invitación enviada', 'El usuario recibirá un correo para activar su cuenta.');
+            } else if (userEditing) {
+                await update(userEditing.id, payload, true);
+                toast.success('Usuario actualizado', 'Los cambios se guardaron correctamente.');
+            }
+            setFormModalOpen(false);
+            refetch();
+        } catch (err) {
+            toast.error('Error', err.message || 'No se pudo completar la operación.');
         }
-        setFormModalOpen(false);
     };
 
-    const handleConfirmDelete = () => {
+    const handleConfirmDelete = async () => {
         if (!userToDelete) return;
-        setUsers((prev) => prev.filter((user) => user.id !== userToDelete.id));
-        toast.success('Usuario eliminado', 'El usuario fue removido del equipo.');
-        setConfirmModalOpen(false);
-        setUserToDelete(null);
+        try {
+            await remove(userToDelete.id);
+            toast.success('Usuario eliminado', 'El usuario fue removido del equipo.');
+            setConfirmModalOpen(false);
+            setUserToDelete(null);
+            refetch();
+        } catch (err) {
+            toast.error('Error', err.message || 'No se pudo eliminar el usuario.');
+        }
     };
 
-    const handleConfirmToggleStatus = () => {
+    const handleConfirmToggleStatus = async () => {
         if (!userToToggle) return;
-        setUsers((prev) =>
-            prev.map((user) => {
-                if (user.id !== userToToggle.id) return user;
-                const nextStatus = user.status === 'active' ? 'inactive' : 'active';
-                return { ...user, status: nextStatus };
-            })
-        );
-        const message = userToToggle.status === 'active'
-            ? 'Se suspendió el acceso del usuario.'
-            : 'El usuario puede acceder nuevamente.';
-        toast.info('Estado actualizado', message);
-        setStatusConfirmOpen(false);
-        setUserToToggle(null);
+        try {
+            const nextStatus = userToToggle.status === 'active' ? 'inactive' : 'active';
+            await update(userToToggle.id, { status: nextStatus }, true);
+            const message = userToToggle.status === 'active'
+                ? 'Se suspendió el acceso del usuario.'
+                : 'El usuario puede acceder nuevamente.';
+            toast.info('Estado actualizado', message);
+            setStatusConfirmOpen(false);
+            setUserToToggle(null);
+            refetch();
+        } catch (err) {
+            toast.error('Error', err.message || 'No se pudo actualizar el estado.');
+        }
     };
 
     const handleConfirmReset = async () => {
         if (!userToReset) return;
+        try {
+            await changePassword(userToReset.id, { 
+                send_reset_email: true 
+            });
 
-        const resetLink = `https://urbany.app/reset/${userToReset.id}`;
-
-        if (navigator?.clipboard?.writeText) {
-            try {
-                await navigator.clipboard.writeText(resetLink);
-            } catch (error) {
-                console.warn('No se pudo copiar el link al portapapeles', error);
+            const resetLink = `https://urbany.app/reset/${userToReset.id}`;
+            if (navigator?.clipboard?.writeText) {
+                try {
+                    await navigator.clipboard.writeText(resetLink);
+                } catch (error) {
+                    console.warn('No se pudo copiar el link al portapapeles', error);
+                }
             }
-        }
 
-        toast.success('Correo enviado', 'Se envió el enlace y se copió al portapapeles.');
-        setResetModalOpen(false);
-        setUserToReset(null);
+            toast.success('Correo enviado', 'Se envió el enlace y se copió al portapapeles.');
+            setResetModalOpen(false);
+            setUserToReset(null);
+        } catch (err) {
+            toast.error('Error', err.message || 'No se pudo enviar el correo de restablecimiento.');
+        }
     };
 
     return (
@@ -190,14 +211,20 @@ const UsersPage = () => {
                 </section>
 
                 <section className={styles.tableSection}>
-                    <UsersTable
-                        data={filteredUsers}
-                        onToggleStatus={handleToggleStatus}
-                        onEdit={handleEditUser}
-                        onView={handleViewUser}
-                        onDelete={handleDeleteUser}
-                        onReset={handleOpenReset}
-                    />
+                    {loading ? (
+                        <div className={styles.loadingState}>Cargando usuarios...</div>
+                    ) : error ? (
+                        <div className={styles.errorState}>Error: {error}</div>
+                    ) : (
+                        <UsersTable
+                            data={filteredUsers}
+                            onToggleStatus={handleToggleStatus}
+                            onEdit={handleEditUser}
+                            onView={handleViewUser}
+                            onDelete={handleDeleteUser}
+                            onReset={handleOpenReset}
+                        />
+                    )}
                 </section>
             </div>
 
