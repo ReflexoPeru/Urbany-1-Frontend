@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.image {
+  width: auto;
+  height: auto;
+  max-width: 350px;
+  max-height: 250px;
+  object-fit: contain;
+}
+

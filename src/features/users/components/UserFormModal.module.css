@@ -1,0 +1,125 @@
+/* stylelint-disable order/properties-order, color-hex-length */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(14 30 22 / 45%);
+    backdrop-filter: blur(4px);
+    z-index: 1100;
+    padding: 24px;
+}
+
+.modal {
+    width: min(640px, 100%);
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 30px 60px rgb(12 35 24 / 30%);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 28px 32px 32px;
+    position: relative;
+}
+
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.titleGroup {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.iconBadge {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #38e47a 0%, #2bc85a 100%);
+    color: #0a261b;
+}
+
+.title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f241b;
+}
+
+.subtitle {
+    margin: 4px 0 0;
+    font-size: 0.95rem;
+    color: #4c6a61;
+    line-height: 1.5;
+}
+
+.closeButton {
+    border: none;
+    background: #f1f5f9;
+    color: #4c6a61;
+    border-radius: 14px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.closeButton:hover {
+    background: #e2f7ec;
+    color: #047857;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.fieldGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.gridTwoCols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.selectControl {
+    width: 100%;
+}
+
+.footer {
+    margin-top: 12px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+@media (width <=640px) {
+    .modal {
+        padding: 24px;
+    }
+
+    .gridTwoCols {
+        grid-template-columns: 1fr;
+    }
+
+    .footer {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+}

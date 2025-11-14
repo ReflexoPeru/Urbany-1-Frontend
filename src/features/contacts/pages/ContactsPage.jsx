@@ -6,7 +6,20 @@ import ConfirmModal from '../../../components/ui/Modal/ConfirmModal'
 import { Select } from '../../../components/common/Select'
 import { useToast } from '../../../contexts/ToastContext'
 import { mockContacts } from '../../../mock/contacts'
+import DownloadModal from '../../emprendimientos/components/DownloadModal'
+import ContactDetailModal from '../components/ContactDetailModal'
 import styles from './ContactsPage.module.css'
+
+const createEmptyContact = () => ({
+  name: '',
+  email: '',
+  phone: '',
+  company: '',
+  type: 'Cliente',
+  status: 'active',
+  lastContact: new Date().toISOString().slice(0, 10),
+  notes: ''
+})
 
 const ContactsPage = () => {
   const [contacts, setContacts] = useState(mockContacts)
@@ -17,6 +30,10 @@ const ContactsPage = () => {
   const [contactToDelete, setContactToDelete] = useState(null)
   const [deleteModalOpen, setDeleteModalOpen] = useState(false)
   const [bulkDeleteModalOpen, setBulkDeleteModalOpen] = useState(false)
+  const [detailModalOpen, setDetailModalOpen] = useState(false)
+  const [detailModalMode, setDetailModalMode] = useState('view')
+  const [activeContact, setActiveContact] = useState(null)
+  const [downloadModalOpen, setDownloadModalOpen] = useState(false)
 
   const { toast } = useToast()
 
@@ -54,15 +71,21 @@ const ContactsPage = () => {
   }
 
   const handleAddContact = () => {
-    console.log('Añadir nuevo contacto')
+    setActiveContact(null)
+    setDetailModalMode('create')
+    setDetailModalOpen(true)
   }
 
   const handleViewContact = (contact) => {
-    console.log('Ver contacto:', contact)
+    setActiveContact(contact)
+    setDetailModalMode('view')
+    setDetailModalOpen(true)
   }
 
   const handleEditContact = (contact) => {
-    console.log('Editar contacto:', contact)
+    setActiveContact(contact)
+    setDetailModalMode('edit')
+    setDetailModalOpen(true)
   }
 
   const handleDeleteContact = (contact) => {
@@ -107,6 +130,52 @@ const ContactsPage = () => {
       console.error('Error deleting contacts:', error)
       toast.error('Error al eliminar', 'No se pudieron eliminar los contactos seleccionados.')
     }
+  }
+
+  const handleSaveContact = (updatedContact) => {
+    try {
+      if (detailModalMode === 'create') {
+        const newContact = {
+          ...createEmptyContact(),
+          ...updatedContact,
+          id: updatedContact?.id ?? Date.now(),
+          name: updatedContact.name.trim(),
+          email: updatedContact.email.trim(),
+          type: updatedContact.type,
+          status: updatedContact.status,
+          lastContact: updatedContact.lastContact || new Date().toISOString().slice(0, 10)
+        }
+        setContacts((previous) => [newContact, ...previous])
+        toast.success('Contacto creado', `${newContact.name} se agregó correctamente.`)
+      } else {
+        setContacts((previous) =>
+          previous.map((contactItem) =>
+            contactItem.id === updatedContact.id
+              ? {
+                  ...contactItem,
+                  ...updatedContact,
+                  name: updatedContact.name.trim(),
+                  email: updatedContact.email.trim(),
+                  lastContact: updatedContact.lastContact || contactItem.lastContact,
+                  notes: updatedContact.notes ?? contactItem.notes
+                }
+              : contactItem
+          )
+        )
+        toast.success('Contacto actualizado', `${updatedContact.name} se actualizó correctamente.`)
+      }
+    } catch (error) {
+      console.error('Error saving contact:', error)
+      toast.error('Error al guardar', 'No se pudo guardar la información del contacto.')
+    } finally {
+      setDetailModalOpen(false)
+      setDetailModalMode('view')
+      setActiveContact(null)
+    }
+  }
+
+  const handleDownload = (format, range) => {
+    toast.info('Descarga en preparación', `Generando archivo ${format.toUpperCase()} (${range}).`)
   }
 
   const typeOptions = [
@@ -154,7 +223,7 @@ const ContactsPage = () => {
                 type="button"
                 className={styles.iconButton}
                 aria-label="Descargar contactos"
-                onClick={() => console.log('Descargar contactos')}
+                onClick={() => setDownloadModalOpen(true)}
               >
                 <DownloadSimple weight="bold" />
               </button>
@@ -225,6 +294,24 @@ const ContactsPage = () => {
         type="danger"
         confirmText="Eliminar todos"
         cancelText="Cancelar"
+      />
+
+      <ContactDetailModal
+        isOpen={detailModalOpen}
+        mode={detailModalMode}
+        contact={activeContact}
+        onClose={() => {
+          setDetailModalOpen(false)
+          setDetailModalMode('view')
+          setActiveContact(null)
+        }}
+        onSave={handleSaveContact}
+      />
+
+      <DownloadModal
+        isOpen={downloadModalOpen}
+        onClose={() => setDownloadModalOpen(false)}
+        onDownload={handleDownload}
       />
     </div>
   )

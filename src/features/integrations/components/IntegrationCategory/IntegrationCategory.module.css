@@ -1,3 +1,4 @@
+/* stylelint-disable order/properties-order */
 .container {
   width: 200px;
   padding: 24px 0;
@@ -5,7 +6,7 @@
 }
 
 .title {
-  margin: 0 0 16px 0;
+  margin: 0 0 16px;
   font-size: 12px;
   font-weight: 600;
   color: #6b7280;
@@ -28,7 +29,7 @@
   padding: 12px 16px;
   border: none;
   background: transparent;
-  color: #6b7280;
+  color: #60766d;
   font-size: 14px;
   font-weight: 500;
   text-align: left;
@@ -38,12 +39,13 @@
 }
 
 .button:hover {
-  background: #f3f4f6;
-  color: #374151;
+  background: #ecfdf5;
+  color: #14532d;
 }
 
 .button.active {
-  background: #dbeafe;
-  color: #1d4ed8;
+  background: #d1fae5;
+  color: #047857;
   font-weight: 600;
+  box-shadow: 0 8px 18px rgb(16 185 129 / 20%);
 }

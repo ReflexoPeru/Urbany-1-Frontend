@@ -1,8 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { WhatsappLogo } from 'phosphor-react';
 import ExpandableCard from '../../components/ExpandableCard';
+import ConfirmModal from '../../../../components/ui/Modal/ConfirmModal';
+import { useToast } from '../../../../contexts/ToastContext';
 
 const SocialMedia = () => {
+  const { toast } = useToast();
+  const [pendingRequest, setPendingRequest] = useState(null);
+
+  const handleConnectInstagram = () => {
+    setPendingRequest('instagram');
+  };
+
+  const handleConnectWhatsapp = (type) => {
+    setPendingRequest(type);
+  };
+
+  const handleConfirm = () => {
+    if (pendingRequest === 'instagram') {
+      toast.success('Solicitud recibida', 'Te enviaremos los pasos para conectar Instagram Business.');
+    } else if (pendingRequest === 'api') {
+      toast.info('Equipo de soporte', 'En breves te contactaremos para habilitar la API Oficial de WhatsApp Business.');
+    } else if (pendingRequest === 'personal') {
+      toast.info('Equipo de soporte', 'Abrimos un chat para enviarte el QR de conexión con tu número personal.');
+    }
+    setPendingRequest(null);
+  };
+
   return (
     <div style={{ marginLeft: '12px' }}>
       <div style={{ marginBottom: '32px' }}>
@@ -31,8 +55,10 @@ const SocialMedia = () => {
               "Suena complicado pero no te preocupes, te ayudaremos en todo el proceso. En el siguiente artículo tienes todo detallado.",
               "Una vez que lo hayas completado puedes conectar tu cuenta con el CRM desde aquí."
             ]}
-            actionText="Conectar cuenta de la inmobiliaria con Facebook"
-            buttonText="Conectar cuentas de los agentes con Facebook"
+            actionText="Solicitar conexión de Instagram"
+            buttonText="Te enviaremos el paso a paso por correo"
+            onActionPrimary={handleConnectInstagram}
+            onSecondaryAction={handleConnectInstagram}
           />
         </div>
       </div>
@@ -46,15 +72,61 @@ const SocialMedia = () => {
             title="WhatsApp Business API"
             description="Integre su cuenta de Facebook Business y conecte todo el equipo a un número de WhatsApp para tener todas las conversaciones en el CRM a través de la API Oficial."
             icon={<WhatsappLogo size={20} color="#25D366" weight="bold" />}
+            infoTexts={[
+              'Necesitas aprobación de Facebook Business Manager.',
+              'Te ayudamos con los requisitos técnicos y el alta del número.',
+              'Incluiremos métricas y seguimiento automatizado en Urbany.'
+            ]}
+            actionText="Solicitar activación de la API"
+            onActionPrimary={() => handleConnectWhatsapp('api')}
           />
 
           <ExpandableCard
             title="WhatsApp"
             description="Integre su número de WhatsApp a su cuenta escaneando el QR para sincronizar sus conversaciones con el CRM."
             icon={<WhatsappLogo size={20} color="#25D366" weight="bold" />}
+            infoTexts={[
+              'Ideal para cuentas pequeñas o agentes independientes.',
+              'Sin requisitos técnicos, solo necesitas escanear un código QR.',
+              'Mantén todas tus conversaciones junto a los contactos y negocios.'
+            ]}
+            actionText="Conectar un número personal"
+            buttonText="Recibir instrucciones por correo"
+            onActionPrimary={() => handleConnectWhatsapp('personal')}
+            onSecondaryAction={() => handleConnectWhatsapp('personal')}
           />
         </div>
       </div>
+
+      <ConfirmModal
+        isOpen={pendingRequest === 'instagram'}
+        onClose={() => setPendingRequest(null)}
+        onConfirm={handleConfirm}
+        title="Conectar Instagram Business"
+        message="Registraremos tu cuenta para habilitar la publicación directa desde Urbany. Te enviaremos un correo con los pasos y necesitaremos acceso al negocio de Facebook."
+        confirmText="Solicitar conexión"
+        cancelText="Cancelar"
+      />
+
+      <ConfirmModal
+        isOpen={pendingRequest === 'api'}
+        onClose={() => setPendingRequest(null)}
+        onConfirm={handleConfirm}
+        title="Activar WhatsApp Business API"
+        message="Nuestro equipo técnico coordinará la habilitación de la API oficial para tu inmobiliaria. ¿Deseas continuar con la solicitud?"
+        confirmText="Solicitar activación"
+        cancelText="Cancelar"
+      />
+
+      <ConfirmModal
+        isOpen={pendingRequest === 'personal'}
+        onClose={() => setPendingRequest(null)}
+        onConfirm={handleConfirm}
+        title="Conectar WhatsApp personal"
+        message="Te enviaremos un correo con el QR y la guía para vincular tu número personal. ¿Deseas recibirlo ahora?"
+        confirmText="Enviar guía"
+        cancelText="Cerrar"
+      />
     </div>
   );
 };

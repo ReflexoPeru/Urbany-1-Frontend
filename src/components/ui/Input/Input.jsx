@@ -1,5 +1,6 @@
 import React from 'react';
 import { Input as AntInput, ConfigProvider } from 'antd';
+const { Password } = AntInput;
 import styles from './Input.module.css';
 
 const Input = ({
@@ -66,6 +67,10 @@ const Input = ({
                 // Hover states
                 colorPrimaryBorder: '#38e47a',
                 colorPrimaryBorderHover: '#22c55e',
+
+                // Password specific styles
+                addonBg: '#fff',
+                activeBg: '#fff',
             }
         }
     };
@@ -97,20 +102,36 @@ const Input = ({
                     </label>
                 )}
 
-                <AntInput
-                    type={type}
-                    placeholder={placeholder}
-                    value={value}
-                    onChange={handleChange}
-                    disabled={disabled}
-                    size={getAntInputSize()}
-                    className={`${styles.antInput} ${className}`}
-                    status={error ? 'error' : ''}
-                    name={name}
-                    prefix={prefix}
-                    style={style}
-                    {...props}
-                />
+                {type === 'password' ? (
+                    <Password
+                        placeholder={placeholder}
+                        value={value}
+                        onChange={handleChange}
+                        disabled={disabled}
+                        size={getAntInputSize()}
+                        className={`${styles.antInput} ${className}`}
+                        status={error ? 'error' : ''}
+                        name={name}
+                        prefix={prefix}
+                        style={style}
+                        {...props}
+                    />
+                ) : (
+                    <AntInput
+                        type={type}
+                        placeholder={placeholder}
+                        value={value}
+                        onChange={handleChange}
+                        disabled={disabled}
+                        size={getAntInputSize()}
+                        className={`${styles.antInput} ${className}`}
+                        status={error ? 'error' : ''}
+                        name={name}
+                        prefix={prefix}
+                        style={style}
+                        {...props}
+                    />
+                )}
 
                 {error && (
                     <div className={styles.errorMessage}>

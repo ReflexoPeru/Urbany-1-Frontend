@@ -1,0 +1,45 @@
+/* stylelint-disable order/properties-order */
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+  border: 1px dashed #cbe9da;
+  border-radius: 20px;
+  background: rgb(236 253 245 / 60%);
+}
+
+.inner {
+  max-width: 420px;
+  text-align: center;
+  padding: 48px 28px;
+  font-family: Poppins, sans-serif;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #38e47a 0%, #22c55e 100%);
+  color: #0c2016;
+}
+
+.title {
+  margin: 0 0 10px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #123429;
+}
+
+.description {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #58786f;
+}
+

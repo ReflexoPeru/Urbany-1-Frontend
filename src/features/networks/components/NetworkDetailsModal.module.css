@@ -1,0 +1,175 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    background: rgb(8 24 18 / 32%);
+    backdrop-filter: blur(8px);
+    z-index: 140;
+}
+
+.modal {
+    width: min(720px, 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #f7fbf8 100%);
+    border-radius: 28px;
+    box-shadow: 0 32px 60px rgb(16 58 44 / 28%);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.titleGroup {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 16px;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.title {
+    margin: 0;
+    font-size: 1.7rem;
+    color: #123429;
+}
+
+.subtitle {
+    margin: 6px 0 0;
+    color: #4d6c62;
+    font-size: 0.95rem;
+    max-width: 420px;
+}
+
+.closeButton {
+    border: none;
+    background: #f1f8f4;
+    color: #2d4f44;
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.closeButton:hover {
+    transform: translateY(-1px);
+    background: #e5f3ed;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #e2eee8;
+    border-radius: 20px;
+    padding: 18px 20px;
+    box-shadow: 0 14px 28px rgb(12 48 38 / 12%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #1f2d3a;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.statusRow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.statusIndicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.status-connected {
+    background: #22c55e;
+}
+
+.status-pending {
+    background: #facc15;
+}
+
+.status-draft {
+    background: #94a3b8;
+}
+
+.statusLabel {
+    font-weight: 600;
+    color: #123429;
+}
+
+.value {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #123429;
+}
+
+.muted {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #4d6c62;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.summaryList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #2d4f44;
+    font-weight: 600;
+}
+
+.summaryList li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+@media (width <= 640px) {
+    .overlay {
+        padding: 18px;
+    }
+
+    .modal {
+        padding: 26px;
+        border-radius: 24px;
+    }
+}
+
+

@@ -1,9 +1,11 @@
 import React from 'react';
 import ExpandableCard from '../../components/ExpandableCard';
 import { portalsData } from '../../../../mock/portals';
+import { useToast } from '../../../../contexts/ToastContext';
 
 const Portals = () => {
   const { customIntegrations, paidPortals } = portalsData;
+  const { toast } = useToast();
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -21,6 +23,14 @@ const Portals = () => {
       case 'inactive': return 'Desconectado';
       default: return 'Desconectado';
     }
+  };
+
+  const handlePortalRequest = (portal, type = 'connect') => {
+    if (type === 'guide') {
+      toast.info('Guía enviada', `Te enviamos las instrucciones para conectar ${portal.title}.`);
+      return;
+    }
+    toast.success('Solicitud registrada', `Nuestro equipo te ayudará a conectar ${portal.title}.`);
   };
 
   return (
@@ -48,7 +58,7 @@ const Portals = () => {
                 case 'inmoup':
                   return (
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect x="3" y="3" width="18" height="18" rx="2" fill="#3B82F6" />
+                      <rect x="3" y="3" width="18" height="18" rx="2" fill="#38E47A" />
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#ffffff" />
                     </svg>
                   );
@@ -79,7 +89,7 @@ const Portals = () => {
                 default:
                   return (
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect x="3" y="3" width="18" height="18" rx="2" fill="#3B82F6" />
+                      <rect x="3" y="3" width="18" height="18" rx="2" fill="#38E47A" />
                       <circle cx="12" cy="12" r="3" fill="#ffffff" />
                     </svg>
                   );
@@ -99,6 +109,8 @@ const Portals = () => {
                 setupSteps={integration.setupSteps}
                 pricing={integration.pricing}
                 lastSync={integration.lastSync}
+                onActionPrimary={() => handlePortalRequest(integration)}
+                onSecondaryAction={() => handlePortalRequest(integration, 'guide')}
               />
             );
           })}
@@ -136,6 +148,8 @@ const Portals = () => {
               lastSync={integration.lastSync}
               actionText={integration.actionText}
               buttonText={integration.buttonText}
+              onActionPrimary={() => handlePortalRequest(integration)}
+              onSecondaryAction={() => handlePortalRequest(integration, 'guide')}
             />
           ))}
         </div>

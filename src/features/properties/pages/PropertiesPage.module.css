@@ -6,7 +6,8 @@
   min-height: 60vh;
   padding: 2rem;
   font-family: Poppins, sans-serif;
-  background: #E1EDE6;
+  border-radius: 12px;
+  background: #f6f8f7;
   animation: fadeIn 0.4s ease-in-out;
 }
 
@@ -21,6 +22,9 @@
 .headerContent {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
   width: 100%;
   max-width: 1400px;
   animation: slideDown 0.3s ease-out;
@@ -151,7 +155,9 @@
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
 

@@ -16,12 +16,17 @@ import {
   Question,
   SignOut
 } from 'phosphor-react';
+import { useToast } from '../../../../../contexts/ToastContext';
+import { useLoading } from '../../../../../contexts/LoadingContext';
+import { logout } from '../../../../../services/auth';
 import styles from './UserProfile.module.css';
 
 export const UserProfile = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropdownClosing, setIsDropdownClosing] = useState(false);
   const navigate = useNavigate();
+  const { toast } = useToast();
+  const { showLoading, hideLoading } = useLoading();
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -56,12 +61,50 @@ export const UserProfile = () => {
     }
   };
 
-  const handleMenuItemClick = (action) => {
+  const handleMenuItemClick = async (action) => {
     closeDropdown();
+
+    // Si es logout, manejar de forma especial
+    if (action === 'logout') {
+      try {
+        showLoading("Cerrando sesión...");
+        await logout();
+
+        hideLoading();
+
+        toast.success(
+          "Sesión cerrada",
+          "Has cerrado sesión correctamente",
+          3000,
+          "SignOut"
+        );
+
+        // Redirigir al login después de un breve delay
+        setTimeout(() => {
+          navigate('/login');
+        }, 500);
+      } catch (error) {
+        console.error("Error al cerrar sesión:", error);
+        hideLoading();
+
+        toast.error(
+          "Error",
+          "Hubo un problema al cerrar sesión",
+          3000,
+          "WarningCircle"
+        );
+
+        // Aún así redirigir al login
+        setTimeout(() => {
+          navigate('/login');
+        }, 1000);
+      }
+      return;
+    }
+
+    // Para otras acciones, navegar normalmente
     setTimeout(() => {
-      if (action === 'logout') {
-        navigate('/login');
-      } else if (action === 'profile') {
+      if (action === 'profile') {
         navigate('/configuracion/perfil');
       } else if (action === 'company') {
         navigate('/company');

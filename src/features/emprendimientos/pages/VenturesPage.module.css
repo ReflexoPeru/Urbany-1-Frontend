@@ -1,0 +1,240 @@
+.venturesContainer {
+    min-height: 100vh;
+    padding: clamp(1.5rem, 4vw, 2.8rem);
+    display: flex;
+    justify-content: center;
+    background: #ffffff;
+    border-radius: 12px;
+    font-family: Poppins, sans-serif;
+}
+
+.page {
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 24px;
+}
+
+.headerActions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.summarySection {
+    background: #fff;
+    border-radius: 24px;
+    padding: 24px 28px;
+    box-shadow: 0 20px 40px rgb(30 74 60 / 12%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sectionHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sectionTitle {
+    margin: 0;
+    font-size: 0.95rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #3f6358;
+}
+
+.sectionHint {
+    font-size: 0.95rem;
+    color: #7a9289;
+}
+
+.tableSection {
+    background: #fff;
+    border-radius: 24px;
+    padding: 26px 28px 32px;
+    box-shadow: 0 18px 36px rgb(27 61 51 / 11%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.controlHeader {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+}
+
+.controlHeader .searchBox {
+    flex: 1 1 260px;
+    width: auto;
+}
+
+.searchBox {
+    position: relative;
+    width: 100%;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #49a78c;
+    width: 20px;
+    height: 20px;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 14px 16px 14px 54px;
+    border-radius: 14px;
+    border: 1px solid #dce7e1;
+    background: #f6fbf8;
+    font-size: 0.97rem;
+    color: #1f2d3a;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: #38e47a;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgb(56 228 122 / 18%);
+}
+
+.searchInput::placeholder {
+    color: #6d847b;
+    opacity: 0.9;
+}
+
+.filtersRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.tableContent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.iconGroup {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+}
+
+.iconBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    border: 1px solid #dbe8e2;
+    background: #f8fcf9;
+    color: #2b463e;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.iconBtn:hover {
+    transform: translateY(-1px);
+    border-color: #38e47a;
+    box-shadow: 0 10px 18px rgb(56 228 122 / 15%);
+}
+
+.iconBtn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.bulkDeleteBtn {
+    background: #fef3f3;
+    color: #c63939;
+    border: 1px solid #fbd2d2;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.bulkDeleteBtn:hover {
+    background: #fbd9d9;
+    border-color: #f8a7a7;
+    transform: translateY(-1px);
+}
+
+.loading {
+    padding: 60px 0;
+    text-align: center;
+    font-weight: 500;
+    color: #517264;
+}
+
+@media (width <=1024px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .headerActions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+
+@media (width <=768px) {
+    .venturesContainer {
+        padding: 1.5rem 1rem;
+    }
+
+    .page {
+        gap: 18px;
+    }
+
+    .summarySection,
+    .tableSection {
+        padding: 18px;
+        border-radius: 18px;
+    }
+
+    .controlHeader {
+        gap: 12px;
+    }
+
+    .controlHeader .searchBox {
+        flex: 1 1 100%;
+    }
+
+    .filtersRow {
+        gap: 10px;
+    }
+
+    .iconGroup {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .iconBtn {
+        width: 36px;
+        height: 36px;
+    }
+}

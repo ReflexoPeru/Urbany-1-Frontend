@@ -1,0 +1,140 @@
+/* stylelint-disable order/properties-order, color-hex-length */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgb(15 30 22 / 45%);
+    backdrop-filter: blur(4px);
+    z-index: 1100;
+}
+
+.modal {
+    width: min(520px, 100%);
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 24px 48px rgb(16 38 28 / 28%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 26px 28px 30px;
+}
+
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.userSummary {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0b2017;
+    background: linear-gradient(160deg, #34d399 0%, #a7f3d0 100%);
+}
+
+.name {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #10261d;
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.closeButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    border: none;
+    background: #eff4f1;
+    color: #3a5f52;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.closeButton:hover {
+    background: #e0f3ec;
+    color: #047857;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.detailRow {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: #f7fbf9;
+}
+
+.detailIcon {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e9f7f0;
+    color: #198754;
+    flex-shrink: 0;
+}
+
+.label {
+    margin: 0;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6c7f79;
+}
+
+.value {
+    margin: 4px 0 0;
+    font-size: 0.95rem;
+    color: #153127;
+    line-height: 1.5;
+}
+
+@media (width <=480px) {
+    .modal {
+        padding: 22px;
+    }
+
+    .detailRow {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .detailIcon {
+        width: 28px;
+        height: 28px;
+    }
+}

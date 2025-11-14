@@ -1,0 +1,339 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px;
+    border-radius: 24px;
+    background: #ffffff;
+    box-shadow: 0 14px 28px rgb(22 63 53 / 12%);
+}
+
+.controlBar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: center;
+}
+
+.searchGroup {
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+}
+
+.searchBox {
+    position: relative;
+    width: 100%;
+}
+
+.searchIcon {
+    position: absolute;
+    top: 50%;
+    left: 18px;
+    transform: translateY(-50%);
+    color: #2f9a75;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 14px 18px 14px 54px;
+    border-radius: 18px;
+    border: 1px solid #d5e6de;
+    background: #f3f9f6;
+    font-size: 0.95rem;
+    color: #123429;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: #38e47a;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgb(56 228 122 / 18%);
+}
+
+.checkboxControl {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    border-radius: 16px;
+    background: #e9f5ef;
+    color: #256148;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid #c6e4d6;
+}
+
+.checkboxControl input {
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
+    border: 1px solid #9cccb6;
+    accent-color: #31c970;
+}
+
+.actionsGroup {
+    display: inline-flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.bulkDeleteButton {
+    border-radius: 999px !important;
+}
+
+.mapButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 16px;
+    border: 1px solid #cce9da;
+    background: linear-gradient(135deg, #f2fff7 0%, #e9fbf2 100%);
+    color: #105b3f;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.mapButton:hover {
+    transform: translateY(-1px);
+    border-color: #38e47a;
+    box-shadow: 0 14px 28px rgb(56 228 122 / 18%);
+}
+
+.iconButton {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    border: 1px solid #dbe8e2;
+    background: #f8fcf9;
+    color: #2d4f44;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.iconButton:hover {
+    transform: translateY(-1px);
+    border-color: #38e47a;
+    background: #ffffff;
+    box-shadow: 0 12px 20px rgb(56 228 122 / 14%);
+}
+
+.iconButtonActive {
+    color: #d94862;
+    border-color: #f2c2cd;
+    background: #fff0f4;
+}
+
+.iconButtonDanger {
+    color: #c53030;
+    border-color: #f7ced0;
+    background: #fff5f6;
+}
+
+.iconButtonDanger:hover {
+    border-color: #f09d9d;
+    background: #ffe1e1;
+}
+
+.iconButtonDisabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    border-color: #e5efea;
+    background: #f4f8f6;
+}
+
+.filtersRow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    align-items: stretch;
+}
+
+.footerBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding-top: 6px;
+}
+
+.summary {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #275046;
+}
+
+.selectionLabel {
+    color: #105b3f;
+}
+
+.networkLabel {
+    color: #2d4f44;
+    background: #eef7f2;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.footerActions {
+    display: inline-flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.footerButtons {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.clearButton {
+    border: none;
+    background: transparent;
+    color: #c53030;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.clearButton:hover {
+    color: #a11f1f;
+}
+
+.syncButton {
+    border-radius: 14px !important;
+}
+
+@media (width <= 900px) {
+    .controlBar {
+        grid-template-columns: 1fr;
+    }
+
+    .actionsGroup {
+        justify-content: flex-start;
+    }
+
+    .searchGroup {
+        grid-template-columns: 1fr;
+    }
+
+    .filtersRow {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+}
+
+@media (width <= 680px) {
+    .actionsGroup {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .footerBar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+/* stylelint-disable order/properties-order, color-hex-length */
+
+*** End Patch***
+
+.footerBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.summary {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2d4f44;
+}
+
+.selectionLabel {
+    color: #106745;
+}
+
+.footerActions {
+    display: inline-flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.clearButton {
+    border: none;
+    background: transparent;
+    color: #c53030;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.clearButton:hover {
+    color: #a11f1f;
+}
+
+.syncButton {
+    border-radius: 12px !important;
+}
+
+@media (width <=900px) {
+    .filtersRow {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+}
+
+@media (width <=680px) {
+    .controlBar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .searchGroup {
+        width: 100%;
+    }
+
+    .searchBox {
+        width: 100%;
+    }
+
+    .actionsGroup {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .mapButton {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .footerBar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+
+
+
+
+
+

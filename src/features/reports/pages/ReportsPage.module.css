@@ -1,18 +1,24 @@
 .reportsContainer {
   display: flex;
   flex-direction: column;
+
   min-height: 100vh;
-  background: #fff;
+  border-radius: 12px;
+
   font-family: Poppins, sans-serif;
+
+  background: #f6f8f7;
 }
 
 .reportsHeader {
   padding: 24px 64px 0 96px;
-  background: #fff;
+  border-radius: 12px;
+  background: #f6f8f7;
 }
 
 .reportsTitle {
-  margin: 0 0 8px 0;
+  margin: 0 0 8px;
+
   font-family: Poppins, sans-serif;
   font-size: 43px;
   font-weight: 600;
@@ -21,11 +27,12 @@
 
 .reportsSubtitle {
   margin: 0;
+
   font-family: Poppins, sans-serif;
   font-size: 16px;
   font-weight: 400;
-  color: #6b7280;
   line-height: 1.5;
+  color: #6b7280;
 }
 
 .reportsContent {
@@ -39,7 +46,8 @@
 }
 
 .sectionTitle {
-  margin: 0 0 16px 0;
+  margin: 0 0 16px;
+
   font-family: Poppins, sans-serif;
   font-size: 18px;
   font-weight: 600;

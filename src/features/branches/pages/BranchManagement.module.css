@@ -1,0 +1,68 @@
+.page {
+    min-height: 100%;
+    padding: 48px 12px;
+    background: #f6f8f7;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    max-width: 640px;
+    text-align: center;
+}
+
+.badgeWrapper {
+    display: inline-flex;
+}
+
+.title {
+    margin: 0;
+
+    font-family: Poppins, sans-serif;
+    font-size: clamp(2.2rem, 3vw, 3rem);
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.subtitle {
+    max-width: 520px;
+    margin: 0;
+
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #475569;
+}
+
+.illustration {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.illustration img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.note {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #64748b;
+}
+
+@media (width <=768px) {
+    .page {
+        padding: 40px 20px;
+    }
+}

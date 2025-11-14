@@ -5,7 +5,8 @@
   padding: clamp(1.5rem, 4vw, 2.8rem);
   display: flex;
   justify-content: center;
-  background: linear-gradient(180deg, #f4fbf7 0%, #eef5f1 45%, #ffffff 100%);
+  background: #f6f8f7;
+  border-radius: 12px;
   font-family: Poppins, sans-serif;
 }
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Mail, MapPin, Phone, Building } from "lucide-react";
+import urbanyLogo from "../../../../assets/urbany.png";
 import styles from "./RegisterInmobiliariaForm.module.css";
 import { mockDepartamentos, mockProvincias, mockDistritos } from "../../../../mock/ubicaciones";
 
@@ -61,6 +62,11 @@ const RegisterInmobiliariaForm = () => {
     return (
         <form onSubmit={handleSubmit}>
             <h1>Registro de Inmobiliaria</h1>
+
+            <div className={styles.logo_section}>
+                <img src={urbanyLogo} alt="Urbany Logo" className={styles.logo} />
+                <p className={styles.tagline}>Tu futuro inmobiliario comienza aquí</p>
+            </div>
 
             <div className={styles.input_box}>
                 <input 
@@ -167,15 +173,6 @@ const RegisterInmobiliariaForm = () => {
             </div>
 
             <button type="submit" className={styles.btn}>Registrar Inmobiliaria</button>
-
-            <p>o regístrate con</p>
-
-            <div className={styles.social_icons}>
-                <a href="#"><i className="bx bxl-google"></i></a>
-                <a href="#"><i className="bx bxl-facebook"></i></a>
-                <a href="#"><i className="bx bxl-github"></i></a>
-                <a href="#"><i className="bx bxl-linkedin"></i></a>
-            </div>
         </form>
     );
 };

@@ -8,9 +8,8 @@ const IntegrationCategory = ({ categories, activeCategory, onCategoryChange }) =
         {categories.map((category) => (
           <li key={category.id} className={styles.item}>
             <button
-              className={`${styles.button} ${
-                activeCategory === category.id ? styles.active : ''
-              }`}
+              className={`${styles.button} ${activeCategory === category.id ? styles.active : ''
+                }`}
               onClick={() => onCategoryChange(category.id)}
             >
               {category.label}

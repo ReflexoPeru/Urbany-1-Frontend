@@ -11,7 +11,7 @@ import BusinessTable from '../components/BusinessTable'
 import CalendarModal from '../components/CalendarModal'
 import DealModal from '../components/DealModal'
 import EmptyTableState from '../components/EmptyTableState'
-import DownloadModal from '../components/DownloadModal'
+import DownloadModal from '../../emprendimientos/components/DownloadModal'
 import styles from './Business.module.css'
 
 const Business = () => {

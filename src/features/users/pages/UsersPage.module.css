@@ -1,0 +1,127 @@
+/* stylelint-disable order/properties-order, color-hex-length */
+
+.pageWrapper {
+    min-height: 100vh;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    background: #f6f8f7;
+    display: flex;
+    justify-content: center;
+    font-family: Poppins, sans-serif;
+    border-radius: 12px;
+}
+
+.pageContent {
+    width: 100%;
+    max-width: 1240px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.headerText {
+    max-width: 620px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.title {
+    margin: 0;
+    font-size: clamp(2.2rem, 5vw, 2.6rem);
+    font-weight: 700;
+    color: #123429;
+    letter-spacing: -0.015em;
+}
+
+.subtitle {
+    margin: 0;
+    font-size: 1rem;
+    color: #577870;
+    line-height: 1.6;
+}
+
+.filtersCard {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 18px 40px rgb(18 45 33 / 10%);
+}
+
+.filtersRow {
+    display: grid;
+    grid-template-columns: minmax(260px, 1.4fr) repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    align-items: center;
+}
+
+.searchBox {
+    position: relative;
+}
+
+.searchIcon {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    color: #4ea186;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 14px 18px 14px 56px;
+    border-radius: 16px;
+    border: 1px solid #dce7e1;
+    background: #f6fbf8;
+    font-size: 0.98rem;
+    color: #1f2d3a;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: #38e47a;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgb(56 228 122 / 15%);
+}
+
+.selectControl {
+    width: 100%;
+}
+
+.tableSection {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (width <=900px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .filtersRow {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (width <=640px) {
+    .pageWrapper {
+        padding: 1.25rem;
+    }
+
+    .filtersCard {
+        border-radius: 18px;
+    }
+
+    .filtersRow {
+        gap: 14px;
+    }
+}

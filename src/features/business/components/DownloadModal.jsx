@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { X, Download, FileText, Table, Calendar } from 'lucide-react'
 import styles from './DownloadModal.module.css'
 
-const DownloadModal = ({ isOpen, onClose, onDownload }) => {
+const DownloadModal = ({ isOpen, onClose, onDownload, title = 'Descargar Datos', confirmLabel = 'Descargar' }) => {
   const [selectedFormat, setSelectedFormat] = useState('csv')
   const [selectedDateRange, setSelectedDateRange] = useState('all')
 
@@ -56,7 +56,7 @@ const DownloadModal = ({ isOpen, onClose, onDownload }) => {
         <div className={styles.header}>
           <div className={styles.titleSection}>
             <Download className={styles.icon} size={24} />
-            <h2 className={styles.title}>Descargar Datos</h2>
+            <h2 className={styles.title}>{title}</h2>
           </div>
           <button className={styles.closeButton} onClick={onClose}>
             <X size={20} />
@@ -120,7 +120,7 @@ const DownloadModal = ({ isOpen, onClose, onDownload }) => {
           </button>
           <button className={styles.downloadButton} onClick={handleDownload}>
             <Download size={16} />
-            Descargar
+            {confirmLabel}
           </button>
         </div>
       </div>
