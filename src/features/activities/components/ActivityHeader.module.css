@@ -1,0 +1,85 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 24px;
+
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.title {
+  margin: 0;
+
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.viewToggle {
+  display: flex;
+  gap: 0;
+
+  padding: 4px;
+  border-radius: 999px;
+
+  background: #f3f4f6;
+  box-shadow: inset 0 0 0 1px #e5e7eb;
+}
+
+.viewButton {
+  min-width: 2.5rem;
+  height: 2.5rem;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+
+  background: transparent;
+
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.viewButton:hover {
+  background: rgb(255 255 255 / 80%);
+}
+
+/* Estilos para el botón activo */
+.viewButton.active {
+  background: #34d399;
+  box-shadow: 0 0 0 2px rgb(52 211 153 / 30%);
+}
+
+.viewButton svg {
+  color: currentcolor;
+  transition: color 0.2s ease;
+}
+
+/* Iconos del botón activo en verde */
+.viewButton.active svg {
+  color: white;
+}
+
+@media (width <=768px) {
+  .header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .controls {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+}

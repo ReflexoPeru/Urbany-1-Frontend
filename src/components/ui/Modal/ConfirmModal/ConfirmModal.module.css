@@ -1,0 +1,281 @@
+/* stylelint-disable order/properties-order */
+
+/* ============================================
+   OVERLAY
+   ============================================ */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: rgb(0 0 0 / 40%);
+  backdrop-filter: blur(4px);
+  padding: 20px;
+  padding-top: 100px;
+  animation: overlay-fade-in 0.2s ease forwards;
+}
+
+@keyframes overlay-fade-in {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0);
+  }
+
+  to {
+    opacity: 1;
+    backdrop-filter: blur(4px);
+  }
+}
+
+/* ============================================
+   MODAL
+   ============================================ */
+.modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  max-width: 380px;
+  padding: 24px 22px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow:
+    0 20px 60px rgb(0 0 0 / 25%),
+    0 4px 12px rgb(0 0 0 / 15%);
+  animation: modal-scale-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes modal-scale-in {
+  from {
+    transform: scale(0.7) translateY(-20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   ICON
+   ============================================ */
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  animation: icon-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s backwards;
+}
+
+@keyframes icon-pop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.icon-success {
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+  color: #059669;
+}
+
+.icon-error,
+.icon-danger {
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+  color: #dc2626;
+}
+
+.icon-warning {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  color: #d97706;
+}
+
+.icon-info {
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+  color: #2563eb;
+}
+
+/* ============================================
+   CONTENT
+   ============================================ */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  font-family: Poppins, sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #111827;
+  animation: text-fade-in 0.4s ease 0.2s backwards;
+}
+
+.message {
+  margin: 0;
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #6b7280;
+  animation: text-fade-in 0.4s ease 0.25s backwards;
+}
+
+@keyframes text-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   ACTIONS
+   ============================================ */
+.actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-top: 4px;
+  animation: actions-fade-in 0.4s ease 0.3s backwards;
+}
+
+@keyframes actions-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.button {
+  flex: 1;
+  padding: 10px 20px;
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button:active {
+  transform: scale(0.97);
+}
+
+.button-cancel {
+  color: #6b7280;
+  background: #f3f4f6;
+}
+
+.button-cancel:hover {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.button-success {
+  color: #047857;
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+}
+
+.button-success:hover {
+  background: linear-gradient(135deg, #a7f3d0, #6ee7b7);
+  box-shadow: 0 4px 12px rgb(5 150 105 / 20%);
+}
+
+.button-error,
+.button-danger {
+  color: #b91c1c;
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+}
+
+.button-error:hover,
+.button-danger:hover {
+  background: linear-gradient(135deg, #fecaca, #fca5a5);
+  box-shadow: 0 4px 12px rgb(220 38 38 / 20%);
+}
+
+.button-warning {
+  color: #b45309;
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+}
+
+.button-warning:hover {
+  background: linear-gradient(135deg, #fde68a, #fcd34d);
+  box-shadow: 0 4px 12px rgb(217 119 6 / 20%);
+}
+
+.button-info {
+  color: #1d4ed8;
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+}
+
+.button-info:hover {
+  background: linear-gradient(135deg, #bfdbfe, #93c5fd);
+  box-shadow: 0 4px 12px rgb(37 99 235 / 20%);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (width <= 640px) {
+  .overlay {
+    padding-top: 60px;
+  }
+
+  .modal {
+    max-width: calc(100vw - 40px);
+    padding: 22px 20px;
+  }
+
+  .icon-wrapper {
+    width: 56px;
+    height: 56px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .message {
+    font-size: 13px;
+  }
+
+  .actions {
+    flex-direction: column-reverse;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
+

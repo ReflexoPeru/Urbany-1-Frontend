@@ -1,0 +1,233 @@
+.activityList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  padding: 20px;
+
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.activityItem {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  background: white;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.activityItem:hover {
+  transform: translateY(-2px);
+  border-color: #38e47a;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -1px rgb(0 0 0 / 6%);
+}
+
+.activityIcon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+
+  color: white;
+
+  background: linear-gradient(135deg, #38e47a, #2ecc71);
+  box-shadow: 0 2px 8px rgb(56 228 122 / 30%);
+}
+
+.activityContent {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.activityHeader {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.activityInfo {
+  flex: 1;
+}
+
+.activityType {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.activityTitle {
+  margin: 4px 0 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.activityMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-end;
+
+  text-align: right;
+}
+
+.activityDate {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.activityTime {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.activityDescription {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+.activityFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.activityTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.statusTag,
+.priorityTag {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+
+  padding: 4px 12px;
+  border-radius: 6px;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.statusTag.pending {
+  color: #92400e;
+  background: #fef3c7;
+}
+
+.statusTag.in_progress {
+  color: #1e40af;
+  background: #dbeafe;
+}
+
+.statusTag.completed {
+  color: #065f46;
+  background: #d1fae5;
+}
+
+.statusTag.cancelled {
+  color: #991b1b;
+  background: #fee2e2;
+}
+
+.priorityTag.low {
+  color: #166534;
+  background: #ecfdf5;
+}
+
+.priorityTag.medium {
+  color: #92400e;
+  background: #fef3c7;
+}
+
+.priorityTag.high {
+  color: #991b1b;
+  background: #fee2e2;
+}
+
+.activityActions {
+  display: flex;
+  gap: 8px;
+}
+
+.actionButton {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+
+  color: #6b7280;
+
+  background: white;
+
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.actionButton:hover {
+  transform: scale(1.05);
+  border-color: #d1d5db;
+  color: #374151;
+  background: #f9fafb;
+}
+
+.actionButton:last-child:hover {
+  border-color: #fecaca;
+  color: #dc2626;
+  background: #fee2e2;
+}
+
+@media (width <=768px) {
+  .activityHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .activityMeta {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .activityFooter {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .activityActions {
+    align-self: flex-end;
+  }
+
+  .activityList {
+    padding: 16px;
+  }
+}

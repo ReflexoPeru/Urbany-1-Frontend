@@ -1,0 +1,97 @@
+.accordion {
+  overflow: hidden;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  font-family: Poppins, sans-serif;
+
+  background: #fff;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+}
+
+.accordion-header {
+  cursor: pointer;
+
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  width: 100%;
+  padding: 20px 24px;
+  border: none;
+
+  background: transparent;
+
+  transition: background-color 0.2s ease;
+}
+
+.accordion-header:hover {
+  background: #f9fafb;
+}
+
+.icon-container {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+
+  background: #f3f4f6;
+}
+
+.content {
+  flex: 1;
+  text-align: left;
+}
+
+.title {
+  margin: 0 0 4px;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #111827;
+}
+
+.description {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #6b7280;
+}
+
+.action-button {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+
+  padding: 8px 12px;
+  border-radius: 6px;
+
+  font-size: 14px;
+  font-weight: 500;
+  color: #ef4444;
+
+  background: #fef2f2;
+
+  transition: background-color 0.2s ease;
+}
+
+.action-button:hover {
+  background: #fee2e2;
+}
+
+.action-text {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.accordion-content {
+  padding: 0 24px 24px;
+  border-top: 1px solid #e5e7eb;
+  background: #fafafa;
+}

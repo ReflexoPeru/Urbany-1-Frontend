@@ -1,0 +1,32 @@
+.illustrationWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    width: 100%;
+    max-width: 420px;
+    padding: 36px 32px;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+
+    background: linear-gradient(135deg, #fff 0%, #f4f8ff 100%);
+    box-shadow:
+        0 25px 50px -12px rgb(15 23 42 / 22%),
+        0 12px 24px -10px rgb(148 163 184 / 25%);
+}
+
+@media (width <=900px) {
+    .card {
+        max-width: 360px;
+        padding: 28px 24px;
+    }
+}
+
+@media (width <=640px) {
+    .card {
+        max-width: 320px;
+        padding: 24px 20px;
+    }
+}

@@ -1,0 +1,61 @@
+/* stylelint-disable order/properties-order */
+
+.toast-container {
+  position: fixed !important;
+  z-index: 999999 !important;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  pointer-events: none;
+  max-width: 400px;
+  max-height: calc(100vh - 40px);
+  overflow: visible;
+  overscroll-behavior: contain;
+  isolation: isolate;
+}
+
+.toast-container>* {
+  pointer-events: auto;
+  position: relative;
+  z-index: 999999;
+}
+
+/* Scroll interno solo cuando hay muchos toasts (4 o más) */
+.toast-container:has(> :nth-child(4)) {
+  overflow: hidden auto;
+}
+
+/* Ocultar scrollbar pero mantener funcionalidad */
+.toast-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.toast-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.toast-container::-webkit-scrollbar-thumb {
+  background: rgb(0 0 0 / 20%);
+  border-radius: 2px;
+}
+
+.toast-container::-webkit-scrollbar-thumb:hover {
+  background: rgb(0 0 0 / 30%);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (width <=640px) {
+  .toast-container {
+    top: 16px;
+    right: 16px;
+    left: 16px;
+    max-width: none;
+    max-height: calc(100vh - 32px);
+    align-items: stretch;
+  }
+}

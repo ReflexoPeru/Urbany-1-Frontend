@@ -1,0 +1,35 @@
+.websitePage {
+    min-height: 100%;
+    padding: 64px 32px;
+    border-radius: 12px;
+    background: #f6f8f7;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+@media (width <=1024px) {
+    .websitePage {
+        padding: 56px 24px;
+    }
+
+    .container {
+        justify-content: center;
+    }
+}
+
+@media (width <=900px) {
+    .container {
+        justify-content: center;
+    }
+}
+
+@media (width <=640px) {
+    .websitePage {
+        padding: 48px 20px;
+    }
+}
