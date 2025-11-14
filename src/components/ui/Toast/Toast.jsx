@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import * as PhosphorIcons from '@phosphor-icons/react';
+import * as PhosphorIcons from 'phosphor-react';
 import styles from './Toast.module.css';
 
 const Toast = ({ id, type = 'info', title, message, duration = 5000, icon, onClose }) => {
@@ -45,9 +45,8 @@ const Toast = ({ id, type = 'info', title, message, duration = 5000, icon, onClo
 
   return (
     <div
-      className={`${styles.toast} ${
-        isClosing ? styles['toast-closing'] : ''
-      }`}
+      className={`${styles.toast} ${isClosing ? styles['toast-closing'] : ''
+        }`}
     >
       <div className={styles['toast-icon-container']}>
         <div className={`${styles['toast-icon-wrapper']} ${styles[`icon-${type}`]}`}>

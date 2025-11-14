@@ -1,9 +1,21 @@
-/* stylelint-disable order/properties-order, font-family-name-quotes */
+/* Estilos globales */
+* {
+    box-sizing: border-box;
+}
 
+html,
 body {
-  margin: 0;
-  padding: 0;
+    overflow: hidden auto;
+    margin: 0;
+    padding: 0;
+}
 
-  min-width: 320px;
-  min-height: 100vh;
+#root {
+    overflow: visible;
+    min-height: 100vh;
+}
+
+/* Asegurar que los toasts no se vean afectados por contextos de apilamiento */
+body {
+    position: relative;
 }

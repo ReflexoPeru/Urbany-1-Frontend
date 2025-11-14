@@ -1,0 +1,122 @@
+/* Contenedor principal */
+.selectContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+/* Label */
+.label {
+    margin: 0;
+
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.required {
+    margin-left: 2px;
+    color: #ef4444;
+}
+
+/* Select wrapper */
+.select {
+    width: 100%;
+}
+
+/* Mensaje de error */
+.errorMessage {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+
+    margin-top: 4px;
+
+    font-family: Poppins, sans-serif;
+    font-size: 12px;
+    color: #ef4444;
+}
+
+/* Estados de focus */
+.react-select__control--is-focused {
+    border-color: #38E47A !important;
+    box-shadow: 0 0 0 3px rgb(56 228 122 / 10%), 0 4px 8px rgb(0 0 0 / 10%) !important;
+}
+
+/* Estados de hover */
+.react-select__control:hover {
+    transform: translateY(-1px);
+    border-color: #cbd5e1 !important;
+}
+
+/* Estados disabled */
+.react-select__control--is-disabled {
+    cursor: not-allowed !important;
+    background-color: #f8fafc !important;
+}
+
+.react-select__control--is-disabled:hover {
+    transform: none !important;
+}
+
+/* Opciones del menú */
+.react-select__option--is-selected {
+    color: #fff !important;
+    background-color: #38E47A !important;
+}
+
+.react-select__option--is-focused {
+    background-color: #f0fdf4 !important;
+}
+
+/* Multi-value */
+.react-select__multi-value {
+    border-radius: 6px !important;
+    background-color: #d1fae5 !important;
+}
+
+.react-select__multi-value__label {
+    font-weight: 600 !important;
+    color: #065f46 !important;
+}
+
+.react-select__multi-value__remove:hover {
+    color: #064e3b !important;
+    background-color: #a7f3d0 !important;
+}
+
+/* Indicadores */
+.react-select__indicator-separator {
+    display: none !important;
+}
+
+.react-select__dropdown-indicator:hover {
+    color: #38E47A !important;
+}
+
+.react-select__clear-indicator:hover {
+    color: #ef4444 !important;
+}
+
+/* Responsive */
+@media (width <=768px) {
+    .label {
+        font-size: 13px;
+    }
+
+    .selectContainer {
+        gap: 4px;
+    }
+}
+
+@media (width <=480px) {
+    .label {
+        font-size: 12px;
+    }
+
+    .errorMessage {
+        font-size: 11px;
+    }
+}

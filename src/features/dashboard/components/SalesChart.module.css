@@ -1,0 +1,23 @@
+/* stylelint-disable order/properties-order */
+
+.body {
+    gap: 12px;
+}
+
+.chartWrapper {
+    width: 100%;
+    height: 260px;
+}
+
+.selectInline {
+    width: auto;
+    flex: 0 0 auto;
+    min-width: 160px;
+    align-self: flex-start;
+}
+
+@media (width <=768px) {
+    .chartWrapper {
+        height: 220px;
+    }
+}

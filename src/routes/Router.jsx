@@ -1,34 +1,87 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
-import Dashboard from '../features/dashboard/pages/dashboard';
+import Dashboard from '../features/dashboard/pages/SalesDashboardPage';
+import Optimizations from '../features/optimizations/pages/OptimizationsPage';
+import Properties from '../features/properties/pages/PropertiesPage';
+import Map from '../features/map/pages/MapPage';
 import ToastDemo from '../pages/ToastDemo';
-
+import ComponentShowcase from '../pages/ComponentShowcase';
+import Contacts from '../features/contacts/pages/ContactsPage';
+import ConfiguracionLayout from '../features/profile/components/ConfiguracionLayout';
+import Profile from '../features/profile/components/Profile';
+import Password from '../features/profile/components/Password';
+import Notifications from '../features/profile/components/Notifications';
+import Sessions from '../features/profile/components/Sessions';
+import RealEstateInfoPage from '../features/real_estate_info/pages/RealEstateInfoPage';
+import Branches from '../features/branches/pages/BranchManagement';
+import Integrations from '../features/integrations/pages/integrations';
+import Portals from '../features/integrations/pages/portales/Portals';
+import Calendar from '../features/integrations/pages/herramientas/calendar';
+import SocialMedia from '../features/integrations/pages/comunicacion/socialMedia';
+import Hoomi from '../features/integrations/pages/herramientas/hoomi';
+import Email from '../features/integrations/pages/comunicacion/Email';
+import NetworksPage from '../features/networks/pages/NetworksPage';
+import Marketing from '../features/integrations/pages/marketing/Marketing';
+import EmailMarketing from '../features/integrations/pages/comunicacion/emailMarketing';
+import Activities from '../features/activities/pages/Activities';
+import Business from '../features/business/pages/business';
+import Appraisals from '../features/appraisals/pages/appraisals';
+import Login from '../features/auth/pages/login';
+import Register from '../features/auth/pages/register';
+import RegisterInmobiliaria from '../features/auth/pages/register_inmobiliaria';
+import ReportsPage from '../features/reports/pages/ReportsPage';
+import MessagePage from '../features/message/pages/MessagePage';
+import CommentsPage from '../features/comment/pages/CommentsPage';
+import UsersPage from '../features/users/pages/UsersPage';
+import { Navigate } from 'react-router-dom';
+import WebsitePage from '../features/website/pages/WebsitePage';
+import VenturesPage from '../features/emprendimientos/pages/VenturesPage';
+import VentureDetailPage from '../features/emprendimientos/pages/VentureDetailPage';
+import HelpPage from '../features/help/pages/HelpPage';
+import NetworkDetailPage from '../features/networks/pages/NetworkDetailPage';
+import NetworkPropertyViewPage from '../features/networks/pages/NetworkPropertyViewPage';
+import NetworkRealEstateViewPage from '../features/networks/pages/NetworkRealEstateViewPage';
+import { NetworksProvider } from '../features/networks/hooks/useNetworks.jsx';
+import NetworksIntegrationPage from '../features/integrations/pages/redes/Networks';
 
 
 const router = createBrowserRouter([
+  // Rutas de autenticación independientes (sin sidebar ni header)
+  {
+    path: '/login',
+    element: <Login />,
+  },
+  {
+    path: '/register',
+    element: <Register />,
+  },
+  {
+    path: '/register-inmobiliaria',
+    element: <RegisterInmobiliaria />,
+  },
   {
     path: '/',
     element: <MainLayout />,
     children: [
       {
         index: true,
-        element: <div><h2>juas juas</h2></div>,
+        element: <Navigate to="/login" replace />,
       },
       {
         path: 'dashboard',
-        element: <Dashboard/>,
+        element: <Dashboard />,
       },
       {
         path: 'propiedades',
-        element: <div><h2>Propiedades</h2></div>,
+        element: <Properties />,
       },
       {
         path: 'negocios',
-        element: <div><h2>Negocios</h2></div>,
+        element: <Business />,
       },
       {
         path: 'contactos',
-        element: <div><h2>Contactos</h2></div>,
+        element: <Contacts />,
       },
       {
         path: 'valoraciones',
@@ -36,43 +89,186 @@ const router = createBrowserRouter([
       },
       {
         path: 'tasaciones',
-        element: <div><h2>Tasaciones</h2></div>,
+        element: <Appraisals />,
       },
       {
         path: 'redes',
-        element: <div><h2>Redes</h2></div>,
+        element: (
+          <NetworksProvider>
+            <Outlet />
+          </NetworksProvider>
+        ),
+        children: [
+          {
+            index: true,
+            element: <NetworksPage />,
+          },
+          {
+            path: 'nueva',
+            element: <NetworkDetailPage />,
+          },
+          {
+            path: 'propiedades/:propertyId',
+            element: <NetworkPropertyViewPage />,
+          },
+          {
+            path: 'inmobiliarias/:slug',
+            element: <NetworkRealEstateViewPage />,
+          },
+          {
+            path: ':id',
+            element: <NetworkDetailPage />,
+          },
+        ],
       },
       {
-        path: 'actividades',
-        element: <div><h2>Actividades</h2></div>,
+        path: 'activities',
+        element: <Activities />,
       },
       {
         path: 'reportes',
-        element: <div><h2>Reportes</h2></div>,
+        element: <ReportsPage />,
       },
       {
         path: 'mapa',
-        element: <div><h2>Mapa</h2></div>,
+        element: <Map />,
       },
       {
         path: 'mensajes',
-        element: <div><h2>Mensajes</h2></div>,
+        element: <MessagePage />,
       },
       {
         path: 'emprendimientos',
-        element: <div><h2>Emprendimientos</h2></div>,
+        children: [
+          {
+            index: true,
+            element: <VenturesPage />,
+          },
+          {
+            path: 'nuevo',
+            element: <VentureDetailPage />,
+          },
+          {
+            path: ':id',
+            element: <VentureDetailPage />,
+          },
+        ],
       },
       {
         path: 'comentarios',
-        element: <div><h2>Enviar Comentarios</h2></div>,
+        element: <CommentsPage />,
       },
       {
         path: 'configuracion',
-        element: <div><h2>Configuración</h2></div>,
+        element: <ConfiguracionLayout />,
+        children: [
+          {
+            path: 'perfil',
+            element: <Profile />,
+          },
+          {
+            path: 'password',
+            element: <Password />,
+          },
+          {
+            path: 'notificaciones',
+            element: <Notifications />,
+          },
+          {
+            path: 'sesiones',
+            element: <Sessions />,
+          },
+        ]
+      },
+      {
+        path: 'company',
+        element: <RealEstateInfoPage />,
+      },
+      {
+        path: 'integrations',
+        element: <Integrations />,
+        children: [
+          {
+            index: true,
+            element: <Portals />,
+          },
+          {
+            path: 'portals',
+            element: <Portals />,
+          },
+          {
+            path: 'calendar',
+            element: <Calendar />,
+          },
+          {
+            path: 'social-media',
+            element: <SocialMedia />,
+          },
+          {
+            path: 'hoomi',
+            element: <Hoomi />,
+          },
+          {
+            path: 'email',
+            element: <Email />,
+          },
+          {
+            path: 'networks',
+            element: <NetworksIntegrationPage />,
+          },
+          {
+            path: 'marketing',
+            element: <Marketing />,
+          },
+          {
+            path: 'emailMarketing',
+            element: <EmailMarketing />,
+          },
+        ]
+      },
+      {
+        path: 'usuarios',
+        element: <UsersPage />,
+      },
+      {
+        path: 'branches',
+        element: <Branches />,
+      },
+      {
+        path: 'automation',
+        element: <div><h2>Automatización</h2></div>,
+      },
+      {
+        path: 'optimizations',
+        element: <Optimizations />,
+      },
+      {
+        path: 'website',
+        element: <WebsitePage />,
+      },
+      {
+        path: 'blog',
+        element: <div><h2>Blog</h2></div>,
+      },
+      {
+        path: 'subscription',
+        element: <div><h2>Actualizar mi suscripción</h2></div>,
+      },
+      {
+        path: 'invite',
+        element: <div><h2>Invita y gana</h2></div>,
+      },
+      {
+        path: 'help',
+        element: <HelpPage />,
       },
       {
         path: 'toast-demo',
         element: <ToastDemo />,
+      },
+      {
+        path: 'component-showcase',
+        element: <ComponentShowcase />,
       },
     ],
   },

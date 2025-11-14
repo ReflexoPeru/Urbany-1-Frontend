@@ -1,0 +1,150 @@
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin: 32px 0;
+  padding: 60px 32px;
+  border-radius: 14px;
+
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  text-align: center;
+
+  background: white;
+  box-shadow: 0 12px 35px rgb(15 23 42 / 12%);
+}
+
+.illustration {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.targetContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.target {
+  color: #38e47a;
+  filter: drop-shadow(0 4px 12px rgb(56 228 122 / 30%));
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.sparkles {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+}
+
+.sparkle1,
+.sparkle2,
+.sparkle3,
+.sparkle4 {
+  position: absolute;
+
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+
+  background: #38e47a;
+  box-shadow: 0 0 8px rgb(56 228 122 / 60%);
+
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+.sparkle1 {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.sparkle2 {
+  top: 10%;
+  right: 15%;
+  animation-delay: 0.3s;
+}
+
+.sparkle3 {
+  bottom: 20%;
+  left: 15%;
+  animation-delay: 0.6s;
+}
+
+.sparkle4 {
+  right: 10%;
+  bottom: 10%;
+  animation-delay: 0.9s;
+}
+
+.title {
+  margin: 0 0 8px;
+
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+
+.message {
+  max-width: 400px;
+  margin: 0 0 32px;
+
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #6b7280;
+}
+
+.addButton {
+  cursor: pointer;
+
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+
+  font-weight: 600;
+  color: white;
+
+  background: linear-gradient(135deg, #38e47a, #2ecc71);
+  box-shadow: 0 2px 8px rgb(56 228 122 / 30%);
+
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.addButton:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #2ecc71, #059669);
+  box-shadow: 0 4px 12px rgb(56 228 122 / 40%);
+}
+
+@keyframes pulse {
+  0%,
+
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes sparkle {
+  0%,
+
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

@@ -1,18 +1,8 @@
-import React from 'react';
+import React from "react";
+import AuthPage from "./AuthPage";
 
 const Login = () => {
-  return (
-    <div style={{ 
-      display: 'flex', 
-      justifyContent: 'center', 
-      alignItems: 'center', 
-      fontSize: '2rem',
-      fontWeight: 'bold',
-    
-    }}>
-      <h1>Hola gentita</h1>
-    </div>
-  );
+    return <AuthPage />;
 };
 
 export default Login;

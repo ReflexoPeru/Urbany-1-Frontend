@@ -1,0 +1,95 @@
+/* stylelint-disable order/properties-order */
+
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.title {
+    font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.subtitle {
+    font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #64748b;
+}
+
+.datePicker {
+    width: 100%;
+}
+
+.datePicker :global(.ant-picker) {
+    width: 100%;
+    border-radius: 12px;
+    padding: 8px 14px;
+    box-shadow: 0 12px 30px rgb(15 23 42 / 10%);
+}
+
+.datePicker :global(.ant-picker:hover),
+.datePicker :global(.ant-picker-focused) {
+    border-color: #38e47a;
+    box-shadow: 0 0 0 3px rgb(56 228 122 / 16%);
+}
+
+.datePicker :global(.ant-picker-input > input) {
+    font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.quickRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.quickButton,
+.resetButton {
+    border: none;
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.quickButton {
+    background: #e7f9ef;
+    color: #1f5133;
+}
+
+.quickButton:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px rgb(56 228 122 / 20%);
+}
+
+.resetButton {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.resetButton:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgb(15 23 42 / 12%);
+}
+
+@media (width <=768px) {
+    .datePicker :global(.ant-picker) {
+        padding: 6px 12px;
+    }
+}

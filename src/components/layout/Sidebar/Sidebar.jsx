@@ -34,10 +34,10 @@ const Sidebar = () => {
       path: '/dashboard' 
     },
     { 
-      id: 'actividades', 
+      id: 'activities', 
       label: 'Actividades', 
       icon: CheckSquare, 
-      path: '/actividades' 
+      path: '/activities' 
     },
     { 
       id: 'tasaciones', 

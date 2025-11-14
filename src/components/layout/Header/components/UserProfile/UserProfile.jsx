@@ -15,13 +15,18 @@ import {
   Gift,
   Question,
   SignOut
-} from '@phosphor-icons/react';
+} from 'phosphor-react';
+import { useToast } from '../../../../../contexts/ToastContext';
+import { useLoading } from '../../../../../contexts/LoadingContext';
+import { logout } from '../../../../../services/auth';
 import styles from './UserProfile.module.css';
 
 export const UserProfile = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropdownClosing, setIsDropdownClosing] = useState(false);
   const navigate = useNavigate();
+  const { toast } = useToast();
+  const { showLoading, hideLoading } = useLoading();
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -56,16 +61,73 @@ export const UserProfile = () => {
     }
   };
 
-  const handleMenuItemClick = (action) => {
+  const handleMenuItemClick = async (action) => {
     closeDropdown();
-    
+
+    // Si es logout, manejar de forma especial
+    if (action === 'logout') {
+      try {
+        showLoading("Cerrando sesión...");
+        await logout();
+
+        hideLoading();
+
+        toast.success(
+          "Sesión cerrada",
+          "Has cerrado sesión correctamente",
+          3000,
+          "SignOut"
+        );
+
+        // Redirigir al login después de un breve delay
+        setTimeout(() => {
+          navigate('/login');
+        }, 500);
+      } catch (error) {
+        console.error("Error al cerrar sesión:", error);
+        hideLoading();
+
+        toast.error(
+          "Error",
+          "Hubo un problema al cerrar sesión",
+          3000,
+          "WarningCircle"
+        );
+
+        // Aún así redirigir al login
+        setTimeout(() => {
+          navigate('/login');
+        }, 1000);
+      }
+      return;
+    }
+
+    // Para otras acciones, navegar normalmente
     setTimeout(() => {
-      if (action === 'logout') {
-        navigate('/login');
-      } else if (action === 'profile') {
-        navigate('/perfil');
+      if (action === 'profile') {
+        navigate('/configuracion/perfil');
+      } else if (action === 'company') {
+        navigate('/company');
+      } else if (action === 'integrations') {
+        navigate('/integrations/portals');
       } else if (action === 'users') {
         navigate('/usuarios');
+      } else if (action === 'branches') {
+        navigate('/branches');
+      } else if (action === 'automation') {
+        navigate('/automation');
+      } else if (action === 'optimizations') {
+        navigate('/optimizations');
+      } else if (action === 'website') {
+        navigate('/website');
+      } else if (action === 'blog') {
+        navigate('/blog');
+      } else if (action === 'subscription') {
+        navigate('/subscription');
+      } else if (action === 'invite') {
+        navigate('/invite');
+      } else if (action === 'help') {
+        navigate('/help');
       }
     }, 250);
   };
@@ -93,7 +155,7 @@ export const UserProfile = () => {
 
   return (
     <div className={styles['user-profile-container']} ref={dropdownRef}>
-      <div 
+      <div
         className={`${styles['user-profile']} ${isDropdownOpen ? styles['user-profile-active'] : ''}`}
         onClick={toggleDropdown}
       >
@@ -106,17 +168,16 @@ export const UserProfile = () => {
           <span className={styles['user-name']}>Sanito L.</span>
           <span className={styles['user-role']}>Administrador</span>
         </div>
-        <CaretDown 
-          size={16} 
-          className={`${styles['dropdown-icon']} ${isDropdownOpen ? styles['dropdown-icon-rotated'] : ''}`} 
+        <CaretDown
+          size={16}
+          className={`${styles['dropdown-icon']} ${isDropdownOpen ? styles['dropdown-icon-rotated'] : ''}`}
         />
       </div>
 
       {isDropdownOpen && (
-        <div 
-          className={`${styles['dropdown-menu']} ${
-            isDropdownClosing ? styles['dropdown-menu-closing'] : ''
-          }`}
+        <div
+          className={`${styles['dropdown-menu']} ${isDropdownClosing ? styles['dropdown-menu-closing'] : ''
+            }`}
         >
           {menuItems.map((item) => {
             if (item.type === 'divider') {
@@ -127,9 +188,8 @@ export const UserProfile = () => {
             return (
               <button
                 key={item.id}
-                className={`${styles['menu-item']} ${
-                  item.highlight ? styles['menu-item-highlight'] : ''
-                } ${item.danger ? styles['menu-item-danger'] : ''}`}
+                className={`${styles['menu-item']} ${item.highlight ? styles['menu-item-highlight'] : ''
+                  } ${item.danger ? styles['menu-item-danger'] : ''}`}
                 onClick={() => handleMenuItemClick(item.action)}
               >
                 <Icon size={20} weight="regular" className={styles['menu-item-icon']} />
