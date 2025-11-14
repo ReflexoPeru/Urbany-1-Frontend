@@ -1,0 +1,348 @@
+.page {
+    min-height: 100vh;
+    padding: clamp(1.5rem, 4vw, 2.8rem);
+    background: linear-gradient(180deg, #f5f7f9 0%, #eef5f0 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.backButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 16px;
+    border: 1px solid #d7e5dc;
+    background: #f0f7f3;
+    color: #245e46;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.backButton:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px -12px rgb(36 94 70 / 40%);
+}
+
+.headerInfo {
+    flex: 1;
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.operation {
+    align-self: flex-start;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: #e6f6ef;
+    color: #1b7b55;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.title {
+    margin: 0;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    color: #0d2f24;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    color: #4d6c62;
+    font-size: 0.95rem;
+}
+
+.headerMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 160px;
+}
+
+.priceBadge,
+.commissionBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    border-radius: 18px;
+    font-weight: 600;
+}
+
+.priceBadge {
+    background: linear-gradient(135deg, #1f8f5b 0%, #33b076 100%);
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.commissionBadge {
+    background: #f5f8ff;
+    color: #1d4ed8;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+    gap: 32px;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.mediaCard {
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 28px 52px -28px rgb(15 23 42 / 18%);
+    overflow: hidden;
+}
+
+.mediaCard img {
+    width: 100%;
+    height: clamp(260px, 40vw, 420px);
+    object-fit: cover;
+}
+
+.mediaFallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: clamp(260px, 40vw, 420px);
+    background: repeating-linear-gradient(45deg, #f0f4f8 0, #f0f4f8 12px, #e5ecf2 12px, #e5ecf2 24px);
+    color: #6c7b8a;
+    font-weight: 600;
+}
+
+.section {
+    background: #fff;
+    border-radius: 24px;
+    padding: clamp(1.4rem, 3vw, 2.1rem);
+    box-shadow: 0 28px 52px -28px rgb(15 23 42 / 18%);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.section h2 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: #142f25;
+}
+
+.section p {
+    margin: 0;
+    color: #4a6258;
+    line-height: 1.6;
+}
+
+.featuresGrid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+}
+
+.featuresGrid li {
+    padding: 14px;
+    border-radius: 16px;
+    background: #f6f9fc;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.featureLabel {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6b7f77;
+}
+
+.featureValue {
+    font-weight: 600;
+    color: #0f2b21;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 24px;
+    padding: clamp(1.4rem, 3vw, 2rem);
+    box-shadow: 0 28px 52px -28px rgb(15 23 42 / 18%);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.card h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #123126;
+}
+
+.realEstateHeader {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.realEstateHeader img {
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    object-fit: cover;
+}
+
+.logoFallback {
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    background: #eef2f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #4b5563;
+    font-size: 1.4rem;
+}
+
+.realEstateInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.realEstateName {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0f2d22;
+}
+
+.realEstateAgent {
+    color: #4e645a;
+    font-size: 0.95rem;
+}
+
+.realEstatePhone {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #245e46;
+    font-weight: 600;
+}
+
+.statusList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.statusList li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f4f1;
+    color: #4b6157;
+    font-size: 0.95rem;
+}
+
+.statusList li:last-child {
+    border-bottom: none;
+}
+
+.statusList strong {
+    color: #102d23;
+}
+
+.emptyState {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #f5f7f9 0%, #eef5f0 100%);
+    padding: 24px;
+}
+
+.emptyCard {
+    background: #fff;
+    border-radius: 24px;
+    padding: 36px;
+    max-width: 420px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 28px 52px -28px rgb(15 23 42 / 18%);
+}
+
+.emptyCard h1 {
+    margin: 0;
+    font-size: 1.6rem;
+    color: #0f2b21;
+}
+
+.emptyCard p {
+    margin: 0;
+    color: #536960;
+    line-height: 1.5;
+}
+
+@media (width <= 1024px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        flex: 1 1 320px;
+    }
+}
+
+@media (width <= 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .headerMeta {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+

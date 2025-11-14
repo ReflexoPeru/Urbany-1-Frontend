@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import styles from '../hooks/Profile.module.css';
-import Password from './Password';
-import Notifications from "./Notifications.jsx";
-import Sessions from "./Sessions.jsx";
+import { User, Camera } from 'phosphor-react';
+import Button from '../../../components/ui/Button/Button';
+import Input from '../../../components/ui/Input/Input';
+import styles from './Profile.module.css';
 
 const Profile = () => {
-  const [activeTab, setActiveTab] = useState('perfil');
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -13,7 +12,7 @@ const Profile = () => {
     userType: ''
   });
   const [avatarUrl, setAvatarUrl] = useState(
-    'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=150&h=150&fit=crop&crop=face'
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0-wtBeKb7tsRR-E7q5Tzg07gJ1RPUBpwfa8ps1GmjVd0Znpk8Bvg5m0cdv4QlqfiwFJk&usqp=CAU'
   );
 
   // 📌 Manejar cambios en inputs
@@ -27,12 +26,7 @@ const Profile = () => {
 
   // 📌 Guardar cambios
   const handleSave = () => {
-    if (!formData.fullName || !formData.phone) {
-      alert('Por favor completa todos los campos obligatorios.');
-      return;
-    }
-    console.log('Guardando datos:', formData);
-    alert('Cambios guardados exitosamente');
+    // Función de guardar - solo vista
   };
 
   // 📌 Subir foto
@@ -47,127 +41,89 @@ const Profile = () => {
     }
   };
 
-  // 📌 Tabs del perfil
-  const tabs = [
-    { id: 'perfil', label: 'Mi Perfil' },
-    { id: 'password', label: 'Cambiar contraseña' },
-    { id: 'notifications', label: 'Notificaciones' },
-    { id: 'sessions', label: 'Sesiones activas' }
-  ];
-
   return (
-    <div className={styles.container}>
-      <div className={styles.card}>
-        {/* 🔹 Tabs dentro del cuadro */}
-        <div className={styles.tabs}>
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`${styles.tab} ${activeTab === tab.id ? styles.active : ''}`}
-            >
-              {tab.label}
-            </button>
-          ))}
+    <div className={styles.content}>
+      {/* Cabecera */}
+      <div className={styles.header}>
+        <div className={styles.headerText}>
+          <h1 className={styles.title}>
+            <User size={20} />
+            Información de usuario
+          </h1>
+          <p className={styles.subtitle}>
+            Su información de usuario será visible en las publicaciones de sus inmuebles en los portales.
+          </p>
         </div>
 
-        {/* 🔹 Contenido principal */}
-        {activeTab === 'perfil' && (
-          <div className={styles.content}>
-            {/* Cabecera */}
-            <div className={styles.header}>
-              <div className={styles.headerText}>
-                <h1 className={styles.title}>Información de usuario</h1>
-                <p className={styles.subtitle}>
-                  Su información de usuario será visible en las publicaciones de sus inmuebles en los portales.
-                </p>
-              </div>
-
-              <div className={styles.avatarContainer}>
-                <img src={avatarUrl} alt="Avatar" className={styles.avatar} />
-                <label className={styles.cameraButton}>
-                  📷
-                  <input type="file" accept="image/*" onChange={handlePhotoUpload} hidden />
-                </label>
-              </div>
-            </div>
-
-            {/* Formulario */}
-            <form className={styles.form}>
-              <div className={styles.formGrid}>
-                <div className={styles.formGroup}>
-                  <label className={styles.label}>Nombre Completo</label>
-                  <input
-                    type="text"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleInputChange}
-                    className={styles.input}
-                  />
-                </div>
-
-                <div className={styles.formGroup}>
-                  <label className={styles.label}>Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className={`${styles.input} ${styles.disabled}`}
-                    disabled
-                  />
-                </div>
-
-                <div className={styles.formGroup}>
-                  <label className={styles.label}>Teléfono</label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className={styles.input}
-                  />
-                </div>
-
-                <div className={styles.formGroup}>
-                  <label className={styles.label}>Tipo de usuario</label>
-                  <input
-                    type="text"
-                    name="userType"
-                    value={formData.userType}
-                    onChange={handleInputChange}
-                    className={`${styles.input} ${styles.disabled}`}
-                    disabled
-                  />
-                </div>
-              </div>
-
-              <div className={styles.buttonContainer}>
-                <button type="button" onClick={handleSave} className={styles.saveButton}>
-                  Guardar cambios
-                </button>
-              </div>
-            </form>
-          </div>
-        )}
-
-        {/* 🔹 Componente Cambiar Contraseña */}
-        {activeTab === 'password' && <Password />}
-
-        {/* 🔹 Componente Notificaciones */}
-        {activeTab === 'notifications' && <Notifications />}
-
-        {/* 🔹 Componente Sesiones Activas */}
-        {activeTab === 'sessions' && <Sessions />}
-
-        {/* 🔹 Placeholder solo para futuras pestañas */}
-        {!['perfil', 'password', 'notifications', 'sessions'].includes(activeTab) && (
-          <div className={styles.placeholder}>
-            <p>Contenido de "{tabs.find(t => t.id === activeTab)?.label}"</p>
-            <p>Esta sección está en desarrollo</p>
-          </div>
-        )}
+        <div className={styles.avatarContainer}>
+          <img src={avatarUrl} alt="Avatar" className={styles.avatar} />
+          <label className={styles.cameraButton}>
+            <Camera size={16} />
+            <input type="file" accept="image/*" onChange={handlePhotoUpload} hidden />
+          </label>
+        </div>
       </div>
+
+      {/* Formulario */}
+      <form className={styles.form}>
+        <div className={styles.formGrid}>
+          <div className={styles.formGroup}>
+            <Input
+              label="Nombre Completo"
+              type="text"
+              name="fullName"
+              value={formData.fullName}
+              onChange={handleInputChange}
+              placeholder="Ingresa tu nombre completo"
+            />
+          </div>
+
+          <div className={styles.formGroup}>
+            <Input
+              label="Email"
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              placeholder="tu@email.com"
+              disabled
+            />
+          </div>
+
+          <div className={styles.formGroup}>
+            <Input
+              label="Teléfono"
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleInputChange}
+              placeholder="+51 999 900 900"
+            />
+          </div>
+
+          <div className={styles.formGroup}>
+            <Input
+              label="Tipo de usuario"
+              type="text"
+              name="userType"
+              value={formData.userType}
+              onChange={handleInputChange}
+              placeholder="Tipo de usuario"
+              disabled
+            />
+          </div>
+        </div>
+
+        <div className={styles.buttonContainer}>
+          <Button
+            type="button"
+            onClick={handleSave}
+            variant="primary"
+          >
+            Guardar cambios
+          </Button>
+        </div>
+      </form>
     </div>
   );
 };

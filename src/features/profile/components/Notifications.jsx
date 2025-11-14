@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import styles from "../hooks/Notifications.module.css";
+import { Bell } from "phosphor-react";
+import Button from '../../../components/ui/Button/Button';
+import styles from "./Notifications.module.css";
 
 const Notifications = () => {
   const [notifications, setNotifications] = useState({
@@ -18,7 +20,10 @@ const Notifications = () => {
     <div className={styles.content}>
       {/* 🔹 Título y subtítulo */}
       <div className={styles.header}>
-        <h1 className={styles.title}>Centro de notificaciones</h1>
+        <h1 className={styles.title}>
+          <Bell size={20} />
+          Centro de notificaciones
+        </h1>
         <p className={styles.subtitle}>
           Desde aquí podrás configurar las notificaciones que deseas recibir, tanto las de escritorio
           como las de correo electrónico.
@@ -95,7 +100,7 @@ const Notifications = () => {
       </div>
 
       <div className={styles.buttonRow}>
-        <button className={styles.saveButton}>Guardar cambios</button>
+        <Button variant="primary">Guardar cambios</Button>
       </div>
     </div>
   );

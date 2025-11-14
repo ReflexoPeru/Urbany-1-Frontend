@@ -1,0 +1,175 @@
+.overlay {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px;
+
+  background: rgb(0 0 0 / 50%);
+  backdrop-filter: blur(4px);
+}
+
+.modal {
+  overflow: hidden;
+
+  width: 100%;
+  max-width: 400px;
+  max-height: 90vh;
+  border-radius: 14px;
+
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  background: white;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 10px 10px -5px rgb(0 0 0 / 4%);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 24px 0;
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+  box-shadow: 0 2px 8px rgb(239 68 68 / 20%);
+}
+
+.icon {
+  color: #ef4444;
+}
+
+.closeButton {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+
+  color: #6b7280;
+
+  background: #f9fafb;
+
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.closeButton:hover {
+  transform: scale(1.05);
+  color: #374151;
+  background: #f3f4f6;
+}
+
+.content {
+  padding: 24px;
+}
+
+.title {
+  margin: 0 0 12px;
+
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+
+.message {
+  margin: 0 0 16px;
+  line-height: 1.6;
+  color: #6b7280;
+}
+
+.activityInfo {
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #f9fafb;
+}
+
+.activityType {
+  margin-bottom: 8px;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.activityTitle {
+  margin-bottom: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.activityDate {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding: 0 24px 24px;
+}
+
+.cancelButton {
+  cursor: pointer;
+
+  padding: 12px 24px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+
+  font-weight: 600;
+  color: #374151;
+
+  background: white;
+
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cancelButton:hover {
+  transform: translateY(-1px);
+  border-color: #d1d5db;
+  background: #f9fafb;
+}
+
+.deleteButton {
+  cursor: pointer;
+
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+
+  font-weight: 600;
+  color: white;
+
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  box-shadow: 0 2px 8px rgb(239 68 68 / 30%);
+
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.deleteButton:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  box-shadow: 0 4px 12px rgb(239 68 68 / 40%);
+}

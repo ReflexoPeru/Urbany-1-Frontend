@@ -1,0 +1,1 @@
+export { default as CommentsPage } from './pages/CommentsPage'

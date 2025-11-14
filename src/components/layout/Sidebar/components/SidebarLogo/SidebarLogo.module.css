@@ -1,0 +1,26 @@
+/* stylelint-disable order/properties-order */
+
+.logo-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70px;
+  padding: 18px 20px;
+}
+
+.logo-container::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background-color: #d1d5db;
+}
+
+.logo {
+  max-width: 140px;
+  height: auto;
+  object-fit: contain;
+}

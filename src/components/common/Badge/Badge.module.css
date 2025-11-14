@@ -1,0 +1,48 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.badge.small {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+}
+
+.badge.medium {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.badge.large {
+  padding: 0.625rem 1.25rem;
+  font-size: 1rem;
+}
+
+.badge.default {
+  color: #92400e;
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+}
+
+.badge.warning {
+  color: #92400e;
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+}
+
+.badge.primary {
+  color: #fff;
+  background: #38e47a;
+}
+
+.badge.secondary {
+  color: #6b7280;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+

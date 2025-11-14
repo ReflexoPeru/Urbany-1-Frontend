@@ -1,15 +1,27 @@
 import React, { useState } from "react";
-import styles from "../hooks/Password.module.css";
+import { Lock } from "phosphor-react";
+import Button from '../../../components/ui/Button/Button';
+import Input from '../../../components/ui/Input/Input';
+import styles from "./Password.module.css";
 
 const Password = () => {
-  const [showPassword, setShowPassword] = useState({
-    current: false,
-    new: false,
-    confirm: false,
+  const [formData, setFormData] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: ''
   });
 
-  const toggleVisibility = (field) => {
-    setShowPassword((prev) => ({ ...prev, [field]: !prev[field] }));
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Función de guardar - solo vista
   };
 
   return (
@@ -17,7 +29,10 @@ const Password = () => {
       {/* 🔹 Encabezado */}
       <div className={styles.header}>
         <div className={styles.headerText}>
-          <h1 className={styles.title}>Cambiar Contraseña</h1>
+          <h1 className={styles.title}>
+            <Lock size={20} />
+            Cambiar Contraseña
+          </h1>
           <p className={styles.subtitle}>
             Protege tus datos creando una contraseña que sea compleja y tenga la longitud suficiente. <br />
             Debe resultarte fácil de recordar pero difícil de adivinar para los demás.
@@ -26,67 +41,46 @@ const Password = () => {
       </div>
 
       {/* 🔹 Formulario */}
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.formGrid}>
           <div className={styles.formGroup}>
-            <label className={styles.label}>Contraseña actual</label>
-            <div className={styles.inputWrapper}>
-              <input
-                type={showPassword.current ? "text" : "password"}
-                placeholder="Ingresar contraseña actual..."
-                className={styles.input}
-              />
-              <button
-                type="button"
-                onClick={() => toggleVisibility("current")}
-                className={styles.eyeButton}
-              >
-                <i className={`fa ${showPassword.current ? "fa-eye-slash" : "fa-eye"}`}></i>
-              </button>
-            </div>
+            <Input
+              label="Contraseña actual"
+              type="password"
+              name="currentPassword"
+              value={formData.currentPassword}
+              onChange={handleInputChange}
+              placeholder="Ingresar contraseña actual..."
+            />
           </div>
 
           <div className={styles.formGroup}>
-            <label className={styles.label}>Nueva contraseña</label>
-            <div className={styles.inputWrapper}>
-              <input
-                type={showPassword.new ? "text" : "password"}
-                placeholder="Ingresar nueva contraseña..."
-                className={styles.input}
-              />
-              <button
-                type="button"
-                onClick={() => toggleVisibility("new")}
-                className={styles.eyeButton}
-              >
-                <i className={`fa ${showPassword.new ? "fa-eye-slash" : "fa-eye"}`}></i>
-              </button>
-            </div>
+            <Input
+              label="Nueva contraseña"
+              type="password"
+              name="newPassword"
+              value={formData.newPassword}
+              onChange={handleInputChange}
+              placeholder="Ingresar nueva contraseña..."
+            />
           </div>
 
           <div className={styles.formGroup}>
-            <label className={styles.label}>Confirmar nueva contraseña</label>
-            <div className={styles.inputWrapper}>
-              <input
-                type={showPassword.confirm ? "text" : "password"}
-                placeholder="Repetir nueva contraseña..."
-                className={styles.input}
-              />
-              <button
-                type="button"
-                onClick={() => toggleVisibility("confirm")}
-                className={styles.eyeButton}
-              >
-                <i className={`fa ${showPassword.confirm ? "fa-eye-slash" : "fa-eye"}`}></i>
-              </button>
-            </div>
+            <Input
+              label="Confirmar nueva contraseña"
+              type="password"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleInputChange}
+              placeholder="Repetir nueva contraseña..."
+            />
           </div>
         </div>
 
         <div className={styles.buttonContainer}>
-          <button type="submit" className={styles.saveButton}>
+          <Button type="submit" variant="primary">
             Guardar cambios
-          </button>
+          </Button>
         </div>
       </form>
     </div>

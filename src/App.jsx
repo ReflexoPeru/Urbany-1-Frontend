@@ -1,13 +1,18 @@
-import React from 'react';
-import ProfileMain from './features/profile/components/ProfileMain';
-import './App.css';
+import Router from './routes/Router'
+import { ToastProvider } from './contexts/ToastContext'
+import { ConfirmModalProvider } from './contexts/ConfirmModalContext'
+import ToastContainer from './components/ui/Toast/ToastContainer'
+import './App.css'
 
 function App() {
   return (
-    <div className="App">
-      <ProfileMain />
-    </div>
-  );
+    <ToastProvider>
+      <ConfirmModalProvider>
+        <Router />
+        <ToastContainer />
+      </ConfirmModalProvider>
+    </ToastProvider>
+  )
 }
 
-export default App;
+export default App

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import styles from "../hooks/Sessions.module.css";
-import { Trash2 } from "lucide-react"; // ícono elegante
+import { Monitor, Trash } from "phosphor-react";
+import Button from '../../../components/ui/Button/Button';
+import styles from "./Sessions.module.css";
 
 export default function Sessions() {
   const [sessions, setSessions] = useState([
@@ -24,7 +25,10 @@ export default function Sessions() {
     <div className={styles.container}>
       {/* 🔹 Cabecera */}
       <div className={styles.header}>
-        <h2 className={styles.title}>Sesiones activas</h2>
+        <h2 className={styles.title}>
+          <Monitor size={20} />
+          Sesiones activas
+        </h2>
         <p className={styles.subtitle}>
           Desde aquí podrás ver los dispositivos en los cuales tienes una sesión activa.
         </p>
@@ -42,24 +46,19 @@ export default function Sessions() {
               <p className={styles.info}>ID:</p>
               <p className={styles.info}>Ult. Conexión: {session.lastConnection}</p>
             </div>
-            <button
-              className={styles.deleteButton}
+            <Button
+              variant="danger"
+              size="small"
               onClick={() => handleDelete(session.id)}
-              title="Cerrar sesión"
+              icon="trash"
             >
-              <Trash2 size={22} />
-            </button>
+
+            </Button>
           </div>
         ))}
       </div>
 
-      {/* 🔹 Paginación */}
-      <div className={styles.pagination}>
-        <button className={styles.pageButton}>Anterior</button>
-        <span className={styles.pageActive}>1</span>
-        <span className={styles.page}>2</span>
-        <button className={styles.pageButton}>Siguiente</button>
-      </div>
+
     </div>
   );
 }

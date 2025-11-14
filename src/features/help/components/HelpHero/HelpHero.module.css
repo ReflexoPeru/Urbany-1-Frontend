@@ -1,0 +1,58 @@
+.hero {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.badgeWrapper {
+    display: inline-flex;
+}
+
+.titles {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.title {
+    margin: 0;
+
+    font-family: Poppins, sans-serif;
+    font-size: clamp(2rem, 2.8vw, 3rem);
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.subtitle {
+    max-width: 560px;
+    margin: 0;
+
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #475569;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+}
+
+.secondaryButton {
+    gap: 12px;
+}
+
+@media (width <=768px) {
+    .hero {
+        gap: 20px;
+    }
+
+    .subtitle {
+        max-width: none;
+    }
+
+    .actions {
+        width: 100%;
+    }
+}
