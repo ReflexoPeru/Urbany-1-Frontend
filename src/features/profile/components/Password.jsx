@@ -3,6 +3,8 @@ import { Lock } from "phosphor-react";
 import Button from '../../../components/ui/Button/Button';
 import Input from '../../../components/ui/Input/Input';
 import styles from "./Password.module.css";
+import useProfile from '../services/useProfile';
+import { useToast } from '../../../contexts/ToastContext';
 
 const Password = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +12,10 @@ const Password = () => {
     newPassword: '',
     confirmPassword: ''
   });
+  const [statusMessage, setStatusMessage] = useState('');
+  const [statusType, setStatusType] = useState('');
+  const { changePassword } = useProfile();
+  const { toast } = useToast();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -19,9 +25,22 @@ const Password = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Función de guardar - solo vista
+    setStatusMessage('');
+    setStatusType('');
+    try {
+      const payload = {
+        old_password: formData.currentPassword,
+        new_password: formData.newPassword,
+        new_password_confirm: formData.confirmPassword,
+      };
+      const res = await changePassword(payload);
+      toast.success('Contraseña actualizada', res?.message || 'Se guardaron los cambios correctamente');
+      setFormData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+    } catch (err) {
+      toast.error('Error al actualizar', 'No se pudo actualizar la contraseña');
+    }
   };
 
   return (
