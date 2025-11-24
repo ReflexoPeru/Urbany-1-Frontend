@@ -1,5 +1,18 @@
 import { get, post, put, patch, del } from '../../../services/api/apiMethods';
 
+export const fetchUsers = async ({ page = 1, search = '', pageSize = 20 } = {}) => {
+    const params = {
+        page,
+        page_size: pageSize,
+    };
+
+    if (search) {
+        params.search = search;
+    }
+
+    return await get('users', params);
+};
+
 export const fetchUserById = async (userId) => {
     return await get(`users/${userId}`);
 };
