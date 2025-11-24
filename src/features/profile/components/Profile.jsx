@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { User, Camera } from 'phosphor-react';
 import Button from '../../../components/ui/Button/Button';
 import Input from '../../../components/ui/Input/Input';
 import styles from './Profile.module.css';
+import useProfile from '../services/useProfile';
 
 const Profile = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,25 @@ const Profile = () => {
   const [avatarUrl, setAvatarUrl] = useState(
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0-wtBeKb7tsRR-E7q5Tzg07gJ1RPUBpwfa8ps1GmjVd0Znpk8Bvg5m0cdv4QlqfiwFJk&usqp=CAU'
   );
+  const { profile } = useProfile();
+
+useEffect(() => {
+  if (profile?.user) {
+    const user = profile.user;
+
+    const fullName = user.full_name ?? `${user.first_name ?? ''} ${user.last_name ?? ''}`.trim();
+    const roles = Array.isArray(user.roles) ? user.roles.join(', ') : '';
+
+    setFormData({
+      fullName,
+      email: user.email ?? '',
+      phone: '',         // La API no devuelve phone → lo omitimos
+      userType: roles,   // Si roles = [] será ""
+    });
+  }
+}, [profile]);
+
+
 
   // 📌 Manejar cambios en inputs
   const handleInputChange = (e) => {
