@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Lock, Mail } from "lucide-react";
 import { useToast } from "../../../../contexts/ToastContext";
 import { useLoading } from "../../../../contexts/LoadingContext";
@@ -172,8 +172,9 @@ const LoginForm = () => {
             </div>
 
             <div className={styles.forgot_link}>
-                <a href="#">¿Olvidaste la contraseña?</a>
+                <Link to="/forgot-password">¿Olvidaste la contraseña?</Link>
             </div>
+
 
             <button type="submit" className={styles.btn}>Login</button>
 

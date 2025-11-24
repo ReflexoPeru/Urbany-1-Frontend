@@ -29,6 +29,7 @@ import Appraisals from '../features/appraisals/pages/appraisals';
 import Login from '../features/auth/pages/login';
 import Register from '../features/auth/pages/register';
 import RegisterInmobiliaria from '../features/auth/pages/register_inmobiliaria';
+import ForgotPasswordPage from '../features/auth/pages/ForgotPasswordPage';
 import ReportsPage from '../features/reports/pages/ReportsPage';
 import MessagePage from '../features/message/pages/MessagePage';
 import CommentsPage from '../features/comment/pages/CommentsPage';
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
   {
     path: '/register-inmobiliaria',
     element: <RegisterInmobiliaria />,
+  },
+  {
+    path: '/forgot-password',
+    element: <ForgotPasswordPage />,
   },
   {
     path: '/',
